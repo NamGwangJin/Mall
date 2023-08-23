@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.himedia.springboot.mallDAO">
+<insert id="signup" parameterType="java.util.HashMap">
+	insert into user set id=#{param1}, passcode1=#{param2}, passcode2=#{param3},
+						 name=#{param4}, birthday=#{param5} ,mobile=#{param6}, email=#{param7}						 
+</insert>
+<select id="login" resultType="com.himedia.springboot.mallDTO"> 
+	select id from user where id= #{param1} and passcode1= #{param2}
+</select>
+<insert id="insert">
+	insert into product set name=#{param1}, 
+	price=#{param2}, comment=#{param3}, img=#{param4}, updated=now()
+</insert>
+<select id="getList" resultType="com.himedia.springboot.mallDTO">
+	select rowid,name,price,comment,img,updated from product
+	order by updated asc limit #{param1},#{param2}
+</select>
+<select id="getTotal" resultType="int">
+	select count(*) from product
+</select>
+<select id="product" resultType="com.himedia.springboot.mallDTO">
+	select name,price,comment,img from product
+	where name=#{param1}
+</select>
+<insert id="cart">
+	insert into cart set userid=#{param1}, name=#{param2}, 
+	qty=#{param3}, price=#{param4}, totalPrice=#{param5}
+</insert>
+
+</mapper>

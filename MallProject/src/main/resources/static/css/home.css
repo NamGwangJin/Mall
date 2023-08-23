@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+body {
+	text-align:center;
+}
+table{
+	width:100%;
+}
+table#tblBoard {
+	border-collapse:collapse;
+}
+table#tblBoard th {
+	background-color:black; color:snow;
+	border:1px solid snow;
+}
+table#tblBoard td {
+	border:1px solid black;
+	cursor:text;
+}
