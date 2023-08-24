@@ -30,12 +30,12 @@
             <tr>
            
             <c:forEach items="${mlist}" var="product">         
-                <a class="product" id='${product.name}' name='${product.name}'>
-                    <img src="img/${product.img}.jpg" hight="225" width="225">
+                <a class="product" id='${product.prod_name}' name='${product.prod_name}'>
+                    <img src="img/${product.prod_img}.jpg" hight="225" width="225">
                     <div class="product-name">
-                        ${product.name}
+                        ${product.prod_name}
                     </div>
-                    <div class="product-price">${product.price}</div>
+                    <div class="product-price">${product.prod_price}</div>
                 </a>
             </c:forEach>
             </tr>

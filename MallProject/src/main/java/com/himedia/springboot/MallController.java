@@ -37,7 +37,7 @@ public class MallController {
 		start = (pno-1)*10;
 		psize = 10;
 		ArrayList<mallDTO> alMall = mdao.getList(start, psize);
-		
+	
 		int cnt = mdao.getTotal();
 		int pagecount = (int) Math.ceil(cnt/10.0);
 
@@ -55,7 +55,7 @@ public class MallController {
 		model.addAttribute("mlist",alMall);
 		
 //		String list="";
-//		ArrayList<mallDTO> alMall = mdao.getList(list);
+//		ArrayList<mallDTO> allMall = mdao.getList(list);
 //		model.addAttribute("bpost",alMall);
 	
 		
@@ -94,16 +94,16 @@ public class MallController {
 	public String dosignup(HttpServletRequest req) {
 		String url="";
 		try {	
-			String id = req.getParameter("id");
-			String passcode1 = req.getParameter("passcode1");
-			String passcode2 =req.getParameter("passcode2");
-			String name =req.getParameter("name");
-			String mobile =req.getParameter("mobile");
-			String email =req.getParameter("email");
-			String birthday =req.getParameter("birthday");
+			String id = req.getParameter("user_id");
+			String passcode1 = req.getParameter("user_pw");
+			
+			String name =req.getParameter("user_name");
+			String mobile =req.getParameter("user_mobile");
+			String email =req.getParameter("user_email");
+			String address =req.getParameter("user_address");
 	
-			int cnt = mdao.signup(id, passcode1,passcode2, name,birthday, mobile,
-											 email);
+			int cnt = mdao.signup(id, passcode1, name, mobile,
+											 email,address);
 			
 			if(cnt>0) {
 				url= "/login";
