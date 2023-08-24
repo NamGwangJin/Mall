@@ -4,31 +4,31 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.himedia.springboot.mallDAO">
-<insert id="signup" parameterType="java.util.HashMap">
-	insert into user set id=#{param1}, passcode1=#{param2}, passcode2=#{param3},
-						 name=#{param4}, birthday=#{param5} ,mobile=#{param6}, email=#{param7}						 
-</insert>
-<select id="login" resultType="com.himedia.springboot.mallDTO"> 
-	select id from user where id= #{param1} and passcode1= #{param2}
-</select>
-<insert id="insert">
-	insert into product set name=#{param1}, 
-	price=#{param2}, comment=#{param3}, img=#{param4}, updated=now()
-</insert>
-<select id="getList" resultType="com.himedia.springboot.mallDTO">
-	select rowid,name,price,comment,img,updated from product
-	order by updated asc limit #{param1},#{param2}
-</select>
-<select id="getTotal" resultType="int">
-	select count(*) from product
-</select>
-<select id="product" resultType="com.himedia.springboot.mallDTO">
-	select name,price,comment,img from product
-	where name=#{param1}
-</select>
-<insert id="cart">
-	insert into cart set userid=#{param1}, name=#{param2}, 
-	qty=#{param3}, price=#{param4}, totalPrice=#{param5}
+
+<insert parameterType="java.util.HashMap" id="signup">
+insert into user set user_id=#{param1}, user_pw=#{param2},user_name=#{param3}, user_mobile=#{param4}, user_email=#{param5},user_address=#{param6} 
 </insert>
 
+<select id="login" resultType="com.himedia.springboot.mallDTO"> 
+select id from user where user_id= #{param1} and user_pw= #{param2} 
+</select>
+
+<insert id="insert">
+insert into product set prod_name=#{param1},prod_price=#{param2}, prod_msg=#{param3}, prod_img=#{param4}, update=now() 
+</insert>
+
+<select id="getList" resultType="com.himedia.springboot.mallDTO">
+select prod_name, prod_price, prod_msg, prod_img, prod_update from product order by prod_update asc limit #{param1},#{param2} 
+</select>
+
+<select id="getTotal" resultType="int">
+select count(*) from product 
+</select>
+
+<select id="product" resultType="com.himedia.springboot.mallDTO">
+select prod_name,prod_price,prod_msg, prod_img from productwhere prod_name=#{param1} 
+</select>
+
+<insert id="cart">
+insert into cart set user_id=#{param1}, prod_id=#{param2},prod_qty=#{param3}, prod_price=#{param4} </insert>
 </mapper>
