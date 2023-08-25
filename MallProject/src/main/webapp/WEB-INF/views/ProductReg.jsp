@@ -10,7 +10,7 @@
   </head>   
 <body>
    
-<h1 align=center>인서트 테스트</h1>
+<h1 align=center>상품 등록하기</h1>
 <tr><td><a href="/">메인화면으로</a></td>
 <!-- <form action="/insert" method="post" enctype="multipart/form-data"> -->
 <!-- 	 	<fieldset> -->
@@ -20,16 +20,22 @@
 <!-- 			<p><input type="submit" value="upload"></p>	 	 -->
 <!-- 	 	</fieldset> -->
 <!-- </form> -->
+ <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">상품 이미지 선택:</label>
+        <input type="file" id="file" name="file" value=""><br>
+        <input type="submit" value="상품이미지업로드">
+</form>
+    
+      <div id="uploadResult"></div>
 
-<form method="post" action="/insert" id=frmInsert name=frmInsert
- enctype="multipart/form-data"  >
-
+<br><br>
+<form method="post" action="/insert" id=frmInsert name=frmInsert>
 <table>
 <%-- <tr><td>상품번호</td><td>${rowid}</td></tr> --%>
-<tr><td>상품명</td><td><input type=text name=name id=name size=64 maxlength=128></td></tr>
-<tr><td>상품설명</td><td><textarea rows=10 cols=61 name=comment id=comment></textarea></td></tr>
-<tr><td>가격</td><td><input type=text name=price id=price size=64 maxlength=128></td></tr>
-<tr><td>이미지이름<td><input type=text name=img id=img size=64 maxlength=128></td>
+<tr><td>상품명</td><td><input type=text name=prod_name id=prod_name size=64 maxlength=128></td></tr>
+<tr><td>상품설명</td><td><textarea rows=10 cols=61 name=prod_msg id=prod_msg></textarea></td></tr>
+<tr><td>가격</td><td><input type=text name=prod_price id=prod_price size=64 maxlength=128></td></tr>
+<tr><td><td><input type=text name=prod_img id=prod_img size=64 maxlength=128 value=""></td>
 <!-- <fieldset> -->
 <!-- 			<legend>상품 이미지 업로드</legend> -->
 			
@@ -37,11 +43,9 @@
 			
 <!-- </fieldset> -->
 </td></tr>
-
-
 <td style='text-align:right'>
 
-
+<br>
 <input type=submit id=btnSubmit name=btnSubmit value='상품 등록하기'>&nbsp;&nbsp;
 </td></tr>
 </table>
@@ -49,11 +53,34 @@
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
+
 $(document)
-.on('submit','#frmInsert',function(){
-	
+.ready(function () {
+    $('#uploadForm').submit(function (e) {
+        e.preventDefault(); 
+        $.ajax({
+            type: 'POST',
+            url: '/upload', 
+            data: new FormData(this),
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                
+                $('#uploadResult').html(response);
+                $('#prod_img').val($('#filename').text());
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+                $('#uploadResult').text('파일 업로드 실패');
+            }
+        });
+    });
 })
+.on('click','#test',function(){
+	console.log($('#prod_name').val());
+})
+;
 </script>
-</html>
 </body>
 </html>

@@ -9,12 +9,17 @@
 insert into user set user_id=#{param1}, user_pw=#{param2},user_name=#{param3}, user_mobile=#{param4}, user_email=#{param5},user_address=#{param6} 
 </insert>
 
-<select id="login" resultType="com.himedia.springboot.mallDTO"> 
-select id from user where user_id= #{param1} and user_pw= #{param2} 
+<select id="login" resultType="int"> 
+select count(*) from user where user_id= #{param1} and user_pw= #{param2} 
+</select>
+
+<select id="loginOk" resultType="com.himedia.springboot.mallDTO">
+select * from user where user_id=#{param1}
 </select>
 
 <insert id="insert">
-insert into product set prod_name=#{param1},prod_price=#{param2}, prod_msg=#{param3}, prod_img=#{param4}, update=now() 
+	insert into product set prod_name=#{param1}, 
+	prod_price=#{param2}, prod_msg=#{param3}, prod_img=#{param4}, prod_update=now()
 </insert>
 
 <select id="getList" resultType="com.himedia.springboot.mallDTO">
@@ -26,9 +31,18 @@ select count(*) from product
 </select>
 
 <select id="product" resultType="com.himedia.springboot.mallDTO">
-select prod_name,prod_price,prod_msg, prod_img from productwhere prod_name=#{param1} 
+select prod_id, prod_name,prod_price,prod_msg, prod_img from product where prod_name=#{param1} 
 </select>
 
 <insert id="cart">
-insert into cart set user_id=#{param1}, prod_id=#{param2},prod_qty=#{param3}, prod_price=#{param4} </insert>
+insert into cart set user_id=#{param1}, prod_id=#{param2},prod_qty=#{param3}, prod_price=#{param4} 
+</insert>
+
+<select id="getpage" resultType="com.himedia.springboot.mallDTO">
+ select user_id, user_name, user_mobile, user_email, user_address from user where user_id=#{param1} 
+ </select>
+
+<delete id="quit">
+ delete from user where user_id=#{param1}
+ </delete>
 </mapper>

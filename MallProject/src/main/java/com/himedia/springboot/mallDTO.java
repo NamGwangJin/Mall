@@ -18,10 +18,10 @@ public class mallDTO {
 	
 	
 	String prod_qty;
+
 	String order_num;	
 	String payment;
 	String payment_time;
-	
 	
 	String num;
 	String title;
@@ -76,10 +76,13 @@ public class mallDTO {
 	}
 	String writer;
 	String created;
-	
-	
-	
-	    
+	int prod_id;
+	public int getProd_id() {
+		return prod_id;
+	}
+	public void setProd_id(int prod_id) {
+		this.prod_id = prod_id;
+	}
 	public String getProd_qty() {
 		return prod_qty;
 	}
@@ -201,15 +204,14 @@ public class mallDTO {
 	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
-	
 	String seqno;
-	String selficon;
 	public String getSeqno() {
 		return seqno;
 	}
 	public void setSeqno(String seqno) {
 		this.seqno = seqno;
 	}
+	String selficon;
 	
 	String rowid;	
 	String price;
@@ -288,7 +290,4 @@ public class mallDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
 }

@@ -1,138 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
   <head>
+  <link href="css/mall.css" rel="stylesheet" />
     <title>SimpleShop</title>
     <meta charset="UTF-8">
-<!--     <link href="css/mall.css" rel="stylesheet" /> -->
     <link href="css/product.css" rel="stylesheet" />
+    <link href="css/mall.css" rel="stylesheet" />
   </head>
 <body>
     <div id="wrapper">
         <header>
-            <div class="top">              
-            </div>
-            <div class="logo">
-                <div>
-                    <a href="/">
-                       <img src="../img/weverslogo.jpg" alt="헤더로고">
-                    </a>                   
-                </div>
-            </div>
-            <div class="menu">
-                <div>                   
-                </div>
-            </div>
-        </header>        
+			<div class="navbar">
+			    <a href="/" id="logo">
+			        <img src="img/weverslogo.jpg" width="149">
+			    </a>
+			    <ul id="menu">          
+			        <li><a href="#">장바구니</a></li>
+			        <li><a href="#">주문/배송조회</a></li>
+			        <li><a href="#">${infoline}</a></li>
+			        <li><a href="#">${inforeg}</a></li>
+			    </ul>
+			</div>
+        </header>
+        <input type=hidden name=id id=id value="${id}">
+        <input type=hidden name=img id=img value="${product.prod_img}.jpg">
         <main id="product">
-<!--             	     <ul id="menu">           -->
-<!-- 		         	 <li><a href="/">메인으로</a></li> -->
-<!-- 				  	 </ul> -->
             <section class="view">
                 <nav>                
                 </nav>
                  
                 <article class="info">
                     <div class="image">
-                        <img src="img/${product.img}.jpg" alt="상품이미지">
+                    	<input type='hidden' id="prodId" value="${product.prod_id}">
+                        <img src="img/${product.prod_img}.jpg" alt="상품이미지">
                     </div>
                     <div class="summary">
-                   
                         <nav>
-                            <h1 id="productName" name="productName">${product.name}</h1>  
-                                                   
+                            <h1 id="productName" name="productName">${product.prod_name}</h1> 
                         </nav>
                         <nav>                           
                             <div class="dis_price">
-                                <ins id="productPrice" name="productPrice">${product.price}</ins>
+                                <ins id="productPrice" name="productPrice">${product.prod_price}</ins>
                             </div>
                         </nav>                  
                         <div class="count1">
-                            <button class="decrease" id="decrease">-</button>
-                            <input type="text" id="numInput" name="numInput" value="1" readonly>
-                            <button class="increase" id="increase">+</button>
+                        	<table>
+                        	<tr>
+                            <td><button class="decrease" id="decrease">-</button></td>
+                            <td><input type="text" id="numInput" name="numInput" value="1" readonly></td>
+                            <td><button class="increase" id="increase">+</button></td>
+                            </tr>
+                            </table>
                         </div>
                         <div class="total">
-                            <span id="totalPrice" name="totalPrice">${product.price}</span>
+                            <span id="totalPrice" name="totalPrice">${product.prod_price}</span>
                             <em>총 상품금액</em>
                         </div>
-						<form method="post" action="/cart" id="frmCart" name="frmCart">
-						    <table hidden>
-						        <tr>
-						            <td>
-						           		<input type="hidden" id="hiddenUserId" name="userId" value="">
-						                <input type="hidden" id="hiddenProductName" name="productName" value="">
-										<input type="hidden" id="hiddenProductPrice" name="productPrice" value="">
-										<input type="hidden" id="hiddenNumInput" name="numInput" value="">
-										<input type="hidden" id="hiddenTotalPrice" name="totalPrice" value="">										
-						            </td>
-						        </tr>
-						    </table>
+
 						    <div class="button">
-						        <input type="submit" id="btnSubmit" class="cart" value="장바구니">
+						        <input type="button" id="addCart" class="cart" value="장바구니">
 						        <input type="button" id="buy" class="buy" value="구매하기">
 						    </div>
-						</form>
                     </div>
-                </article>            
-    </div>
+                </article>  
+			</div>
+		</secition>
+		</main>
 </body>
-</html>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-
-$(document)
-.on('submit', '#frmCart', function () {
-	var userId = "${sessionScope.id}";
-    var productName = $("#productName").val();
-    var productPrice = $("#productPrice").val();
-    var numInputValue = $("#numInput").val();
-    var totalPrice = $("#totalPrice").val();
-
- 
-    $("#hiddenUserId").val(userId);
-    $("#hiddenProductName").val(productName);
-    $("#hiddenProductPrice").val(productPrice);
-    $("#hiddenNumInput").val(numInputValue);
-    $("#hiddenTotalPrice").val(totalPrice);
-
-    if (confirm('주문상품을 장바구니에 담으시겠습니까?')) {
-        alert('장바구니에 상품이 담겼습니다.');
-        return true; 
-    } else {
-        return false; 
-    }
-})
-.on('click','#buy',function(){
-    if(confirm('구매 페이지로 이동합니다.')){
-				document.location="/buy";				
-	}else{			
-		return false;
-	}
-})
-.on('click','#increase',function(){
-	var numInput = $("#numInput");
-    var totalPrice = $("#totalPrice");
-    var productPrice = ${product.price};    
-    var num = parseInt(numInput.val());
-    num += 1;
-    numInput.val(num);
-    var total = productPrice * num;
-    totalPrice.text(total);
-})
-.on('click','#decrease',function(){
-	var numInput = $("#numInput");
-    var totalPrice = $("#totalPrice");
-    var productPrice = ${product.price};     
-    var num = parseInt(numInput.val());
-    if (num > 1) {
-        num -= 1;
-        numInput.val(num);
-        var total = productPrice * num;
-        totalPrice.text(total);
-    }
-})
-;
+<script src="/resources/js/product.js">
 </script>
+</html>

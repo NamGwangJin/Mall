@@ -1,0 +1,26 @@
+@charset "UTF-8";
+fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+fieldset legend{
+    text-align: right;
+}
+ input[type=radio]{
+    display: none;
+}
+ label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+ label:hover{
+    text-shadow: 0 0 0 black;
+}
+label:hover ~ label{
+    text-shadow: 0 0 0 black;
+}
+input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 black;
+}

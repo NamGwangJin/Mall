@@ -9,13 +9,15 @@ public interface mallDAO {
 	int signup(String id, String passcode1,  String name,
 					String mobile, String email, String address);
 	
-	mallDTO login(String id, String passcode1);
+	int login(String id, String passcode1);
+	mallDTO loginOk(String id);
 	
 	void insert(String p1, String p2, String p3, String p4);
 	
-//	ArrayList<mallDTO> getList(String list);1
 	ArrayList<mallDTO> getList(int start, int psize);
 	int getTotal();
 	mallDTO product(String name);
-	void cart(String p1, String p2, String p3, String p4, String p5);
+	
+	mallDTO getpage(String p1);
+	void quit(String id);
 }

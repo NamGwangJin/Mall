@@ -14,10 +14,13 @@
     <a href="/" id="logo">
         <img src="img/weverslogo.jpg" width="149">
     </a>
-    <ul id="menu">          
-        <li><a href="#">장바구니</a></li>
-        <li><a href="#">주문/배송조회</a></li>
-        <li><a href="#">${infoline}</a></li>
+    <ul id="menu">
+    	<input type=hidden name=id value="${id}">
+    	<li><a href="#">${review}</a></li>
+    	<li><a href="#">${bbs}</a></li>
+        <li><a href="/cartList?id=${id}">장바구니</a></li>
+        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
+        <li><a href="/mypage">${infoline}</a></li>
         <li><a href="#">${inforeg}</a></li>
     </ul>
 </div>
@@ -28,10 +31,9 @@
         <div class="product-list">
             <body>
             <tr>
-           
             <c:forEach items="${mlist}" var="product">         
                 <a class="product" id='${product.prod_name}' name='${product.prod_name}'>
-                    <img src="img/${product.prod_img}.jpg" hight="225" width="225">
+                    <img src="img/${product.prod_img}.jpg" height="225" width="225">
                     <div class="product-name">
                         ${product.prod_name}
                     </div>
@@ -46,9 +48,7 @@
         <tr><td style='font-size:24px;'>${pagestr}</td></tr>
     </div>
 </div>
-
 </body>
-</html>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document).on('click', '.product', function() {
@@ -63,3 +63,4 @@ $(document).on('click', '.product', function() {
     }
 });
 </script>
+</html>

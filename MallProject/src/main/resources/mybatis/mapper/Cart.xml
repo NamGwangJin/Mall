@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.himedia.springboot.CartDAO">
+<insert id="cart">
+insert into cart set user_id=#{param1}, prod_id=#{param2}, prod_qty=#{param3}, prod_price=#{param4}
+</insert>
+
+<delete id="deleteItem">
+delete from cart where user_id=#{param1} and prod_id=#{param2}
+</delete>
+
+<delete id="dropCart">
+delete from cart where user_id=#{param1}
+</delete>
+
+<select id="getCart" resultType="com.himedia.springboot.CartDTO">
+select b.prod_img prod_img, a.user_id user_id, b.prod_id prod_id, b.prod_name prod_name, b.prod_price prod_price, a.prod_qty prod_qty, a.prod_price prod_total
+from cart a join product b on a.prod_id = b.prod_id
+			join user c on c.user_id = a.user_id
+where a.user_id = #{param1}
+</select>
+
+<select id="getChoiceCart" resultType="com.himedia.springboot.CartDTO">
+select b.prod_img prod_img, a.user_id user_id, b.prod_id prod_id, b.prod_name prod_name, b.prod_price prod_price, a.prod_qty prod_qty, a.prod_price prod_total
+from cart a join product b on a.prod_id = b.prod_id
+			join user c on c.user_id = a.user_id
+where a.user_id = #{param1} and a.prod_id = #{param2}
+</select>
+
+<select id="getName" resultType="String">
+select user_name from user where user_id=#{param1}
+</select>
+
+<insert id="order">
+insert into orderTbl set user_name=#{param1}, user_mobile=#{param2}, prod_img=#{param3}, prod_name=#{param4}, order_qty=#{param5}, order_price=#{param6}, user_address=#{param7}, order_payment=#{param8}, order_time=now(),
+user_id=#{param9}
+</insert>
+
+<select id="getOrder" resultType="com.himedia.springboot.OrderDTO">
+select * from orderTbl where user_id=#{param1}
+</select>
+</mapper>

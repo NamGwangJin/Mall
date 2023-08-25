@@ -1,17 +1,5 @@
-
-<!DOCTYPE html><html lang="ko">
-<head><title>Weverse Account</title>
-<meta charSet="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-<link rel="icon" href="/favicon.ico"/>
-<link rel="apple-touch-icon" href="/weverse_touchicon.png"/>
-<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
-<meta name="next-head-count" content="8"/>
-<link rel="preload" href="/_next/static/css/2d6b571bdba4373a.css" as="style"/>
-<link rel="stylesheet" href="/_next/static/css/2d6b571bdba4373a.css" data-n-g=""/>
-<noscript data-n-css=""></noscript>
-<style data-styled="" data-styled-version="5.3.5">html{font-size:10px;}/*!sc*/
+@charset "UTF-8";
+html{font-size:10px;}/*!sc*/
 body{background-color:#ffffff;color:#202429;font-family:"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:1.4rem;font-weight:normal;font-style:normal;font-stretch:normal;line-height:1.4;-webkit-letter-spacing:normal;-moz-letter-spacing:normal;-ms-letter-spacing:normal;letter-spacing:normal;width:100%;}/*!sc*/
 @media screen and (min-width:768px){body{background-color:#fafbfc;}}/*!sc*/
 body #root{width:100%;}/*!sc*/
@@ -120,56 +108,3 @@ data-styled.g80[id="sc-58132af0-9"]{content:"fQbcoM,"}/*!sc*/
 .jESnrs{margin-top:3.2rem;}/*!sc*/
 .jESnrs a{display:inline-block;margin-left:0.8rem;color:#34c7b3;}/*!sc*/
 data-styled.g97[id="sc-ca0ea231-0"]{content:"jESnrs,"}/*!sc*/
-</style>
-</head>
-<body>
-
-<div id="__next">
-<div class="sc-fdeced8b-1 iIqxLr">
-<div class="sc-fdeced8b-0 bQTewR">
-	<div class="sc-b9ce515e-0 iFUJFS">
-	<img src="img/weverslogo.jpg" alt="weverse account" class="sc-b9ce515e-1 eFotTF"/></div>
-	</div>
-<div class="sc-fdeced8b-3 fuepEy">
-<h1 class="sc-abf9608-0 gherQT">Welcome to weverse shop</h1>
-<div class="sc-e68656a-0 bwXZkX">
-<form novalidate="">
-<div class="sc-ed52fcbe-0 cmqmuL">
-<label class="sc-ed52fcbe-1 csduFG"></label>
-<div class="sc-ed52fcbe-8 bhRZmA">
-<input type="text" aria-required="true" name="email" placeholder="Id" class="sc-ed52fcbe-7 jPIHur" value=""/>
-<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
-<hr class="sc-ed52fcbe-2 bVlPDx"/>
-</div>
-<div class="sc-ed52fcbe-5 brYFFU">
-<strong class="sc-ed52fcbe-6 gdkOVW"></strong>
-</div></div>
-<div class="sc-d0f94a43-0 eJnyxH">
-<div class="sc-ed52fcbe-0 cmqmuL">
-<label class="sc-ed52fcbe-1 csduFG"></label>
-<div class="sc-ed52fcbe-8 bhRZmA">
-<input type="password" aria-required="true" name="password" placeholder="PassWord" class="sc-ed52fcbe-7 jPIHur" value=""/>
-<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
-<button tabindex="-1" type="button" class="sc-ed52fcbe-3 diGBDF"></button>
-<hr class="sc-ed52fcbe-2 bVlPDx"/></div>
-
-<!-- <div class="sc-58a7e114-0 kPUWeI"> -->
-
-<!-- <button type="submit" class="sc-763a3587-1 frWBac"> -->
-
-<!-- <span class="sc-763a3587-2 gTYrd">Signup</span> -->
-<!-- </button></div> -->
-</div><button type="submit" class="sc-763a3587-1 frWBac" >
-
-<span class="sc-763a3587-2 gTYrd" id=login>Login</span>
-
-</button></div>
-<table><tr height="20px"></tr></table>
-</div>
-<button type="submit" class="sc-763a3587-1 frWBac">
-
-<span class="sc-763a3587-2 gTYrd">Signup</span>
-</button></div>
-</div></body>
-
-</html>

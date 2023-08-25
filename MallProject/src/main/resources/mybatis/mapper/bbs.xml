@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+
+<mapper namespace="com.himedia.springboot.BbsDAO">
+
+<select resultType="com.himedia.springboot.BbsDTO" id="getList">
+select num, title, content, writer, hit, created, updated from bbsorder by updated desc limit #{param1},#{param2}
+</select>
+
+<select resultType="com.himedia.springboot.BbsDTO" id="view">
+select num, title, content, writer, hit, created, updated from bbs where num=#{param1};
+</select>
+
+<update id="hitUp" parameterType="int">
+update bbs set hit = hit + 1 where num=#{param1};
+</update>
+
+<delete id="delPost" parameterType="int">
+delete from bbs where num=#{param1}; 
+</delete>
+
+<insert id="insPost">
+insert into bbs set title=#{param1}, content=#{param2}, writer=#{param3}, created=#{param4}, updated=#{param5};
+</insert>
+
+<update id="udPost">
+update bbs set title=#{param2}, content=#{param3}, updated=now() where num=#{param1};
+</update>
+
+<select resultType="int" id="getTotal">
+select count(*) from bbs 
+</select>
+
+<insert id="signup" parameterType="java.util.HashMap"> 
+insert into user set user_id=#{param1}, user_pw=#{param2},user_name=#{param3}, user_mobile=#{param4}, user_email=#{param5},user_address=#{param6}
+</insert>
+
+<select resultType="com.himedia.springboot.BbsDTO" id="login">
+select user_id from user where user_id= #{param1} and user_pw= #{param2}
+</select>
+
+</mapper>

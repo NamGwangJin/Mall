@@ -1,13 +1,18 @@
 package com.himedia.springboot;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -19,14 +24,10 @@ public class MallController {
 	@Autowired
 	private mallDAO mdao;
 	
-	@GetMapping("/test")
-	public String gotest(HttpServletRequest req,Model model) {
-	
-		return "test";
-	}
-	
 	@GetMapping("/")
 	public String home(HttpServletRequest req, Model model) {
+		
+		// 페이징 시작
 		int start;
 		int psize;
 		String page = req.getParameter("pageno");
@@ -53,41 +54,45 @@ public class MallController {
 		
 		model.addAttribute("pagestr",pagestr);
 		model.addAttribute("mlist",alMall);
+		// 페이징 끝
 		
-//		String list="";
-//		ArrayList<mallDTO> allMall = mdao.getList(list);
-//		model.addAttribute("bpost",alMall);
-	
-		
+		// 비회원, 회원 화면 구분 출력
     	HttpSession s = req.getSession();
 	
 		String id = (String) s.getAttribute("id");
 		if(id==null || id.equals("")) {
+			model.addAttribute("bbs","<a href='/bbs'>게시판</a>");
 			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
-			
+			s.setAttribute("infoline", "<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
 		}else {
-//			model.addAttribute("img","<img src='img/"+s.getAttribute("selficon")+"'>");
-			
+			model.addAttribute("bbs","<a href='/bbs'>게시판</a>");
 			model.addAttribute("infoline",id+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
 			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
+			model.addAttribute("write","<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");
+			model.addAttribute("id", id);
+			s.setAttribute("infoline",id+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
+			s.setAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
+			
 		}
+		// 비회원, 회원 화면 구분 출력 끝
 		return "home";
+	}
+	@GetMapping("/product")
+	public String view(HttpServletRequest req, Model model) {
+		HttpSession s = req.getSession();
+		String id = (String) s.getAttribute("id");
+		String name = req.getParameter("name");
+		mallDTO mdto = mdao.product(name);
+		model.addAttribute("id",id);
+		model.addAttribute("product",mdto);
+
+		return "product";
 	}
 	
 	@GetMapping("/gosignup")
 	public String gosignup() {
 		return "signup";
 	}
-	
-	@GetMapping("/gologin")
-	public String gologin() {
-		return "login";
-	}
-//	@GetMapping("/signup")
-//		public String dosignup() {
-//		return "signup";
-//	}
-	
 	
 	@PostMapping("/signup")
 	@ResponseBody
@@ -96,7 +101,6 @@ public class MallController {
 		try {	
 			String id = req.getParameter("user_id");
 			String passcode1 = req.getParameter("user_pw");
-			
 			String name =req.getParameter("user_name");
 			String mobile =req.getParameter("user_mobile");
 			String email =req.getParameter("user_email");
@@ -119,27 +123,19 @@ public class MallController {
 	@PostMapping("/login")
 	@ResponseBody
 	public String totalview(HttpServletRequest req) {
-		try {
 		String id = req.getParameter("id");
 		String passcode1 = req.getParameter("passcode1");			
-		
-		mallDTO mdto = mdao.login(id, passcode1);
-			if(mdto!=null) {
-				HttpSession s= req.getSession();
-				s.setAttribute("id",id);
-				if(mdto.getSelficon()==null) {
-					s.setAttribute("selficon", "zzang9che.jpg");
-				} else {
-					s.setAttribute("selficon", mdto.getSelficon());
-				}
-				return "/";
-			} else {
-					return "/login";
-			}
-		} catch(Exception e) {
-			return "login";
+		int data = mdao.login(id, passcode1);
+		if(data == 1) {
+			HttpSession session = req.getSession();
+			mallDTO member = mdao.loginOk(id);
+			session.setAttribute("name", member.getUser_name());
+			session.setAttribute("id", member.getUser_id());
+		} else {
+			HttpSession session = req.getSession();
+			session.setAttribute("id", null);
 		}
-
+		return String.valueOf(data);
 	}
 	
 	@GetMapping("/logout")
@@ -153,53 +149,21 @@ public class MallController {
 	public String goproduct1(){
 		return "product1";
 	}
-	
-//	@GetMapping("/product")
-//	public String goproduct(Model model){
-//		String list="";
-//		ArrayList<mallDTO> alMall = mdao.getList(list);
-//		model.addAttribute("bpost",alMall);
-//		
-//		return "product";
-//	}
-	
-	
-	@GetMapping("/WeverseloginHTML")
+
+	@GetMapping("/gologin")
 	public String gobduy() {
-		return "WeverseloginHTML";
+		return "login";
 	}
 
-	@GetMapping("/buy")
-	public String gobuy() {
-		return "buy";
-	}
-
-	@PostMapping("/cart")
-	public String goCart(HttpServletRequest req, Model model) {
-		HttpSession session = req.getSession();
-		String userId = (String) session.getAttribute("id");
-		String productName=req.getParameter("hiddenProductName");
-		String numInput=req.getParameter("hiddenNumInput");
-		String productPrice=req.getParameter("hiddenProductPrice");
-		String totalPrice=req.getParameter("hiddenTotalPrice");
-		
-		
-	
-	
-		mdao.cart(userId,productName, numInput,productPrice,totalPrice);
-		return "redirect:/";
-	}
-	
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
-		String title=req.getParameter("name");
-		String price=req.getParameter("price");
-		String content=req.getParameter("comment");
-		String img=req.getParameter("img");		
+		String prod_name=req.getParameter("prod_name");
+		String prod_price=req.getParameter("prod_price");
+		String prod_msg=req.getParameter("prod_msg");
+		String prod_img=req.getParameter("prod_img");		
 		
-		mdao.insert(title, price, content, img);
-		
+		mdao.insert(prod_name, prod_price, prod_msg, prod_img);
 		
 		return "redirect:/";
 	}
@@ -209,17 +173,51 @@ public class MallController {
 		return "ProductReg";
 	}
 	
-	@GetMapping("/product")
-	public String view(HttpServletRequest req, Model model) {
+	//file upload
+	@Value("${upload.directory}")
+    private String uploadDirectory;
 
-		String name = req.getParameter("name");
-		mallDTO mdto = mdao.product(name);
+    @PostMapping("/upload")
+    public String uploadFile(@RequestParam("file") MultipartFile file, Model model) {
+        if (!file.isEmpty()) {
+            try {
+                String fileName = file.getOriginalFilename();
+                String fileRealName = fileName;
+
+                // 파일 저장 경로로 파일 이동
+                File targetFile = new File(uploadDirectory + File.separator + fileRealName);
+                file.transferTo(targetFile);
+
+                model.addAttribute("fileName", fileName);
+                model.addAttribute("fileRealName", fileRealName);
+            } catch (IOException e) {
+                e.printStackTrace();
+                model.addAttribute("errorMessage", "파일 업로드 실패");
+            }
+        } else {
+            model.addAttribute("errorMessage", "업로드할 파일을 선택하세요.");
+        }
+
+        return "uploadResult";
+    }
+    
+    //mypage
+	@GetMapping("/mypage")
+	public String mypage(HttpServletRequest req, Model model) {
 		
-		model.addAttribute("product",mdto);
-				
+		HttpSession s = req.getSession();
+		String id = (String) s.getAttribute("id");
+		mallDTO user = mdao.getpage(id);
+		if(id==null || id.equals("")) {
+			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
+		}else {
+			model.addAttribute("infoline","<a href='/mypage'>"+id+"</a>"+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
+			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
+			model.addAttribute("info",id);
+			model.addAttribute("imp",user);
 
-		return "product" ;
+		}
+		return "mypage";
 	}
-	
-	
+
 }
