@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="MallProject/src/main/java"/>
+	<classpathentry kind="src" path="MallProject/src/test/java"/>
+	<classpathentry kind="lib" path="MallProject/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="MallProject/src/main/webapp/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="MallProject/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-2.0.0.jar"/>
+	<classpathentry kind="lib" path="MallProject/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-2.0.0.jar"/>
+	<classpathentry kind="lib" path="MallProject/src/main/webapp/WEB-INF/lib/lombok.jar"/>
+	<classpathentry kind="lib" path="MallProject/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.1.0.jar"/>
+	<classpathentry kind="lib" path="MallProject/src/main/webapp/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

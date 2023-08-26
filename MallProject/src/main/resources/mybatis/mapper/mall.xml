@@ -6,7 +6,7 @@
 <mapper namespace="com.himedia.springboot.mallDAO">
 
 <insert parameterType="java.util.HashMap" id="signup">
-insert into user set user_id=#{param1}, user_pw=#{param2},user_name=#{param3}, user_mobile=#{param4}, user_email=#{param5},user_address=#{param6} 
+insert into user set user_id=#{param1}, user_pw=#{param2}, user_name=#{param3}, user_mobile=#{param4}, user_email=#{param5}, user_address=#{param6}, user_birthday=#{param7} 
 </insert>
 
 <select id="login" resultType="int"> 

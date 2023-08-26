@@ -17,8 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-
-
 @Controller
 public class MallController {
 	@Autowired
@@ -63,15 +61,15 @@ public class MallController {
 		if(id==null || id.equals("")) {
 			model.addAttribute("bbs","<a href='/bbs'>게시판</a>");
 			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
-			s.setAttribute("infoline", "<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
+//			s.setAttribute("infoline", "<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
 		}else {
 			model.addAttribute("bbs","<a href='/bbs'>게시판</a>");
 			model.addAttribute("infoline",id+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
 			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
 			model.addAttribute("write","<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");
 			model.addAttribute("id", id);
-			s.setAttribute("infoline",id+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
-			s.setAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
+//			s.setAttribute("infoline",id+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
+//			s.setAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
 			
 		}
 		// 비회원, 회원 화면 구분 출력 끝
@@ -97,27 +95,16 @@ public class MallController {
 	@PostMapping("/signup")
 	@ResponseBody
 	public String dosignup(HttpServletRequest req) {
-		String url="";
-		try {	
-			String id = req.getParameter("user_id");
-			String passcode1 = req.getParameter("user_pw");
-			String name =req.getParameter("user_name");
-			String mobile =req.getParameter("user_mobile");
-			String email =req.getParameter("user_email");
-			String address =req.getParameter("user_address");
-	
-			int cnt = mdao.signup(id, passcode1, name, mobile,
-											 email,address);
-			
-			if(cnt>0) {
-				url= "/login";
-			}else {
-				url= "/signup";
-			}
-		} catch(Exception e) {
-			url="insert실패";
-		}
-		return url;
+		String id = req.getParameter("id");
+		String pw = req.getParameter("pw");
+		String name = req.getParameter("name");
+		String bd = req.getParameter("bd");
+		String mobile = req.getParameter("mobile");
+		String email = req.getParameter("email");
+		String address = req.getParameter("address");
+		
+		int data = mdao.signup(id, pw, name, mobile, email, address, bd);
+		return String.valueOf(data);
 	}
 	
 	@PostMapping("/login")
@@ -143,11 +130,6 @@ public class MallController {
 		HttpSession s = req.getSession();
 		s.invalidate();
 		return "redirect:/";
-	}
-	
-	@GetMapping("/product1")
-	public String goproduct1(){
-		return "product1";
 	}
 
 	@GetMapping("/gologin")
@@ -201,10 +183,8 @@ public class MallController {
         return "uploadResult";
     }
     
-    //mypage
 	@GetMapping("/mypage")
 	public String mypage(HttpServletRequest req, Model model) {
-		
 		HttpSession s = req.getSession();
 		String id = (String) s.getAttribute("id");
 		mallDTO user = mdao.getpage(id);
@@ -215,9 +195,15 @@ public class MallController {
 			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
 			model.addAttribute("info",id);
 			model.addAttribute("imp",user);
-
 		}
 		return "mypage";
 	}
-
+	@GetMapping("/quit")
+	public String quit(HttpServletRequest req) {
+		HttpSession s = req.getSession();
+		String user_id = req.getParameter("user_id");
+		mdao.quit(user_id);
+		s.invalidate();
+		return "redirect:/";
+	}
 }
