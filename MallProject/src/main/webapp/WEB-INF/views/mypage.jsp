@@ -29,15 +29,14 @@ text-align:center;
         <img src="img/weverslogo.jpg" width="149">
     </a>
     <ul id="menu">          
-        <li><a href="#">장바구니</a></li>
-        <li><a href="#">주문/배송조회</a></li>
-        <li><a href="/gologin">${infoline}</a></li>
-        <li><a href="/gosignup">${inforeg}</a></li>
+        <li><a href="/cartList?id=${id}">장바구니</a></li>
+        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
+        <li>${infoline}</li>
+        <li>${inforeg}</li>
     </ul>
 </div>
 <h1 align="center">${info} 님 반갑습니다!</h1>
 <div class="">
-
 	<table>
 		<tr>
 			<td>* 아이디</td><td><input type=text value="${imp.user_id}" id=userid readonly></td>
@@ -46,7 +45,7 @@ text-align:center;
 			<td>* 이름</td><td><input type=text value="${imp.user_name }" readonly></td>
 		</tr>
 		<tr>
-			<td>* 연락처</td><td><input type=text value="${imp.user_mobile }" readonly></td>
+			<td>* 연락처</td><td><input type=text value="${imp.user_mobile}" readonly></td>
 		</tr>
 		<tr>
 			<td>* 이메일</td><td><input type=text value="${imp.user_email }" readonly></td>

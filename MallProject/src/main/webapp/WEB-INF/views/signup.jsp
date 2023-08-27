@@ -1,80 +1,158 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<style>
-
-table {width:33%; border-collapse:collapse;}
-td {width:33%; height:33%; border:1px solid teal;}
+<html lang="ko">
+<head><title>회원가입</title>
+<meta charSet="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+<link rel="icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" href="/weverse_touchicon.png"/>
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+<meta name="next-head-count" content="8"/>
+<link rel="stylesheet" href="/resources/css/weverse.css"/>
+<style data-styled="" data-styled-version="5.3.5">
 </style>
-<head>
-<meta charset="UTF-8">
-<title>회원가입페이지</title>
 </head>
 <body>
-<table>
-	<tr><td>아이디 <input type="text" name=id id=id value='' size=12></td></tr>
-	<tr><td>비밀번호  <input type="text" name=passcode1 id=passcode1 value='' size=12></td></tr>
-	<tr><td>비밀번호확인<input type="text" name=passcode2 id=passcode2 value='' size=12></td></tr>
-	<tr><td>이름<input type="text" name=name id=name value='' size=12></td></tr>
-	<tr><td>생년월일 <input type="date" name=birthday id=birthday></td></tr>
-	<tr><td>모바일번호 <input type="text" name=mobile id=mobile value='' size=16></td></tr>
-	<tr><td>이메일 <input type="text" name=email id=email value='' size=16></td></tr>	
-</table>
-<table>
-	<tr><td><input type="button" id=signup value='가입'></td>
-		<td><input type="reset" id=signcancle value='취소'></td>
-		
-	</tr>
+
+<div class="navbar">
+    <a href="/" id="logo">
+        <img src="img/weverslogo.jpg" width="149">
+    </a>
+</div>
+
+<div class="sc-fdeced8b-1 iIqxLr">
+	<div class="sc-fdeced8b-0 bQTewR">
+		<div class="sc-b9ce515e-0 iFUJFS">
+			<img src="img/weverseAccount.svg" alt="weverse account" class="sc-b9ce515e-1 eFotTF"/>
+		</div>
+	</div>
 	
-</table>
-<a href='/login'>로그인하기</a>
+	<div class="sc-fdeced8b-3 fuepEy">
+		<h1 class="sc-abf9608-0 gherQT"></h1>
+		<div class="sc-e68656a-0 bwXZkX">
+			
+			<div class="sc-d0f94a43-0 eJnyxH">
+				<!-- ID 구역 -->
+				<div class="sc-ed52fcbe-0 cmqmuL">
+					<label class="sc-ed52fcbe-1 csduFG"></label>
+					<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="text" id=id aria-required="true" name="id" placeholder="ID" class="sc-ed52fcbe-7 jPIHur" value=""/>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+					</div>
+					<div class="sc-ed52fcbe-5 brYFFU">
+						<strong class="sc-ed52fcbe-6 gdkOVW"></strong>
+					</div>
+				</div>
+				<!-- ID 구역 끝-->
+				<!-- 비밀번호 -->
+				<div class="sc-ed52fcbe-0 cmqmuL">
+					<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="password" id=passcode1 aria-required="true" name="password" placeholder="Password" class="sc-ed52fcbe-7 jPIHur" value=""/>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-3 diGBDF"></button>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+					</div>
+				</div>
+				<div class="sc-ed52fcbe-0 cmqmuL">
+					<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="password" id=passcode2 aria-required="true" name="password" placeholder="Confirm Password" class="sc-ed52fcbe-7 jPIHur" value=""/>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-3 diGBDF"></button>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+					</div>
+				</div>
+				<!-- 비밀번호, 비밀번호 확인 구역 끝 -->
+				<!-- 이름 -->
+				<div class="sc-d0f94a43-0 eJnyxH">
+					<div class="sc-ed52fcbe-0 cmqmuL">
+						<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="text" id=name aria-required="true" name="name" placeholder="이름 ex)홍길동" class="sc-ed52fcbe-7 jPIHur" value=""/>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+						</div>
+					</div>
+				</div>
+				<!-- 이름 끝 -->
+				<!-- 생년월일 -->
+				<div class="sc-d0f94a43-0 eJnyxH">
+					<div class="sc-ed52fcbe-0 cmqmuL">
+						<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="date" id=birthday aria-required="true" name="birthday" class="sc-ed52fcbe-7 jPIHur" value=""/>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+						</div>
+					</div>
+				</div>
+				<!-- 생년월일 끝 -->
+				<!-- 모바일 -->
+				<div class="sc-d0f94a43-0 eJnyxH">
+					<div class="sc-ed52fcbe-0 cmqmuL">
+						<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="text" id=mobile aria-required="true" name="mobile" placeholder="휴대전화 ex)010-1234-5678" class="sc-ed52fcbe-7 jPIHur" value=""/>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+						</div>
+					</div>
+				</div>
+				<!-- 모바일 끝 -->
+				<!-- 이메일 -->
+				<div class="sc-d0f94a43-0 eJnyxH">
+					<div class="sc-ed52fcbe-0 cmqmuL">
+						<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="text" id=email aria-required="true" name="email" placeholder="이메일" class="sc-ed52fcbe-7 jPIHur" value=""/>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+						</div>
+					</div>
+				</div>
+				<!-- 이메일 끝 -->
+				<!-- 주소 -->
+				<div class="sc-d0f94a43-0 eJnyxH">
+					<div class="sc-ed52fcbe-0 cmqmuL">
+						<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="text" id=address aria-required="true" name="address" placeholder="배송지" class="sc-ed52fcbe-7 jPIHur" value=""/>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+						</div>
+					</div>
+				</div>
+				<!-- 주소 끝 -->
+				<br><br>
+				<button type="button" class="sc-763a3587-1 frWBac" id=signup>
+				<span class="sc-763a3587-2 gTYrd">가입하기</span>
+				</button>
+			</div>
+			
+			<table><tr height="20px"></tr></table>
+		</div>
+	</div>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-
 <script>
 $(document)
-.on('click', '#signup', function(){	
-	$.ajax({
-		url:'/signup',
-		data:{'id':$('#id').val(), 'passcode1':$('#passcode1').val(), 'passcode2':$('#passcode2').val(),
-			'name':$('#name').val(),'birthday':$('#birthday').val(),'mobile':$('#mobile').val(),
-			'email':$('#email').val()},
-		method:'post',
-		dataType:'text',
-		beforeSend:function(){
-			if($('#id').val()==''){
-				alert('id가 없습니다.'); return false;
-			}
-			if($('#passcode1').val()==''){
-				alert('비밀번호가 없습니다.'); return false;
-			} else if($('#passcode1').val()!=$('#passcode2').val()){
-				alert('비밀번호와  비밀번호 확인 값이 같아야 합니다.'); return false;
-			} 
-			if ($('#name').val() === '') {
-                showAlert('실명을 입력하시오');
-                return false;
-            }
-			if ($('#birthday').val() === '') {
-                showAlert('생년월일을 입력하시오');
-                return false;
-            }
-			
-			return true;
-		},
-		success:function(data){
-			console.log(data)
-			if(data.substr(0,1)=="/"){
-				document.location=data;
-			} else {
-				alert(data);
-			}
-		}
-		
+.on('click','#signup',function(){
+	$.ajax({url:'/signup', data: {id : $('#id').val(), pw : $('#passcode1').val(), name : $('#name').val(), bd : $('#birthday').val(), mobile : $('#mobile').val(), email : $('#email').val(), address : $('#address').val() },
+				type:'post', dataType: 'text',
+				success: function(data){
+					if(data == "1"){
+						alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.");
+						document.location = "/gologin"
+					}
+				}, error: function(){
+					alert("다시 시도해 주세요.")
+					return false;
+				}
 	})
-	return false;			
-}); 
-
-
+})
 </script>
 </html>

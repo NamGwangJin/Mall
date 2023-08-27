@@ -20,8 +20,8 @@
     	<li><a href="#">${bbs}</a></li>
         <li><a href="/cartList?id=${id}">장바구니</a></li>
         <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-        <li><a href="/mypage">${infoline}</a></li>
-        <li><a href="#">${inforeg}</a></li>
+        <li>${infoline}</li>
+        <li>${inforeg}</li>
     </ul>
 </div>
 

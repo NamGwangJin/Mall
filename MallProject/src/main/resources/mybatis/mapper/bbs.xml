@@ -2,12 +2,11 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
 
 <mapper namespace="com.himedia.springboot.BbsDAO">
 
 <select resultType="com.himedia.springboot.BbsDTO" id="getList">
-select num, title, content, writer, hit, created, updated from bbsorder by updated desc limit #{param1},#{param2}
+select num, title, content, writer, hit, created, updated from bbs order by updated desc limit #{param1},#{param2}
 </select>
 
 <select resultType="com.himedia.springboot.BbsDTO" id="view">

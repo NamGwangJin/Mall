@@ -136,7 +136,7 @@ public class BbsController {
 		String content = req.getParameter("content");
 		String id= (String) session.getAttribute("id");
 		bdao.insPost(title, content, id, now, now);
-		return "redirect:/";
+		return "redirect:/bbs";
 	}
 	
 	@GetMapping("/update")
