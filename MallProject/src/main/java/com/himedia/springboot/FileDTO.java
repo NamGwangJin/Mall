@@ -4,6 +4,7 @@ public class FileDTO {
 	
 	String fileName;
 	String fileRealName;
+	
 	public FileDTO(String fileName, String fileRealName) {
 		super();
 		this.fileName = fileName;
@@ -21,4 +22,5 @@ public class FileDTO {
 	public void setFileRealName(String fileRealName) {
 		this.fileRealName = fileRealName;
 	}
+	
 }

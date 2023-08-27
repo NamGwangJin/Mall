@@ -9,7 +9,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
     <title>상품 리뷰</title>
     <link rel="stylesheet" media="all" href="https://assets6.cre.ma/latte/assets/pc/application-1b1a247660c31decc4aafec3560b90f95e92178d97d2a3460879cb5b71bc8a9f.css" />
     <link rel="shortcut icon" type="image/x-icon" href="https://assets.cre.ma/m/favicons/crema/v3/favicon.ico" />
@@ -209,6 +208,20 @@ i.unstar:before {
 
   </head>
   <body class="unknown unknown-116 windows_os products reviews ko-KR renewed_widget" lang="ko-KR" data-action="reviews" data-brand-code="http://192.168.0.16:8080/gologin" data-controller="products" data-enable-nonmember-evaluation="true" data-event-base-url="https://events6.cre.ma" data-facebook-app-id="339825122890117" data-facebook-sdk-version="v2.9" data-gaq-account="UA-45818307-11" data-iframe-id="crema-product-reviews-1" data-is-logged-in="false" data-is-refreshable="true" data-loader-url="//assets6.cre.ma/m/widgets/loader.gif" data-login-alert="로그인이 필요한 서비스입니다. 로그인 하시겠습니까?" data-mall-login-url="http://192.168.0.16:8080/gologin" data-no-popstate="false" data-need-ios-video-hack="false" data-parent-url="http://192.168.0.16:8080/" data-rails-env="production" data-redirect-directly-without-close-url="false" data-review-message-all-exposed="false" data-review-message-all-collapsed="false" data-shop-builder="cafe24" data-login-redirect-parameter="" data-widget-custom-width="" data-widget-id="2" data-widget-margin-style="margin-top: 50px; margin-bottom: 50px;" data-widget-renewed="true" data-default-translate-button-status="on" data-use-translate-button="true" data-use-google-translation="true" data-transparent-image-url="//assets6.cre.ma/m/widgets/transparent.png" data-fixed-top-menu-height="0" data-device="pc">
+    <div class="navbar">
+    <a href="/" id="logo">
+        <img src="img/weverslogo.jpg" width="149">
+    </a>
+    <ul id="menu">
+    	<input type=hidden name=id value="${id}">
+    	<li><a href="#">${review}</a></li>
+    	<li><a href="#">${bbs}</a></li>
+        <li><a href="/cartList?id=${id}">장바구니</a></li>
+        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
+        <li><a href="/mypage">${infoline}</a></li>
+        <li>${inforeg}</li>
+    </ul>
+	</div>
     <div id="crema-google-translate"></div>
     <div class="watermark">
   

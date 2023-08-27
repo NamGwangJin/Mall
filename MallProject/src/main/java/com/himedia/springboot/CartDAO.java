@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CartDAO {
-
 	int cart(String userid, int prod_id, int qty, int price);
 	int deleteItem(String user_id, int prod_id);
 	void dropCart(String user_id);

@@ -11,7 +11,6 @@ public interface ReviewDAO {
 	
 	ReviewDTO login(String id, String passcode1);
 	
-	
 	ArrayList<ReviewDTO> getList(int start, int psize);
 	
 	ReviewDTO view(int num);

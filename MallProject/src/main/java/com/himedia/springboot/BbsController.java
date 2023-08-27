@@ -115,7 +115,7 @@ public class BbsController {
 		bdao.hitUp(num);
 		BbsDTO bdto = bdao.view(num);
 		model.addAttribute("bPost",bdto);
-		return "view";
+		return "bbs/view";
 	}
 	
 	@GetMapping("/delete")
@@ -127,7 +127,7 @@ public class BbsController {
 	
 	@GetMapping("/write")
 	public String write(HttpServletRequest req, Model model) {
-		return "write";
+		return "bbs/write";
 	}
 	@PostMapping("/insert2")
 	public String insert2(HttpServletRequest req) {
@@ -144,7 +144,7 @@ public class BbsController {
 		int num = Integer.parseInt(req.getParameter("num"));
 		BbsDTO bdto = bdao.view(num);
 		model.addAttribute("bPost",bdto);
-		return "update";
+		return "bbs/update";
 	}
 	
 	@PostMapping("/modify")
@@ -157,7 +157,7 @@ public class BbsController {
 	}
 
 	@GetMapping("/bbs")
-	public String Bbs(HttpServletRequest req, Model model) {
+	public String bbs(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		String id= (String) session.getAttribute("id");
 		if(id==null || id.equals("")) {
@@ -189,7 +189,7 @@ public class BbsController {
 			model.addAttribute("mlist", alBoard);
 		} else {
 			model.addAttribute("home","<a href='/'>홈으로</a>");
-			model.addAttribute("infoline",id+"&nbsp;&nbsp;<button id=btnLogout>로그아웃</button>");
+			model.addAttribute("infoline",id+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
 			model.addAttribute("write","<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");
 			model.addAttribute("id", id);
 			int start,psize;
@@ -217,7 +217,7 @@ public class BbsController {
 			model.addAttribute("pagestr",pagestr);
 			model.addAttribute("mlist",alMall);
 		}
-		return "bbs";
+		return "bbs/bbs";
 	}
 
 }
