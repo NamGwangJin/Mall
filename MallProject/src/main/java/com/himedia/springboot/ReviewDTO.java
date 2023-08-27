@@ -10,7 +10,6 @@ public class ReviewDTO {
 	String user_email;
 	String user_address;
 	
-	
 	int num;
 	String title;
 	String content;

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,19 +10,20 @@
 </head>
 <body>
         <header>
-            <div class="menu">
-				<div class="navbar">
-				    <a href="/" id="logo">
-				        <img src="img/weverslogo.jpg" width="149">
-				    </a>
-				    <ul id="menu">
-				        <li><a href="/cartList?id=${id}">장바구니</a></li>
-				        <li><a href="#">주문/배송조회</a></li>
-				        <li><a href="#">${infoline}</a></li>
-				        <li><a href="#">${inforeg}</a></li>
-				    </ul>
-				</div>
-            </div>
+			<div class="navbar">
+			    <a href="/" id="logo">
+			        <img src="img/weverslogo.jpg" width="149">
+			    </a>
+			    <ul id="menu">
+			    	<input type=hidden name=id value="${id}">
+			    	<li><a href="#">${review}</a></li>
+			    	<li><a href="#">${bbs}</a></li>
+			        <li><a href="/cartList?id=${id}">장바구니</a></li>
+			        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
+			        <li><a href="/mypage">${infoline}</a></li>
+			        <li>${inforeg}</li>
+			    </ul>
+			</div>
         </header>
     <div id="wrapper">
         <main id="product">
@@ -42,33 +42,31 @@
                             <th>배송비</th>
                             <th>소계</th>
                         </tr>
-                        <c:forEach items="${cList}" var="cart">
                         <tr>
                             <td><article>
                                 <a href="#">
-                                    <img style="width:80px; height:100px;" src="img/${cart.prod_img}.jpg" alt="1">
+                                    <img style="width:80px; height:100px;" src="img/${img}" alt="1">
                                 </a>
                                 <div>
-                                    <h2>${cart.prod_name}</h2>
-                                    <input type=hidden name=prodName value="${cart.prod_name}">
+                                    <h2>${prod_name}</h2>
+                                    <input type=hidden name=prodName value="${prod_name}">
                                     <p></p>
                                 </div>
                             </article></td>
-                            <td>${cart.prod_qty}</td>
-                            <input type=hidden name=qty value="${cart.prod_qty}">
-                            <td>${cart.prod_price}</td>
+                            <td>${qty}</td>
+                            <input type=hidden name=qty value="${qty}">
+                            <td>${price}</td>
                             <td>무료배송</td>
-                            <td>${cart.prod_total}</td>
-                            <input type=hidden name=total value="${cart.prod_total}">
+                            <td>${total}</td>
+                            <input type=hidden name=total value="${total}">
                         </tr>
-                        </c:forEach>
                     </table>
                     <div class="final">
                         <h2>최종결제 정보</h2>
                         <table>
                             <tr>
                                 <td>총</td>
-                                <td>${size} 건</td>
+                                <td>1 건</td>
                             </tr>
                             <tr>
                                 <td>상품금액</td>
@@ -88,7 +86,7 @@
                             </tr>
                             <tr>
                                 <td>전체주문금액</td>
-                                <td id=total></td>
+                                <td>${total}</td>
                             </tr>
                         </table>
                         <input type="submit" value="결제하기">
@@ -184,14 +182,6 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document)
-.ready(function(){
-	let total = 0;
-	var qty = $('input[name=total]').length;
-	for(var i=0; i<qty; i++){
-		total += parseInt($('input[name=total]').eq(i).val());
-	}
-	$('#total').text(total);
-})
 .on('submit',"#order",function(){
 	// 유효성 검사 해야함
 	return true;

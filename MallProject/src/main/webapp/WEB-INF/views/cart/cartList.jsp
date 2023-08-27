@@ -13,11 +13,14 @@
     <a href="/" id="logo">
         <img src="img/weverslogo.jpg" width="149">
     </a>
-    <ul id="menu">          
-        <li><a href="/cartList">장바구니</a></li>
-        <li><a href="#">주문/배송조회</a></li>
-        <li><a href="#">${infoline}</a></li>
-        <li><a href="#">${inforeg}</a></li>
+    <ul id="menu">
+    	<input type=hidden name=id value="${id}">
+    	<li><a href="#">${review}</a></li>
+    	<li><a href="#">${bbs}</a></li>
+        <li><a href="/cartList?id=${id}">장바구니</a></li>
+        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
+        <li><a href="/mypage">${infoline}</a></li>
+        <li>${inforeg}</li>
     </ul>
 </div>
         <section>

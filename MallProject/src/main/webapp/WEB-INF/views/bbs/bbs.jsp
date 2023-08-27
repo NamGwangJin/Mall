@@ -15,20 +15,22 @@ table {width : 80%; margin-left:auto; margin-right:auto; }
 #tblBoard td { border : 1px solid black; cursor : pointer; }
 </style>
 <body>
-<input type=hidden name=id value="${id}">
 <div class="navbar">
     <a href="/" id="logo">
         <img src="img/weverslogo.jpg" width="149">
     </a>
     <ul id="menu">
-    	<li><a href="#">${home}</a></li>
-        <li><a href="#">장바구니</a></li>
-        <li><a href="#">주문/배송조회</a></li>
-        <li><a href="#">${infoline}</a></li>
-        <li><a href="#">${inforeg}</a></li>
+    	<input type=hidden name=id value="${id}">
+    	<li><a href="#">${review}</a></li>
+    	<li><a href="#">${bbs}</a></li>
+        <li><a href="/cartList?id=${id}">장바구니</a></li>
+        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
+        <li><a href="/mypage"></a>${infoline}</li>
+        <li>${inforeg}</li>
     </ul>
 </div>
-	<li><li><li><li><li><li><li><li><li><li><li>
+
+
     <table id=tblBoard>
 	<thead>
 		<tr><th>게시물 번호</th><th>제목</th><th>작성자</th><th>조회수</th><th>작성시각</th><th>수정시각</th></tr>

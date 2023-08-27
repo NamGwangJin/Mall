@@ -26,7 +26,7 @@ public class CartController {
 		String id = (String) session.getAttribute("id");
 		ArrayList<CartDTO> cList = cDao.getCart(id);
 		session.setAttribute("cList", cList);
-		return "cartList";
+		return "cart/cartList";
 	}
 	
 	@PostMapping("/cart")
@@ -75,7 +75,7 @@ public class CartController {
 		model.addAttribute("price",price);
 		model.addAttribute("total",total);
 		model.addAttribute("img",img);
-		return "buy";
+		return "cart/buy";
 	}
 	
 	@GetMapping("/listbuy")
@@ -89,7 +89,7 @@ public class CartController {
 		}
 		model.addAttribute("cList",cList);
 		model.addAttribute("size",cList.size());
-		return "listbuy";
+		return "cart/listbuy";
 	}
 	
 	@PostMapping("/order")
@@ -113,8 +113,11 @@ public class CartController {
 	@GetMapping("/orderList")
 	public String orderList(HttpServletRequest req, Model model) {
 		String id = req.getParameter("id");
+		if (id.equals("")) {
+			return "redirect:/gologin";
+		}
 		ArrayList<OrderDTO> oList = cDao.getOrder(id);
 		model.addAttribute("oList",oList);
-		return "orderList";
+		return "order/orderList";
 	}
 }

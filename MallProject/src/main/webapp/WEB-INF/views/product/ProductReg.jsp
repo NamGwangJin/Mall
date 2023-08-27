@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
   </head>   
 <body>
+<div class="navbar">
+    <a href="/" id="logo">
+        <img src="img/weverslogo.jpg" width="149">
+    </a>
+    <ul id="menu">
+    	<input type=hidden name=id value="${id}">
+    	<li><a href="#">${review}</a></li>
+    	<li><a href="#">${bbs}</a></li>
+        <li><a href="/cartList?id=${id}">장바구니</a></li>
+        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
+        <li><a href="/mypage">${infoline}</a></li>
+        <li>${inforeg}</li>
+    </ul>
+</div>
    
 <h1 align=center>상품 등록하기</h1>
 <a href="/">메인화면으로</a>

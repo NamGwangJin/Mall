@@ -23,7 +23,7 @@ public class ReviewController {
 	private ReviewDAO rdao;
 	
 	@GetMapping("/review")
-	public String Bbs(HttpServletRequest req, Model model) {
+	public String review(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		String id= (String) session.getAttribute("id");
 		if(id==null || id.equals("")) {
@@ -80,12 +80,12 @@ public class ReviewController {
 			model.addAttribute("pagestr",pagestr);
 			model.addAttribute("rlist",alMall);
 		}
-		return "review";
+		return "review/review";
 	}
 	
 	@GetMapping("/reviewwrite")
 	public String write(HttpServletRequest req, Model model) {
-		return "reviewwrite";
+		return "reviw/reviewwrite";
 	}
 	@PostMapping("/insert1")
 	public String insert(HttpServletRequest req) {
@@ -102,7 +102,7 @@ public class ReviewController {
 		int num = Integer.parseInt(req.getParameter("num"));
 		ReviewDTO rdto = rdao.view(num);
 		model.addAttribute("rPost",rdto);
-		return "reviewupdate";
+		return "review/reviewupdate";
 	}
 	
 	@PostMapping("/modify1")
