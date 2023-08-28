@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.himedia.springboot.CartDAO">
-<insert id="cart">
+<insert id="addCart">
 insert into cart set user_id=#{param1}, prod_id=#{param2}, prod_qty=#{param3}, prod_price=#{param4}
 </insert>
 
@@ -40,6 +40,6 @@ user_id=#{param9}
 </insert>
 
 <select id="getOrder" resultType="com.himedia.springboot.OrderDTO">
-select * from orderTbl where user_id=#{param1}
+select * from orderTbl where user_id=#{param1} order by order_num desc
 </select>
 </mapper>

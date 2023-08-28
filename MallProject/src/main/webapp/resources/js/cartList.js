@@ -6,8 +6,10 @@ let qtyTotal = 0;
 let prodid = "";
 $(document)
 .ready(function(){
+	console.log($('#test').val());
 	qtyTotal = parseInt($('#total').text() / $('#qty').text());
 	$('#checked').hide();
+	$('#head').hide();
 	$('input[name=checkbox]').attr("checked","on");
 	changeCheckbox();
 })
@@ -40,13 +42,17 @@ $(document)
 				}
 	})
 })
-.on('click','#order',function(){ // 선택 아이템 주문
+.on('click','#buy',function(){ // 선택 아이템 주문
+	if($(this).text() == "상품 보러 가기") {
+		document.location = "/";
+		return false;
+	}
 	if(count == 0) {
 		alert("선택된 상품이 없습니다.");
 		return false;
 	} else if (count == 1) {
 		document.location = "/buy?prod_name=" + $('#prodname').text() + "&qty=" + $('#qty').text() + 
-		"&price=" + qtyTotal + '&total=' + $('#total').text() + '&img=' + $('#img').val();
+		"&price=" + qtyTotal + '&total=' + $('#total').text() + '&img=' + $('#img').val() + "&prod_id=" + $('#prodid').val();
 	} else {
 		prodid = "";
 		$('input[name=checkbox]:checked').each(function(){
@@ -58,6 +64,7 @@ $(document)
 ;
 function changeCheckbox(){
 	$('#checked').show();
+	$('#head').show();
 	price = 0;
 	count = 0;
 	$('input[name=checkbox]:checked').each(function(){
@@ -69,6 +76,7 @@ function changeCheckbox(){
 		if ($(this)) count += 1;
 	})
 	if (count == 0) {
+		$('#head').hide();
 		$('#checked').hide();
 	}
 }

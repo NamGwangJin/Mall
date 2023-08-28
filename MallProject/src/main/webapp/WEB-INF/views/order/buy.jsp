@@ -15,7 +15,6 @@
 			        <img src="img/weverslogo.jpg" width="149">
 			    </a>
 			    <ul id="menu">
-			    	<input type=hidden name=id value="${id}">
 			    	<li><a href="#">${review}</a></li>
 			    	<li><a href="#">${bbs}</a></li>
 			        <li><a href="/cartList?id=${id}">장바구니</a></li>
@@ -32,7 +31,7 @@
                     <h1>결제하기</h1>
                 </nav>
                <form action="/order" method="post" id="frmOrder">
-               	     <input type=hidden name=id value="${id}">
+               	    <input type=hidden name=id value="${id}">
      				<input type=hidden name=img value="${img}">
                     <table border="0">
                         <tr>
@@ -50,6 +49,7 @@
                                 <div>
                                     <h2>${prod_name}</h2>
                                     <input type=hidden name=prodName value="${prod_name}">
+                                    <input type=hidden name=prodid value="${prod_id}">
                                     <p></p>
                                 </div>
                             </article></td>
@@ -182,6 +182,9 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document)
+.ready(function(){
+	console.log($('input[name=id]').val())
+})
 .on('submit',"#order",function(){
 	// 유효성 검사 해야함
 	return true;

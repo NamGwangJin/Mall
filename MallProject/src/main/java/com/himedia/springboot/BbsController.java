@@ -219,5 +219,4 @@ public class BbsController {
 		}
 		return "bbs/bbs";
 	}
-
 }

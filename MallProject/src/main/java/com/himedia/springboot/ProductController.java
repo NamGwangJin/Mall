@@ -64,7 +64,7 @@ public class ProductController {
 		}else {
 			model.addAttribute("bbs","<a href='/bbs'>게시판</a>");
 			model.addAttribute("review","<a href='/review'>리뷰</a>");
-			model.addAttribute("infoline",id+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
+			model.addAttribute("infoline","<a href='/mypage'>"+id+"</a>&nbsp;&nbsp;<button id=logout>로그아웃</button>");
 			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
 			model.addAttribute("write","<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");
 			model.addAttribute("id", id);

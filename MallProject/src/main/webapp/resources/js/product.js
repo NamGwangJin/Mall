@@ -39,5 +39,5 @@ $(document)
 })
 .on('click','#buy',function(){
 	document.location = "/buy?prod_name=" + $('#productName').text() + "&qty=" + $('#numInput').val() + "&price=" +
-								 $('#productPrice').text() + '&total=' + $('#totalPrice').text() + '&img=' + $('#img').val();
+								 $('#productPrice').text() + '&total=' + $('#totalPrice').text() + '&img=' + $('#img').val() + '&prod_id=' + $('#prodId').val() + "&user_id=" + $('input[name=id]').val();
 })

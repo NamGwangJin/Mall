@@ -69,9 +69,9 @@
 						    </div>
                     </div>
                 </article>  
+               </section>
+               </main>
 			</div>
-		</secition>
-		</main>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/js/product.js">

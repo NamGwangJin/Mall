@@ -54,7 +54,7 @@ public class ReviewController {
 			model.addAttribute("rlist", alBoard);
 		} else {
 			model.addAttribute("review","<a href='/review'>리뷰게시판</a>");
-			model.addAttribute("reviewwrite","<td style='text-align:right;'><a href='/reviw'><h3>게시물 작성</h3></a></td>");
+			model.addAttribute("reviewwrite","<td style='text-align:right;'><a href='/review'><h3>게시물 작성</h3></a></td>");
 			model.addAttribute("id", id);
 			int start,psize;
 			String page = req.getParameter("pageno");
@@ -85,7 +85,7 @@ public class ReviewController {
 	
 	@GetMapping("/reviewwrite")
 	public String write(HttpServletRequest req, Model model) {
-		return "reviw/reviewwrite";
+		return "review/reviewwrite";
 	}
 	@PostMapping("/insert1")
 	public String insert(HttpServletRequest req) {

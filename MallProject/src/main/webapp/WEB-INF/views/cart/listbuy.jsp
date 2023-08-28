@@ -32,9 +32,13 @@
                 <nav>
                     <h1>결제하기</h1>
                 </nav>
-               <form action="/order" method="post" id="frmOrder">
-               	     <input type=hidden name=id value="${id}">
-     				<input type=hidden name=img value="${img}">
+               <form action="/listorder" method="get" id="frmOrder">
+               		<input type=hidden name=prod_id value="">
+               	    <input type=hidden name=id value="${id}">
+     				<input type=hidden name=prod_img value="">
+     				<input type=hidden name=prod_name value="">
+     				<input type=hidden name=prod_qty value="">
+     				<input type=hidden name=prod_total value="">
                     <table border="0">
                         <tr>
                             <th>상품명</th>
@@ -47,6 +51,8 @@
                         <tr>
                             <td><article>
                                 <a href="#">
+                                	<input type=hidden name=prodId value="${cart.prod_id}">
+                                	<input type=hidden name=img value="${cart.prod_img}">
                                     <img style="width:80px; height:100px;" src="img/${cart.prod_img}.jpg" alt="1">
                                 </a>
                                 <div>
@@ -186,6 +192,52 @@
 <script>
 $(document)
 .ready(function(){
+	var prod_id = "";
+	for(var i=0; i<$("input[name=prodId]").length; i++){
+		prod_id += $("input[name=prodId]").eq(i).val();
+	}
+	$('input[name=prod_id]').val(prod_id);
+	
+	var prod_img = "";
+	for(var i=0; i<$("input[name=img]").length; i++){
+		if ( i == $("input[name=img]").length - 1) {
+			prod_img += $('input[name=img]').eq(i).val() + ".jpg";
+			break;
+		}
+		prod_img += $('input[name=img]').eq(i).val() + ".jpg" + ",";
+	}
+	$('input[name=prod_img]').val(prod_img);
+	
+	var prod_name = "";
+	for(var i=0; i<$("input[name=prodName]").length; i++){
+		if ( i == $("input[name=prodName]").length - 1) {
+			prod_name += $('input[name=prodName]').eq(i).val();
+			break;
+		}
+		prod_name += $('input[name=prodName]').eq(i).val() + ",";
+	}
+	$('input[name=prod_name]').val(prod_name);
+
+	var prod_qty = "";
+	for(var i=0; i<$("input[name=qty]").length; i++){
+		if ( i == $("input[name=qty]").length - 1) {
+			prod_qty += $('input[name=qty]').eq(i).val();
+			break;
+		}
+		prod_qty += $('input[name=qty]').eq(i).val() + ",";
+	}
+	$('input[name=prod_qty]').val(prod_qty);
+	
+	var prod_total = "";
+	for(var i=0; i<$("input[name=total]").length; i++){
+		if ( i == $("input[name=total]").length - 1) {
+			prod_total += $('input[name=total]').eq(i).val();
+			break;
+		}
+		prod_total += $('input[name=total]').eq(i).val() + ",";
+	}
+	$('input[name=prod_total]').val(prod_total);
+	
 	let total = 0;
 	var qty = $('input[name=total]').length;
 	for(var i=0; i<qty; i++){
