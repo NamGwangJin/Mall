@@ -16,4 +16,6 @@ public interface UserDAO {
 	UserDTO getpage(String p1);
 	
 	void quit(String id);
+	
+	UserDTO getprof(String p1);
 }

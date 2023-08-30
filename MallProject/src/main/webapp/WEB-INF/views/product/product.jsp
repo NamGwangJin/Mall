@@ -39,7 +39,7 @@
                 <article class="info">
                     <div class="image" style="text-align:center;">
                     	<input type='hidden' id="prodId" value="${product.prod_id}">
-                        <img src="img/${product.prod_img}.jpg" alt="상품이미지" style="width:70%;">
+                        <img src="img/${product.prod_img}" alt="상품이미지" style="width:70%;">
                     </div>
                     <div class="summary">
                         <nav style="height:100px;">

@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* 헤더 */
+.MoreLayoutView_container__8Ahvr {
+    background-color: #f5f7fa;
+    min-height: calc(100vh - 80px);
+}
+div {
+    display: block;
+}
+html {
+    -webkit-text-size-adjust: none;
+}
+
+.MoreHeaderView_container__kK6Wj {
+    background-color: #444;
+}
+.MoreHeaderView_inner__BRiQZ {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1100px;
+    padding: 34px 0 44px;
+}
+.MoreHeaderView_profile_wrap__Y9XWQ {
+    overflow: hidden;
+}
+.MoreHeaderView_name__4ZkcS {
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.TitleView_title__SSnHb.TitleView_-weight_600__OzPRx {
+    font-weight: 600;
+}
+.TitleView_title__SSnHb.TitleView_-color_white__6PV8I {
+    color: #fff;
+}
+.TitleView_title__SSnHb {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 36px;
+}
+
+.MoreHeaderView_email__Ui6wT {
+    color: #a1a5ad;
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 2px;
+}
+address {
+    display: block;
+    font-style: italic;
+}
+address, em {
+    font-style: normal;
+}
+
+
+.use-webfont body, .use-webfont button, .use-webfont input, .use-webfont select, .use-webfont table, .use-webfont textarea {
+    font-family: Pretendard,-apple-system,BlinkMacSystemFont,Helvetica,Arial,Dotum,sans-serif;
+}
+body, button, input, select, table, textarea {
+    font-size: 13px;
+}
+
+/* 수정 탈퇴 버튼 */
+.MoreHeaderView_button_wrap__B-cQ2 {
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+.MoreHeaderView_button_item__gv6pa {
+    background: #555;
+    border-radius: 16px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    padding: 9px 15px;
+    vertical-align: top;
+}
+.MoreHeaderView_button_item__gv6pa+.MoreHeaderView_button_item__gv6pa {
+    margin-left: 8px;
+}
+a, a:active, a:focus, a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+

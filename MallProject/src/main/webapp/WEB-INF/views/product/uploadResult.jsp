@@ -14,9 +14,9 @@
     <% if (request.getAttribute("errorMessage") != null) { %>
         <p><strong><font color="red">${errorMessage}</font></strong></p>
     <% } else { %>
-        <p>파일명: ${fileName}</p>
-        <p>실제 파일명: </p><p id=filename>${fileRealName}</p>
+<%--         <p>파일명 [${fileName}]가 디렉토리에 업로드 되었습니다.</p> --%>
+        <p>파일명 :</p><p id=filename>${fileRealName}</p><p>이 디렉토리에 저장되었습니다. </p> 
     <% } %>
-    <p><a href="/upload">다시 업로드</a></p>
+<!--     <p><a href="/upload">다시 업로드</a></p> -->
 </body>
 </html>

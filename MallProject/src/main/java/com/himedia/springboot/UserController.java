@@ -46,6 +46,7 @@ public class UserController {
 			UserDTO member = uDao.loginOk(id);
 			session.setAttribute("name", member.getUser_name());
 			session.setAttribute("id", member.getUser_id());
+			session.setAttribute("admin_user", member.getAdmin_user());
 		} else {
 			HttpSession session = req.getSession();
 			session.setAttribute("id", null);
@@ -98,5 +99,22 @@ public class UserController {
 		int data = uDao.idCheck(id);
 		
 		return String.valueOf(data);
+	}
+	
+	@GetMapping("/profile")
+	public String goProfile(HttpServletRequest req, Model model) {
+		HttpSession s = req.getSession();
+		String id = (String)s.getAttribute("id");
+		UserDTO user = uDao.getprof(id);
+		if(id==null || id.equals("")) {
+			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
+		}else {
+			model.addAttribute("infoline","<a href='/mypage'>"+id+"</a>"+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
+			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
+			model.addAttribute("info",id);
+			model.addAttribute("imp",user);
+		}
+		
+		return("user/profile");
 	}
 }

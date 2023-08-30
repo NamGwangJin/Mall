@@ -1,5 +1,6 @@
 var idRegExp = /^[a-z0-9]{8,16}$/; // 아이디
 var pwRegExp = /^[a-zA-z0-9]{8,16}$/; // 비밀번호
+
 $(document)
 .on('click','#search',function(){
     new daum.Postcode({

@@ -32,7 +32,7 @@
             <tr>
             <c:forEach items="${mlist}" var="product">         
                 <a class="product" id='${product.prod_name}' name='${product.prod_name}'>
-                    <img src="img/${product.prod_img}.jpg" height="225" width="225">
+                    <img src="img/${product.prod_img}" height="225" width="225">
                     <div class="product-name">
                         ${product.prod_name}
                     </div>

@@ -24,6 +24,9 @@ public class CartController {
 	public String cartList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
+		if(id == null || id.equals("")) {
+			return "redirect:/gologin";
+		}
 		ArrayList<CartDTO> cList = cDao.getCart(id);
 		if(cList.size() == 0) {
 			session.setAttribute("cList", "없음");
