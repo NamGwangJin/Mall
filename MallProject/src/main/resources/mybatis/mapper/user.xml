@@ -28,7 +28,7 @@ select * from user where user_id=#{param1}
  </delete>
  
  <select id="getprof" resultType="com.himedia.springboot.UserDTO">
- select user_id, user_name, user_mobile, user_email, user_address, user_birthday from user where user_id=#{param1} 
+ select user_id, user_name, user_mobile, user_email, user_address, user_birthday, signup_date from user where user_id=#{param1} 
 </select>
 
  </mapper>
