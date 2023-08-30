@@ -40,8 +40,10 @@
 					<div class="sc-ed52fcbe-8 bhRZmA">
 						<input type="text" id=id aria-required="true" name="id" placeholder="ID" class="sc-ed52fcbe-7 jPIHur" value=""/>
 						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-763a3587-1 frWBac" style="width:500px;" id=check disabled="disabled">중복확인</button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 					</div>
+					<div id=idvd></div>
 					<div class="sc-ed52fcbe-5 brYFFU">
 						<strong class="sc-ed52fcbe-6 gdkOVW"></strong>
 					</div>
@@ -65,6 +67,7 @@
 						<button tabindex="-1" type="button" class="sc-ed52fcbe-3 diGBDF"></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 					</div>
+					<div id=pwvd></div>
 				</div>
 				<!-- 비밀번호, 비밀번호 확인 구역 끝 -->
 				<!-- 이름 -->
@@ -76,6 +79,7 @@
 						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 						</div>
+						<div id=namevd></div>
 					</div>
 				</div>
 				<!-- 이름 끝 -->
@@ -87,6 +91,7 @@
 						<input type="date" id=birthday aria-required="true" name="birthday" class="sc-ed52fcbe-7 jPIHur" value=""/>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 						</div>
+						<div id=bdvd></div>
 					</div>
 				</div>
 				<!-- 생년월일 끝 -->
@@ -99,6 +104,7 @@
 						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 						</div>
+						<div id=mobilevd></div>
 					</div>
 				</div>
 				<!-- 모바일 끝 -->
@@ -111,6 +117,7 @@
 						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 						</div>
+						<div id=emailvd></div>
 					</div>
 				</div>
 				<!-- 이메일 끝 -->
@@ -119,8 +126,26 @@
 					<div class="sc-ed52fcbe-0 cmqmuL">
 						<label class="sc-ed52fcbe-1 csduFG"></label>
 						<div class="sc-ed52fcbe-8 bhRZmA">
-						<input type="text" id=address aria-required="true" name="address" placeholder="배송지" class="sc-ed52fcbe-7 jPIHur" value=""/>
-						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<input type="text" id=postcode aria-required="true" name="address" placeholder="우편번호" class="sc-ed52fcbe-7 jPIHur" value="" readonly/><br>
+						<button tabindex="-1" type="button" class="sc-763a3587-1 frWBac" style="width:500px;" id=search>검색</button>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+						</div>
+					</div>
+				</div>
+				<div class="sc-d0f94a43-0 eJnyxH">
+					<div class="sc-ed52fcbe-0 cmqmuL">
+						<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="text" id=address1 aria-required="true" name="address" placeholder="주소" class="sc-ed52fcbe-7 jPIHur" value="" readonly/>
+						<hr class="sc-ed52fcbe-2 bVlPDx"/>
+						</div>
+					</div>
+				</div>
+				<div class="sc-d0f94a43-0 eJnyxH">
+					<div class="sc-ed52fcbe-0 cmqmuL">
+						<label class="sc-ed52fcbe-1 csduFG"></label>
+						<div class="sc-ed52fcbe-8 bhRZmA">
+						<input type="text" id=address2 aria-required="true" name="address" placeholder="상세주소" class="sc-ed52fcbe-7 jPIHur" value=""/>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 						</div>
 					</div>
@@ -138,21 +163,6 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document)
-.on('click','#signup',function(){
-	$.ajax({url:'/signup', data: {id : $('#id').val(), pw : $('#passcode1').val(), name : $('#name').val(), bd : $('#birthday').val(), mobile : $('#mobile').val(), email : $('#email').val(), address : $('#address').val() },
-				type:'post', dataType: 'text',
-				success: function(data){
-					if(data == "1"){
-						alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.");
-						document.location = "/gologin"
-					}
-				}, error: function(){
-					alert("다시 시도해 주세요.")
-					return false;
-				}
-	})
-})
-</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/resources/js/signup.js"></script>
 </html>

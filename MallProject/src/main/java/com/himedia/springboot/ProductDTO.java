@@ -44,4 +44,41 @@ public class ProductDTO {
 	public void setProd_update(String prod_update) {
 		this.prod_update = prod_update;
 	}
+	
+	private String prodId;
+	private String prodName;
+    private String prodMsg;
+    private String prodPrice;
+    public String getProdId() {
+		return prodId;
+	}
+	public void setProdId(String prodId) {
+		this.prodId = prodId;
+	}
+	public String getProdName() {
+		return prodName;
+	}
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+	public String getProdMsg() {
+		return prodMsg;
+	}
+	public void setProdMsg(String prodMsg) {
+		this.prodMsg = prodMsg;
+	}
+	public String getProdPrice() {
+		return prodPrice;
+	}
+	public void setProdPrice(String prodPrice) {
+		this.prodPrice = prodPrice;
+	}
+	public String getProdImg() {
+		return prodImg;
+	}
+	public void setProdImg(String prodImg) {
+		this.prodImg = prodImg;
+	}
+
+	private String prodImg;
 }

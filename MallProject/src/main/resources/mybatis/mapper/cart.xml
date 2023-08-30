@@ -4,9 +4,17 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.himedia.springboot.CartDAO">
-<insert id="cart">
-insert into cart set user_id=#{param1}, prod_id=#{param2}, prod_qty=#{param3}, prod_price=#{param4}
+<insert id="addCart">
+insert into cart set user_id=#{param1}, prod_id=#{param2}, prod_qty=#{param3}, prod_price=#{param4} / #{param3}, prod_total=#{param4}
 </insert>
+
+<select id="checkCart" parameterType="java.util.HashMap">
+select count(*) from cart where prod_id=#{param1}
+</select>
+
+<select id="otherCart" parameterType="java.util.HashMap">
+select count(*) from cart where user_id=#{param1}
+</select>
 
 <delete id="deleteItem">
 delete from cart where user_id=#{param1} and prod_id=#{param2}
@@ -16,15 +24,19 @@ delete from cart where user_id=#{param1} and prod_id=#{param2}
 delete from cart where user_id=#{param1}
 </delete>
 
+<update id="cartUpdate">
+update cart set prod_qty=#{param2}, prod_total=#{param3} where user_id=#{param1} and prod_id=#{param4}
+</update>
+
 <select id="getCart" resultType="com.himedia.springboot.CartDTO">
-select b.prod_img prod_img, a.user_id user_id, b.prod_id prod_id, b.prod_name prod_name, b.prod_price prod_price, a.prod_qty prod_qty, a.prod_price prod_total
+select b.prod_img prod_img, a.user_id user_id, b.prod_id prod_id, b.prod_name prod_name, b.prod_price prod_price, a.prod_qty prod_qty, a.prod_total prod_total
 from cart a join product b on a.prod_id = b.prod_id
 			join user c on c.user_id = a.user_id
 where a.user_id = #{param1}
 </select>
 
 <select id="getChoiceCart" resultType="com.himedia.springboot.CartDTO">
-select b.prod_img prod_img, a.user_id user_id, b.prod_id prod_id, b.prod_name prod_name, b.prod_price prod_price, a.prod_qty prod_qty, a.prod_price prod_total
+select b.prod_img prod_img, a.user_id user_id, b.prod_id prod_id, b.prod_name prod_name, b.prod_price prod_price, a.prod_qty prod_qty, a.prod_total prod_total
 from cart a join product b on a.prod_id = b.prod_id
 			join user c on c.user_id = a.user_id
 where a.user_id = #{param1} and a.prod_id = #{param2}
@@ -40,6 +52,6 @@ user_id=#{param9}
 </insert>
 
 <select id="getOrder" resultType="com.himedia.springboot.OrderDTO">
-select * from orderTbl where user_id=#{param1}
+select * from orderTbl where user_id=#{param1} order by order_num desc
 </select>
 </mapper>

@@ -8,7 +8,22 @@ public class UserDTO {
 	String user_email;
 	String user_address;
 	String user_birthday;
+	String admin_user;
+	String signup_date;
 	
+	
+	public String getAdmin_user() {
+		return admin_user;
+	}
+	public void setAdmin_user(String admin_user) {
+		this.admin_user = admin_user;
+	}
+	public String getSignup_date() {
+		return signup_date;
+	}
+	public void setSignup_date(String signup_date) {
+		this.signup_date = signup_date;
+	}
 	public String getUser_id() {
 		return user_id;
 	}

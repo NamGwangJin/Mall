@@ -16,11 +16,10 @@
     </a>
     <ul id="menu">
     	<input type=hidden name=id value="${id}">
-    	<li><a href="#">${review}</a></li>
     	<li><a href="#">${bbs}</a></li>
         <li><a href="/cartList?id=${id}">장바구니</a></li>
         <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-        <li><a href="/mypage"></a>${infoline}</li>
+        <li>${infoline}</li>
         <li>${inforeg}</li>
     </ul>
 </div>
@@ -33,11 +32,11 @@
             <tr>
             <c:forEach items="${mlist}" var="product">         
                 <a class="product" id='${product.prod_name}' name='${product.prod_name}'>
-                    <img src="img/${product.prod_img}.jpg" height="225" width="225">
+                    <img src="img/${product.prod_img}" height="225" width="225">
                     <div class="product-name">
                         ${product.prod_name}
                     </div>
-                    <div class="product-price">${product.prod_price}</div>
+                    <div class="product-price">${product.prod_price}원</div>
                 </a>
             </c:forEach>
             </tr>

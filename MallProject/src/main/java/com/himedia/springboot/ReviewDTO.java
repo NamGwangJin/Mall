@@ -13,10 +13,21 @@ public class ReviewDTO {
 	int num;
 	String title;
 	String content;
+	String img;
 	String writer;
 	int hit;
 	String created;
 	String updated;
+	String prod_name;
+	int rating;
+	
+	
+	public String getProd_name() {
+		return prod_name;
+	}
+	public void setProd_name(String prod_name) {
+		this.prod_name = prod_name;
+	}
 	public String getUser_id() {
 		return user_id;
 	}
@@ -59,7 +70,19 @@ public class ReviewDTO {
 	public void setUser_address(String user_address) {
 		this.user_address = user_address;
 	}
-	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 	public int getNum() {
 		return num;
 	}

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,10 +9,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="resources/css/star.css" rel="stylesheet"/>
     <title>상품 리뷰</title>
     <link rel="stylesheet" media="all" href="https://assets6.cre.ma/latte/assets/pc/application-1b1a247660c31decc4aafec3560b90f95e92178d97d2a3460879cb5b71bc8a9f.css" />
     <link rel="shortcut icon" type="image/x-icon" href="https://assets.cre.ma/m/favicons/crema/v3/favicon.ico" />
     <style type="text/css">
+ 
+    
     
 <style>
 
@@ -176,58 +179,16 @@ i.unstar:before {
 
       <script>var HACKLE_SDK_KEY = "tRutmpvKV7HkOBqT2WuMKnlghSU8wBzK";</script>
 
-    <script>
+    
 
     <script>var HACKLE_SDK_KEY = "tRutmpvKV7HkOBqT2WuMKnlghSU8wBzK";</script>
-
-  <script>
-    window.hackleClient = Hackle.createInstance(HACKLE_SDK_KEY);
-
-    const user = {
-      userId: "",
-      deviceId: "5TtRQNkJaowQ05zsemRpfxUmGc0OQ2bZ",
-      id: "5TtRQNkJaowQ05zsemRpfxUmGc0OQ2bZ",
-      properties: {
-        brand_code: "ptry.co.kr",
-        location: window.location.href,
-        type: 'page_widget',
-          "product_code": "1579",
-          "iframe_id": "crema-product-reviews-1",
-          "widget_style": "",
-          "app": "0",
-          "parent_url": "http://192.168.0.16:8080/product?name=Mini%20Photo%20Card;display_group=1",
-          "nonmember_token": "",
-          "secure_device_token": "V24b7eed425d0c6d447490e1b58bbe71ec73c63034843a059c30522bfbc264d48cacb4cd4b1efdf17d240eb1a107524338",
-          "iframe": "1",
-          "controller": "pc/products",
-          "action": "reviews",
-          "brand_code": "ptry.co.kr",
-      }
-    }
-  </script>
-
+  
   </head>
   <body class="unknown unknown-116 windows_os products reviews ko-KR renewed_widget" lang="ko-KR" data-action="reviews" data-brand-code="http://192.168.0.16:8080/gologin" data-controller="products" data-enable-nonmember-evaluation="true" data-event-base-url="https://events6.cre.ma" data-facebook-app-id="339825122890117" data-facebook-sdk-version="v2.9" data-gaq-account="UA-45818307-11" data-iframe-id="crema-product-reviews-1" data-is-logged-in="false" data-is-refreshable="true" data-loader-url="//assets6.cre.ma/m/widgets/loader.gif" data-login-alert="로그인이 필요한 서비스입니다. 로그인 하시겠습니까?" data-mall-login-url="http://192.168.0.16:8080/gologin" data-no-popstate="false" data-need-ios-video-hack="false" data-parent-url="http://192.168.0.16:8080/" data-rails-env="production" data-redirect-directly-without-close-url="false" data-review-message-all-exposed="false" data-review-message-all-collapsed="false" data-shop-builder="cafe24" data-login-redirect-parameter="" data-widget-custom-width="" data-widget-id="2" data-widget-margin-style="margin-top: 50px; margin-bottom: 50px;" data-widget-renewed="true" data-default-translate-button-status="on" data-use-translate-button="true" data-use-google-translation="true" data-transparent-image-url="//assets6.cre.ma/m/widgets/transparent.png" data-fixed-top-menu-height="0" data-device="pc">
     <div class="navbar">
-    <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="149">
-    </a>
-    <ul id="menu">
-    	<input type=hidden name=id value="${id}">
-    	<li><a href="#">${review}</a></li>
-    	<li><a href="#">${bbs}</a></li>
-        <li><a href="/cartList?id=${id}">장바구니</a></li>
-        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-        <li><a href="/mypage">${infoline}</a></li>
-        <li>${inforeg}</li>
-    </ul>
-	</div>
+
     <div id="crema-google-translate"></div>
-    <div class="watermark">
-  
-  
-  
-</div>
+    <div class="watermark"></div>
 
     <div id="i18n" style="display: none" data-image-size-too-large="첨부한 이미지 파일이 너무 큽니다. 더 작은 이미지를 첨부해주세요." data-close="닫기" data-error-403="접근 권한이 없습니다." data-error-404="요청하신 페이지를 찾을 수 없습니다." data-error-422="요청이 거부되었습니다." data-error-etc="요청을 처리하던 중 오류가 발생했습니다. 조속히 해결하겠습니다." data-image-field-cant-add-photo-without-file-input="파일 선택창이 없어 사진을 추가할 수 없습니다." data-image-field-cant-add-photo-without-file-reader="파일 미리 보기가 지원되는 브라우저가 아니어서 사진을 추가할 수 없습니다." data-image-field-cant-add-photo-without-file="선택된 파일이 없어 사진을 추가할 수 없습니다." data-image-field-cant-add-photo-with-file-type="선택된 파일이 이미지 형식이 아닙니다. (선택된 형식:%{file_type})" data-image-field-cant-add-photo-with-file-name="이미지 형식의 파일만 첨부할 수 있습니다. (선택된 파일명:%{file_name})" data-app-restrict-image-upload="파일 업로드를 하려면 모바일 기본브라우저에서 쇼핑몰 모바일웹(%{url})으로 접속해주세요." data-review-already-posted="이미 리뷰를 작성한 상품입니다." data-review-already-largest-image="현재 이미지가 원본 크기입니다." data-require-update-app="원활한 사진첨부를 위해서 앱 업데이트가 필요합니다. 업데이트 하시겠습니까?" data-input-prompt="값을 입력해주세요."></div>
 
@@ -244,9 +205,8 @@ i.unstar:before {
         REVIEW
       </span>
     
-    
       <span class="widget_header_basic__reviews_count js-widget-header-basic-reviews-count">
-        (5)
+        
       </span>
     
     <div class="widget_header_basic__description">
@@ -269,7 +229,6 @@ i.unstar:before {
   </div>
 </div>
 
-
 <div class="js-renewed-products-reviews-summary">
   
   <div class="
@@ -277,6 +236,7 @@ i.unstar:before {
     
     
   ">
+ 
     <div class="products_reviews_summary_v2__summary_container">
       <div class="products_reviews_summary_v2__lcontent">
         <div class="products_reviews_summary_v2__score">
@@ -287,66 +247,106 @@ i.unstar:before {
     <use xlink:href="#star-full"></use>
 </svg>
 </div></span>
-          <span class="products_reviews_summary_v2__score_text">5.0</span>
+		
+      
+          <span class="products_reviews_summary_v2__score_text">
+          <c:forEach items="${list}" var="list">
+          ${list.rating}
+           </c:forEach>
+          </span>
+             
         </div>
         
           <div class="products_reviews_summary_v2__score_percentage">
-            <b>100%</b>의 구매자가 이 상품을 좋아합니다.
+            <!-- <b>100%</b>의 구매자가 이 상품을 좋아합니다. -->
           </div>
-        
-        
+        	
+       
       </div>
+      
       <div class="products_reviews_summary_v2__rcontent">
         <ul class="products_reviews_summary_v2__score_filters">
+        
+            <li class="products_reviews_summary_v2__score_filter products_reviews_summary_v2__score_filter--highlighted">
+            
+              <div class="products_reviews_summary_v2__score_title">아주 좋아요</div>
+              
+             <!--  <div class="products_reviews_summary_v2__score_gauge">
+                <div style="width: max(100%, 12px)" class="products_reviews_summary_v2__score_percentile"></div>
+              </div> -->
+              <div class="products_reviews_summary_v2__score_count">
+              ★★★★★<br>
+              <c:forEach items="${rlist}" var="list">
+              	${list.rating}
+              </c:forEach>
+              </div>
+              
+            </li>
           
             <li class="products_reviews_summary_v2__score_filter products_reviews_summary_v2__score_filter--highlighted">
-              <div class="products_reviews_summary_v2__score_title">아주 좋아요</div>
-              <div class="products_reviews_summary_v2__score_gauge">
-                <div style="width: max(100%, 12px)" class="products_reviews_summary_v2__score_percentile"></div>
-              </div>
-              <div class="products_reviews_summary_v2__score_count">5</div>
-            </li>
-          
-            <li class="products_reviews_summary_v2__score_filter ">
               <div class="products_reviews_summary_v2__score_title">맘에 들어요</div>
-              <div class="products_reviews_summary_v2__score_gauge">
+             <!--  <div class="products_reviews_summary_v2__score_gauge">
                 <div style="width: max(0%, 0px)" class="products_reviews_summary_v2__score_percentile"></div>
+              </div> -->
+              <div class="products_reviews_summary_v2__score_count">
+              ★★★★<br>
+			  <c:forEach items="${rlist}" var="list" >
+              	${list.rating}
+              </c:forEach>
               </div>
-              <div class="products_reviews_summary_v2__score_count">0</div>
             </li>
           
-            <li class="products_reviews_summary_v2__score_filter ">
+            <li class="products_reviews_summary_v2__score_filter products_reviews_summary_v2__score_filter--highlighted ">
               <div class="products_reviews_summary_v2__score_title">보통이에요</div>
-              <div class="products_reviews_summary_v2__score_gauge">
+              <!-- <div class="products_reviews_summary_v2__score_gauge">
                 <div style="width: max(0%, 0px)" class="products_reviews_summary_v2__score_percentile"></div>
+              </div> -->
+              <div class="products_reviews_summary_v2__score_count">
+              ★★★<br>
+               <c:forEach items="${rlist}" var="list">
+              	${list.rating}
+              </c:forEach>
               </div>
-              <div class="products_reviews_summary_v2__score_count">0</div>
             </li>
           
-            <li class="products_reviews_summary_v2__score_filter ">
+            <li class="products_reviews_summary_v2__score_filter products_reviews_summary_v2__score_filter--highlighted">
               <div class="products_reviews_summary_v2__score_title">그냥 그래요</div>
-              <div class="products_reviews_summary_v2__score_gauge">
+            <!--   <div class="products_reviews_summary_v2__score_gauge">
                 <div style="width: max(0%, 0px)" class="products_reviews_summary_v2__score_percentile"></div>
+              </div> -->
+              <div class="products_reviews_summary_v2__score_count">
+              ★★<br>
+               <c:forEach items="${rlist}" var="list">
+              	${list.rating}
+              </c:forEach>
               </div>
-              <div class="products_reviews_summary_v2__score_count">0</div>
             </li>
           
-            <li class="products_reviews_summary_v2__score_filter ">
+            <li class="products_reviews_summary_v2__score_filter products_reviews_summary_v2__score_filter--highlighted ">
               <div class="products_reviews_summary_v2__score_title">별로예요</div>
-              <div class="products_reviews_summary_v2__score_gauge">
+              
+             <!--  <div class="products_reviews_summary_v2__score_gauge">
                 <div style="width: max(0%, 0px)" class="products_reviews_summary_v2__score_percentile"></div>
+              </div> -->
+              <div class="products_reviews_summary_v2__score_count">
+              ★<br>
+              <c:forEach items="${rlist}" var="list">
+             	${list.rating}
+              </c:forEach>
               </div>
-              <div class="products_reviews_summary_v2__score_count">0</div>
+              
             </li>
           
         </ul>
+        
       </div>
+      
     </div>
+    
   </div>
 
 
 </div>
-
   
   <div class="products_reviews_media_summary">
     <div class="products_reviews_media_summary__header">
@@ -354,7 +354,6 @@ i.unstar:before {
         포토&amp;동영상
       </span>
       <span class="products_reviews_media_summary__media_count">
-        (5)
       </span>
       <a
         data-url="http://192.168.0.16:8080/"
@@ -371,7 +370,7 @@ i.unstar:before {
     </div>
     <div class="products_reviews_media_summary__content">
       <ul>
-        
+        <c:forEach items="${rlist}" var="list">
           <li
             class="
               products_reviews_media_summary__medium
@@ -381,100 +380,18 @@ i.unstar:before {
           >
             
               <img
-                src="img/product1.jpg"
-                alt="img/product1.jpg"
+                src="img/${list.img}"
+                alt="img/${list.img}"
                 class="smooth products_reviews_media_summary__thumbnail"
               >
               
             
           </li>
         
-          <li
-            class="
-              products_reviews_media_summary__medium
-              js-link-fullscreen-popup
-            "
-            data-url="http://192.168.0.16:8080/product?name=Mini%20Photo%20Card%20Set"
-          >
-            
-              <img
-                src="img/product2.jpg"
-                alt="img/product2.jpg"
-                class="smooth products_reviews_media_summary__thumbnail js-review-media"
-              >
-              
-            
-          </li>
-        
-          <li
-            class="
-              products_reviews_media_summary__medium
-              js-link-fullscreen-popup
-            "
-            data-url="http://192.168.0.16:8080/product?name=Photo%20Card%20Binder"
-          >
-            
-              <img
-                src="img/product3.jpg"
-                alt="img/product3.jpg"
-                class="smooth products_reviews_media_summary__thumbnail js-review-media"
-              >
-              
-            
-          </li>
-        
-          <li
-            class="
-              products_reviews_media_summary__medium
-              js-link-fullscreen-popup
-            "
-            data-url="http://192.168.0.16:8080/product?name=Premium%20Photo"
-          >
-            
-              <img
-                src="img/product4.jpg"
-                alt="img/product4.jpg"
-                class="smooth products_reviews_media_summary__thumbnail js-review-media"
-              >
-              
-            
-          </li>
-        
-          <li
-            class="
-              products_reviews_media_summary__medium
-              js-link-fullscreen-popup
-            "
-            data-url="http://192.168.0.16:8080/product?name=Image%20Picket"
-          >
-            
-              <img
-                src="img/product5.jpg"
-                alt="img/product5.jpg"
-                class="smooth products_reviews_media_summary__thumbnail js-review-media"
-              >
-              
-            
-          </li>
-        
+        </c:forEach>
       </ul>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <div class="filter_sort_basic menu">
@@ -1139,14 +1056,6 @@ i.unstar:before {
         
  
     </ul>
-    
-       
-		<a href='/reviewwrite'><h3>게시물 작성</h3></a>
-		${reviewwrite}
-	
-    
-    
-    
       <div class="
         filter_sort_basic__filter_navigator
         filter_sort_basic__filter_navigator--left
@@ -1256,6 +1165,7 @@ i.unstar:before {
   </div>
   <ul class="products_reviews__reviews reviews">
   <c:forEach items="${rlist}" var="list">
+  
     <li
   class="
     review_list_v2 review_list_v2--collapsed
@@ -1269,6 +1179,7 @@ i.unstar:before {
   data-nonmember-review-check-delete-url="/http://192.168.0.16:8080//nonmember_reviews/delete_popup?id=17863&amp;widget_env=100"
   id="review_17863"
 >
+	
   <div class="review_list_v2__review_lcontent">
     <div class="review_list_v2__review_container">
       
@@ -1277,41 +1188,49 @@ i.unstar:before {
         
           <div class="review_list_v2__score_container">
             <div class="review_list_v2__score_star">
-              <div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
+           
+              <div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="star" style="fill: #000000">
+      
+     <defs>
+        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
+    </defs>
+    <use xlink:href="#star-full"></use>
+    
+</svg>
+</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="star" style="fill: #000000">
     <defs>
         <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
     </defs>
     <use xlink:href="#star-full"></use>
 </svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
+</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="star" style="fill: #000000">
     <defs>
         <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
     </defs>
     <use xlink:href="#star-full"></use>
 </svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
+</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="star" style="fill: #000000">
     <defs>
         <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
     </defs>
     <use xlink:href="#star-full"></use>
 </svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
+</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="star" style="fill: #000000">
     <defs>
         <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
     </defs>
     <use xlink:href="#star-full"></use>
-</svg>
-</div><div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-    <defs>
-        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-    </defs>
-    <use xlink:href="#star-full"></use>
-</svg>
+</svg> 
+	
 </div>
+	
 			${list.num}
-              <span class="visually-hidden">별점: 5점</span>
+			
+</div>
+			<span class="visually-hidden">${list.rating}</span>
             </div>
             <div class="review_list_v2__score_text">${list.title}</div>
+            
           </div>
         
         <div class="review_list_v2__edit_container">
@@ -1321,7 +1240,7 @@ i.unstar:before {
           
         </div>
       </div>
-
+		
       
 			
       
@@ -1358,13 +1277,13 @@ i.unstar:before {
     
 
       <li class="review_media_v2__medium">
-        <a class="js-link-fullscreen-popup" data-url="http://192.168.0.16:8080/product?name=Mini%20Photo%20Card">
+        <a class="js-link-fullscreen-popup" data-url="img/${list.img}">
+        <img src="img/${list.img}" style="width:100px;">
           <div class="
             review_media_v2__medium_container
             
           ">
-            <img class="review_media_v2__medium_image js-review-media smooth" id="img" src="img/.jpg">
-            
+           
           </div>
           <script>
             fimg('img', function(dw){return (dw - 17) * 0.25 - 8;}, 215, 237);
@@ -1499,25 +1418,24 @@ i.unstar:before {
 
 
     </div>
-    <script src="https://assets6.cre.ma/latte/assets/pc/application-c3bdd66ec532e67a21be397d6f96ca4552094b06893ea426332c6951aab5d49f.js"></script>
-    <script>	
+    
 
+    <script src="https://assets6.cre.ma/latte/assets/pc/application-c3bdd66ec532e67a21be397d6f96ca4552094b06893ea426332c6951aab5d49f.js"></script>
+    
+    <script>	
       var ajax_setup_args = {cache: true, dataType: "script", accepts: {
         script: "text/javascript, application/javascript"
       }};
       $.ajaxSetup(ajax_setup_args);
       
 
-
-</script>    
-  
+	</script>
 
     <form id="form-upload-image" class="hidden" data-type="json" enctype="multipart/form-data" action="/http://192.168.0.16:8080//preview_images/upload?widget_env=100" accept-charset="UTF-8" data-remote="true" method="post">
   <div id="upload-fields-container"></div>
+  
+  
 </form>
-
-
-
 </body>
 
 </html>

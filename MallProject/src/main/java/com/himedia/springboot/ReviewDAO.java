@@ -11,7 +11,7 @@ public interface ReviewDAO {
 	
 	ReviewDTO login(String id, String passcode1);
 	
-	ArrayList<ReviewDTO> getList(int start, int psize);
+	ArrayList<ReviewDTO> getList(int start, int psize, String prod_name);
 	
 	ReviewDTO view(int num);
 	
@@ -19,9 +19,9 @@ public interface ReviewDAO {
 	
 	void delPost(int num);
 	
-	void insPost(String title, String content, String writer, String created, String updated);
+	void insPost(String rating , String title, String content, String img, String writer, String created, String updated, String prod_name);
 	
-	void udPost(int num, String title, String content, String updated);
+	void udPost(int num, int rating, String title, String content, String img, String updated);
 	
 	int getTotal();
 

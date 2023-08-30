@@ -6,20 +6,42 @@
 <mapper namespace="com.himedia.springboot.ProductDAO">
 
 <insert id="insert">
-	insert into product set prod_name=#{param1}, 
-	prod_price=#{param2}, prod_msg=#{param3}, prod_img=#{param4}, prod_update=now()
+insert into product set prod_name=#{param1},prod_price=#{param2}, prod_msg=#{param3}, prod_img=#{param4}, prod_update=now() 
 </insert>
 
+<insert id="insertRegProduct">
+insert into REG_PRODUCT set user_id=#{param1}, prod_name=#{param2},prod_price=#{param3}, prod_msg=#{param4}, prod_img=#{param5}, prod_update=now() 
+</insert>
+
+<update id="regEdit">
+UPDATE REG_PRODUCT SET prod_name = #{param1}, prod_price = #{param2}, prod_msg = #{param3}, prod_img = #{param4},prod_update = now() WHERE prod_name = #{param5}
+</update>
+
+<update id="regEditProduct">
+UPDATE product SET prod_name = #{param1}, prod_price = #{param2}, prod_msg = #{param3}, prod_img = #{param4},prod_update = now() WHERE prod_name = #{param5}
+</update>
+
+<delete id="regDelete">
+Delete from REG_PRODUCT where prod_name = #{param1}
+</delete>
+
+<delete id="regDeleteProduct">
+Delete from product where prod_name = #{param1}
+</delete>
+
 <select id="getList" resultType="com.himedia.springboot.ProductDTO">
-select prod_name, prod_price, prod_msg, prod_img, prod_update from product order by prod_update asc limit #{param1},#{param2} 
+select prod_name, prod_price, prod_msg, prod_img, prod_update from product order by prod_update asc limit #{param1},#{param2}
 </select>
 
 <select id="getTotal" resultType="int">
-select count(*) from product 
-</select>
+ select count(*) from product 
+ </select>
 
-<select id="product" resultType="com.himedia.springboot.ProductDTO">
-select prod_id, prod_name,prod_price,prod_msg, prod_img from product where prod_name=#{param1} 
+<select id="product" resultType="com.himedia.springboot.ProductDTO"> 
+select prod_id, prod_name,prod_price,prod_msg, prod_img from product where prod_name=#{param1} </select>
+
+<select id="getRegProduct" resultType="com.himedia.springboot.ProductDTO"> 
+select prod_name, prod_price, prod_msg,prod_img from REG_PRODUCT where user_id=#{param1} 
 </select>
 
 </mapper>

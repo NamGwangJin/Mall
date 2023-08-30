@@ -1,26 +1,30 @@
-@charset "UTF-8";
-fieldset{
-    display: inline-block;
-    direction: rtl;
-    border:0;
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
 }
-fieldset legend{
-    text-align: right;
+ 
+.star-rating input {
+  display: none;
 }
- input[type=radio]{
-    display: none;
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
 }
- label{
-    font-size: 3em;
-    color: transparent;
-    text-shadow: 0 0 0 #f0f0f0;
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
 }
- label:hover{
-    text-shadow: 0 0 0 black;
-}
-label:hover ~ label{
-    text-shadow: 0 0 0 black;
-}
-input[type=radio]:checked ~ label{
-    text-shadow: 0 0 0 black;
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
 }
