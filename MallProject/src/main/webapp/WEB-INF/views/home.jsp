@@ -9,7 +9,7 @@
 <title>Weverse</title>
 </head>
 <body>
-<!-- 주석 -->
+
 <div class="navbar">
     <a href="/" id="logo">
         <img src="img/weverslogo.jpg" width="149">
