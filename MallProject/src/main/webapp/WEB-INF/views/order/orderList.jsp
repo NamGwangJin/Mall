@@ -41,7 +41,7 @@
       						</c:when>
       						<c:otherwise>
 	        					<c:forEach items="${oList}" var="order">
-	        						<tr><td>${order.order_num}</td><td>${order.order_time}</td><td><img src="/img/${order.prod_img}" style="width:100px;">&nbsp;${order.prod_name}</td><td>${order.order_qty}</td><td>${order.order_price}</td><td>${order.user_name}</td><td>${order.user_mobile}</td><td>${order.user_address}</td><td>배송 대기중</td></tr>
+	        						<tr><td>${order.order_num}</td><td>${order.order_time}</td><td><img src="/img/${order.prod_img}" style="width:100px;">&nbsp;${order.prod_name}</td><td>${order.order_qty}</td><td>${order.order_price}</td><td>${order.user_name}</td><td>${order.user_mobile}</td><td>${order.user_address}</td><td>배송 대기중</td><td><a href="/reviewwrite?prod_name=${order.prod_name}"><button>리뷰 작성</button></a></td></tr>
 	        						<tr><td colspan=9><hr></td></tr>
 	        					</c:forEach>
 	        				</c:otherwise>
@@ -50,7 +50,10 @@
         			</table>
         		</div>
         	</div>
+        	<div>
+        	</div>
         </section>
+        
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

@@ -6,11 +6,11 @@
 <mapper namespace="com.himedia.springboot.ReviewDAO">
 
 <select resultType="com.himedia.springboot.ReviewDTO" id="getList">
-select num, title, content, writer, hit, created, updated from review order by updated desc limit #{param1},#{param2}
+select num, rating, title, content, img, writer, hit, created, updated, prod_name from review where prod_name=#{param3} order by updated desc limit #{param1},#{param2}
 </select>
 
 <select resultType="com.himedia.springboot.ReviewDTO" id="view">
-select num, title, content, writer, hit, created, updated from review where num=#{param1};
+select num, rating, title, content, img, writer, hit, created, updated, prod_name from review where num=#{param1};
 </select>
 
 <update id="hitUp" parameterType="int">
@@ -22,11 +22,11 @@ delete from review where num=#{param1};
 </delete>
 
 <insert id="insPost">
-insert into review set title=#{param1}, content=#{param2}, writer=#{param3}, created=#{param4}, updated=#{param5};
+insert into review set rating=#{param1}, title=#{param2}, content=#{param3}, img=#{param4},writer=#{param5}, created=#{param6}, updated=#{param7}, prod_name=#{param8};
 </insert>
 
 <update id="udPost">
-update review set title=#{param2}, content=#{param3}, updated=now() where num=#{param1};
+update review set rating=#{param2} title=#{param3}, content=#{param4}, img=#{param5}, updated=now() where num=#{param1};
 </update>
 
 <select resultType="int" id="getTotal">

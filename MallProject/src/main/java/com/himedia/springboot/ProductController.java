@@ -20,6 +20,8 @@ import jakarta.servlet.http.HttpSession;
 public class ProductController {
 	@Autowired
 	private ProductDAO pDao;
+	@Autowired
+	private ReviewDAO rDao;
 	
 	@GetMapping("/")
 	public String home(HttpServletRequest req, Model model) {
@@ -81,7 +83,31 @@ public class ProductController {
 		ProductDTO mdto = pDao.product(name);
 		model.addAttribute("id",id);
 		model.addAttribute("product",mdto);
+		
+		int start,psize;
+		String page = req.getParameter("pageno");
+		if(page==null || page.equals("")) {
+			page="1";
+		}
+		int pno = Integer.parseInt(page);
+		start = (pno-1)*10;
+		psize = 10;
+		ArrayList<ReviewDTO> alBoard = rDao.getList(start, psize, name);
+		
+		int cnt=rDao.getTotal();
+		int pagecount = (int) Math.ceil(cnt/10.0);
 
+		String pagestr="";
+		for(int i=1; i<=pagecount; i++) {
+			if(pno==i) {
+				pagestr+=i+"&nbsp;";
+			} else {
+				pagestr+="<a href='/?pageno="+i+"'>"+i+"</a>&nbsp;";
+			}
+		}
+		model.addAttribute("pagestr", pagestr);
+		model.addAttribute("rlist", alBoard);
+		
 		return "product/product";
 	}
 

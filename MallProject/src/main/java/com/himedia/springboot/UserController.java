@@ -89,4 +89,14 @@ public class UserController {
 		s.invalidate();
 		return "redirect:/";
 	}
+	
+	@PostMapping("/idCheck")
+	@ResponseBody
+	public String idcheck(HttpServletRequest req) {
+		String id = req.getParameter("id");
+		
+		int data = uDao.idCheck(id);
+		
+		return String.valueOf(data);
+	}
 }

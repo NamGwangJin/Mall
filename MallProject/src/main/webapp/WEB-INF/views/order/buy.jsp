@@ -36,7 +36,7 @@
                     <table border="0">
                         <tr>
                             <th>상품명</th>
-                            <th>총수량</th>
+                            <th>수량</th>
                             <th>판매가</th>
                             <th>배송비</th>
                             <th>소계</th>
@@ -69,8 +69,8 @@
                                 <td>1 건</td>
                             </tr>
                             <tr>
-                                <td>상품금액</td>
-                                <td>${price}</td>
+                                <td>상품금액 (${qty}개)</td>
+                                <td>${total}</td>
                             </tr>
                             <tr>
                                 <td>할인금액</td>

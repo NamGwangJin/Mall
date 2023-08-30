@@ -8,7 +8,14 @@ public class UserDTO {
 	String user_email;
 	String user_address;
 	String user_birthday;
+	String signup_date;
 	
+	public String getSignup_date() {
+		return signup_date;
+	}
+	public void setSignup_date(String signup_date) {
+		this.signup_date = signup_date;
+	}
 	public String getUser_id() {
 		return user_id;
 	}

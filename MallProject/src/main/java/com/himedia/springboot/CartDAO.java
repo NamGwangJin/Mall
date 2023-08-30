@@ -9,6 +9,9 @@ public interface CartDAO {
 	int addCart(String userid, int prod_id, int qty, int price);
 	int deleteItem(String user_id, int prod_id);
 	void dropCart(String user_id);
+	int checkCart(int prod_id);
+	int otherCart(String user_id);
+	void cartUpdate(String user_id, int qty, int total, int prod_id);
 	
 	ArrayList<CartDTO> getCart(String id);
 	CartDTO getChoiceCart(String id, int prod_id);

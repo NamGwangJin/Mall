@@ -63,7 +63,6 @@ $(document)
             contentType: false,
             processData: false,
             success: function (response) {
-                
                 $('#uploadResult').html(response);
                 $('#prod_img').val($('#filename').text());
             },

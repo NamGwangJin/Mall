@@ -16,7 +16,6 @@
     </a>
     <ul id="menu">
     	<input type=hidden name=id value="${id}">
-    	<li><a href="#">${review}</a></li>
     	<li><a href="#">${bbs}</a></li>
         <li><a href="/cartList?id=${id}">장바구니</a></li>
         <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
@@ -37,7 +36,7 @@
                     <div class="product-name">
                         ${product.prod_name}
                     </div>
-                    <div class="product-price">${product.prod_price}</div>
+                    <div class="product-price">${product.prod_price}원</div>
                 </a>
             </c:forEach>
             </tr>

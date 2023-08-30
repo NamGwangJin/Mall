@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserDAO {
+	int idCheck(String id);
+	
 	int signup(String id, String passcode1,  String name,
 			String mobile, String email, String address, String bd);
 

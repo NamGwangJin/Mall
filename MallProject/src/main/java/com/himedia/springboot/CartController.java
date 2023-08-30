@@ -41,10 +41,13 @@ public class CartController {
 		int prodId=Integer.parseInt(req.getParameter("prodId"));
 		int qty=Integer.parseInt(req.getParameter("qty"));
 		int totalPrice=Integer.parseInt(req.getParameter("totalPrice"));
-
-		int data = cDao.addCart(userId, prodId, qty, totalPrice);
 		
-		System.out.println(data);
+		int check = cDao.checkCart(prodId); // 장바구니에 이미 있는 상품인지 체크
+		if ( check > 0 ) {
+			return "있음";
+		}
+		
+		int data = cDao.addCart(userId, prodId, qty, totalPrice);
 		return String.valueOf(data);
 	}
 	
@@ -67,6 +70,60 @@ public class CartController {
 		return "/cartList";
 	}
 	
+//	@GetMapping("/cartUpdate")
+//	public String cartUpdate(HttpServletRequest req) {
+//		HttpSession s = req.getSession();
+//		String user_id = (String) s.getAttribute("id");
+//		int qty = Integer.parseInt(req.getParameter("qty"));
+//		int total = Integer.parseInt(req.getParameter("total"));
+//		int prod_id = Integer.parseInt(req.getParameter("prod_id"));
+//		
+//		cDao.cartUpdate(user_id, qty, total, prod_id);
+//		
+//		return "redirect:/cartList";
+//	}
+	
+	@PostMapping("/cartUpdate")
+	@ResponseBody
+	public String cartUpdate(HttpServletRequest req) {
+		HttpSession s = req.getSession();
+		String user_id = (String) s.getAttribute("id");
+		int qty = Integer.parseInt(req.getParameter("qty"));
+		int total = Integer.parseInt(req.getParameter("total"));
+		int prod_id = Integer.parseInt(req.getParameter("prod_id"));
+		
+		cDao.cartUpdate(user_id, qty, total, prod_id);
+		
+		return "success";
+	}
+	
+	@PostMapping("/buy")
+	@ResponseBody
+	public String buy(HttpServletRequest req, Model model) {
+		String user_id = req.getParameter("user_id");
+		String prod_name = req.getParameter("prod_name");
+		int prod_id = Integer.parseInt(req.getParameter("prod_id"));
+		int qty = Integer.parseInt(req.getParameter("qty"));
+		int price = Integer.parseInt(req.getParameter("price"));
+		int total = Integer.parseInt(req.getParameter("total"));
+		String img = req.getParameter("img");
+		
+		int check = cDao.checkCart(prod_id); // 장바구니에 이미 있는 상품인지 체크
+		if ( check > 0 ) {
+			return "same";
+		}
+		
+		int other = cDao.otherCart(user_id); // 장바구니에 다른 상품 있는지 체크
+		if ( other > 0) {
+			cDao.addCart(user_id, prod_id, qty, total);
+			return "other";
+		}
+		
+		int data = cDao.addCart(user_id, prod_id, qty, total);
+		
+		return String.valueOf(data);
+	}
+	
 	@GetMapping("/buy")
 	public String gobuy(HttpServletRequest req, Model model) {
 		String user_id = req.getParameter("user_id");
@@ -77,14 +134,13 @@ public class CartController {
 		int total = Integer.parseInt(req.getParameter("total"));
 		String img = req.getParameter("img");
 		
-		cDao.addCart(user_id, prod_id, qty, total);
-		
 		model.addAttribute("prod_id",prod_id);
 		model.addAttribute("prod_name",prod_name);
 		model.addAttribute("qty",qty);
 		model.addAttribute("price",price);
 		model.addAttribute("total",total);
 		model.addAttribute("img",img);
+		
 		return "order/buy";
 	}
 	
@@ -93,12 +149,16 @@ public class CartController {
 		String user_id = req.getParameter("user_id");
 		String prod_id = req.getParameter("prod_id");
 		String[] prodList = prod_id.split("");
+		
 		ArrayList<CartDTO> cList = new ArrayList<CartDTO>();
+		
 		for(int i = 0; i<prodList.length; i++) {
 			cList.add(cDao.getChoiceCart(user_id, Integer.parseInt(prodList[i])));
 		}
+		
 		model.addAttribute("cList",cList);
 		model.addAttribute("size",cList.size());
+		
 		return "cart/listbuy";
 	}
 	

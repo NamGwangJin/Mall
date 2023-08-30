@@ -42,7 +42,7 @@
                     <table border="0">
                         <tr>
                             <th>상품명</th>
-                            <th>총수량</th>
+                            <th>수량</th>
                             <th>판매가</th>
                             <th>배송비</th>
                             <th>소계</th>
@@ -78,8 +78,8 @@
                                 <td>${size} 건</td>
                             </tr>
                             <tr>
-                                <td>상품금액</td>
-                                <td>${price}</td>
+                                <td id=qty></td>
+                                <td id=price></td>
                             </tr>
                             <tr>
                                 <td>할인금액</td>
@@ -228,6 +228,12 @@ $(document)
 	}
 	$('input[name=prod_qty]').val(prod_qty);
 	
+	prod_qty = 0;
+	for(var i=0; i<$('input[name=qty]').length; i++){
+		prod_qty += parseInt($('input[name=qty]').eq(i).val());
+	}
+	$('#qty').text("상품금액 ("+prod_qty+"개)")
+	
 	var prod_total = "";
 	for(var i=0; i<$("input[name=total]").length; i++){
 		if ( i == $("input[name=total]").length - 1) {
@@ -244,6 +250,7 @@ $(document)
 		total += parseInt($('input[name=total]').eq(i).val());
 	}
 	$('#total').text(total);
+	$('#price').text(total);
 })
 .on('submit',"#order",function(){
 	// 유효성 검사 해야함
