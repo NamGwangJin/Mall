@@ -36,13 +36,12 @@
 		<div class="MoreHeaderView_profile_wrap__Y9XWQ">
 			<div class="MoreHeaderView_name__4ZkcS">
 				<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">
-				${imp.user_id}님 환영합니다.</h2>
+				${imp.user_name}님 환영합니다.</h2>
 			</div>
 			<address class="MoreHeaderView_email__Ui6wT">${imp.user_email }</address>
 		</div>
 		<!-- 수정/탈퇴 버튼 -->
 		<div class="MoreHeaderView_button_wrap__B-cQ2">
-			<a href="#" class="MoreHeaderView_button_item__gv6pa">수정하기</a>
 			<a href="/quit" id = quit class="MoreHeaderView_button_item__gv6pa">탈퇴하기</a>
 		</div>
 	</div>
@@ -118,19 +117,19 @@
 <div class="input-group inline">
 <label class="control-label">이름</label>
 <div class="static-field">
-<input type="text" name="hp_tail1" value="${imp.user_name }">
+<input type="text" name="hp_tail1" value="${imp.user_name }" readonly>
 </div>
 </div>
 <div class="input-group inline">
 <label class="control-label">아이디</label>
 <div class="control-field">
-<input type="text" name="email" value="${imp.user_id}">
+<input type="text" name="email" value="${imp.user_id}" readonly>
 </div>
 </div>
 <div class="input-group inline">
 <label class="control-label">생년월일</label>
 <div class="control-field">
-<input type="text" name="email" value="${imp.user_birthday }">
+<input type="text" name="email" value="${imp.user_birthday }" readonly>
 </div>
 </div>
 </div>
@@ -142,21 +141,37 @@
 <div class="input-group inline">
 <label class="control-label">전화</label>
 <div class="control-field col">
-<input type="text" placeholder="" name="hp_tail0" value="${imp.user_mobile }">
+<input type="text" name="mobile" value="${imp.user_mobile }" readonly>
+</div>
+</div>
+<div class="input-group inline">
+<label class="control-label">주소</label>
+<div class="control-field">
+<input type="text" name="address" value="${imp.user_address }" readonly>
 </div>
 </div>
 <div class="input-group inline">
 <label class="control-label">이메일</label>
 <div class="control-field">
-<input type="text" name="email" value="${imp.user_email }">
-</div>
+<input type="text" name="email" value="${imp.user_email }" readonly>
 </div>
 </div>
 </div>
 
+<p class="form-title multi">가입일자</p>
+<div class="myp-form-col">
+<div class="input-group inline">
+<label class="control-label"></label>
+<div class="control-field col">
+<input type="text" name="mobile" value="${imp.signup_date }" readonly>
+</div>
+</div>
+</div>
+
+
 <div class="lnb-form-action">
 <button class="btn btn-default" onclick="location.href='/mypage';">취소</button>
-<button class="btn btn-default btn-primary">확인</button>
+<button class="btn btn-default btn-primary" onclick="location.href='/mypage';">확인</button>
 </div>
 </div>
 </div>

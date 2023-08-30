@@ -36,13 +36,12 @@
 		<div class="MoreHeaderView_profile_wrap__Y9XWQ">
 			<div class="MoreHeaderView_name__4ZkcS">
 				<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">
-				${info}님 환영합니다.</h2>
+				${imp.user_name}님 환영합니다.</h2>
 			</div>
 			<address class="MoreHeaderView_email__Ui6wT">${imp.user_email }</address>
 		</div>
 		<!-- 수정/탈퇴 버튼 -->
 		<div class="MoreHeaderView_button_wrap__B-cQ2">
-			<a href="/profile" class="MoreHeaderView_button_item__gv6pa">수정하기</a>
 			<a href="/quit" id=quit class="MoreHeaderView_button_item__gv6pa">탈퇴하기</a>
 		</div>
 	</div>
@@ -112,7 +111,7 @@
 </a>
 </div>
 <div class="gradeDetail">
-<strong>"${imp.user_name }"님</strong>
+<strong>${info}님</strong>
 <p>이 달의 회원 등급<a class=" css-n2sa3z-defaultStyle-underlineStyle-Linked" href="#">
 <strong class="gradeText">JOKEBEAR+</strong>
 <i class="css-f0fihq-defaultStyle-icon_094-Icon">
