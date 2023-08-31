@@ -217,10 +217,8 @@ public class ProductController {
         	   model.addAttribute("inforeg", "");
            } else {
 	   	   	    if (admin.equals("Y")) {
-	   	   	    	System.out.println("들어옴");
 		   	        model.addAttribute("inforeg", "<a href='/goreg'>상품관리하기</a>");
 		   	    } else {
-	   	   	    	System.out.println("들어옴");
 		   	    	model.addAttribute("inforeg", "");
 		   	    }
            }

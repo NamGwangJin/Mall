@@ -183,7 +183,7 @@
 <script>
 $(document)
 .ready(function(){
-	console.log($('input[name=id]').val())
+	console.log($('input[name=img]').val())
 })
 .on('submit',"#order",function(){
 	// 유효성 검사 해야함

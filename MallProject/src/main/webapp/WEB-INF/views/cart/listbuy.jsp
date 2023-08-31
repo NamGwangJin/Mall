@@ -53,7 +53,7 @@
                                 <a href="#">
                                 	<input type=hidden name=prodId value="${cart.prod_id}">
                                 	<input type=hidden name=img value="${cart.prod_img}">
-                                    <img style="width:80px; height:100px;" src="img/${cart.prod_img}.jpg" alt="1">
+                                    <img style="width:80px; height:100px;" src="img/${cart.prod_img}" alt="1">
                                 </a>
                                 <div>
                                     <h2>${cart.prod_name}</h2>

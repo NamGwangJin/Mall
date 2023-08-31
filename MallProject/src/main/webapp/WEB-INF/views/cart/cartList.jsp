@@ -48,7 +48,7 @@
         						<tbody id="cartList" style="text-align:center;">
 	        						<tr>
 	        								<td><input type=hidden name=prodid id=prodid value="${cart.prod_id}"><input type=hidden name=price id=price value="${cart.prod_price}"><input name="checkbox" type=checkbox></td>
-	        								<td><input type=hidden id=img value="${cart.prod_img}.jpg"><img src="/img/${cart.prod_img}.jpg" style="width:100px;">&nbsp;<b id=prodname>${cart.prod_name}</b></td>
+	        								<td><input type=hidden id=img value="${cart.prod_img}"><img src="/img/${cart.prod_img}" style="width:100px;">&nbsp;<b id=prodname>${cart.prod_name}</b></td>
 	        								<td>
 	        								<button class="decrease" name="decrease" style="width:30px;height:30px;">-</button>
 	        								<input type="text" name=qty id=qty value="${cart.prod_qty}" style="width:30px; height:30px; text-align:center;" readonly>
