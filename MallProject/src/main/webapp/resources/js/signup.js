@@ -1,5 +1,7 @@
 var idRegExp = /^[a-z0-9]{8,16}$/; // 아이디
 var pwRegExp = /^[a-zA-z0-9]{8,16}$/; // 비밀번호
+var nameRegExp = /^[가-힣]{2,15}$/; //이름 한글만
+var emailRegExp = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
 
 $(document)
 .on('click','#search',function(){
@@ -140,7 +142,7 @@ $(document)
 		$('#pwvd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">비밀번호는 8자 이상, 16자 이하 영대소문자,숫자만 입력 가능합니다.</small>');
 		return false;
 	} else {
-		if( $(this).val() == $('#pw2').val() ){
+		if( $(this).val() == $('#passcode2').val() ){
 			$('#pwvd').html('<small style="color:green;"><img src="/img/greencheck.png" style="width:20px;">사용가능한 비밀번호입니다.</small>')
 		} else {
 			$('#pwvd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">비밀번호와 비밀번호 확인이 일치하지 않습니다.</small>');
@@ -152,10 +154,51 @@ $(document)
 		$('#pwvd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">비밀번호는 8자 이상, 16자 이하 영대소문자,숫자만 입력 가능합니다.</small>');
 		return false;
 	} else {
-		if( $(this).val() == $('#pw1').val() ){
+		if( $(this).val() == $('#passcode1').val() ){
 			$('#pwvd').html('<small style="color:green;"><img src="/img/greencheck.png" style="width:20px;">사용가능한 비밀번호입니다.</small>')
 		} else {
 			$('#pwvd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">비밀번호와 비밀번호 확인이 일치하지 않습니다.</small>');
 		}
 	}
 })
+.on('input','#name',function(){
+	if ( !nameRegExp.test( $(this).val() ) ) {
+		$('#namevd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">이름은 한글 2자 이상만 입력 가능합니다.</small>');
+		return false;
+	} else {
+		$('#namevd').html('<small style="color:green;"><img src="/img/greencheck.png" style="width:20px;">사용 가능한 이름입니다.</small>');
+		return false;
+	}
+})
+.on('input','#birthday',function(){
+	if( parseInt( getToday() - $(this).val().split("-")[0] ) < 15 ) {
+		$('#bdvd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">14세 이상만 가입 가능합니다.</small>');
+		return false;
+	} else {
+		$('#bdvd').html('<small style="color:green;"><img src="/img/greencheck.png" style="width:20px;">가입 가능한 생년월일입니다.</small>');
+		return false;
+	}
+})
+.on('input','#mobile',function(){
+	let mobile = $(this).val().replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/\-{1,3}$/g, "");
+	$(this).val(mobile);
+})
+.on('input','#email',function(){
+	if ( !emailRegExp.test($(this).val() ) ) {
+		$('#emailvd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">올바른 이메일 형식이 아닙니다.</small>');
+		return false;
+	} else {
+		$('#emailvd').html('<small style="color:green;"><img src="/img/greencheck.png" style="width:20px;">사용 가능한 이메일입니다.</small>');
+		return false;
+	}
+})
+;
+function getToday(){
+	var date = new Date();
+    var year = date.getFullYear();
+    var month = ("0" + (1 + date.getMonth())).slice(-2);
+    var day = ("0" + date.getDate()).slice(-2);
+
+	return year;
+    /*return year + "-" + month + "-" + day; */
+}
