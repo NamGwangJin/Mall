@@ -20,6 +20,9 @@ public class CartController {
 	@Autowired
 	private CartDAO cDao;
 	
+	@Autowired
+	private UserDAO uDao;
+	
 	@GetMapping("/cartList")
 	public String cartList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
@@ -163,6 +166,18 @@ public class CartController {
 		model.addAttribute("size",cList.size());
 		
 		return "cart/listbuy";
+	}
+	
+	@PostMapping("/same")
+	@ResponseBody
+	public String same(HttpServletRequest req) {
+		String user_id = (String) req.getSession().getAttribute("id");
+		UserDTO sameUser = uDao.sameUser(user_id);
+		String user_name = sameUser.getUser_name();
+		String mobile = sameUser.getUser_mobile();
+		String address = sameUser.getUser_address();
+		
+		return user_name + "/" + mobile + "/" + address;
 	}
 	
 	@GetMapping("/listorder")

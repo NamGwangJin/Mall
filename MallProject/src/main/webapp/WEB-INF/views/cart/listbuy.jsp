@@ -102,7 +102,7 @@
                     </div>
                     <!-- 배송정보 -->
                     <article class="delivery">
-                        <h1>배송정보</h1>
+                        <h1>배송정보</h1><input type="checkbox" id=same><sub style="text-align:right;">회원정보와 동일</sub>
                         <table>
                             <tr>
                                 <td>받는분</td>
@@ -155,24 +155,24 @@
                     <article class="payment">
                         <h1>결제방법</h1>
                         <div>
-                            <span>신용카드</span>
+                            <span>간편결제</span>
                             <p>
                                 <label>
-                                    <input type="radio" name="payment" value="신용카드">신용카드 결제
+                                    <input type="radio" name="payment" value="카카오페이">카카오페이
                                 </label>
                                 <label>
-                                    <input type="radio" name="payment" value="체크카드">체크카드 결제
+                                    <input type="radio" name="payment" value="네이버페이">네이버페이
                                 </label>
                             </p>
                         </div>
                         <div>
-                            <span>계좌이체</span>
+                            <span>카드</span>
                             <p>
                                 <label>
-                                    <input type="radio" name="payment" value="계좌이체">실시간 계좌이체
+                                    <input type="radio" name="payment" value="신용카드">신용카드
                                 </label>
                                 <label>
-                                    <input type="radio" name="payment" value="무통장입금">무통장 입금
+                                    <input type="radio" name="payment" value="체크카드">체크카드
                                 </label>
                             </p>
                         </div>
@@ -182,6 +182,12 @@
                                 <label>
                                     <input type="radio" name="payment" value="휴대폰결제">휴대폰 결제
                                 </label>
+                                <label>
+                                    <input type="radio" name="payment" value="계좌이체">실시간 계좌이체
+                                </label>
+                                <label>
+                                    <input type="radio" name="payment" value="무통장입금">무통장 입금
+                                </label>
                             </p>
                         </div>
                     </article>
@@ -189,72 +195,5 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document)
-.ready(function(){
-	var prod_id = "";
-	for(var i=0; i<$("input[name=prodId]").length; i++){
-		prod_id += $("input[name=prodId]").eq(i).val();
-	}
-	$('input[name=prod_id]').val(prod_id);
-	
-	var prod_img = "";
-	for(var i=0; i<$("input[name=img]").length; i++){
-		if ( i == $("input[name=img]").length - 1) {
-			prod_img += $('input[name=img]').eq(i).val() + ".jpg";
-			break;
-		}
-		prod_img += $('input[name=img]').eq(i).val() + ".jpg" + ",";
-	}
-	$('input[name=prod_img]').val(prod_img);
-	
-	var prod_name = "";
-	for(var i=0; i<$("input[name=prodName]").length; i++){
-		if ( i == $("input[name=prodName]").length - 1) {
-			prod_name += $('input[name=prodName]').eq(i).val();
-			break;
-		}
-		prod_name += $('input[name=prodName]').eq(i).val() + ",";
-	}
-	$('input[name=prod_name]').val(prod_name);
-
-	var prod_qty = "";
-	for(var i=0; i<$("input[name=qty]").length; i++){
-		if ( i == $("input[name=qty]").length - 1) {
-			prod_qty += $('input[name=qty]').eq(i).val();
-			break;
-		}
-		prod_qty += $('input[name=qty]').eq(i).val() + ",";
-	}
-	$('input[name=prod_qty]').val(prod_qty);
-	
-	prod_qty = 0;
-	for(var i=0; i<$('input[name=qty]').length; i++){
-		prod_qty += parseInt($('input[name=qty]').eq(i).val());
-	}
-	$('#qty').text("상품금액 ("+prod_qty+"개)")
-	
-	var prod_total = "";
-	for(var i=0; i<$("input[name=total]").length; i++){
-		if ( i == $("input[name=total]").length - 1) {
-			prod_total += $('input[name=total]').eq(i).val();
-			break;
-		}
-		prod_total += $('input[name=total]').eq(i).val() + ",";
-	}
-	$('input[name=prod_total]').val(prod_total);
-	
-	let total = 0;
-	var qty = $('input[name=total]').length;
-	for(var i=0; i<qty; i++){
-		total += parseInt($('input[name=total]').eq(i).val());
-	}
-	$('#total').text(total);
-	$('#price').text(total);
-})
-.on('submit',"#order",function(){
-	// 유효성 검사 해야함
-	return true;
-})
-</script>
+<script src="resources/js/listbuy.js"></script>
 </html>
