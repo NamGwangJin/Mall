@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.himedia.springboot.ProductController.AbstractUserController;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -14,6 +16,11 @@ import jakarta.servlet.http.HttpSession;
 public class UserController {
 	@Autowired
 	private UserDAO uDao;
+	
+    public static void handleUserInterface(HttpServletRequest req, Model model) {
+		  AbstractUserController abstractUserController = new AbstractUserController(){};
+	        abstractUserController.handleUserInterface(req, model);
+	}
 	
 	@GetMapping("/gosignup")
 	public String gosignup() {
@@ -69,16 +76,13 @@ public class UserController {
 	@GetMapping("/mypage")
 	public String mypage(HttpServletRequest req, Model model) {
 		HttpSession s = req.getSession();
+		handleUserInterface(req, model);
 		String id = (String) s.getAttribute("id");
 		UserDTO user = uDao.getpage(id);
-		if(id==null || id.equals("")) {
-			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
-		}else {
-			model.addAttribute("infoline","<a href='/mypage'>"+id+"</a>"+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
-			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
-			model.addAttribute("info",id);
-			model.addAttribute("imp",user);
-		}
+
+		model.addAttribute("info",id);
+		model.addAttribute("imp",user);
+		
 		return "user/mypage";
 	}
 	
@@ -103,35 +107,28 @@ public class UserController {
 	
 	@GetMapping("/profile")
 	public String goProfile(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
 		HttpSession s = req.getSession();
 		String id = (String)s.getAttribute("id");
 		UserDTO user = uDao.getprof(id);
-		if(id==null || id.equals("")) {
-			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
-		}else {
-			model.addAttribute("infoline","<a href='/mypage'>"+id+"</a>"+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
-			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
-			model.addAttribute("info",id);
-			model.addAttribute("imp",user);
-		}
+
+		model.addAttribute("info",id);
+		model.addAttribute("imp",user);
 		
-		return("user/profile");
+		return "user/profile";
 	}
 	
 	@GetMapping("/delivery")
 	public String goDelivery(HttpServletRequest req, Model model) {
 		HttpSession s = req.getSession();
+		handleUserInterface(req, model);
+		
 		String id = (String)s.getAttribute("id");
 		UserDTO user = uDao.getdel(id);
-		if(id==null || id.equals("")) {
-			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
-		}else {
-			model.addAttribute("infoline","<a href='/mypage'>"+id+"</a>"+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
-			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
-			model.addAttribute("info",id);
-			model.addAttribute("imp",user);
-		}
 		
+		model.addAttribute("info",id);
+		model.addAttribute("imp",user);
+				
 		return("user/delivery");
 	}
 }

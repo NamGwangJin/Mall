@@ -156,7 +156,7 @@ public class ProductController {
 	    model.addAttribute("prodImg", prodImg);
 	    model.addAttribute("prodMsg", prodMsg);
 	    
-
+	    
 	    return "product/regProductEdit";
 	}
 	
@@ -218,12 +218,10 @@ public class ProductController {
             	model.addAttribute("infoline","<div class='MoreHeaderView_button_wrap__B-cQ2'>"+
             												"<a href='/gologin' class='MoreHeaderView_button_item__gv6pa' >로그인</a>&nbsp;&nbsp;" +
             												"<a href='/gosignup'  class='MoreHeaderView_button_item__gv6pa'>회원가입</a></div>");
-//                model.addAttribute("infoline", "<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
-             
             } else {
             	model.addAttribute("bbs", "<a href='/bbs'><img src='img/boardimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">게시판</span></a>");
                 model.addAttribute("cartlist"," <a href='/cartList?id='"+id+"><img src='img/shoppingcartimg.jpg' width=\"50\" height=\"50\"> <span class=\"tooltip\">장바구니</span></a>");
-                model.addAttribute("orderlist"," <a href='/orderList?id='"+id+"><img src='img/moveproductimg.jpg' width=\"70\" height=\"70\"><span class=\"tooltip\">주문조회</span></a>");
+                model.addAttribute("orderlist"," <a href='/orderList?id='"+id+"><img src='img/moveproductimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">주문조회</span></a>");
           
                 model.addAttribute("infoline", "<a href='/mypage'><img src='img/mypage.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">마이페이지</span></a>");
                 model.addAttribute("write", "<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");

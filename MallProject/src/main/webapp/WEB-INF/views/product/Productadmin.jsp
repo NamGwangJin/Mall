@@ -65,19 +65,7 @@
 
 <body>
 
-<div class="navbar">
-    <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="149">
-    </a>
-    <ul id="menu">
-    	<input type=hidden name=id value="${id}">
-    	<li><a href="#">${review}</a></li>
-    	<li><a href="#">${bbs}</a></li>
-       
-        <li><a href="/mypage">${infoline}</a></li>
-        <li>${inforeg}</li>
-    </ul>
-</div>
+<%@ include file="..\header.jsp" %>
 <div class="body">
 <!-- <div class="MoreLayoutView_container__8Ahvr"> -->
 <div class="MoreHeaderView_container__kK6Wj">

@@ -13,6 +13,7 @@ h1{ border-collapse : collapse; width:75%; margin-left:auto; margin-right:auto; 
 table td { border : 1px solid black; }
 </style>
 <body align=center>
+<%@ include file="..\header.jsp" %>
 <table>
 ${write}
 <form method='post' action='/insert2' id=frmInsert name=frmInsert>

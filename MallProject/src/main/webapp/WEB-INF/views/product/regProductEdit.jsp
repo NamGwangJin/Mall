@@ -9,10 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
   </head>   
 <body>
-<div class="navbar">
-
-   
-</div>
+<%@ include file="..\header.jsp" %>
    
 <h1 align=center>${id}님의 상품 수정하기</h1>
 

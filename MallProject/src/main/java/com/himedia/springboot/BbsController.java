@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.himedia.springboot.ProductController.AbstractUserController;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -24,11 +26,17 @@ public class BbsController {
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String now = formatter.format(date);
 	
+    public static void handleUserInterface(HttpServletRequest req, Model model) {
+		  AbstractUserController abstractUserController = new AbstractUserController(){};
+	        abstractUserController.handleUserInterface(req, model);
+	}
+	
 	@Autowired
 	private BbsDAO bdao;
 	
 	@PostMapping("/replyInsert")
 	public String replyInsert(HttpServletRequest req) {
+		
 		HttpSession session = req.getSession();
 		String writer = (String) session.getAttribute("id");
 		int num = Integer.parseInt(req.getParameter("num"));
@@ -48,6 +56,7 @@ public class BbsController {
 	
 	@GetMapping("/update1")
 	public String update1(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
 		int num = Integer.parseInt(req.getParameter("num"));
 		BbscmtDTO cdto = bdao.Reply(num);
 		model.addAttribute("cList",cdto);
@@ -65,6 +74,7 @@ public class BbsController {
 	
 	@GetMapping("/view")
 	public String view(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
 		HttpSession session = req.getSession();
 		String id= (String) session.getAttribute("id");
 		model.addAttribute("id", id);
@@ -88,6 +98,7 @@ public class BbsController {
 	
 	@GetMapping("/write")
 	public String write(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
 		return "bbs/write";
 	}
 	@PostMapping("/insert2")
@@ -102,6 +113,7 @@ public class BbsController {
 	
 	@GetMapping("/update")
 	public String update(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
 		int num = Integer.parseInt(req.getParameter("num"));
 		BbsDTO bdto = bdao.view(num);
 		model.addAttribute("bPost",bdto);
@@ -120,11 +132,9 @@ public class BbsController {
 	@GetMapping("/bbs")
 	public String bbs(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
+		handleUserInterface(req, model);
 		String id= (String) session.getAttribute("id");
 		if(id==null || id.equals("")) {
-			model.addAttribute("home","<a href='/'>홈으로</a>");
-			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
-			model.addAttribute("id", "");
 			int start,psize;
 			String page = req.getParameter("pageno");
 			if(page==null || page.equals("")) {
@@ -149,10 +159,6 @@ public class BbsController {
 			model.addAttribute("pagestr", pagestr);
 			model.addAttribute("mlist", alBoard);
 		} else {
-			model.addAttribute("home","<a href='/'>홈으로</a>");
-			model.addAttribute("infoline",id+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
-			model.addAttribute("write","<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");
-			model.addAttribute("id", id);
 			int start,psize;
 			String page = req.getParameter("pageno");
 			if(page==null || page.equals("")) {

@@ -8,6 +8,7 @@
 <link href="resources/css/bbs.css" rel="stylesheet"/>
 <title>${bPost.title}</title>
 </head>
+<%@ include file="..\header.jsp" %>
 <h1 class="con">게시글 상세</h1>
     <section class="article-detail table-common con row">
         <div class="article-writer cell">

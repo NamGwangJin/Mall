@@ -9,6 +9,7 @@
 <link href="resources/css/bbs.css" rel="stylesheet"/>
 </head>
 <body>
+<%@ include file="..\header.jsp" %>
 <form method="post" action="/modify2" id=frmUpdate1 name=frmUpdate1>
 <input type=hidden id=no name=num value='${cList.num}'>
  <h1 class="">댓글 목록</h1>

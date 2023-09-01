@@ -10,20 +10,8 @@
 <title>Weverse</title>
 </head>
 <body>
-<div class="navbar">
-    <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="149">
-    </a>
-    <ul id="menu">
-    	<input type=hidden name=id value="${id}">
+<%@ include file="..\header.jsp" %>
 
-    	<li><a href="#">${bbs}</a></li>
-        <li><a href="/cartList?id=${id}">장바구니</a></li>
-        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-        <li><a href="/mypage"></a>${infoline}</li>
-        <li>${inforeg}</li>
-    </ul>
-</div>
  <h1 class="con">게시글 목록</h1>
     <section class="article-list table-common con">
      <table border="1" id=tblBoard>

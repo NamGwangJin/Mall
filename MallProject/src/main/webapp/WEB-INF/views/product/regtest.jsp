@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@ include file="..\header.jsp" %>
 
 <table>
 <tr><td>등록된상품목록</td></tr>

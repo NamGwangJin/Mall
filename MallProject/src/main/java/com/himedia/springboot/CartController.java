@@ -37,12 +37,12 @@ public class CartController {
     public static void handleUserInterface(HttpServletRequest req, Model model) {
 		  AbstractUserController abstractUserController = new AbstractUserController(){};
 	        abstractUserController.handleUserInterface(req, model);
-		
 	}
 	
 	@GetMapping("/cartList")
 	public String cartList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
+		handleUserInterface(req, model);
 		String id = (String) session.getAttribute("id");
 		if(id == null || id.equals("")) {
 			return "redirect:/gologin";
@@ -163,6 +163,7 @@ public class CartController {
 		model.addAttribute("price",price);
 		model.addAttribute("total",total);
 		model.addAttribute("img",img);
+		handleUserInterface(req, model);
 		
 		return "order/buy";
 	}
@@ -181,6 +182,7 @@ public class CartController {
 		
 		model.addAttribute("cList",cList);
 		model.addAttribute("size",cList.size());
+		handleUserInterface(req, model);
 		
 		return "cart/listbuy";
 	}
@@ -284,6 +286,7 @@ public class CartController {
 	public String orderList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
+		handleUserInterface(req, model);
 		if (id == null || id.equals("")) {
 			return "redirect:/gologin";
 		}

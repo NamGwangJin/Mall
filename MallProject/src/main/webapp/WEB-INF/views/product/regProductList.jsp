@@ -38,7 +38,7 @@ table {
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@ include file="..\header.jsp" %>
 
 <table id=pList>
 <tr><td>　</td></tr>

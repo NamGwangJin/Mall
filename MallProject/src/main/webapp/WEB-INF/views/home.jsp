@@ -11,29 +11,7 @@
 </head>
 
 <body>
-
-
-
-<div class="navbar">
-    <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="160">
-        
-    </a>
-    <ul id="menu">
- 		 <li class="menu-item">${infoline}</li>
- 		 <li class="menu-item">${inforeg}</li>
- 		</ul>
-    <ul id="menu">
-    	<input type=hidden name=id value="${id}">
-    	<li class="menu-item">${bbs}</li>
-       
-    	<li class="menu-item">${cartlist}</li> 
-   		<li class="menu-item">${orderlist}</li>
-
-        
-    </ul>
-    	
-</div>
+<%@ include file="header.jsp" %>
 
 <div class="products">
     <h3>상품목록</h3>

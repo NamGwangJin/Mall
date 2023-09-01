@@ -12,6 +12,7 @@ table{ border-collapse : collapse; width:75%; margin-left:auto; margin-right:aut
 table td { border : 1px solid black; }
 </style>
 <body align=center>
+<%@ include file="..\header.jsp" %>
 <form method="post" action="/modify" id=frmUpdate name=frmUpdate>
 <input type=hidden id=no name=num value='${bPost.num}'>
 <table>
