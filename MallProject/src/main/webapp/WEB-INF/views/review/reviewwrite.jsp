@@ -24,7 +24,7 @@ ${reviewwrite}
 <tr><td>별점</td><td>
 	<div class="star-rating space-x-4 mx-auto">
 		<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
-		<label for="1-star" class="star pr-4">★</label>
+		<label for="5-stars" class="star">★</label>
 		<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
 		<label for="4-stars" class="star">★</label>
 		<input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
@@ -33,7 +33,7 @@ ${reviewwrite}
 		<label for="2-stars" class="star">★</label>
 		<input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
 		<label for="1-star" class="star">★</label>
-</div>
+	</div>
 </td></tr>
 <tr><td>제목</td><td><input type=text name=title id=title maxlength=128 style='width:90%'></td></tr>
 <tr><td>내용</td><td><textarea rows=10 cols=50 name=content id=content style='width:90%'></textarea></td></tr>

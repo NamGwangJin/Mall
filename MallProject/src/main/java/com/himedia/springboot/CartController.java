@@ -1,7 +1,8 @@
 package com.himedia.springboot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,18 +11,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+import com.himedia.springboot.ProductController.AbstractUserController;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class CartController {
+	Date date = new Date();
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String now = formatter.format(date);
+	
 	@Autowired
 	private CartDAO cDao;
 	
 	@Autowired
 	private UserDAO uDao;
+	
+	@Autowired
+	private ReviewDAO rDao;
+	
+	@Autowired
+	private ProductDAO pDao;
+	
+    public static void handleUserInterface(HttpServletRequest req, Model model) {
+		  AbstractUserController abstractUserController = new AbstractUserController(){};
+	        abstractUserController.handleUserInterface(req, model);
+		
+	}
 	
 	@GetMapping("/cartList")
 	public String cartList(HttpServletRequest req, Model model) {
@@ -206,14 +223,29 @@ public class CartController {
 		String prod_total = req.getParameter("prod_total");
 		String[] totalList = prod_total.split(",");
 		
+		int qty = 0;
+		int total = 0;
 		for(int i = 0 ; i < prodList.length ; i++) {
 			cDao.order(name, mobile, imgList[i], nameList[i], 
 							Integer.parseInt(qtyList[i]), Integer.parseInt(totalList[i]), 
 							address, payment, id);
 			cDao.deleteItem(id, Integer.parseInt(prodList[i]));
+			qty += Integer.parseInt(qtyList[i]);
+			total += Integer.parseInt(totalList[i]);
 		}
 		
-		return "redirect:/orderList";
+		model.addAttribute("name",name);
+		model.addAttribute("img",imgList[0]);
+		model.addAttribute("prodname",nameList[0]);
+		model.addAttribute("qty",qty);
+		model.addAttribute("total",total);
+		model.addAttribute("mobile",mobile);
+		model.addAttribute("address",address);
+		model.addAttribute("payment",payment);
+		model.addAttribute("now",now);
+		model.addAttribute("size",prodList.length - 1);
+		
+		return "order/listOrderSuccess";
 	}
 	
 	@PostMapping("/order")
@@ -232,10 +264,20 @@ public class CartController {
 		String address = zip + " " + addr1 + " " + addr2;
 		String payment = req.getParameter("payment");
 		
+		model.addAttribute("name",name);
+		model.addAttribute("img",img);
+		model.addAttribute("prodname",prodName);
+		model.addAttribute("qty",qty);
+		model.addAttribute("total",total);
+		model.addAttribute("mobile",mobile);
+		model.addAttribute("address",address);
+		model.addAttribute("payment",payment);
+		model.addAttribute("now",now);
+		
 		cDao.deleteItem(id, prodid);
 		cDao.order(name, mobile, img, prodName, qty, total, address, payment, id);
 		
-		return "redirect:/orderList";
+		return "order/orderSuccess";
 	}
 	
 	@GetMapping("/orderList")
@@ -254,4 +296,71 @@ public class CartController {
 		return "order/orderList";
 	}
 	
+	@GetMapping("/product")
+	public String view(HttpServletRequest req, Model model) {
+		HttpSession s = req.getSession();
+		String id = (String) s.getAttribute("id");
+		String name = req.getParameter("name");
+		ProductDTO mdto = pDao.product(name);
+		model.addAttribute("id",id);
+		model.addAttribute("product",mdto);
+		
+		int start,psize;
+		String page = req.getParameter("pageno");
+		if(page==null || page.equals("")) {
+			page="1";
+		}
+		int pno = Integer.parseInt(page);
+		start = (pno-1)*10;
+		psize = 10;
+		ArrayList<ReviewDTO> alMall = rDao.getList(start, psize, name);
+		
+		int cnt=rDao.getTotal();
+		if (cnt == 0) {
+			cnt = 1;
+		}
+		int pagecount = (int) Math.ceil(cnt/10.0);
+		
+		String pagestr="";
+		for(int i=1; i<=pagecount; i++) {
+			if(pno==i) {
+				pagestr+=i+"&nbsp;";
+			} else {
+				pagestr+="<a href='/?pageno="+i+"'>"+i+"</a>&nbsp;";
+			}
+		}
+		
+		model.addAttribute("pagestr",pagestr);
+		model.addAttribute("rlist",alMall);
+		
+		int reviewSize = rDao.getReviewSize(name);
+		model.addAttribute("reviewSize",reviewSize);
+		
+		int photoSize = rDao.getPhotoReview(name);
+		model.addAttribute("photoSize",photoSize);
+		
+		int getLike = rDao.getLike(name);
+		model.addAttribute("like", Math.round( (double) getLike / reviewSize * 100) );
+		
+		int getRating1 = rDao.getRating1(name);
+		model.addAttribute("rating1", Math.round( (double) getRating1 / reviewSize * 100 ));
+		
+		int getRating2 = rDao.getRating2(name);
+		model.addAttribute("rating2", Math.round( (double) getRating2 / reviewSize * 100 ));
+		
+		int getRating3 = rDao.getRating3(name);
+		model.addAttribute("rating3", Math.round( (double) getRating3 / reviewSize * 100 ));
+		
+		int getRating4 = rDao.getRating4(name);
+		model.addAttribute("rating4", Math.round( (double) getRating4 / reviewSize * 100 ));
+		
+		int getRating5 = rDao.getRating5(name);
+		model.addAttribute("rating5", Math.round( (double) getRating5 / reviewSize * 100 ));
+		
+		// 비회원, 회원 화면 구분 출력 메소드
+		 handleUserInterface(req, model);
+		
+		return "product/product";
+	}
+
 }

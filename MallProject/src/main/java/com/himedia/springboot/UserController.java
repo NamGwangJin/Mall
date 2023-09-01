@@ -117,4 +117,21 @@ public class UserController {
 		
 		return("user/profile");
 	}
+	
+	@GetMapping("/delivery")
+	public String goDelivery(HttpServletRequest req, Model model) {
+		HttpSession s = req.getSession();
+		String id = (String)s.getAttribute("id");
+		UserDTO user = uDao.getdel(id);
+		if(id==null || id.equals("")) {
+			model.addAttribute("infoline","<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
+		}else {
+			model.addAttribute("infoline","<a href='/mypage'>"+id+"</a>"+"&nbsp;&nbsp;<button id=logout>로그아웃</button>");
+			model.addAttribute("inforeg","<a href='/goreg'>상품등록하기</a>");
+			model.addAttribute("info",id);
+			model.addAttribute("imp",user);
+		}
+		
+		return("user/delivery");
+	}
 }

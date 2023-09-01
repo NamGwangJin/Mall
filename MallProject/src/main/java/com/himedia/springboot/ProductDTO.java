@@ -1,6 +1,7 @@
 package com.himedia.springboot;
 
 public class ProductDTO {
+	String user_id;
 	int prod_id;
 	String prod_name; 
 	String prod_price; 
@@ -8,6 +9,13 @@ public class ProductDTO {
 	String prod_img;
 	String prod_update;
 	
+	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public int getProd_id() {
 		return prod_id;
 	}

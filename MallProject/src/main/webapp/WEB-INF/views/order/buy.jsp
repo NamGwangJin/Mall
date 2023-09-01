@@ -110,14 +110,14 @@
                             <tr>
                                 <td>우편번호</td>
                                 <td>
-                                    <input type="text" name="zip">
-                                    <input type="button" value="검색">
+                                    <input type="text" name="zip" readonly>
+                                    <input type="button" value="검색" id=search>
                                 </td>
                             </tr>
                             <tr>
                                 <td>기본주소</td>
                                 <td>
-                                    <input type="text" name="addr1">
+                                    <input type="text" name="addr1" readonly>
                                 </td>
                             </tr>
                             <tr>
@@ -135,7 +135,7 @@
                                 <span>0</span>점
                             </p>
                             <label>
-                                <input type="text" name="point">점
+                                <input type="text" name="point" style="text-align:right;" value=0>점
                                 <input type="button" value="적용">
                             </label>
 							<br>
@@ -150,7 +150,7 @@
                             <span>간편결제</span>
                             <p>
                                 <label>
-                                    <input type="radio" name="payment" value="카카오페이">카카오페이
+                                    <input type="radio" name="payment" value="카카오페이"><img src="/img/kakaopay.png" style="width:60px;">
                                 </label>
                                 <label>
                                     <input type="radio" name="payment" value="네이버페이">네이버페이
@@ -174,12 +174,6 @@
                                 <label>
                                     <input type="radio" name="payment" value="휴대폰결제">휴대폰 결제
                                 </label>
-                                <label>
-                                    <input type="radio" name="payment" value="계좌이체">실시간 계좌이체
-                                </label>
-                                <label>
-                                    <input type="radio" name="payment" value="무통장입금">무통장 입금
-                                </label>
                             </p>
                         </div>
                     </article>
@@ -187,11 +181,6 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document)
-.on('submit',"#order",function(){
-	// 유효성 검사 해야함
-	return true;
-})
-</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="resources/js/buy.js"></script>
 </html>

@@ -5,40 +5,52 @@
 
 <mapper namespace="com.himedia.springboot.BbsDAO">
 
-<select resultType="com.himedia.springboot.BbsDTO" id="getList">
-select num, title, content, writer, hit, created, updated from bbs order by updated desc limit #{param1},#{param2}
+<select id="getList" resultType="com.himedia.springboot.BbsDTO"> 
+select num, title, content, writer, hit, created, updated from bbs order by updated desc limit #{param1},#{param2}; 
 </select>
 
-<select resultType="com.himedia.springboot.BbsDTO" id="view">
-select num, title, content, writer, hit, created, updated from bbs where num=#{param1};
-</select>
+<select id="view" resultType="com.himedia.springboot.BbsDTO">
+ select num, title, content, writer, hit, created, updated from bbs where num=#{param1}; 
+ </select>
 
-<update id="hitUp" parameterType="int">
-update bbs set hit = hit + 1 where num=#{param1};
+<update id="hitUp" parameterType="int"> 
+update bbs set hit = hit + 1 where num=#{param1}; 
 </update>
 
 <delete id="delPost" parameterType="int">
-delete from bbs where num=#{param1}; 
+ delete from bbs where num=#{param1}; 
 </delete>
 
-<insert id="insPost">
-insert into bbs set title=#{param1}, content=#{param2}, writer=#{param3}, created=#{param4}, updated=#{param5};
+<insert id="insPost"> 
+insert into bbs set title=#{param1}, content=#{param2}, writer=#{param3}, created=now(), updated=now(); 
 </insert>
 
 <update id="udPost">
-update bbs set title=#{param2}, content=#{param3}, updated=now() where num=#{param1};
-</update>
+ update bbs set title=#{param2}, content=#{param3}, updated=now() where num=#{param1};
+  </update>
 
-<select resultType="int" id="getTotal">
+<select id="getTotal" resultType="int"> 
 select count(*) from bbs 
 </select>
 
-<insert id="signup" parameterType="java.util.HashMap"> 
-insert into user set user_id=#{param1}, user_pw=#{param2},user_name=#{param3}, user_mobile=#{param4}, user_email=#{param5},user_address=#{param6}
-</insert>
+<insert id="insertReply">
+ insert into bbs_cmt set bbscmtnum=#{param1}, content=#{param2}, writer=#{param3}, regdate=now(); 
+ </insert>
 
-<select resultType="com.himedia.springboot.BbsDTO" id="login">
-select user_id from user where user_id= #{param1} and user_pw= #{param2}
+<select id="getReply" resultType="com.himedia.springboot.BbscmtDTO">
+ select num, bbscmtnum, regdate, content, writer, upnum from bbs_cmt where bbscmtnum=#{param1}; 
+ </select>
+
+<delete id="delReply" parameterType="int"> 
+delete from bbs_cmt where num=#{param1};
+ </delete>
+
+<update id="udReply">
+ update bbs_cmt set content=#{param3}, regdate=now() where bbscmtnum=#{param1} and num=#{param2}; 
+ </update>
+
+<select id="Reply" resultType="com.himedia.springboot.BbscmtDTO"> 
+select num, bbscmtnum, regdate, content, writer, upnum from bbs_cmt where num=#{param1}; 
 </select>
 
 </mapper>

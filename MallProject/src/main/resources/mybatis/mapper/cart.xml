@@ -24,6 +24,10 @@ delete from cart where user_id=#{param1} and prod_id=#{param2}
 delete from cart where user_id=#{param1}
 </delete>
 
+<update id="plusCart">
+update cart set prod_qty=prod_qty + #{param2}, prod_total=prod_total + #{param3} where user_id=#{param1} and prod_id=#{param4}
+</update>
+
 <update id="cartUpdate">
 update cart set prod_qty=#{param2}, prod_total=#{param3} where user_id=#{param1} and prod_id=#{param4}
 </update>

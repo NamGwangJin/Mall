@@ -42,6 +42,7 @@
 		</div>
 		<!-- 수정/탈퇴 버튼 -->
 		<div class="MoreHeaderView_button_wrap__B-cQ2">
+<input type="button" value="${imp.user_id}" id=userid class="MoreHeaderView_button_item__gv6pa1"> 
 			<a href="/quit" id = quit class="MoreHeaderView_button_item__gv6pa">탈퇴하기</a>
 		</div>
 	</div>
@@ -60,7 +61,7 @@
 <h3 class="mypageLnbSubTitle">MY 주문정보</h3>
 
 <ul class="myPageLnbList">
-<li><a href="#">주문/배송 조회</a></li>
+<li><a href="/orderList?id=${id}">주문/배송 조회</a></li>
 <li><a href="#">취소/반품/교환 조회</a></li>
 </ul>
 </div>
@@ -82,6 +83,7 @@
 <li><a href="#">상품리뷰</a></li>
 <li><a href="#">1:1 문의 내역</a></li>
 <li><a href="#">상품문의</a></li>
+<li><a href="/bbs">게시판</a></li>
 </ul>
 </div>
 
@@ -90,9 +92,8 @@
 
 <ul class="myPageLnbList">
 <li><a href="/profile">회원 정보 관리</a></li>
-<li><a href="#">배송 정보 관리</a></li>
-<li><a href="#">SNS연결 설정</a></li>
-<li><a href="#">개인정보 이용내역</a></li>
+<li><a href="/delivery">배송 정보 관리</a></li>
+
 </ul>
 </div>
 </div>
@@ -179,7 +180,7 @@
 </div>
 </div>
 </div>
-
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -191,6 +192,14 @@ $(document)
     	alert('정상적으로 로그아웃되었습니다.');
         document.location= "/logout";
     }
+})
+.on('click','#quit',function(){
+	if(!confirm('정말로 탈퇴하시겠습니까?')){
+		return false;
+	} else {
+		alert("정상적으로 탈퇴되었습니다.");
+		document.location= "/quit?user_id="+$('#userid').val();
+	}
 });
 </script>
 

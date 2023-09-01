@@ -120,9 +120,9 @@ function changeCheckbox(){
 	$('input[name=checkbox]:checked').each(function(){
 		price += parseInt($(this).parent().parent().find("td:eq(3)").text());
 		total = price - sale;
-		$('#checked').find('td:first').html('<strong style="font-size:30px;">'+price+'</strong>');
+		$('#checked').find('td:first').html('<strong style="font-size:30px;">'+price+'원</strong>');
 		$('#checked').find('td:eq(2)').html('<strong style="font-size:30px;">'+sale+'</strong>');
-		$('#checked').find('td:eq(4)').html('<strong style="font-size:30px;">'+total+'</strong>');
+		$('#checked').find('td:eq(4)').html('<strong style="font-size:30px;">'+total+'원</strong>');
 		if ($(this)) count += 1;
 	})
 	if (count == 0) {

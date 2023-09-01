@@ -6,22 +6,33 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/mall.css" rel="stylesheet" />
+
 <title>Weverse</title>
 </head>
+
 <body>
+
+
 
 <div class="navbar">
     <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="149">
+        <img src="img/weverslogo.jpg" width="160">
+        
     </a>
     <ul id="menu">
+ 		 <li class="menu-item">${infoline}</li>
+ 		 <li class="menu-item">${inforeg}</li>
+ 		</ul>
+    <ul id="menu">
     	<input type=hidden name=id value="${id}">
-    	<li><a href="#">${bbs}</a></li>
-        <li><a href="/cartList?id=${id}">장바구니</a></li>
-        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-        <li>${infoline}</li>
-        <li>${inforeg}</li>
+    	<li class="menu-item">${bbs}</li>
+       
+    	<li class="menu-item">${cartlist}</li> 
+   		<li class="menu-item">${orderlist}</li>
+
+        
     </ul>
+    	
 </div>
 
 <div class="products">

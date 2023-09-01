@@ -54,7 +54,7 @@
 	        								<input type="text" name=qty id=qty value="${cart.prod_qty}" style="width:30px; height:30px; text-align:center;" readonly>
 	        								<button class="increase" name="increase" style="width:30px;height:30px;">+</button>
 	        								</td>
-	        								<td><b id=total name=total>${cart.prod_total}</b></td>
+	        								<td><b id=total name=total>${cart.prod_total}</b><b>원</b></td>
 	        								<td><input type=button name=del style="color:red;" value="X"></td>
 	        						</tr>
 	        					</tbody>

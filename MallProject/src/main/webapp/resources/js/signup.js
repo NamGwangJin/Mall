@@ -180,8 +180,7 @@ $(document)
 	}
 })
 .on('input','#mobile',function(){
-	let mobile = $(this).val().replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/\-{1,3}$/g, "");
-	$(this).val(mobile);
+	$(this).val($(this).val().replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/\-{1,2}$/g, ""));
 })
 .on('input','#email',function(){
 	if ( !emailRegExp.test($(this).val() ) ) {

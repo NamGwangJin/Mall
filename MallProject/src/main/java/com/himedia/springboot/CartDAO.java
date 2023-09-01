@@ -11,6 +11,7 @@ public interface CartDAO {
 	void dropCart(String user_id);
 	int checkCart(int prod_id);
 	int otherCart(String user_id);
+	void plusCart(String user_id, int qty, int total, int prod_id);
 	void cartUpdate(String user_id, int qty, int total, int prod_id);
 	
 	ArrayList<CartDTO> getCart(String id);

@@ -12,20 +12,6 @@ table{ border-collapse : collapse; width:75%; margin-left:auto; margin-right:aut
 table td { border : 1px solid black; }
 </style>
 <body align=center>
-<div class="navbar">
-    <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="149">
-    </a>
-    <ul id="menu">
-    	<input type=hidden name=id value="${id}">
-    	<li><a href="#">${review}</a></li>
-    	<li><a href="#">${bbs}</a></li>
-        <li><a href="/cartList?id=${id}">장바구니</a></li>
-        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-        <li><a href="/mypage">${infoline}</a></li>
-        <li>${inforeg}</li>
-    </ul>
-</div>
 <form method="post" action="/modify" id=frmUpdate name=frmUpdate>
 <input type=hidden id=no name=num value='${bPost.num}'>
 <table>
@@ -37,7 +23,7 @@ table td { border : 1px solid black; }
 <tr><td>조회수</td><td>${bPost.hit}</td></tr>
 <tr><td>작성시각</td><td>${bPost.created}</td></tr>
 <tr><td>수정시각</td><td>${bPost.updated}</td></tr>
-<tr><td colspan=2><a href="/">목록보기</a>&nbsp;
+<tr><td colspan=2><a href="/bbs">목록보기</a>&nbsp;
 <input type=submit id=btnSubmit name=btnSubmit value='수정 완료'></td></tr>
 </table>
 </form>

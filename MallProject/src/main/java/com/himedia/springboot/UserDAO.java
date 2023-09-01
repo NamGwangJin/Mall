@@ -20,4 +20,6 @@ public interface UserDAO {
 	UserDTO getprof(String p1);
 	
 	UserDTO sameUser(String id);
+	
+	UserDTO getdel(String p1);
 }

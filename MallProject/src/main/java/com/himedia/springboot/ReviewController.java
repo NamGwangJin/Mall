@@ -27,68 +27,7 @@ public class ReviewController {
 	
 	@Autowired
 	private ReviewDAO rdao;
-	
-//	@GetMapping("/review")
-//	public String review(HttpServletRequest req, Model model) {
-//		HttpSession session = req.getSession();
-//		String id= (String) session.getAttribute("id");
-//		if(id==null || id.equals("")) {
-//			model.addAttribute("review","<a href='/review'>리뷰게시판</a>");
-//			model.addAttribute("id", "");
-//			int start,psize;
-//			String page = req.getParameter("pageno");
-//			if(page==null || page.equals("")) {
-//				page="1";
-//			}
-//			int pno = Integer.parseInt(page);
-//			start = (pno-1)*10;
-//			psize = 10;
-//			ArrayList<ReviewDTO> alBoard = rdao.getList(start, psize);
-//			
-//			int cnt=rdao.getTotal();
-//			int pagecount = (int) Math.ceil(cnt/10.0);
-//
-//			String pagestr="";
-//			for(int i=1; i<=pagecount; i++) {
-//				if(pno==i) {
-//					pagestr+=i+"&nbsp;";
-//				} else {
-//					pagestr+="<a href='/?pageno="+i+"'>"+i+"</a>&nbsp;";
-//				}
-//			}
-//			model.addAttribute("pagestr", pagestr);
-//			model.addAttribute("rlist", alBoard);
-//		} else {
-//			model.addAttribute("review","<a href='/review'>리뷰게시판</a>");
-//			model.addAttribute("reviewwrite","<td style='text-align:right;'><a href='/review'><h3>게시물 작성</h3></a></td>");
-//			model.addAttribute("id", id);
-//			int start,psize;
-//			String page = req.getParameter("pageno");
-//			if(page==null || page.equals("")) {
-//				page="1";
-//			}
-//			int pno = Integer.parseInt(page);
-//			start = (pno-1)*10;
-//			psize = 10;
-//			ArrayList<ReviewDTO> alMall = rdao.getList(start, psize);
-//			
-//			int cnt=rdao.getTotal();
-//			int pagecount = (int) Math.ceil(cnt/10.0);
-//			
-//			String pagestr="";
-//			for(int i=1; i<=pagecount; i++) {
-//				if(pno==i) {
-//					pagestr+=i+"&nbsp;";
-//				} else {
-//					pagestr+="<a href='/?pageno="+i+"'>"+i+"</a>&nbsp;";
-//				}
-//			}
-//			model.addAttribute("pagestr",pagestr);
-//			model.addAttribute("rlist",alMall);
-//		}
-//		return "review/review";
-//	}
-	
+
 	@GetMapping("/reviewwrite")
 	public String write(HttpServletRequest req, Model model) {
 		String prod_name = req.getParameter("prod_name");
@@ -105,7 +44,7 @@ public class ReviewController {
 		String img = req.getParameter("img");
 		String id= (String) session.getAttribute("id");
 		String prod_name = req.getParameter("prod_name");
-		rdao.insPost(rating,title, content, img, id, now, now, prod_name);
+		rdao.insPost(rating,title, content, img, id, prod_name);
 		return "redirect:/product?name=" + prod_name;
 	}
 	
@@ -124,7 +63,7 @@ public class ReviewController {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String img = req.getParameter("img");
-		rdao.udPost(num, rating, title, content, img, now);
+		rdao.udPost(num, rating, title, content, img);
 		return "redirect:/review";
 	}
 	
@@ -155,6 +94,5 @@ public class ReviewController {
 	        
 	        return "review/reviewUploadResult";
 	    }
-	
-	
+
 }
