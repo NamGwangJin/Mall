@@ -24,6 +24,13 @@ public class ProductController {
 	@Autowired
 	private static UserDAO uDao;
 
+//	   @GetMapping("/rtest")
+//		public String test(HttpServletRequest req, Model model) {
+//			
+//			handleUserInterface(req, model);
+//			return "product/likecount";
+//		}
+	
 	
 	@GetMapping("/")
 	public String home(HttpServletRequest req, Model model) {
@@ -60,22 +67,6 @@ public class ProductController {
 		handleUserInterface(req, model);
 		return "home";
 	}
-	
-	@GetMapping("/product")
-	public String view(HttpServletRequest req, Model model) {
-		HttpSession s = req.getSession();
-		String id = (String) s.getAttribute("id");
-		String name = req.getParameter("name");
-		ProductDTO mdto = pDao.product(name);
-		model.addAttribute("id",id);
-		model.addAttribute("product",mdto);
-		// 비회원, 회원 화면 구분 출력 메소드
-		 handleUserInterface(req, model);
-		
-		return "product/product";
-	}
-
-	
 
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest req, Model model) {
@@ -101,7 +92,7 @@ public class ProductController {
 		String prod_msg=req.getParameter("prod_msg");
 		String prod_img=req.getParameter("prod_img");		
 		String before_name=req.getParameter("before_name");
-		System.out.println(prod_name + " " + prod_price + " " + prod_msg + " " + prod_img);
+		
 		
 		pDao.regEdit(prod_name, prod_price, prod_msg, prod_img, before_name);
 		pDao.regEditProduct(prod_name,prod_price,prod_msg,prod_img,before_name);
@@ -136,7 +127,8 @@ public class ProductController {
 		return "product/Productadmin";
 	}
 	@GetMapping("/ProductReg")
-	public String goProductReg() {
+	public String goProductReg(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
 		return "product/ProductReg";
 	
 	}
@@ -164,7 +156,7 @@ public class ProductController {
 	    model.addAttribute("prodImg", prodImg);
 	    model.addAttribute("prodMsg", prodMsg);
 	    
-
+	    
 	    return "product/regProductEdit";
 	}
 	
@@ -202,10 +194,7 @@ public class ProductController {
     
  // 비회원, 회원 화면 구분 출력 추상 메소드 선언
     public static class AbstractUserController {
-    	
-    	
-    	
-    	
+ 	
        public static void handleUserInterface(HttpServletRequest req, Model model) {
     	   
 
@@ -217,29 +206,31 @@ public class ProductController {
         	   model.addAttribute("inforeg", "");
            } else {
 	   	   	    if (admin.equals("Y")) {
-	   	   	    	System.out.println("들어옴");
-		   	        model.addAttribute("inforeg", "<a href='/goreg'>상품관리하기</a>");
+	   	   	    	
+		   	        model.addAttribute("inforeg", "<a href='/goreg'><img src='img/productadminimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">상품관리</span></a>");
 		   	    } else {
-	   	   	    	System.out.println("들어옴");
+	   	   	    	
 		   	    	model.addAttribute("inforeg", "");
 		   	    }
            }
           
             if (id == null || id.isEmpty()) {
-                model.addAttribute("bbs", "<a href='/bbs'>게시판</a>");
-                model.addAttribute("infoline", "<a href='/gologin'>로그인</a>&nbsp;&nbsp;<a href='/gosignup'>회원가입</a>");
-                model.addAttribute("review", "<a href='/review'>리뷰</a>");
+            	model.addAttribute("infoline","<div class='MoreHeaderView_button_wrap__B-cQ2'>"+
+            												"<a href='/gologin' class='MoreHeaderView_button_item__gv6pa' >로그인</a>&nbsp;&nbsp;" +
+            												"<a href='/gosignup'  class='MoreHeaderView_button_item__gv6pa'>회원가입</a></div>");
             } else {
-                model.addAttribute("bbs", "<a href='/bbs'>게시판</a>");
-                model.addAttribute("review", "<a href='/review'>리뷰</a>");
-                model.addAttribute("infoline", "<a href='/mypage'>" + id + "</a>&nbsp;&nbsp;<button id=logout>로그아웃</button>");
+            	model.addAttribute("bbs", "<a href='/bbs'><img src='img/boardimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">게시판</span></a>");
+                model.addAttribute("cartlist"," <a href='/cartList?id='"+id+"><img src='img/shoppingcartimg.jpg' width=\"50\" height=\"50\"> <span class=\"tooltip\">장바구니</span></a>");
+                model.addAttribute("orderlist"," <a href='/orderList?id='"+id+"><img src='img/moveproductimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">주문조회</span></a>");
+          
+                model.addAttribute("infoline", "<a href='/mypage'><img src='img/mypage.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">마이페이지</span></a>");
                 model.addAttribute("write", "<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");
                 model.addAttribute("id", id);
             }
 
         }
     }
-//비회원, 화면 구분 출력 set 메소드
+//비회원, 화면 구분 출력 get 메소드
     public static void handleUserInterface(HttpServletRequest req, Model model) {
 		  AbstractUserController abstractUserController = new AbstractUserController(){};
 	        abstractUserController.handleUserInterface(req, model);

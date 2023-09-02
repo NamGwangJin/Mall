@@ -18,4 +18,8 @@ public interface UserDAO {
 	void quit(String id);
 	
 	UserDTO getprof(String p1);
+	
+	UserDTO sameUser(String id);
+	
+	UserDTO getdel(String p1);
 }

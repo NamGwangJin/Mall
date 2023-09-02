@@ -19,12 +19,20 @@ public interface ReviewDAO {
 	
 	void delPost(int num);
 	
-	void insPost(String rating , String title, String content, String img, String writer, String created, String updated, String prod_name);
+	void insPost(String rating , String title, String content, String img, String writer, String prod_name);
 	
-	void udPost(int num, int rating, String title, String content, String img, String updated);
+	void udPost(int num, int rating, String title, String content, String img);
 	
 	int getTotal();
 
+	int getReviewSize(String prod_name);
+	int getPhotoReview(String prod_name);
+	int getLike(String prod_name);
 	
+	int getRating1(String prod_name);
+	int getRating2(String prod_name);
+	int getRating3(String prod_name);
+	int getRating4(String prod_name);
+	int getRating5(String prod_name);
 }
 

@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/mall.css" rel="stylesheet" />
-<title>회원정보관리</title>
 <link rel="stylesheet" href="/resources/css/mypage.css"/>
 <link rel="stylesheet" href="/resources/css/content.css"/>
 <style data-styled="" data-styled-version="5.3.5"></style>
 <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
 <meta name="next-head-count" content="8"/>
+<title>배송확인</title>
 </head>
 <body>
 <%@ include file="..\header.jsp" %>
@@ -29,7 +29,7 @@
 		</div>
 		<!-- 수정/탈퇴 버튼 -->
 		<div class="MoreHeaderView_button_wrap__B-cQ2">
-<input type="button" value="${imp.user_id}" id=userid class="MoreHeaderView_button_item__gv6pa1"> 
+	<input type="button" value="${imp.user_id}" id=userid class="MoreHeaderView_button_item__gv6pa1">	
 			<a href="/quit" id = quit class="MoreHeaderView_button_item__gv6pa">탈퇴하기</a>
 		</div>
 	</div>
@@ -57,7 +57,7 @@
 <h3 class="mypageLnbSubTitle">MY 쇼핑혜택</h3>
 
 <ul class="myPageLnbList">
-<li><a href="#">쿠폰</a></li>
+<li><a href="/coupon">쿠폰</a></li>
 <li><a href="#">마일리지</a></li>
 </ul>
 </div>
@@ -85,89 +85,86 @@
 </div>
 </div>
 </div>
-
-<!-- 마이페이지 -->
+<!-- 헤더& 사이드메뉴 끝 // 배송정보-->
 <div class="myPageContainer">
-<div class="css-koqdwb-defaultStyle">
-<div class="mypageTitleBox mainTitle borderStyle css-qma8am-mypageTitleStyle">
+<div class="css-106ihda-defaultStyle">
+<div class="mypageTitleBox mainTitle  css-qma8am-mypageTitleStyle">
+
 <div class="titleArea">
-<h2 class="title">회원 정보 관리</h2>
+<h2 class="title">배송 정보 관리</h2>
 </div>
 <div class="rightArea">
 </div>
 </div>
-<!-- 마이페이지헤더끝 -->
+<form>
+<div class="mypageTitleBox subTitle  css-qma8am-mypageTitleStyle">
+<div class="titleArea">
+<h2 class="title">배송지 목록</h2>
+</div>
+<div class="rightArea">
+<button type="button" class=" css-1y1dd3a-defaultStyle-lineBlackStyle-Button">배송지 추가</button>
+</div>
+</div>
+<div class="boxBaseDelivery">
+<dl>
+<dt>기본 배송지</dt>
+<dd>
+<strong>${imp.user_id}</strong>
+<span>
+${imp.user_name}(${imp.user_mobile})</span>
+<p>${imp.user_address}</p>
+</dd>
+</dl>
+</div>
+<div class="addressTable css-j67mw4-defaultStyle">
+<table>
+<caption>배송지 목록</caption>
+<colgroup>
+<col width="15%">
+<col width="28%">
+<col width="100%">
+</colgroup>
+<thead class="">
+<tr>
+<th scope="col">선택</th>
+<th scope="col">받는 분</th>
+<th scope="col">주소</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<div class="radioBox css-1mdkf15-defaultStyle">
+<input type="radio" id="delivery-13827309" name="deliveryRadio" title="집" aria-label="라디오버튼" value="13827309">
+<label class="radioLabel" for="delivery-13827309">
+<span
+class="radioShape">
+</span>
+</label>
+</div>
+</td>
+<td>${imp.user_name}<br>
+${imp.user_mobile}</td>
+<td>
+<div class="address">
+${imp.user_address }</div>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<button type="submit" class="css-1b6ft4t-defaultStyle-blackStyle-Button">기본 배송지 설정</button>
+</form>
+</div>
+</div>
 
-<div class="myp-form-wrap">
-<p class="form-title">회원정보</p>
 
-<div class="myp-form-col">
-<div class="input-group inline">
-<label class="control-label">이름</label>
-<div class="static-field">
-<input type="text" name="hp_tail1" value="${imp.user_name }" readonly>
-</div>
-</div>
-<div class="input-group inline">
-<label class="control-label">아이디</label>
-<div class="control-field">
-<input type="text" name="email" value="${imp.user_id}" readonly>
-</div>
-</div>
-<div class="input-group inline">
-<label class="control-label">생년월일</label>
-<div class="control-field">
-<input type="text" name="email" value="${imp.user_birthday }" readonly>
-</div>
-</div>
-</div>
-<div class="input-group" style="display: block;">
-</div>
-
-<p class="form-title multi">연락처</p>
-<div class="myp-form-col">
-<div class="input-group inline">
-<label class="control-label">전화</label>
-<div class="control-field col">
-<input type="text" name="mobile" value="${imp.user_mobile }" readonly>
-</div>
-</div>
-<div class="input-group inline">
-<label class="control-label">주소</label>
-<div class="control-field">
-<input type="text" name="address" value="${imp.user_address }" readonly>
-</div>
-</div>
-<div class="input-group inline">
-<label class="control-label">이메일</label>
-<div class="control-field">
-<input type="text" name="email" value="${imp.user_email }" readonly>
 </div>
 </div>
 </div>
 
-<p class="form-title multi">가입일자</p>
-<div class="myp-form-col">
-<div class="input-group inline">
-<label class="control-label"></label>
-<div class="control-field col">
-<input type="text" name="mobile" value="${imp.signup_date }" readonly>
-</div>
-</div>
-</div>
-
-
-<div class="lnb-form-action">
-<button class="btn btn-default" onclick="location.href='/mypage';">취소</button>
-<button class="btn btn-default btn-primary" onclick="location.href='/mypage';">확인</button>
-</div>
-</div>
-</div>
-<!-- 마이페이지끝 -->
-</div>
-</div>
-</div>
-</div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -189,5 +186,4 @@ $(document)
 	}
 });
 </script>
-
 </html>

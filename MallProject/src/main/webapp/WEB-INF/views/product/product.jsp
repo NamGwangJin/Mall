@@ -13,24 +13,11 @@
 <body>
     <div id="wrapper">
         <header>
-			<div class="navbar">
-			    <a href="/" id="logo">
-			        <img src="img/weverslogo.jpg" width="149">
-			    </a>
-			    <ul id="menu">
-			    	<input type=hidden name=id value="${id}">
-			    	<li><a href="#">${review}</a></li>
-			    	<li><a href="#">${bbs}</a></li>
-			        <li><a href="/cartList?id=${id}">장바구니</a></li>
-			        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-			        <li><a href="/mypage">${infoline}</a></li>
-			        <li>${inforeg}</li>
-			    </ul>
-			</div>
+<%@ include file="..\header.jsp" %>
         </header>
         <br><br><br><br><br>
         <input type=hidden name=id id=id value="${id}">
-        <input type=hidden name=img id=img value="${product.prod_img}.jpg">
+        <input type=hidden name=img id=img value="${product.prod_img}">
         <main id="product">
             <section class="view">
                 <nav>                
@@ -39,28 +26,28 @@
                 <article class="info">
                     <div class="image" style="text-align:center;">
                     	<input type='hidden' id="prodId" value="${product.prod_id}">
-                        <img src="img/${product.prod_img}" alt="상품이미지" style="width:70%;">
+                        <img src="img/${product.prod_img}" alt="상품이미지" style="width:60%;">
                     </div>
                     <div class="summary">
                         <nav style="height:100px;">
-                            <h1 id="productName" name="productName">${product.prod_name}</h1> 
+                            <h1 id="productName" name="productName" style="font-size:30px;">${product.prod_name}</h1> 
                         </nav>
                         <nav style="height:100px;">                           
                             <div class="dis_price">
-                                <ins id="productPrice" name="productPrice">${product.prod_price}</ins>
+                                <ins id="productPrice" name="productPrice" style="font-size:30px;">${product.prod_price}</ins>
                             </div>
                         </nav>                  
                         <div class="count1">
                         	<table>
                         	<tr>
-                            <td><button class="decrease" id="decrease" style="width:30px;height:30px;">-</button></td>
-                            <td><input type="text" id="numInput" name="numInput" value="1" readonly style="width:50px;height:30px;text-align:center;"></td>
-                            <td><button class="increase" id="increase" style="width:30px;height:30px;">+</button></td>
+                            <td><button class="decrease" id="decrease" style="width:40px;height:40px;">-</button></td>
+                            <td><input type="text" id="numInput" name="numInput" value="1" readonly style="width:40px;height:40px;text-align:center;font-size:20px;"></td>
+                            <td><button class="increase" id="increase" style="width:40px;height:40px;">+</button></td>
                             </tr>
                             </table>
                         </div><br><br><br><br>
                         <div>
-                        <p> * 최대 5 개까지 구매 가능합니다.</p>
+                        <p style="font-size:10px;"> * 최대 5 개까지 구매 가능합니다.</p>
                         <span></span>
                         </div>
                         <div class="total" style="height:100px; align:left;">

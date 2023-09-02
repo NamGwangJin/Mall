@@ -11,20 +11,7 @@
 </head>
 <body>
         <header>
-			<div class="navbar">
-			    <a href="/" id="logo">
-			        <img src="img/weverslogo.jpg" width="149">
-			    </a>
-			    <ul id="menu">
-			    	<input type=hidden name=id value="${id}">
-			    	<li><a href="#">${review}</a></li>
-			    	<li><a href="#">${bbs}</a></li>
-			        <li><a href="/cartList?id=${id}">장바구니</a></li>
-			        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-			        <li><a href="/mypage">${infoline}</a></li>
-			        <li>${inforeg}</li>
-			    </ul>
-			</div>
+			<%@ include file="..\header.jsp" %>
         </header>
     <div id="wrapper">
         <main id="product">
@@ -53,7 +40,7 @@
                                 <a href="#">
                                 	<input type=hidden name=prodId value="${cart.prod_id}">
                                 	<input type=hidden name=img value="${cart.prod_img}">
-                                    <img style="width:80px; height:100px;" src="img/${cart.prod_img}.jpg" alt="1">
+                                    <img style="width:80px; height:100px;" src="img/${cart.prod_img}" alt="1">
                                 </a>
                                 <div>
                                     <h2>${cart.prod_name}</h2>
@@ -102,7 +89,7 @@
                     </div>
                     <!-- 배송정보 -->
                     <article class="delivery">
-                        <h1>배송정보</h1>
+                        <h1>배송정보</h1><input type="checkbox" id=same><sub style="text-align:right;">회원정보와 동일</sub>
                         <table>
                             <tr>
                                 <td>받는분</td>
@@ -118,14 +105,14 @@
                             <tr>
                                 <td>우편번호</td>
                                 <td>
-                                    <input type="text" name="zip">
-                                    <input type="button" value="검색">
+                                    <input type="text" name="zip" readonly>
+                                    <input type="button" value="검색" id=search>
                                 </td>
                             </tr>
                             <tr>
                                 <td>기본주소</td>
                                 <td>
-                                    <input type="text" name="addr1">
+                                    <input type="text" name="addr1" readonly>
                                 </td>
                             </tr>
                             <tr>
@@ -143,7 +130,7 @@
                                 <span>0</span>점
                             </p>
                             <label>
-                                <input type="text" name="point">점
+                                <input type="text" name="point" style="text-align:right;" value=0>점
                                 <input type="button" value="적용">
                             </label>
 							<br>
@@ -155,24 +142,24 @@
                     <article class="payment">
                         <h1>결제방법</h1>
                         <div>
-                            <span>신용카드</span>
+                            <span>간편결제</span>
                             <p>
                                 <label>
-                                    <input type="radio" name="payment" value="신용카드">신용카드 결제
+                                    <input type="radio" name="payment" value="카카오페이">카카오페이
                                 </label>
                                 <label>
-                                    <input type="radio" name="payment" value="체크카드">체크카드 결제
+                                    <input type="radio" name="payment" value="네이버페이">네이버페이
                                 </label>
                             </p>
                         </div>
                         <div>
-                            <span>계좌이체</span>
+                            <span>카드</span>
                             <p>
                                 <label>
-                                    <input type="radio" name="payment" value="계좌이체">실시간 계좌이체
+                                    <input type="radio" name="payment" value="신용카드">신용카드
                                 </label>
                                 <label>
-                                    <input type="radio" name="payment" value="무통장입금">무통장 입금
+                                    <input type="radio" name="payment" value="체크카드">체크카드
                                 </label>
                             </p>
                         </div>
@@ -189,72 +176,6 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document)
-.ready(function(){
-	var prod_id = "";
-	for(var i=0; i<$("input[name=prodId]").length; i++){
-		prod_id += $("input[name=prodId]").eq(i).val();
-	}
-	$('input[name=prod_id]').val(prod_id);
-	
-	var prod_img = "";
-	for(var i=0; i<$("input[name=img]").length; i++){
-		if ( i == $("input[name=img]").length - 1) {
-			prod_img += $('input[name=img]').eq(i).val() + ".jpg";
-			break;
-		}
-		prod_img += $('input[name=img]').eq(i).val() + ".jpg" + ",";
-	}
-	$('input[name=prod_img]').val(prod_img);
-	
-	var prod_name = "";
-	for(var i=0; i<$("input[name=prodName]").length; i++){
-		if ( i == $("input[name=prodName]").length - 1) {
-			prod_name += $('input[name=prodName]').eq(i).val();
-			break;
-		}
-		prod_name += $('input[name=prodName]').eq(i).val() + ",";
-	}
-	$('input[name=prod_name]').val(prod_name);
-
-	var prod_qty = "";
-	for(var i=0; i<$("input[name=qty]").length; i++){
-		if ( i == $("input[name=qty]").length - 1) {
-			prod_qty += $('input[name=qty]').eq(i).val();
-			break;
-		}
-		prod_qty += $('input[name=qty]').eq(i).val() + ",";
-	}
-	$('input[name=prod_qty]').val(prod_qty);
-	
-	prod_qty = 0;
-	for(var i=0; i<$('input[name=qty]').length; i++){
-		prod_qty += parseInt($('input[name=qty]').eq(i).val());
-	}
-	$('#qty').text("상품금액 ("+prod_qty+"개)")
-	
-	var prod_total = "";
-	for(var i=0; i<$("input[name=total]").length; i++){
-		if ( i == $("input[name=total]").length - 1) {
-			prod_total += $('input[name=total]').eq(i).val();
-			break;
-		}
-		prod_total += $('input[name=total]').eq(i).val() + ",";
-	}
-	$('input[name=prod_total]').val(prod_total);
-	
-	let total = 0;
-	var qty = $('input[name=total]').length;
-	for(var i=0; i<qty; i++){
-		total += parseInt($('input[name=total]').eq(i).val());
-	}
-	$('#total').text(total);
-	$('#price').text(total);
-})
-.on('submit',"#order",function(){
-	// 유효성 검사 해야함
-	return true;
-})
-</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="resources/js/listbuy.js"></script>
 </html>

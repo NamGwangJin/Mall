@@ -31,4 +31,11 @@ select * from user where user_id=#{param1}
  select user_id, user_name, user_mobile, user_email, user_address, user_birthday, signup_date from user where user_id=#{param1} 
 </select>
 
+<select id="sameUser" resultType="com.himedia.springboot.UserDTO">
+select user_name, user_mobile, user_address from user where user_id=#{param1}
+</select>
+
+<select id="getdel" resultType="com.himedia.springboot.UserDTO">
+ select user_id, user_name, user_mobile, user_email, user_address, user_birthday, signup_date from user where user_id=#{param1} 
+</select>
  </mapper>

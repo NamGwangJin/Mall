@@ -10,7 +10,7 @@ public interface BbsDAO {
 	
 	
 	int signup(String user_id, String user_pw,  String user_name,
-					String user_mobile, String user_email, String user_address);
+				String user_mobile, String user_email, String user_address);
 	
 	BbsDTO login(String user_id, String user_pw);
 	
@@ -26,4 +26,14 @@ public interface BbsDAO {
 	void udPost(int num, String title, String content, String updated);
 	
 	int getTotal();
+	
+	void insertReply(int bbsnum, String content, String writer, String regdate);
+	
+	ArrayList<BbscmtDTO> getReply(int bbscmtnum);
+	
+	BbscmtDTO Reply(int num);
+	
+	void delReply(int num);
+	
+	void udReply(int bbscmtnum, int num, String content, String regdate);
 }

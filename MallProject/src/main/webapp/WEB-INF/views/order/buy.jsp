@@ -10,19 +10,7 @@
 </head>
 <body>
         <header>
-			<div class="navbar">
-			    <a href="/" id="logo">
-			        <img src="img/weverslogo.jpg" width="149">
-			    </a>
-			    <ul id="menu">
-			    	<li><a href="#">${review}</a></li>
-			    	<li><a href="#">${bbs}</a></li>
-			        <li><a href="/cartList?id=${id}">장바구니</a></li>
-			        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-			        <li><a href="/mypage">${infoline}</a></li>
-			        <li>${inforeg}</li>
-			    </ul>
-			</div>
+<%@ include file="..\header.jsp" %>
         </header>
     <div id="wrapper">
         <main id="product">
@@ -94,6 +82,7 @@
                     <!-- 배송정보 -->
                     <article class="delivery">
                         <h1>배송정보</h1>
+                        <input type="checkbox" id=same><sub style="text-align:right;">회원정보와 동일</sub>
                         <table>
                             <tr>
                                 <td>받는분</td>
@@ -109,14 +98,14 @@
                             <tr>
                                 <td>우편번호</td>
                                 <td>
-                                    <input type="text" name="zip">
-                                    <input type="button" value="검색">
+                                    <input type="text" name="zip" readonly>
+                                    <input type="button" value="검색" id=search>
                                 </td>
                             </tr>
                             <tr>
                                 <td>기본주소</td>
                                 <td>
-                                    <input type="text" name="addr1">
+                                    <input type="text" name="addr1" readonly>
                                 </td>
                             </tr>
                             <tr>
@@ -134,7 +123,7 @@
                                 <span>0</span>점
                             </p>
                             <label>
-                                <input type="text" name="point">점
+                                <input type="text" name="point" style="text-align:right;" value=0>점
                                 <input type="button" value="적용">
                             </label>
 							<br>
@@ -146,24 +135,24 @@
                     <article class="payment">
                         <h1>결제방법</h1>
                         <div>
-                            <span>신용카드</span>
+                            <span>간편결제</span>
                             <p>
                                 <label>
-                                    <input type="radio" name="payment" value="신용카드">신용카드 결제
+                                    <input type="radio" name="payment" value="카카오페이"><img src="/img/kakaopay.png" style="width:60px;">
                                 </label>
                                 <label>
-                                    <input type="radio" name="payment" value="체크카드">체크카드 결제
+                                    <input type="radio" name="payment" value="네이버페이">네이버페이
                                 </label>
                             </p>
                         </div>
                         <div>
-                            <span>계좌이체</span>
+                            <span>카드</span>
                             <p>
                                 <label>
-                                    <input type="radio" name="payment" value="계좌이체">실시간 계좌이체
+                                    <input type="radio" name="payment" value="신용카드">신용카드
                                 </label>
                                 <label>
-                                    <input type="radio" name="payment" value="무통장입금">무통장 입금
+                                    <input type="radio" name="payment" value="체크카드">체크카드
                                 </label>
                             </p>
                         </div>
@@ -180,14 +169,6 @@
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document)
-.ready(function(){
-	console.log($('input[name=id]').val())
-})
-.on('submit',"#order",function(){
-	// 유효성 검사 해야함
-	return true;
-})
-</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="resources/js/buy.js"></script>
 </html>

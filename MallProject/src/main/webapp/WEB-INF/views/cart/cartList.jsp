@@ -10,20 +10,7 @@
 <title>Cart List</title>
 </head>
 <body>
-<div class="navbar">
-    <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="149">
-    </a>
-    <ul id="menu">
-    	<input type=hidden name=id value="${id}">
-    	<li><a href="#">${review}</a></li>
-    	<li><a href="#">${bbs}</a></li>
-        <li><a href="/cartList?id=${id}">장바구니</a></li>
-        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-        <li><a href="/mypage">${infoline}</a></li>
-        <li>${inforeg}</li>
-    </ul>
-</div>
+<%@ include file="..\header.jsp" %>
         <section class="view">
         	<div id="wrapper">
         		<div>
@@ -48,13 +35,13 @@
         						<tbody id="cartList" style="text-align:center;">
 	        						<tr>
 	        								<td><input type=hidden name=prodid id=prodid value="${cart.prod_id}"><input type=hidden name=price id=price value="${cart.prod_price}"><input name="checkbox" type=checkbox></td>
-	        								<td><input type=hidden id=img value="${cart.prod_img}.jpg"><img src="/img/${cart.prod_img}.jpg" style="width:100px;">&nbsp;<b id=prodname>${cart.prod_name}</b></td>
+	        								<td><input type=hidden id=img value="${cart.prod_img}"><img src="/img/${cart.prod_img}" style="width:100px;">&nbsp;<b id=prodname>${cart.prod_name}</b></td>
 	        								<td>
 	        								<button class="decrease" name="decrease" style="width:30px;height:30px;">-</button>
 	        								<input type="text" name=qty id=qty value="${cart.prod_qty}" style="width:30px; height:30px; text-align:center;" readonly>
 	        								<button class="increase" name="increase" style="width:30px;height:30px;">+</button>
 	        								</td>
-	        								<td><b id=total name=total>${cart.prod_total}</b></td>
+	        								<td><b id=total name=total>${cart.prod_total}</b><b>원</b></td>
 	        								<td><input type=button name=del style="color:red;" value="X"></td>
 	        						</tr>
 	        					</tbody>

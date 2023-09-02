@@ -14,20 +14,7 @@
 <meta name="next-head-count" content="8"/>
 </head>
 <body>
-<div class="navbar">
-    <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="149">
-    </a>
-    <ul id="menu">
-    	<input type=hidden name=id value="${id}">
-    	<li><a href="#">${review}</a></li>
-    	<li><a href="#">${bbs}</a></li>
-        <li><a href="/cartList?id=${id}">장바구니</a></li>
-        <li><a href="/orderList?id=${id}">주문/배송조회</a></li>
-        <li><a href="/mypage">${infoline}</a></li>
-        <li>${inforeg}</li>
-    </ul>
-</div>
+<%@ include file="..\header.jsp" %>
 		<!-- 헤더 아이디&이메일 -->
 <div class="body">
 <div class="MoreLayoutView_container__8Ahvr">
@@ -42,10 +29,14 @@
 		</div>
 		<!-- 수정/탈퇴 버튼 -->
 		<div class="MoreHeaderView_button_wrap__B-cQ2">
+			<input type="button" value="${imp.user_id}" id=userid class="MoreHeaderView_button_item__gv6pa1">
+			<a href=/logout name=logout class="MoreHeaderView_button_item__gv6pa" >로그아웃</a>
 			<a href="/quit" id=quit class="MoreHeaderView_button_item__gv6pa">탈퇴하기</a>
 		</div>
 	</div>
 </div>
+
+
 <!-- 헤더끝 -->
 <!-- 본문 시작 -->
 
@@ -60,7 +51,7 @@
 <h3 class="mypageLnbSubTitle">MY 주문정보</h3>
 
 <ul class="myPageLnbList">
-<li><a href="#">주문/배송 조회</a></li>
+<li><a href="/orderList?id=${id}">주문/배송 조회</a></li>
 <li><a href="#">취소/반품/교환 조회</a></li>
 </ul>
 </div>
@@ -69,7 +60,7 @@
 <h3 class="mypageLnbSubTitle">MY 쇼핑혜택</h3>
 
 <ul class="myPageLnbList">
-<li><a href="#">쿠폰</a></li>
+<li><a href="/coupon">쿠폰</a></li>
 <li><a href="#">마일리지</a></li>
 </ul>
 </div>
@@ -82,6 +73,7 @@
 <li><a href="#">상품리뷰</a></li>
 <li><a href="#">1:1 문의 내역</a></li>
 <li><a href="#">상품문의</a></li>
+<li><a href="/bbs">게시판</a></li>
 </ul>
 </div>
 
@@ -90,9 +82,7 @@
 
 <ul class="myPageLnbList">
 <li><a href="/profile">회원 정보 관리</a></li>
-<li><a href="#">배송 정보 관리</a></li>
-<li><a href="#">SNS연결 설정</a></li>
-<li><a href="#">개인정보 이용내역</a></li>
+<li><a href="/delivery">배송 정보 관리</a></li>
 </ul>
 </div>
 </div>
@@ -111,7 +101,7 @@
 </a>
 </div>
 <div class="gradeDetail">
-<strong>${info}님</strong>
+<strong>${imp.user_id}님</strong>
 <p>이 달의 회원 등급<a class=" css-n2sa3z-defaultStyle-underlineStyle-Linked" href="#">
 <strong class="gradeText">JOKEBEAR+</strong>
 <i class="css-f0fihq-defaultStyle-icon_094-Icon">
@@ -125,7 +115,7 @@
 <ul class="benefitList">
 <li>
 <em>쿠폰</em>
-<div class="num"><a class=" css-y9z3ts-defaultStyle-Linked" href="/mypage/coupon">0</a> 장</div>
+<div class="num"><a class=" css-y9z3ts-defaultStyle-Linked" href="/coupon">0</a> 장</div>
 </li>
 <li>
 <em>마일리지</em>

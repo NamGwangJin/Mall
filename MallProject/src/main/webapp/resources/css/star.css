@@ -28,3 +28,135 @@
 .star-rating label:hover ~ label {
   -webkit-text-fill-color: #fff58c;
 }
+
+
+body #content {
+  background: transparent;
+}
+
+span.star, span.camera, .sprite_comment {
+  background-image: url(//assets6.cre.ma/p/ptry-co-kr/brand_settings/00/00/00/00/01/sprite/20023ec14bc5450c.png);
+}
+
+i.star {
+  color: #000000;
+}
+
+i.unstar:before {
+  color: #000000;
+}
+
+  i.star:before {
+    content: "\f005";
+  }
+
+  i.unstar:before {
+    content: "\f006";
+  }
+
+.mall-link-color {
+  color: #999999;
+}
+
+.review_list_v2__see_more_arrow_icon {
+  stroke: #999999;
+}
+
+.review_popup_form__submit_button,
+.reviews_popup_renewal__enter_button,
+.review_popup_form__dialog_button {
+  background-color: #000;
+  color: #ffffff;
+}
+
+.products_reviews_summary_v2__create_review_button,
+.no_reviews_message_v2__create_review_button,
+.review_form__submit {
+	background-color: #14161a;
+	color: #ffffff;
+}
+
+  .products_reviews_summary_v2__score_percentile {
+	background-color: #bcc2cc;
+}
+
+.products_reviews_summary_v2__score_filter--highlighted .products_reviews_summary_v2__score_percentile {
+  background-color: #14161a;
+}
+
+* {
+  font-family: 'Roboto', 'Noto Sans KR', sans-serif !important;
+}
+.fa {
+  font-family: FontAwesome !important;
+}
+.score_summary__score_filter__gauge .percentile {
+  background: #000;
+}
+
+.products_reviews_summary {
+  border: 1px solid #000;
+  border-left: none;
+  border-right: none;
+}
+
+.score_summary__average {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.score_summary__footer .percentage {
+  color: #000;
+}
+
+.review_options_search__option_type_dropdown_button, .product_options_search__option_type_dropdown_button {
+  border-left-color: #000;
+}
+
+.review_options_search__option_type, .product_options_search__option_type {
+  border-color: #000;
+}
+
+.products_reviews_header__separator {
+  background: #000;
+}
+
+.products_reviews_list_review__info_container li {
+  border-top-color: #000;
+}
+
+.widget_reviews__body {
+  border-bottom-color: #000;
+}
+
+.review_options {
+  border: 1px solid #000;
+  border-left: none;
+  border-right: none;
+}
+
+.comments {
+  border-color: #000;
+}
+
+.comments__arrow_top:before {
+  border-bottom-color: #000;
+}
+
+.comments__new_comment {
+  border-color: #000;
+}
+
+.comments__new_comment_submit_button {
+  border-color: #000;
+}
+
+.products_reviews_list_review {
+  border-top-color: #000;
+}
+
+.pagination__button--active, .pagination__button:active {
+  background: #fff;
+  border: 1px solid #000;
+}

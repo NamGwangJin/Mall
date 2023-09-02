@@ -37,11 +37,38 @@ body {
 
 .navbar #menu li a {
   text-decoration: none;
-  color: #545454 ;
+  color: rgb(255, 255, 250) ;
   font-size: 13px;
   font-weight: bold;
 }
 
+.navbar #menu .menu-item {
+    position: relative; /* 부모 요소에 상대적 위치 설정 */
+}
+
+.navbar #menu .menu-item .tooltip {
+   visibility: hidden;
+    background-color: rgb(6, 215, 173);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 6px;
+    line-height: 1.2;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    padding: 2px;
+    top: 100%; /* 툴팁을 메뉴 아이템 아래에 표시 */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap; 
+}
+
+.navbar #menu .menu-item a:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
 /* hero header */
 .hero-header{
   height: 450px;
@@ -122,4 +149,21 @@ body {
 	  background: #25C7A0;
             border: 1px solid #25C7A0;
             color: #fff;
+}
+
+.MoreHeaderView_button_wrap__B-cQ2 {
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+.MoreHeaderView_button_item__gv6pa {
+    background: rgb(18, 203, 166);
+    color: rgb(255, 250, 250);
+    border-radius: 16px;
+   
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    padding: 9px 15px;
+    vertical-align: top;
 }

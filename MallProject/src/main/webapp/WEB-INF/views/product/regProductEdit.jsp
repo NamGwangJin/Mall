@@ -9,10 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
   </head>   
 <body>
-<div class="navbar">
-
-   
-</div>
+<%@ include file="..\header.jsp" %>
    
 <h1 align=center>${id}님의 상품 수정하기</h1>
 
@@ -33,7 +30,7 @@
 <form method="post" action="/regEdit" id=frmregEdit name=frmregEdit>
 <table>
    <input type=hidden name=id id=id value="${id}">
-  <input type=hidden name=before_name value="${prodName}">
+   <input type=hidden name=before_name value="${prodName}">
 <tr><td>상품명</td><td><input type=text name=prod_name id=prod_name size=64 maxlength=128 value="${prodName}"></td></tr>
 <tr><td>상품설명</td><td><textarea rows=10 cols=61 name=prod_msg id=prod_msg >${prodMsg}</textarea></td></tr>
 <tr><td>가격</td><td><input type=text name=prod_price id=prod_price size=64 maxlength=128 value="${prodPrice}"></td></tr>
@@ -45,15 +42,14 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
+
 <script>
 
 $(document)
 .ready(function () {
     $('#uploadForm').submit(function (e) {
         e.preventDefault(); 
-        
-       
-        
+
         $.ajax({
             type: 'POST',
             url: '/upload', 
@@ -74,7 +70,20 @@ $(document)
             }
         });
     });
-})
+    $('#frmregEdit').submit(function (e) {
+        e.preventDefault(); // 폼 제출 동작 멈춤
+        
+        // 폼 데이터 직렬화 후 '/regEdit' 컨트롤러 호출
+        $.post('/regEdit', $(this).serialize(), function(data) {
+           
+            alert("수정 완료");
+            window.close();
+        }).fail(function() {
+           
+            alert("수정 실패");
+        });
+    });
+});
 
 </script>
 </body>

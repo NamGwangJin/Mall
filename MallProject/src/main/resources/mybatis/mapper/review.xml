@@ -22,7 +22,7 @@ delete from review where num=#{param1};
 </delete>
 
 <insert id="insPost">
-insert into review set rating=#{param1}, title=#{param2}, content=#{param3}, img=#{param4},writer=#{param5}, created=#{param6}, updated=#{param7}, prod_name=#{param8};
+insert into review set rating=#{param1}, title=#{param2}, content=#{param3}, img=#{param4},writer=#{param5}, created=now(), updated=now(), prod_name=#{param6};
 </insert>
 
 <update id="udPost">
@@ -33,12 +33,35 @@ update review set rating=#{param2} title=#{param3}, content=#{param4}, img=#{par
 select count(*) from review
 </select>
 
-<insert id="signup" parameterType="java.util.HashMap">
-insert into user set user_id=#{param1}, user_pw=#{param2},user_name=#{param3}, user_mobile=#{param4}, user_email=#{param5},user_address=#{param6}
-</insert>
-
-<select resultType="com.himedia.springboot.ReviewDTO" id="login">
-select id from user where user_id= #{param1} and user_pw= #{param2}
+<select id="getReviewSize" resultType="int">
+select count(*) from review where prod_name = #{param1}
 </select>
 
+<select id="getPhotoReview" resultType="int">
+select count(*) from review where prod_name = #{param1} and img != ''
+</select>
+
+<select id="getLike" resultType="int">
+select count(*) from review where prod_name = #{param1} and rating in (4,5)
+</select>
+
+<select id="getRating1" resultType="int">
+select count(*) from review where prod_name = #{param1} and rating = 1
+</select>
+
+<select id="getRating2" resultType="int">
+select count(*) from review where prod_name = #{param1} and rating = 2
+</select>
+
+<select id="getRating3" resultType="int">
+select count(*) from review where prod_name = #{param1} and rating = 3
+</select>
+
+<select id="getRating4" resultType="int">
+select count(*) from review where prod_name = #{param1} and rating = 4
+</select>
+
+<select id="getRating5" resultType="int">
+select count(*) from review where prod_name = #{param1} and rating = 5
+</select>
 </mapper>

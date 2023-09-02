@@ -1,6 +1,5 @@
 $(document)
 .ready(function(){
-	console.log($('input[name=id]').val(), $('#prodId').val())
 })
 .on('click','#decrease',function(){
 	$('#numInput').val( $('#numInput').val() - 1 );
@@ -25,12 +24,21 @@ $(document)
 				type:'post', dataType:'text',
 				success: function(data){
 					if(data=="있음") {
-						if (!confirm("장바구니에 이미 있는 상품입니다. 장바구니로 이동할까요?")) return false;
-						document.location = "/cartList"
+						if (confirm("장바구니에 이미 있는 상품입니다. 장바구니로 이동할까요?") == true) {
+							document.location = "/cartList"
+							return false;
+						} else {
+							return false;
+						}
 					}
 					if(data=="1"){
-						if (!confirm("장바구니에 상품이 담겼습니다. 장바구니로 이동할까요?")) return false;
-						document.location = "/cartList"
+						if (confirm("장바구니에 상품이 담겼습니다. 장바구니로 이동할까요?") == true) {
+							document.location = "/cartList"
+							return false;
+						}
+						else {
+							return false;
+						}
 					}
 				}, error: function(){
 					alert("오류가 발생했습니다.");

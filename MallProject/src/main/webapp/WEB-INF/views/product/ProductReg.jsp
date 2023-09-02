@@ -7,16 +7,44 @@
     <meta charset="UTF-8">
     <link href="css/mall.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/resources/css/mypage.css"/>
+<link rel="stylesheet" href="/resources/css/content.css"/>
+<style data-styled="" data-styled-version="5.3.5"></style>
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+<meta name="next-head-count" content="8"/>
   </head>   
 <body>
-<div class="navbar">
-    <a href="/" id="logo">
-        <img src="img/weverslogo.jpg" width="149">
-    </a>
-   
-</div>
-   
-<h1 align=center>상품 등록하기</h1>
+  <header>
+<%@ include file="..\header.jsp" %>
+ </header>
+<div class="body">
+<!-- <div class="MoreLayoutView_container__8Ahvr"> -->
+<div class="MoreHeaderView_container__kK6Wj">
+	<div class="MoreHeaderView_inner__BRiQZ">
+		<div class="MoreHeaderView_profile_wrap__Y9XWQ">
+			<div class="MoreHeaderView_name__4ZkcS">
+				<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">
+				${id}님 의 새 상품등록</h2>
+			</div>
+			<address class="MoreHeaderView_email__Ui6wT">${imp.user_email }</address>
+		</div>
+		<!-- 수정/탈퇴 버튼 -->
+		<div class="MoreHeaderView_button_wrap__B-cQ2">
+			<a href="/goreg" t class="MoreHeaderView_button_item__gv6pa">관리페이지로이동</a>
+		</div>
+		<div class="MoreHeaderView_button_wrap__B-cQ2">
+		
+		</div>
+		<div class="MoreHeaderView_button_wrap__B-cQ2">
+		
+		</div>
+		<div class="MoreHeaderView_button_wrap__B-cQ2">
+		
+		</div>
+	</div>
+</div></div>
+      
+<h1 align=center>　</h1>
 
 
  <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
@@ -42,6 +70,7 @@
 </form>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
+
 <script>
 
 $(document)
@@ -67,10 +96,13 @@ $(document)
         });
     });
 })
-.on('click','#test',function(){
-	console.log($('#prod_name').val());
-})
-;
+.on('click','#logout',function(){
+    if(!confirm('정말로 로그아웃할까요?')){
+        return false;
+    } else {			
+        document.location= "/logout";
+    }
+});
 </script>
 </body>
 </html>
