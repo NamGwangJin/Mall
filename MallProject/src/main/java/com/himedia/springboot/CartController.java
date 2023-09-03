@@ -3,6 +3,9 @@ package com.himedia.springboot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,11 +64,14 @@ public class CartController {
 	public String goCart(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("id");
+		if (userId==null || userId.equals("")) {
+			return "/gologin";
+		}
 		int prodId=Integer.parseInt(req.getParameter("prodId"));
 		int qty=Integer.parseInt(req.getParameter("qty"));
 		int totalPrice=Integer.parseInt(req.getParameter("totalPrice"));
 		
-		int check = cDao.checkCart(prodId); // 장바구니에 이미 있는 상품인지 체크
+		int check = cDao.checkCart(prodId,userId); // 장바구니에 이미 있는 상품인지 체크
 		if ( check > 0 ) {
 			return "있음";
 		}
@@ -93,19 +99,6 @@ public class CartController {
 		return "/cartList";
 	}
 	
-//	@GetMapping("/cartUpdate")
-//	public String cartUpdate(HttpServletRequest req) {
-//		HttpSession s = req.getSession();
-//		String user_id = (String) s.getAttribute("id");
-//		int qty = Integer.parseInt(req.getParameter("qty"));
-//		int total = Integer.parseInt(req.getParameter("total"));
-//		int prod_id = Integer.parseInt(req.getParameter("prod_id"));
-//		
-//		cDao.cartUpdate(user_id, qty, total, prod_id);
-//		
-//		return "redirect:/cartList";
-//	}
-	
 	@PostMapping("/cartUpdate")
 	@ResponseBody
 	public String cartUpdate(HttpServletRequest req) {
@@ -131,7 +124,7 @@ public class CartController {
 		int total = Integer.parseInt(req.getParameter("total"));
 		String img = req.getParameter("img");
 		
-		int check = cDao.checkCart(prod_id); // 장바구니에 이미 있는 상품인지 체크
+		int check = cDao.checkCart(prod_id, user_id); // 장바구니에 이미 있는 상품인지 체크
 		if ( check > 0 ) {
 			return "same";
 		}
@@ -290,12 +283,24 @@ public class CartController {
 		if (id == null || id.equals("")) {
 			return "redirect:/gologin";
 		}
+		
 		ArrayList<OrderDTO> oList = cDao.getOrder(id);
 		if (oList.size() == 0) {
 			model.addAttribute("oList","없음");
 			return "order/orderList";
 		}
-		model.addAttribute("oList",oList);
+		
+		ArrayList<OrderDTO> dateList = cDao.getDate(id);
+		model.addAttribute("dList",dateList);
+		
+		Map<String, List<OrderDTO>> orderMap = new LinkedHashMap<>(); // 날짜별 주문 내역을 저장할 맵
+		for (OrderDTO date : dateList) {
+		    String orderDate = date.getOrder_time(); // 주문 날짜
+		    ArrayList<OrderDTO> orderList = cDao.getOrderList(id, orderDate);
+		    orderMap.put(orderDate, orderList); // 날짜별 주문 내역을 맵에 추가
+		}
+		model.addAttribute("orderMap", orderMap); // 모델에 맵을 추가
+		
 		return "order/orderList";
 	}
 	

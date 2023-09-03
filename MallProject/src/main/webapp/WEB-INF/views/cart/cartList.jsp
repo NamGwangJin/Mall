@@ -57,7 +57,7 @@
         						<tr width="90%" align="center"><td><Strong>총 금액</Strong></td><td></td><td><Strong>할인 금액</Strong></td><td></td><td><Strong>결제할 금액</Strong></td></tr>
         						<tr><td colspan=5><hr></td></tr>
         					</thead>
-        					<tbody id=checked style="background-color:beige;">
+        					<tbody id=checked style="background-color:#25C7A0;">
         						<tr height="150px;" align="center"><td></td><td><img src="/img/minus.png" style="width:50px;"></td><td></td><td><img src="/img/equal.png" style="width:50px;"></td><td></td></tr>
         					</tbody>
         				</table>
@@ -68,7 +68,7 @@
 			        		<table cellspacing="0" cellpadding="0" width="100%" style="text-align:center;">
 			        				<tr>
 			        				<td><button id=buy class="buy" style="width:200px; height:100px; font-size:30px;">주문하기</button></td>
-			        				<td><button id=clearCart class="buy" style="width:200px; height:100px; font-size:30px; background-color:red;">비우기</button></td>
+			        				<td><button id=clearCart class="buy" style="width:200px; height:100px; font-size:30px; background-color:red; color:white;">비우기</button></td>
 			        				</tr>
 			        		</table>
 	       				</div>

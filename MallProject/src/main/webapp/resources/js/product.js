@@ -30,8 +30,7 @@ $(document)
 						} else {
 							return false;
 						}
-					}
-					if(data=="1"){
+					} else if(data=="1"){
 						if (confirm("장바구니에 상품이 담겼습니다. 장바구니로 이동할까요?") == true) {
 							document.location = "/cartList"
 							return false;
@@ -39,6 +38,8 @@ $(document)
 						else {
 							return false;
 						}
+					} else {
+						document.location = data
 					}
 				}, error: function(){
 					alert("오류가 발생했습니다.");
@@ -47,6 +48,10 @@ $(document)
 	})
 })
 .on('click','#buy',function(){
+	if ($('input[name=id]').val() == null || $('input[name=id]').val() == '') {
+		document.location = "/gologin"
+		return false;
+	}
 	$.ajax({ url:'/buy', data:{user_id : $('input[name=id]').val(), prod_name : $('#productName').text(), prod_id : $('#prodId').val(),
 										qty : $('#numInput').val(), price : $('#productPrice').text(), total : $('#totalPrice').text(), img : $('#img').val()},
 				type:'post', dataType:'text',

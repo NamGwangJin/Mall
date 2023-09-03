@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="resources/css/bbs.css" rel="stylesheet"/>
+<link href="css/mall.css" rel="stylesheet" />
 <title>${bPost.title}</title>
 </head>
 <%@ include file="..\header.jsp" %>
