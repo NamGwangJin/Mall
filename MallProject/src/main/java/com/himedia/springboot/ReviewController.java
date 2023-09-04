@@ -27,11 +27,17 @@ public class ReviewController {
 	
 	@Autowired
 	private ReviewDAO rdao;
-
+	
+	@Autowired
+	private CartDAO cdao;
+	
 	@GetMapping("/reviewwrite")
 	public String write(HttpServletRequest req, Model model) {
 		String prod_name = req.getParameter("prod_name");
+		int order_num = Integer.parseInt(req.getParameter("order_num"));
+		
 		model.addAttribute("prod_name",prod_name);
+		model.addAttribute("order_num",order_num);
 		
 		return "review/reviewwrite";
 	}
@@ -44,7 +50,9 @@ public class ReviewController {
 		String img = req.getParameter("img");
 		String id= (String) session.getAttribute("id");
 		String prod_name = req.getParameter("prod_name");
+		int order_num = Integer.parseInt(req.getParameter("order_num"));
 		rdao.insPost(rating,title, content, img, id, prod_name);
+		cdao.updateState(order_num, "리뷰 작성 완료");
 		return "redirect:/product?name=" + prod_name;
 	}
 	

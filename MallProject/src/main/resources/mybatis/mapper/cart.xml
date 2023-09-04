@@ -66,4 +66,12 @@ select * from orderTbl where user_id=#{param1} and order_time=#{param2}
 <select id="getDate" resultType="com.himedia.springboot.OrderDTO">
 select order_time from orderTbl where user_id=#{param1} group by order_time order by order_time desc
 </select>
+
+<update id="updateState">
+update ordertbl set order_state=#{param2} where order_num=#{param1}
+</update>
+
+<select id="getState" resultType="String">
+select order_state from ordertbl where order_num=#{param1}
+</select>
 </mapper>

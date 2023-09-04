@@ -17,9 +17,9 @@
 <%@ include file="..\header.jsp" %>
 		<!-- 헤더 아이디&이메일 -->
 <div class="body">
-<div class="MoreLayoutView_container__8Ahvr">
+<div class="MoreLayoutView_container__8Ahvr" >
 <div class="MoreHeaderView_container__kK6Wj">
-	<div class="MoreHeaderView_inner__BRiQZ" >
+	<div class="MoreHeaderView_inner__BRiQZ">
 		<div class="MoreHeaderView_profile_wrap__Y9XWQ">
 			<div class="MoreHeaderView_name__4ZkcS">
 				<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">

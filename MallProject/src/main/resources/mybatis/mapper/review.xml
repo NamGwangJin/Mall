@@ -64,4 +64,8 @@ select count(*) from review where prod_name = #{param1} and rating = 4
 <select id="getRating5" resultType="int">
 select count(*) from review where prod_name = #{param1} and rating = 5
 </select>
+
+<select id="orderByRating" resultType="com.himedia.springboot.ReviewDTO">
+select * from review where prod_name = #{param3} order by rating desc limit #{param1},#{param2}
+</select>
 </mapper>

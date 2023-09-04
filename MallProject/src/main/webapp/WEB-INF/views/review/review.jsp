@@ -137,8 +137,8 @@
         <div class="products_reviews_media_summary__show_all">
           전체보기
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 8" class="products_reviews_media_summary__show_all_arrow">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M.667 2.333L4 5.667l3.333-3.334"></path>
-</svg>
+    		<path stroke-linecap="round" stroke-linejoin="round" d="M.667 2.333L4 5.667l3.333-3.334"></path>
+		  </svg>
 
         </div>
       </a>
@@ -173,7 +173,7 @@
         <ul class="filter_sort_basic__sort_list js-review-sort-list" data-path="/http://192.168.0.16:8080//products/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-product-reviews-1&amp;parent_url=https%3A%2F%2Fwww.http://192.168.0.16:8080/%2Fproduct%2Fdetail.html%3Fproduct_no%3D1363%26cate_no%3D514%26display_group%3D1&amp;product_code=1363&amp;secure_device_token=V24b7eed425d0c6d447490e1b58bbe71ec73c63034843a059c30522bfbc264d48cacb4cd4b1efdf17d240eb1a107524338&amp;widget_env=100&amp;widget_style=">
   
     <li class="filter_sort_basic__sort_list_item filter_sort_basic__sort_list_item--selected js-review-sort-list-item" data-value="20">
-      최신순
+      <span id="orderByDate">최신순</span>
           <div class="filter_sort_basic__sort_desc">
             <div class="filter_sort_basic__sort_desc_title">
               리뷰 정렬 기준
@@ -185,7 +185,7 @@
     </li>
   
     <li class="filter_sort_basic__sort_list_item js-review-sort-list-item" data-value="30">
-      별점순
+     <span id="orderByRating">별점순</span> 
           <div class="filter_sort_basic__sort_desc">
             <div class="filter_sort_basic__sort_desc_title">
               리뷰 정렬 기준
@@ -260,7 +260,7 @@
       
     "
   >
-    별점순
+    <span>별점순</span>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18" class="dropdown_box_component__radio_button">
     <rect width="14" height="14" x="2" y="2" rx="7.5"></rect>
     <rect width="6" height="6" x="6" y="6" stroke="none" fill="#fff" rx="3"></rect>
@@ -498,15 +498,17 @@
 
 </div>
 </div><br>
-            <div class="review_list_v2__score_text"><h1>${list.title}</h1></div>
+            <div class="review_list_v2__score_text"><h1 name=title>${list.title}</h1></div>
             
           </div>
         
         <div class="review_list_v2__edit_container">
-          
-		<div class="review_list_v2__date">${list.created}</div>
-         <div class="review_list_v2__date1">${list.updated}</div>
-          
+
+		<div class="review_list_v2__date" name=created>${list.created}</div>
+         <div class="review_list_v2__date1" name=updated>${list.updated}</div>
+               <div class="review_list_v2__user_name_message">  
+     			<b name=writer>${list.writer}</b>님의 리뷰입니다.
+  			</div>
         </div>
       </div>
        <c:if test="${list.img != '' }">
@@ -531,8 +533,7 @@
               <div class="review_list_v2__message_container">
                 <div class="review_list_v2__expand_link js-renewal-review-message-link js-renewal-link-expand disabled">
                   <div class="review_list_v2__message js-collapsed-review-content js-translate-text" style="max-height: 54px">
-                   	<div class="review_list_v2__score_text">${list.content}</div>
-                   	
+                   	<div class="review_list_v2__score_text" name=content>${list.content}</div>
                   </div>
                   <div class="mall-link-color review_list_v2__message_link_button">
                     <span class="review_list_v2__expand_link_text">리뷰 더보기</span>
@@ -546,9 +547,6 @@
             </div>
           </div>
         </div>
-  <div class="review_list_v2__user_name_message">  
-     <b>${list.writer}</b>님의 리뷰입니다.
-  </div>
 </c:forEach>
   <div class="pagination" style="text-align:center;">
 
@@ -576,6 +574,40 @@
 <script>
 $(document)
 .ready(function(){
+// 	console.log( $('c:forEach[name=rating]').attr('end') )
 })
+.on('click','#orderByRating',function(){
+	$(this).parent().toggleClass("filter_sort_basic__sort_list_item--selected");
+	$('#orderByDate').parent().toggleClass("filter_sort_basic__sort_list_item--selected");
+	$.ajax({url:"/orderByRating", data:{prod_name : $('#name').val()}, type:'post', dataType:'json',
+		success: function(data){
+			for(let i = 0; i<data.length; i++) {
+				let obj = data[i];
+				let rating = obj['rating'];
+				
+				$('h1[name=title]').eq(i).text( obj['title'] );
+				$('div[name=created]').eq(i).text( obj['created'] );
+				$('div[name=updated]').eq(i).text( obj['updated'] );
+				$('b[name=writer]').eq(i).text( obj['writer'] );
+				$('div[name=content]').eq(i).text( obj['content'] );
+				
+				displayStars(i, rating);
+			}
+		}, error: function(){
+			
+		}
+	})
+})
+.on('click','#orderByDate',function(){
+	document.location = "/product?name=" + $('#name').val();
+})
+;
+function displayStars(index, rating) {
+    let starHtml = '';
+    for (let j = 0; j < rating; j++) {
+        starHtml += '<div class="star"></div>';
+    }
+    $('div[name=stars]').eq(index).html(starHtml);
+}
 </script>
 </html>

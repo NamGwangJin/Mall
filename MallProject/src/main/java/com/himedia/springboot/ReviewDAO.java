@@ -34,5 +34,7 @@ public interface ReviewDAO {
 	int getRating3(String prod_name);
 	int getRating4(String prod_name);
 	int getRating5(String prod_name);
+	
+	ArrayList<ReviewDTO> orderByRating(int start, int psize, String prod_name);
 }
 

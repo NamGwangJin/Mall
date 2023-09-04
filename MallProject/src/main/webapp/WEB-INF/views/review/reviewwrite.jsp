@@ -19,6 +19,7 @@ table td { border : 1px solid black; }
 <table>
 ${reviewwrite}
 <form method='post' action='/insert1' id=frmInsert name=frmInsert>
+<input type=hidden name=order_num value="${order_num}">
 <input type=hidden name=prod_name value="${prod_name}">
 <tr><td colspan=2><h1>후기 작성</h1></td></tr>
 <tr><td>별점</td><td>

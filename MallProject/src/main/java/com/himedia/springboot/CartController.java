@@ -7,6 +7,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -321,8 +323,10 @@ public class CartController {
 		int pno = Integer.parseInt(page);
 		start = (pno-1)*10;
 		psize = 10;
-		ArrayList<ReviewDTO> alMall = rDao.getList(start, psize, name);
 		
+		ArrayList<ReviewDTO> alMall = rDao.getList(start, psize, name);
+		model.addAttribute("rlist",alMall);
+
 		int cnt=rDao.getTotal();
 		if (cnt == 0) {
 			cnt = 1;
@@ -339,7 +343,6 @@ public class CartController {
 		}
 		
 		model.addAttribute("pagestr",pagestr);
-		model.addAttribute("rlist",alMall);
 		
 		int reviewSize = rDao.getReviewSize(name);
 		model.addAttribute("reviewSize",reviewSize);
@@ -370,5 +373,57 @@ public class CartController {
 		
 		return "product/product";
 	}
-
+	
+	@PostMapping("/orderByRating")
+	@ResponseBody
+	public String orderByRating(HttpServletRequest req) {
+		String prod_name = req.getParameter("prod_name");
+		int start,psize;
+		String page = req.getParameter("pageno");
+		if(page==null || page.equals("")) {
+			page="1";
+		}
+		int pno = Integer.parseInt(page);
+		start = (pno-1)*10;
+		psize = 10;
+		
+		ArrayList<ReviewDTO> rList = rDao.orderByRating(start, psize, prod_name);
+		JSONArray ja = new JSONArray();
+		for (int i=0; i<rList.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("img", rList.get(i).getImg());
+			jo.put("rating", rList.get(i).getRating());
+			jo.put("title", rList.get(i).getTitle());
+			jo.put("created", rList.get(i).getCreated());
+			jo.put("updated", rList.get(i).getUpdated());
+			jo.put("writer", rList.get(i).getWriter());
+			jo.put("content", rList.get(i).getContent());
+			ja.add(jo);
+		}
+		
+		return ja.toJSONString();
+		
+	}
+	
+	@PostMapping("/updateState")
+	@ResponseBody
+	public String updateState(HttpServletRequest req) {
+		int orderNum = Integer.parseInt(req.getParameter("orderNum"));
+		String state = req.getParameter("state");
+		
+		if(state.equals("취소 요청")) {
+			cDao.updateState(orderNum, state);
+		} else if (state.equals("취소 요청 철회")) {
+			cDao.updateState(orderNum, "배송 대기중");
+		} else if (state.equals("반품 요청")) {
+			cDao.updateState(orderNum, state);
+		} else if (state.equals("반품 요청 철회")) {
+			cDao.updateState(orderNum, "배송 완료");
+		}
+		
+		String getState = cDao.getState(orderNum);
+		
+		return getState;
+	}
+	
 }

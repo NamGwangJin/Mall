@@ -18,6 +18,7 @@
         <br><br><br><br><br>
         <input type=hidden name=id id=id value="${id}">
         <input type=hidden name=img id=img value="${product.prod_img}">
+        <input type=hidden name=name id=name value="${product.prod_name}">
         <main id="product">
             <section class="view">
                 <nav>                
@@ -66,6 +67,5 @@
 			<%@ include file="..\review\review.jsp" %>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="/resources/js/product.js">
-</script>
+<script src="/resources/js/product.js"></script>
 </html>

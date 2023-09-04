@@ -23,4 +23,8 @@ public interface CartDAO {
 	ArrayList<OrderDTO> getOrder(String id);
 	ArrayList<OrderDTO> getOrderList(String id, String order_time);
 	ArrayList<OrderDTO> getDate(String id);
+	
+	String getState(int orderNum);
+	void updateState(int orderNum, String state);
+	
 }
