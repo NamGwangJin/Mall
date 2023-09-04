@@ -482,21 +482,11 @@
       <div class="review_list_v2__score_section">
         
           <div class="review_list_v2__score_container">
-            <div class="review_list_v2__score_star">
-            
-<c:forEach var="rating" begin="1" end="${list.rating}" step="1">
-	<div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'>
-		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="star" style="fill: #000000">
-			<defs>
-			<path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
-			</defs>
-		<use xlink:href="#star-full">
-		</use>
-		</svg>
-	</div>
-</c:forEach>
+		<input type=hidden value="${list.rating}" name=rating>
+           <div class="review_list_v2__score_star" name=star>
 
-</div>
+		</div>
+		
 </div><br>
             <div class="review_list_v2__score_text"><h1 name=title>${list.title}</h1></div>
             
@@ -571,43 +561,5 @@
 </div> 
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document)
-.ready(function(){
-// 	console.log( $('c:forEach[name=rating]').attr('end') )
-})
-.on('click','#orderByRating',function(){
-	$(this).parent().toggleClass("filter_sort_basic__sort_list_item--selected");
-	$('#orderByDate').parent().toggleClass("filter_sort_basic__sort_list_item--selected");
-	$.ajax({url:"/orderByRating", data:{prod_name : $('#name').val()}, type:'post', dataType:'json',
-		success: function(data){
-			for(let i = 0; i<data.length; i++) {
-				let obj = data[i];
-				let rating = obj['rating'];
-				
-				$('h1[name=title]').eq(i).text( obj['title'] );
-				$('div[name=created]').eq(i).text( obj['created'] );
-				$('div[name=updated]').eq(i).text( obj['updated'] );
-				$('b[name=writer]').eq(i).text( obj['writer'] );
-				$('div[name=content]').eq(i).text( obj['content'] );
-				
-				displayStars(i, rating);
-			}
-		}, error: function(){
-			
-		}
-	})
-})
-.on('click','#orderByDate',function(){
-	document.location = "/product?name=" + $('#name').val();
-})
-;
-function displayStars(index, rating) {
-    let starHtml = '';
-    for (let j = 0; j < rating; j++) {
-        starHtml += '<div class="star"></div>';
-    }
-    $('div[name=stars]').eq(index).html(starHtml);
-}
-</script>
+<script src="resources/js/review.js"></script>
 </html>
