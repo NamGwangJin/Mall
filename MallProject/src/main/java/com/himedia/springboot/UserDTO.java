@@ -10,8 +10,15 @@ public class UserDTO {
 	String user_birthday;
 	String admin_user;
 	String signup_date;
+	int user_point;
 	
 	
+	public int getUser_point() {
+		return user_point;
+	}
+	public void setUser_point(int user_point) {
+		this.user_point = user_point;
+	}
 	public String getAdmin_user() {
 		return admin_user;
 	}

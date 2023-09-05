@@ -144,7 +144,7 @@ public class CartController {
 	
 	@GetMapping("/buy")
 	public String gobuy(HttpServletRequest req, Model model) {
-		String user_id = req.getParameter("user_id");
+		String user_id = (String) req.getSession().getAttribute("id");
 		String prod_name = req.getParameter("prod_name");
 		int prod_id = Integer.parseInt(req.getParameter("prod_id"));
 		int qty = Integer.parseInt(req.getParameter("qty"));
@@ -152,6 +152,9 @@ public class CartController {
 		int total = Integer.parseInt(req.getParameter("total"));
 		String img = req.getParameter("img");
 		
+		int point = uDao.getPoint(user_id);
+		
+		model.addAttribute("point",point);
 		model.addAttribute("prod_id",prod_id);
 		model.addAttribute("prod_name",prod_name);
 		model.addAttribute("qty",qty);
@@ -169,12 +172,14 @@ public class CartController {
 		String prod_id = req.getParameter("prod_id");
 		String[] prodList = prod_id.split("");
 		
+		int point = uDao.getPoint(user_id);
 		ArrayList<CartDTO> cList = new ArrayList<CartDTO>();
 		
 		for(int i = 0; i<prodList.length; i++) {
 			cList.add(cDao.getChoiceCart(user_id, Integer.parseInt(prodList[i])));
 		}
 		
+		model.addAttribute("point",point);
 		model.addAttribute("cList",cList);
 		model.addAttribute("size",cList.size());
 		handleUserInterface(req, model);
@@ -204,7 +209,8 @@ public class CartController {
 		String addr2 = req.getParameter("addr2");
 		String address = zip + " " + addr1 + " " + addr2;
 		String payment = req.getParameter("payment");
-				
+		int usePoint = Integer.parseInt(req.getParameter("sale"));
+		
 		String prod_id = req.getParameter("prod_id");
 		String[] prodList = prod_id.split("");
 		
@@ -231,10 +237,17 @@ public class CartController {
 			total += Integer.parseInt(totalList[i]);
 		}
 		
+		uDao.usePoint(id, usePoint);
+		total -= usePoint;
+		int savePoint = (int) Math.round(total * 0.1);
+		uDao.savePoint(id, savePoint);
+		
 		model.addAttribute("name",name);
 		model.addAttribute("img",imgList[0]);
 		model.addAttribute("prodname",nameList[0]);
 		model.addAttribute("qty",qty);
+		model.addAttribute("usePoint",usePoint);
+		model.addAttribute("savePoint",savePoint);
 		model.addAttribute("total",total);
 		model.addAttribute("mobile",mobile);
 		model.addAttribute("address",address);
@@ -260,17 +273,24 @@ public class CartController {
 		String addr2 = req.getParameter("addr2");
 		String address = zip + " " + addr1 + " " + addr2;
 		String payment = req.getParameter("payment");
+		int usePoint = Integer.parseInt(req.getParameter("sale"));
+		int savePoint = (int) Math.round(total * 0.1);
+		
+		uDao.savePoint(id, savePoint);
 		
 		model.addAttribute("name",name);
 		model.addAttribute("img",img);
 		model.addAttribute("prodname",prodName);
 		model.addAttribute("qty",qty);
+		model.addAttribute("usePoint",usePoint);
+		model.addAttribute("savePoint",savePoint);
 		model.addAttribute("total",total);
 		model.addAttribute("mobile",mobile);
 		model.addAttribute("address",address);
 		model.addAttribute("payment",payment);
 		model.addAttribute("now",now);
 		
+		uDao.usePoint(id, usePoint);
 		cDao.deleteItem(id, prodid);
 		cDao.order(name, mobile, img, prodName, qty, total, address, payment, id);
 		
@@ -372,37 +392,6 @@ public class CartController {
 		 handleUserInterface(req, model);
 		
 		return "product/product";
-	}
-	
-	@PostMapping("/orderByRating")
-	@ResponseBody
-	public String orderByRating(HttpServletRequest req) {
-		String prod_name = req.getParameter("prod_name");
-		int start,psize;
-		String page = req.getParameter("pageno");
-		if(page==null || page.equals("")) {
-			page="1";
-		}
-		int pno = Integer.parseInt(page);
-		start = (pno-1)*10;
-		psize = 10;
-		
-		ArrayList<ReviewDTO> rList = rDao.orderByRating(start, psize, prod_name);
-		JSONArray ja = new JSONArray();
-		for (int i=0; i<rList.size(); i++) {
-			JSONObject jo = new JSONObject();
-			jo.put("img", rList.get(i).getImg());
-			jo.put("rating", rList.get(i).getRating());
-			jo.put("title", rList.get(i).getTitle());
-			jo.put("created", rList.get(i).getCreated());
-			jo.put("updated", rList.get(i).getUpdated());
-			jo.put("writer", rList.get(i).getWriter());
-			jo.put("content", rList.get(i).getContent());
-			ja.add(jo);
-		}
-		
-		return ja.toJSONString();
-		
 	}
 	
 	@PostMapping("/updateState")

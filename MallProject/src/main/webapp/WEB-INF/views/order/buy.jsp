@@ -70,11 +70,12 @@
                             </tr>
                             <tr>
                                 <td>포인트 할인</td>
-                                <td>0</td>
+                                <input type=hidden name=sale value="">
+                                <td id=sale>0</td>
                             </tr>
                             <tr>
                                 <td>전체주문금액</td>
-                                <td>${total}</td>
+                                <td id=total>${total}</td>
                             </tr>
                         </table>
                         <input type="submit" value="결제하기">
@@ -119,12 +120,13 @@
                         <h1>할인정보</h1>
                         <div>
                             <p>
-                                현재 포인트 : 
-                                <span>0</span>점
+                                현재 포인트 :
+                                <input type=hidden id="point" value="${point}">
+                                <span>${point}</span>점
                             </p>
-                            <label>
-                                <input type="text" name="point" style="text-align:right;" value=0>점
-                                <input type="button" value="적용">
+                            <label id="pointLabel">
+                                <input type="text" id="usePoint" style="text-align:right;" value=0>점
+                                <input type="button" id="apply" value="적용">
                             </label>
 							<br>
                             <br>

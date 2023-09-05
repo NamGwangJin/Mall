@@ -1,5 +1,9 @@
+let total = 0;
 $(document)
 .ready(function(){
+	if ( parseInt( $('#point').val() ) < 5000 ) {
+		$('#pointLabel').hide();
+	}
 	var prod_id = "";
 	for(var i=0; i<$("input[name=prodId]").length; i++){
 		prod_id += $("input[name=prodId]").eq(i).val();
@@ -52,7 +56,6 @@ $(document)
 	}
 	$('input[name=prod_total]').val(prod_total);
 	
-	let total = 0;
 	var qty = $('input[name=total]').length;
 	for(var i=0; i<qty; i++){
 		total += parseInt($('input[name=total]').eq(i).val());
@@ -161,4 +164,28 @@ $(document)
             $('input[name=addr2]').focus();
         }
     }).open();
+})
+.on('click','#apply',function(){
+	if ( isNaN( $('#usePoint').val() ) == true ) {
+		alert("숫자만 입력해주세요");
+		return false;
+	}
+	
+	if ( parseInt( $('#usePoint').val() ) <= 0 ) {
+		alert("1점부터 사용 가능합니다.");
+		return false;
+	}
+	
+	if( parseInt( $('#point').val() ) < parseInt( $('#usePoint').val() ) ) {
+		alert("포인트가 부족합니다.");
+		return false;
+	}
+	
+	$('#sale').text( $('#usePoint').val() );
+	$('#total').text( parseInt( total - $('#sale').text() ) );
+	alert("포인트가 적용되었습니다. 결제 금액을 확인해주세요.")
+})
+.on('submit','#frmOrder',function(){
+	$('input[name=total]').val( $('#total').text() );
+	$('input[name=sale]').val( $('#sale').text() );
 })

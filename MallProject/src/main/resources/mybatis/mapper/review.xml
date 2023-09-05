@@ -68,4 +68,16 @@ select count(*) from review where prod_name = #{param1} and rating = 5
 <select id="orderByRating" resultType="com.himedia.springboot.ReviewDTO">
 select * from review where prod_name = #{param3} order by rating desc limit #{param1},#{param2}
 </select>
+
+<select id="orderByDate" resultType="com.himedia.springboot.ReviewDTO">
+select * from review where prod_name = #{param3} order by updated desc limit #{param1},#{param2}
+</select>
+
+<select id="orderByPhoto" resultType="com.himedia.springboot.ReviewDTO">
+select * from review where prod_name = #{param3} order by img != '' and #{param4} desc limit #{param1},#{param2}
+</select>
+
+<select id="reviewSearch" resultType="com.himedia.springboot.ReviewDTO">
+select * from review where prod_name = #{param3} and ( content like #{param4} or title like #{param4} ) order by updated desc limit #{param1},#{param2}
+</select>
 </mapper>

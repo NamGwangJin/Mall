@@ -5,6 +5,7 @@
 <html>
 <head>
 <link href="css/mall.css" rel="stylesheet" />
+<link href="css/product.css" rel="stylesheet" />
 <meta charset="UTF-8">
 <title>Order List</title>
 </head>
@@ -14,19 +15,24 @@
         	<div>
         		<div>
        				<table  cellspacing="0" cellpadding="0" width="90%" align="center">
-       					<c:choose>
-       						<c:when test="${oList == '없음'}">
+
 		       					<caption><h1 style="text-align:left;">주문내역</h1></caption>
-		        				<thead style="height:50px; text-align:center;">
+		        			<c:choose>
+	       						<c:when test="${oList == '없음'}">
+	       						<thead style="height:50px; text-align:center;">
 		        					<tr width="90%"><td><h2>주문 일시</h2><td>${order.order_time}</td></tr>
 		        					<tr width="90%"><td><b>주문번호</b></td><td width="30%"><b>제품명</b></td><td><b>수량</b></td><td><b>가격</b></td><td><b>받는분</b></td><td><b>번호</b></td><td><b>주소</b></td><td><b>상태</b></td></tr>
 		        					<tr><td colspan=8><hr></td></tr>
 		        				</thead>
-		        				<tbody id="cartList" style="text-align:center;">
-		        						<tr><td colspan=8><Strong style="color:red;">주문내역이 없습니다.</Strong></td></tr>
-		      							<tr><td colspan=8><button id=buy class="buy">상품 보러 가기</button></td></tr>
-		      					</tbody>
-      						</c:when>
+									<div class=summary>
+		        					<div class=button>
+		        						<tbody id="cartList" style="text-align:center; height:200px;">
+		        							<tr><td colspan=8><Strong style="color:gray;">주문내역이 없습니다.</Strong></td></tr>
+		        							<tr><td colspan=8><button id="buy" class="buy" style="width:100px;height:50px;">샵으로 이동</button></td></tr>
+		        						</tbody>
+		        					</div>
+		        					</div>
+	      						</c:when>
       						<c:otherwise>
       							<caption><h1 style="text-align:left;">주문내역</h1></caption>
       							<c:forEach items="${dList}" var="d">

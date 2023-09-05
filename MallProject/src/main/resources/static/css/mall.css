@@ -3,6 +3,14 @@
   box-sizing: border-box;
 }
 
+button {
+	cursor:pointer;
+}
+
+a {
+	cursor:pointer;
+}
+
 body {
   margin: 0;
   min-width: 992px;

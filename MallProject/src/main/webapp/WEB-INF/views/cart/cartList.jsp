@@ -24,10 +24,14 @@
         				
         				<c:choose>
         					<c:when test="${cList == '없음'}">
-        						<tbody id="cartList" style="text-align:center;">
-        							<tr><td colspan=5><Strong style="color:red;">장바구니에 담긴 상품이 없습니다.</Strong></td></tr>
-        							<tr><td colspan=5><button id=buy class="buy">상품 보러 가기</button></td></tr>
+        					<div class=summary>
+        					<div class=button>
+        						<tbody id="cartList" style="text-align:center; height:200px;">
+        							<tr><td colspan=5><Strong style="color:gray;">장바구니에 담긴 상품이 없습니다.</Strong></td></tr>
+        							<tr><td colspan=5><a href="/"><button id="buy" class="buy" style="width:100px;height:50px;">샵으로 이동</button></a></td></tr>
         						</tbody>
+        					</div>
+        					</div>
         					</c:when>
         					<c:otherwise>
         						<c:forEach items="${cList}" var="cart">
@@ -57,7 +61,7 @@
         						<tr width="90%" align="center"><td><Strong>총 금액</Strong></td><td></td><td><Strong>할인 금액</Strong></td><td></td><td><Strong>결제할 금액</Strong></td></tr>
         						<tr><td colspan=5><hr></td></tr>
         					</thead>
-        					<tbody id=checked style="background-color:#25C7A0;">
+        					<tbody id=checked style="background-color:beige;">
         						<tr height="150px;" align="center"><td></td><td><img src="/img/minus.png" style="width:50px;"></td><td></td><td><img src="/img/equal.png" style="width:50px;"></td><td></td></tr>
         					</tbody>
         				</table>

@@ -93,7 +93,7 @@ $(document)
 })
 
 .on('click','#buy',function(){ // 선택 아이템 주문
-	if($(this).text() == "상품 보러 가기") {
+	if($(this).text() == "샵으로 이동") {
 		document.location = "/";
 		return false;
 	}

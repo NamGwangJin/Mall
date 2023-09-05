@@ -44,7 +44,11 @@
 				</div>
 				<br>
 				<div class="sc-ed52fcbe-8 bhRZmA">
-					<b>금액 : ${total} 원</b>
+					<b>금액 : ${total} 원</b><sub style="font-weight:bold;">(+ ${savePoint}P)</sub>
+				</div>
+				<br>
+				<div class="sc-ed52fcbe-8 bhRZmA">
+					<b>사용 포인트 : ${usePoint} 점</b>
 				</div>
 				<div class="sc-ed52fcbe-5 brYFFU">
 					<strong class="sc-ed52fcbe-6 gdkOVW"></strong>

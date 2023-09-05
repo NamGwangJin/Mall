@@ -78,7 +78,8 @@
                             </tr>
                             <tr>
                                 <td>포인트 할인</td>
-                                <td>0</td>
+                                <input type=hidden name=sale value="">
+                                <td id=sale>0</td>
                             </tr>
                             <tr>
                                 <td>전체주문금액</td>
@@ -127,11 +128,12 @@
                         <div>
                             <p>
                                 현재 포인트 : 
-                                <span>0</span>점
+                                <input type=hidden id="point" value="${point}">
+                                <span>${point}</span>점
                             </p>
-                            <label>
-                                <input type="text" name="point" style="text-align:right;" value=0>점
-                                <input type="button" value="적용">
+                            <label id="pointLabel">
+                                <input type="text" id="usePoint" style="text-align:right;" value=0>점
+                                <input type="button" id="apply" value="적용">
                             </label>
 							<br>
                             <br>
@@ -145,7 +147,7 @@
                             <span>간편결제</span>
                             <p>
                                 <label>
-                                    <input type="radio" name="payment" value="카카오페이">카카오페이
+                                    <input type="radio" name="payment" value="카카오페이"><img src="/img/kakaopay.png" style="width:60px;">
                                 </label>
                                 <label>
                                     <input type="radio" name="payment" value="네이버페이">네이버페이

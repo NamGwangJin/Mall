@@ -22,4 +22,8 @@ public interface UserDAO {
 	UserDTO sameUser(String id);
 	
 	UserDTO getdel(String p1);
+	
+	int getPoint(String id);
+	int usePoint(String id, int point);
+	void savePoint(String id, int point);
 }

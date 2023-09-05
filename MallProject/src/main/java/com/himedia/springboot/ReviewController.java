@@ -2,11 +2,10 @@ package com.himedia.springboot;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,16 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-@Controller
 
+@Controller
 public class ReviewController {
-	Date date = new Date();
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	String now = formatter.format(date);
 	
 	@Autowired
 	private ReviewDAO rdao;
@@ -73,6 +70,134 @@ public class ReviewController {
 		String img = req.getParameter("img");
 		rdao.udPost(num, rating, title, content, img);
 		return "redirect:/review";
+	}
+	
+	@PostMapping("/orderByRating")
+	@ResponseBody
+	public String orderByRating(HttpServletRequest req) {
+		String prod_name = req.getParameter("prod_name");
+		
+		int start, psize;
+		String page = req.getParameter("pageno");
+		if(page==null || page.equals("")) {
+			page="1";
+		}
+		int pno = Integer.parseInt(page);
+		start = (pno-1)*10;
+		psize = 10;
+		
+		ArrayList<ReviewDTO> rList = rdao.orderByRating(start, psize, prod_name);
+		JSONArray ja = new JSONArray();
+		for (int i=0; i<rList.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("img", rList.get(i).getImg());
+			jo.put("rating", rList.get(i).getRating());
+			jo.put("title", rList.get(i).getTitle());
+			jo.put("created", rList.get(i).getCreated());
+			jo.put("updated", rList.get(i).getUpdated());
+			jo.put("writer", rList.get(i).getWriter());
+			jo.put("content", rList.get(i).getContent());
+			ja.add(jo);
+		}
+		
+		return ja.toJSONString();
+		
+	}
+	
+	@PostMapping("/orderByDate")
+	@ResponseBody
+	public String orderByDate(HttpServletRequest req) {
+		String prod_name = req.getParameter("prod_name");
+		int start,psize;
+		String page = req.getParameter("pageno");
+		if(page==null || page.equals("")) {
+			page="1";
+		}
+		int pno = Integer.parseInt(page);
+		start = (pno-1)*10;
+		psize = 10;
+		
+		ArrayList<ReviewDTO> rList = rdao.orderByDate(start, psize, prod_name);
+		JSONArray ja = new JSONArray();
+		for (int i=0; i<rList.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("img", rList.get(i).getImg());
+			jo.put("rating", rList.get(i).getRating());
+			jo.put("title", rList.get(i).getTitle());
+			jo.put("created", rList.get(i).getCreated());
+			jo.put("updated", rList.get(i).getUpdated());
+			jo.put("writer", rList.get(i).getWriter());
+			jo.put("content", rList.get(i).getContent());
+			ja.add(jo);
+		}
+		
+		return ja.toJSONString();
+		
+	}
+	
+	@PostMapping("/orderByPhoto")
+	@ResponseBody
+	public String orderByPhoto(HttpServletRequest req) {
+		String prod_name = req.getParameter("prod_name");
+		String ob = req.getParameter("ob");
+		int start,psize;
+		String page = req.getParameter("pageno");
+		if(page==null || page.equals("")) {
+			page="1";
+		}
+		int pno = Integer.parseInt(page);
+		start = (pno-1)*10;
+		psize = 10;
+		
+		ArrayList<ReviewDTO> rList = rdao.orderByPhoto(start, psize, prod_name, ob);
+		JSONArray ja = new JSONArray();
+		for (int i=0; i<rList.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("img", rList.get(i).getImg());
+			jo.put("rating", rList.get(i).getRating());
+			jo.put("title", rList.get(i).getTitle());
+			jo.put("created", rList.get(i).getCreated());
+			jo.put("updated", rList.get(i).getUpdated());
+			jo.put("writer", rList.get(i).getWriter());
+			jo.put("content", rList.get(i).getContent());
+			ja.add(jo);
+		}
+		
+		return ja.toJSONString();
+		
+	}
+	
+	@PostMapping("/reviewSearch")
+	@ResponseBody
+	public String reviewSearch(HttpServletRequest req) {
+		int start,psize;
+		String page = req.getParameter("pageno");
+		if(page==null || page.equals("")) {
+			page="1";
+		}
+		int pno = Integer.parseInt(page);
+		start = (pno-1)*10;
+		psize = 10;
+		
+		String prod_name = req.getParameter("prod_name");
+		String keyword = req.getParameter("keyword");
+		
+		ArrayList<ReviewDTO> rList = rdao.reviewSearch(start, psize, prod_name, "%"+keyword+"%");
+		JSONArray ja = new JSONArray();
+		for (int i=0; i<rList.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("img", rList.get(i).getImg());
+			jo.put("rating", rList.get(i).getRating());
+			jo.put("title", rList.get(i).getTitle());
+			jo.put("created", rList.get(i).getCreated());
+			jo.put("updated", rList.get(i).getUpdated());
+			jo.put("writer", rList.get(i).getWriter());
+			jo.put("content", rList.get(i).getContent());
+			ja.add(jo);
+		}
+		
+		return ja.toJSONString();
+		
 	}
 	
 	//file upload

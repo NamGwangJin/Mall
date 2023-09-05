@@ -309,6 +309,7 @@
     
     
     <input
+    	id="keyword"
       type="text"
       value=""
       class="
@@ -355,16 +356,11 @@
     
       <li class="filter_sort_basic__show_media_reviews_first">
         
-        <a href="/http://192.168.0.16:8080//products/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-product-reviews-1&amp;media_reviews_first=1&amp;parent_url=https%3A%2F%2Fwww.http://192.168.0.16:8080/%2Fproduct%2Fdetail.html%3Fproduct_no%3D1363%26cate_no%3D514%26display_group%3D1&amp;product_code=1363&amp;secure_device_token=V24b7eed425d0c6d447490e1b58bbe71ec73c63034843a059c30522bfbc264d48cacb4cd4b1efdf17d240eb1a107524338&amp;widget_env=100&amp;widget_style=" data-remote="true">
-          <div class="
-  toggle_button_component
-  js-toggle-button-component
-  filter_sort_basic__toggle_button
-  js-toggle-button
+
+          <div class="toggle_button_component js-toggle-button-component
+           filter_sort_basic__toggle_button js-toggle-button" id=photo>
   
-">
-  
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="toggle_button_component__icon toggle-check-off">
+      <svg id=check xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="toggle_button_component__icon toggle-check-off">
     <rect width="18.5" height="18.5" x="2.75" y="2.75" stroke-width="1.5" rx="9.25"></rect>
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12l4 4 6-7"></path>
 </svg>
@@ -378,7 +374,7 @@
   <span>포토 먼저 보기</span>
 </div>
 
-        </a>
+
       </li>
     
   </ul>
@@ -507,7 +503,7 @@
 		 		 <ul class="review_media_v2__media">
 				      <li class="review_media_v2__medium">
 				        <a class="js-link-fullscreen-popup" data-url="img/${list.img}">
-				        <img src="img/${list.img}" style="width:100px;">
+				        <img name=img src="img/${list.img}" style="width:100px;">
 				          <script>
 				            fimg('img', function(dw){return (dw - 17) * 0.25 - 8;}, 215, 237);
 				          </script>
@@ -538,7 +534,9 @@
           </div>
         </div>
 </c:forEach>
-  <div class="pagination" style="text-align:center;">
+    </div>
+  </div>
+   <div class="pagination" style="text-align:center;">
 
     <a class="pagination__button pagination__button--prev pagination__button--disabled">&lt;</a>
 
@@ -547,8 +545,6 @@
     <a class="pagination__button pagination__button--next" href="" data-remote="true">&gt;</a>
 
 </div>
-    </div>
-  </div>
   <div class="review_list_v2__review_rcontent">
   </div>
   <div class="review_list_v2__review_separator">

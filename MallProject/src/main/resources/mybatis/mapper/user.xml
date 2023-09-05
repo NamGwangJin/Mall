@@ -38,4 +38,16 @@ select user_name, user_mobile, user_address from user where user_id=#{param1}
 <select id="getdel" resultType="com.himedia.springboot.UserDTO">
  select user_id, user_name, user_mobile, user_email, user_address, user_birthday, signup_date from user where user_id=#{param1} 
 </select>
+
+<select id="getPoint" resultType="int">
+select user_point from user where user_id=#{param1}
+</select>
+
+<update id="usePoint">
+update user set user_point = user_point - #{param2} where user_id = #{param1}
+</update>
+
+<update id="savePoint">
+update user set user_point = user_point + #{param2} where user_id = #{param1}
+</update>
  </mapper>

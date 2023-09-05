@@ -36,5 +36,8 @@ public interface ReviewDAO {
 	int getRating5(String prod_name);
 	
 	ArrayList<ReviewDTO> orderByRating(int start, int psize, String prod_name);
+	ArrayList<ReviewDTO> orderByDate(int start, int psize, String prod_name);
+	ArrayList<ReviewDTO> orderByPhoto(int start, int psize, String prod_name, String ob);
+	ArrayList<ReviewDTO> reviewSearch(int start, int psize, String prod_name, String keyword);
 }
 
