@@ -28,6 +28,7 @@ public interface ReviewDAO {
 	int getReviewSize(String prod_name);
 	int getPhotoReview(String prod_name);
 	int getLike(String prod_name);
+	float getRatingAvg(String prod_name);
 	
 	int getRating1(String prod_name);
 	int getRating2(String prod_name);

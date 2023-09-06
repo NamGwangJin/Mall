@@ -6,16 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/mall.css" rel="stylesheet" />
-
 <title>Weverse</title>
-</head>
-
-<body>
 <%@ include file="header.jsp" %>
+</head>
+<body>
 
 <div class="products">
-    <h3>상품목록</h3>
     <div class="product-list">
+    <h3>상품목록</h3>
         <div class="product-list">
             <body>
             <tr>
@@ -23,9 +21,9 @@
                 <a class="product" id='${product.prod_name}' name='${product.prod_name}'>
                     <img src="img/${product.prod_img}" height="225" width="225">
                     <div class="product-name">
-                        ${product.prod_name}
+                      ${product.prod_name}
                     </div>
-                    <div class="product-price">${product.prod_price}원</div>
+                    <div class="product-name products"><h4>₩${product.prod_price}</h4></div>
                 </a>
             </c:forEach>
             </tr>

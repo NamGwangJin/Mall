@@ -1,7 +1,8 @@
 var idRegExp = /^[a-z0-9]{8,16}$/; // 아이디
 var pwRegExp = /^[a-zA-z0-9]{8,16}$/; // 비밀번호
 var nameRegExp = /^[가-힣]{2,15}$/; //이름 한글만
-var emailRegExp = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+var mobileRegExp = /^\d{3}-\d{4}-\d{4}$/ // 번호
+var emailRegExp =/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
 $(document)
 .on('click','#search',function(){
@@ -85,6 +86,9 @@ $(document)
 	if($('#mobile').val() == '') {
 		alert("모바일 번호를 입력해주세요.")
 		return false;
+	} else if (!mobileRegExp.test($('#mobile').val())){
+		alert("모바읿 번호의 형식을 확인해주세요.");
+		return false;
 	}
 	
 	if($('#birthday').val() == '') {
@@ -94,6 +98,9 @@ $(document)
 	
 	if($('#email').val() == '') {
 		alert("이메일을 입력해주세요.");
+		return false;
+	}else if(!emailRegExp.test($('#email').val())) {
+		alert("이메일의 형식을 확인해주세요.");
 		return false;
 	}
 	
@@ -180,7 +187,12 @@ $(document)
 	}
 })
 .on('input','#mobile',function(){
-	$(this).val($(this).val().replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/\-{1,2}$/g, ""));
+  let inputVal = $(this).val().replace(/\D/g, ''); // 숫자 이외의 문자 제거
+  if (inputVal.length > 11) {
+    inputVal = inputVal.substr(0, 10); // 10자리까지만 유효
+  }
+  let formattedVal = inputVal.replace(/(\d{3})(\d{0,4})(\d{0,4})/, "$1-$2-$3");
+  $(this).val(formattedVal);
 })
 .on('input','#email',function(){
 	if ( !emailRegExp.test($(this).val() ) ) {
@@ -190,6 +202,10 @@ $(document)
 		$('#emailvd').html('<small style="color:green;"><img src="/img/greencheck.png" style="width:20px;">사용 가능한 이메일입니다.</small>');
 		return false;
 	}
+})
+.on('click','button[name=x]',function(){
+  $(this).siblings('input').val('');
+  return false;
 })
 ;
 function getToday(){

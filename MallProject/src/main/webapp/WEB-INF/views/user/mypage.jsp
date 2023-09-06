@@ -12,11 +12,11 @@
 <style data-styled="" data-styled-version="5.3.5"></style>
 <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
 <meta name="next-head-count" content="8"/>
+<%@ include file="..\header.jsp" %>
 </head>
 <body>
-<%@ include file="..\header.jsp" %>
 		<!-- 헤더 아이디&이메일 -->
-<div class="body">
+<div class="body" style="margin-top:50px;">
 <div class="MoreLayoutView_container__8Ahvr" >
 <div class="MoreHeaderView_container__kK6Wj">
 	<div class="MoreHeaderView_inner__BRiQZ">

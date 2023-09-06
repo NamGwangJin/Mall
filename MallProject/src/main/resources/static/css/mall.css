@@ -134,6 +134,18 @@ body {
   margin-right: 10px;
   text-decoration: none;
 }
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* You can adjust the background color as needed */
+  padding: 0px 0;
+  height: 50px;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  z-index: 1000;
+}
 .fixed-footer {
   position: fixed;
   bottom: 0;

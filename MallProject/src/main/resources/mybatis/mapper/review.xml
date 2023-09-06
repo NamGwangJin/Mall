@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
 <mapper namespace="com.himedia.springboot.ReviewDAO">
 
 <select resultType="com.himedia.springboot.ReviewDTO" id="getList">
@@ -65,6 +64,10 @@ select count(*) from review where prod_name = #{param1} and rating = 4
 select count(*) from review where prod_name = #{param1} and rating = 5
 </select>
 
+<select id="getRatingAvg" resultType="float">
+select avg(rating) from review where prod_name = #{param1};
+</select>
+
 <select id="orderByRating" resultType="com.himedia.springboot.ReviewDTO">
 select * from review where prod_name = #{param3} order by rating desc limit #{param1},#{param2}
 </select>
@@ -74,7 +77,14 @@ select * from review where prod_name = #{param3} order by updated desc limit #{p
 </select>
 
 <select id="orderByPhoto" resultType="com.himedia.springboot.ReviewDTO">
-select * from review where prod_name = #{param3} order by img != '' and #{param4} desc limit #{param1},#{param2}
+select * from review where prod_name = #{param3} order by img != '' desc,
+<if test="param4 == 'updated'">
+updated
+</if>
+<if test="param4 == 'rating'">
+rating
+</if>
+ desc limit #{param1},#{param2}
 </select>
 
 <select id="reviewSearch" resultType="com.himedia.springboot.ReviewDTO">

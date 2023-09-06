@@ -44,6 +44,11 @@ public class CartController {
 	        abstractUserController.handleUserInterface(req, model);
 	}
 	
+    @GetMapping("/main")
+    public String main(HttpServletRequest req) {
+    	return "main";
+    }
+    
 	@GetMapping("/cartList")
 	public String cartList(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
@@ -370,6 +375,15 @@ public class CartController {
 		int photoSize = rDao.getPhotoReview(name);
 		model.addAttribute("photoSize",photoSize);
 		
+		try {
+			float ratingAvg = rDao.getRatingAvg(name);
+		    String formattedNumber = String.format("%.1f", ratingAvg);
+		    double doubleValue = Double.parseDouble(formattedNumber);
+			model.addAttribute("ratingAvg", doubleValue);
+		} catch (Exception e) {
+			model.addAttribute("ratingAvg", 0);
+		}
+
 		int getLike = rDao.getLike(name);
 		model.addAttribute("like", Math.round( (double) getLike / reviewSize * 100) );
 		

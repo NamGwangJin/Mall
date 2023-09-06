@@ -11,7 +11,7 @@
 </head>
 <body>
 <%@ include file="..\header.jsp" %>
-        <section class="view">
+        <section class="view" style="margin-top:150px;">
         	<div id="wrapper">
         		<div>
         			<table cellspacing="0" cellpadding="0" width="90%" align="center">

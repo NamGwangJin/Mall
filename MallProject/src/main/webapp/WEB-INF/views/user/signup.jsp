@@ -39,7 +39,7 @@
 					<label class="sc-ed52fcbe-1 csduFG"></label>
 					<div class="sc-ed52fcbe-8 bhRZmA">
 						<input type="text" id=id aria-required="true" name="id" placeholder="ID" class="sc-ed52fcbe-7 jPIHur" value=""/>
-						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI" name=x></button>
 						<button tabindex="-1" type="button" class="sc-763a3587-1 frWBac" style="width:500px;" id=check disabled="disabled">중복확인</button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 					</div>
@@ -54,7 +54,7 @@
 					<label class="sc-ed52fcbe-1 csduFG"></label>
 						<div class="sc-ed52fcbe-8 bhRZmA">
 						<input type="password" id=passcode1 aria-required="true" name="password" placeholder="Password" class="sc-ed52fcbe-7 jPIHur" value=""/>
-						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI" name=x></button>
 						<button tabindex="-1" type="button" class="sc-ed52fcbe-3 diGBDF"></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 					</div>
@@ -63,7 +63,7 @@
 					<label class="sc-ed52fcbe-1 csduFG"></label>
 						<div class="sc-ed52fcbe-8 bhRZmA">
 						<input type="password" id=passcode2 aria-required="true" name="password" placeholder="Confirm Password" class="sc-ed52fcbe-7 jPIHur" value=""/>
-						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI" name=x></button>
 						<button tabindex="-1" type="button" class="sc-ed52fcbe-3 diGBDF"></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 					</div>
@@ -76,7 +76,7 @@
 						<label class="sc-ed52fcbe-1 csduFG"></label>
 						<div class="sc-ed52fcbe-8 bhRZmA">
 						<input type="text" id=name aria-required="true" name="name" placeholder="이름 ex)홍길동" class="sc-ed52fcbe-7 jPIHur" value=""/>
-						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI" name=x></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 						</div>
 						<div id=namevd></div>
@@ -101,7 +101,7 @@
 						<label class="sc-ed52fcbe-1 csduFG"></label>
 						<div class="sc-ed52fcbe-8 bhRZmA">
 						<input type="text" id=mobile aria-required="true" name="mobile" placeholder="휴대전화 ex)010-1234-5678" class="sc-ed52fcbe-7 jPIHur" value=""/>
-						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI" name=x></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 						</div>
 						<div id=mobilevd></div>
@@ -114,7 +114,7 @@
 						<label class="sc-ed52fcbe-1 csduFG"></label>
 						<div class="sc-ed52fcbe-8 bhRZmA">
 						<input type="text" id=email aria-required="true" name="email" placeholder="이메일" class="sc-ed52fcbe-7 jPIHur" value=""/>
-						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI"></button>
+						<button tabindex="-1" type="button" class="sc-ed52fcbe-4 jKMGbI" name=x></button>
 						<hr class="sc-ed52fcbe-2 bVlPDx"/>
 						</div>
 						<div id=emailvd></div>

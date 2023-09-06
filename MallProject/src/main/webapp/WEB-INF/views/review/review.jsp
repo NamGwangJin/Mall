@@ -45,18 +45,25 @@
 							          <span class="products_reviews_summary_v2__score_icon">
 								          <div class='crema_product_reviews_score_star_wrapper crema_product_reviews_score_star_wrapper--full review_liquid_star_svg_icon'>
 								          	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" class="crema_product_reviews_score_star_wrapper__star " style="fill: #000000">
-										    <defs>
+								    		<defs>
 										        <path id="star-full" d="M7.157 6.698l2.165-4.59a.743.743 0 0 1 1.358 0l2.165 4.59 4.84.74c.622.096.87.895.42 1.353l-3.503 3.57.827 5.044c.106.647-.544 1.141-1.1.835l-4.328-2.382-4.329 2.382c-.556.306-1.205-.188-1.099-.835l.826-5.044-3.502-3.57c-.45-.458-.202-1.257.42-1.352l4.84-.74z"></path>
 										    </defs>
 								    		<use xlink:href="#star-full"></use>
-								    		</svg>
+								    		</svg>		
 								    	</div>
 									</span>
         						  </div>
-        						  
+        						  <c:if test="${ratingAvg == 0}">
+        						  <div class="products_reviews_summary_v2__score_percentage">
+						            <b>리뷰가 없습니다.</b>
+						          </div>
+        						  </c:if>
+        						  <c:if test="${ratingAvg != 0}">
 						          <div class="products_reviews_summary_v2__score_percentage">
+						         	<h1>${ratingAvg}</h1>
 						            <b>${like}%</b>의 구매자가 이 상품을 좋아합니다.
 						          </div>
+						         </c:if>
       						</div>
 
       						<div class="products_reviews_summary_v2__rcontent">
@@ -134,7 +141,7 @@
         data-url="http://192.168.0.16:8080/"
         class="js-link-fullscreen-popup"
       >
-        <div class="products_reviews_media_summary__show_all">
+        <div class="products_reviews_media_summary__show_all" id=showAll>
           전체보기
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 8" class="products_reviews_media_summary__show_all_arrow">
     		<path stroke-linecap="round" stroke-linejoin="round" d="M.667 2.333L4 5.667l3.333-3.334"></path>
@@ -333,7 +340,7 @@
 </svg>
 
     </button>
-    <a
+    <a id=search
       data-path="/http://192.168.0.16:8080//products/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-product-reviews-1&amp;parent_url=https%3A%2F%2Fwww.http://192.168.0.16:8080/%2Fproduct%2Fdetail.html%3Fproduct_no%3D1363%26cate_no%3D514%26display_group%3D1&amp;product_code=1363&amp;secure_device_token=V24b7eed425d0c6d447490e1b58bbe71ec73c63034843a059c30522bfbc264d48cacb4cd4b1efdf17d240eb1a107524338&amp;widget_env=100&amp;widget_style="
       class="
         filter_sort_basic__search_submit_button
@@ -455,7 +462,7 @@
 </div>
   </div>
   <ul class="products_reviews__reviews reviews">
-  
+    <div name=reviewDiv>
   <c:forEach items="${rlist}" var="list">
     <li
   class="
@@ -497,22 +504,22 @@
   			</div>
         </div>
       </div>
-       <c:if test="${list.img != '' }">
+<%--       <input type=hidden name=imgCheck value="${list.img}"> --%>
+<!--       	<div name=imgDiv> -->
+	  <div name=imgDiv>
+      	<c:if test="${list.img != '' }">
 		    <div class="review_list_v2__image_section">
 		      <div class="review_media_v2">
 		 		 <ul class="review_media_v2__media">
 				      <li class="review_media_v2__medium">
-				        <a class="js-link-fullscreen-popup" data-url="img/${list.img}">
 				        <img name=img src="img/${list.img}" style="width:100px;">
-				          <script>
-				            fimg('img', function(dw){return (dw - 17) * 0.25 - 8;}, 215, 237);
-				          </script>
-				        </a>
 				      </li>
 		 	 	</ul>
 			</div>
 		   </div>
-		</c:if>	
+		  </c:if>
+		</div>
+<!-- 		 </div> -->
         <div class="review_list_v2__content_section">
           <div class="review_list_v2__content_container review_content  js-review-content-container">
             <div class="review_list_v2__content review_content__collapsed">
@@ -533,7 +540,10 @@
             </div>
           </div>
         </div>
+  </div>
+ </li>
 </c:forEach>
+ </div>
     </div>
   </div>
    <div class="pagination" style="text-align:center;">

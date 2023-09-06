@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link href="css/mall.css" rel="stylesheet" />
     <title>SimpleShop</title>
     <meta charset="UTF-8">
     <link href="css/product.css" rel="stylesheet" />
