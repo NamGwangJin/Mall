@@ -74,47 +74,8 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-$(document)
-.ready(function(){
-    $("#passcode1").on("keyup",function(key){
-        if(key.keyCode==13) {
-            $('#login').trigger("click");
-        }
-    });
-})
-.on('click','#login',function(){
-	$.ajax({
-		url:'/login',
-		data: {
-			'id': $('#id').val(),
-			'passcode1': $('#passcode1').val()
-		},
-		type:'post',
-		dataType:'text',
-		beforeSend:function(){
-			if($('#id').val()==''){
-				alert('아이디가 없습니다.'); return false;
-			}
-			if($('#passcode1').val()==''){
-				alert('비밀번호가 없습니다.'); return false;
-			}
-		},
-		success:function(data){
-			if (data == "1"){
-				document.location = "/"
-			} else {
-				alert("입력하신 회원정보와 일치하는 데이터가 없습니다.");
-			}
-		},
-		error:function(){
-			alert("로그인 도중 오류가 발생했습니다. 다시 시도해 주세요.");
-			return false;
-		}
-	})
-})
-.on('click','#signup',function(){
-	document.location = "/gosignup"
-})
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" 
+integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="resources/js/login.js"></script>
 </html>

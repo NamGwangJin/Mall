@@ -49,7 +49,6 @@ table td { border : 1px solid black; }
 <p class="form-title"></p>
 <body>
 <table>
-${write}
 <form method='post' action='/insert2' id=frmInsert name=frmInsert>
 
 <div class="myp-form-wrap">
@@ -122,7 +121,7 @@ $(document)
                 $('#img').val($('#filename2').text());
             },
             error: function (xhr, status, error) {
-                console.error(error);
+                console.log(error);
                 $('#UploadResult').text('파일 업로드 실패');
             }
         });

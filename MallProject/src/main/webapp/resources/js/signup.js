@@ -1,4 +1,4 @@
-var idRegExp = /^[a-z0-9]{8,16}$/; // 아이디
+var idRegExp = /^[a-z0-9]{4,16}$/; // 아이디
 var pwRegExp = /^[a-zA-z0-9]{8,16}$/; // 비밀번호
 var nameRegExp = /^[가-힣]{2,15}$/; //이름 한글만
 var mobileRegExp = /^\d{3}-\d{4}-\d{4}$/ // 번호
@@ -120,7 +120,7 @@ $(document)
 })
 .on('input','#id',function(){
 	if ( !idRegExp.test( $(this).val() ) ) {
-		$('#idvd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">아이디는 8자 이상, 16자 이하 영소문자,숫자만 입력 가능합니다.</small>');
+		$('#idvd').html('<small style="color:red;"><img src="/img/redcheck.png" style="width:20px;">아이디는 4자 이상, 16자 이하 영소문자,숫자만 입력 가능합니다.</small>');
 		$('#check').attr("disabled",true);
 	}
 	if ( idRegExp.test( $(this).val() ) ) {
