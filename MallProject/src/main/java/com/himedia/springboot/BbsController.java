@@ -100,8 +100,8 @@ public class BbsController {
 	@PostMapping("/insert2")
 	public String insert2(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
+		String title = req.getParameter("hp_tail1");
+		String content = req.getParameter("hp_tail");
 		String id= (String) session.getAttribute("id");
 		String bimg = req.getParameter("bbs_img");
 		bdao.insPost(title, content, id, now, now, bimg);
