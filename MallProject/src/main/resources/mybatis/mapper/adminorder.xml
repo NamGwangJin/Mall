@@ -90,4 +90,9 @@ select * from user
 <update id="adminOrderCancel">
 	update orderTbl set order_state = '반품 완료' where order_num = #{param1}
 </update>
+
+<delete id="userDeleteProduct">
+delete from user where user_id=#{param1}
+</delete>
+
 </mapper>

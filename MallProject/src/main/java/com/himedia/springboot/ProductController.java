@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,14 +25,7 @@ public class ProductController {
 	@Autowired
 	private static UserDAO uDao;
 
-//	   @GetMapping("/rtest")
-//		public String test(HttpServletRequest req, Model model) {
-//			
-//			handleUserInterface(req, model);
-//			return "product/likecount";
-//		}
-	
-	
+
 	@GetMapping("/")
 	public String home(HttpServletRequest req, Model model) {
 		 
@@ -69,6 +63,7 @@ public class ProductController {
 	}
 
 	@PostMapping("/insert")
+
 	public String insert(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		String user_id=req.getParameter("id");
@@ -78,8 +73,8 @@ public class ProductController {
 		String prod_img=req.getParameter("prod_img");		
 		
 		pDao.insert(prod_name, prod_price, prod_msg, prod_img);
-		pDao.insertRegProduct(user_id,prod_name, prod_price, prod_msg, prod_img);
-		return "redirect:/";
+
+		return "redirect:/goreg";
 	}
 	
 	
@@ -94,7 +89,7 @@ public class ProductController {
 		String before_name=req.getParameter("before_name");
 		
 		
-		pDao.regEdit(prod_name, prod_price, prod_msg, prod_img, before_name);
+		
 		pDao.regEditProduct(prod_name,prod_price,prod_msg,prod_img,before_name);
 		return "redirect:/goreg";
 	}
@@ -116,7 +111,7 @@ public class ProductController {
 	    } else {
 	        System.out.println("파일이 존재하지 않습니다.");
 	    }		
-		pDao.regDelete(prod_name,prod_img);
+		
 		pDao.regDeleteProduct(prod_name,prod_img);
 	return "admin/Productadmin";
 	}
@@ -166,16 +161,17 @@ public class ProductController {
     private String uploadDirectory;
 
     @PostMapping("/upload")
+    
     public String uploadFile(@RequestParam("file") MultipartFile file, Model model) {
         if (!file.isEmpty()) {
             try {
                 String fileName = file.getOriginalFilename();
                 String fileRealName = fileName;
-
+             
                 // 파일 저장 경로로 파일 이동
                 File targetFile = new File(uploadDirectory + File.separator + fileRealName);
                 file.transferTo(targetFile);
-
+                
                 model.addAttribute("fileName", fileName);
                 model.addAttribute("fileRealName", fileRealName);
             } catch (IOException e) {

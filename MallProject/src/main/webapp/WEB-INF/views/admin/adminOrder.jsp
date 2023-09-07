@@ -23,7 +23,7 @@
 		<div class="MoreHeaderView_profile_wrap__Y9XWQ">
 			<div class="MoreHeaderView_name__4ZkcS">
 				<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">
-				${imp.user_name}님 환영합니다.</h2>
+				　　　　　　　　　　　　　　${id}님 환영합니다.</h2>
 			</div>
 		
 			
@@ -58,7 +58,7 @@
 <h3 class="mypageLnbSubTitle">상품 관리</h3>
 
 <ul class="myPageLnbList">
-<li><a href="/ProductReg">새 상품 등록하기</a></li>
+
 <li><a href="/goreglist"> 
 				<form id="uploadForm" action="/regProductList" method="post" class="custom-button-wrap">
 			      등록된 상품 목록
@@ -131,7 +131,7 @@
 							                <a name='orderend'>
 											    <c:choose>
 											        <c:when test="${order.order_state eq '배송 대기중'}">
-											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "발송완료")'>발송완료</button>
+											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "발송완료")' class='custom-button'>발송완료</button>
 											        </c:when>
 											    </c:choose>
 											</a>

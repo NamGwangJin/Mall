@@ -1,5 +1,6 @@
 package com.himedia.springboot;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -161,6 +162,17 @@ public class AdminOrderController {
 		return "/admin/adminuserlist";
 	}
 
+	
+	@PostMapping("/userDelete")
+	@ResponseBody
+	public String regDelete(HttpServletRequest req) {
+		String user_id=req.getParameter("user_id");
+		
+	
+		adoDao.userDeleteProduct(user_id);
+	return "/adminuserlist";
+	}
+	
 	
 	private void handleUserInterface(HttpServletRequest req, Model model) {
 		 AbstractUserController.handleUserInterface(req, model);

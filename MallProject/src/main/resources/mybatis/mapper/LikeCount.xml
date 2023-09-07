@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.himedia.springboot.LikeCountDAO">
+<select id="getLikeCountByTitle">
+	SELECT SUM(countlike) FROM likecount where title = #{param1}
+</select>
+<select id="likecheck">
+	select count(countlike) from likecount where user_id = #{param1} and title = #{param2}
+</select>
+<insert id="increaseLikeCount">
+   INSERT INTO likecount (countlike, title, user_id)
+VALUES (1, #{param1}, #{param2});
+</insert>
+<delete id="decreaseLikeCount">
+    delete from likecount WHERE title = #{param1} and user_id = #{param2}
+</delete>
+</mapper>
