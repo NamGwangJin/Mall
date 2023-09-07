@@ -1,56 +1,47 @@
 let price = 0;
-let sale = 0;
 let total = 0;
 let count = 0;
+let qty = 0;
 let prodid = "";
 $(document)
 .ready(function(){
-	$('#checked').hide();
-	$('#head').hide();
-	$('input[name=checkbox]').attr("checked","on");
+	allCheck();
 	changeCheckbox();
 })
 
-.on('change','input[name=checkbox]',function(){
+.on('change', 'input[name=checkbox]',function(){
+	if ($(this).is(":checked")) {
+        allCheck();
+    } else{
+		allUnCheck();
+	}
+})
+
+.on('change','input[name=prodCheckBox]',function(){
+	count = 0;
+	$('input[name=prodCheckBox]').each(function(){
+		if ( $(this).is(":checked") ) count += 1;
+	})
+	if ( count == 0 ) {
+		allUnCheck();
+	} else if ( count == $('input[name=prodCheckBox]').length ) {
+		allCheck();
+	}
 	changeCheckbox();
 })
 
 .on('click','button[name=increase]',function(){
-	if ($(this).parent().find('input[name=qty]').val() == 5) {
+	if ($(this).closest('ul').find('input[name=qty]').val() == 5) {
 		alert ('최대 주문 수량을 초과하였습니다.');
 		return false;
 	}
-	let prod_id = $(this).closest('tr').find('td:eq(0)').find('input[name=prodid]').val();
-	let numInput = $(this).parent().find('input[name=qty]');
-	let totalPrice = $(this).parent().parent().find("td:eq(3)").find("b[name=total]");
+	let prod_id = $(this).closest('ul').find('input[name=prod_id]').val();
+	let numInput = $(this).closest('ul').find('input[name=qty]');
+	let total = $(this).closest("ul").find("dd[name=total]");
 	numInput.val( parseInt(numInput.val()) + 1 );
-	totalPrice.text( parseInt(numInput.val()) *  $(this).closest('tbody').find("input[name=price]").val());
+	total.text( parseInt(numInput.val()) *  $(this).closest('ul').find("input[name=price]").val());
 	changeCheckbox();
-	$.ajax({ url:'/cartUpdate', data:{qty : numInput.val(), total : totalPrice.text(), prod_id : prod_id},
-				type:'post', dataType:'text',
-				success: function(data) {
-					if ( data == "success") {
-						return true;
-					}
-				}, error: function(){
-					alert("error!")
-				}
-	})
-//	document.location = "/cartUpdate?qty=" + numInput.val() + "&total=" + totalPrice.text() + "&prod_id=" + prod_id;
-})
-
-.on('click','button[name=decrease]',function(){
-	if ($(this).parent().find('input[name=qty]').val() == 1) {
-		alert ('최수 주문 수량은 1개입니다.');
-		return false;
-	}
-	let prod_id = $(this).closest('tr').find('td:eq(0)').find('input[name=prodid]').val();
-	let numInput = $(this).parent().find('input[name=qty]');
-	let totalPrice = $(this).parent().parent().find("td:eq(3)").find("b[name=total]");
-	numInput.val( parseInt(numInput.val()) - 1 );
-	totalPrice.text( parseInt(numInput.val()) *  $(this).closest('tbody').find("input[name=price]").val());
-	changeCheckbox();
-		$.ajax({ url:'/cartUpdate', data:{qty : numInput.val(), total : totalPrice.text(), prod_id : prod_id},
+		$.ajax({ url:'/cartUpdate', data:{qty : numInput.val(), total : total.text(), prod_id : prod_id},
 				type:'post', dataType:'text',
 				success: function(data) {
 					if ( data == "success"){
@@ -58,14 +49,39 @@ $(document)
 					}
 				}, error: function(){
 					alert("error!")
+					return false;
 				}
 	})
-//	document.location = "/cartUpdate?qty=" + numInput.val() + "&total=" + totalPrice.text() + "&prod_id=" + prod_id;
 })
 
-.on('click',"input[name=del]",function(){ // 선택 아이템 삭제
+.on('click','button[name=decrease]',function(){
+	if ($(this).closest('ul').find('input[name=qty]').val() == 1) {
+		alert ('최수 주문 수량은 1개입니다.');
+		return false;
+	}
+	let prod_id = $(this).closest('ul').find('input[name=prod_id]').val();
+	let numInput = $(this).closest('ul').find('input[name=qty]');
+	let total = $(this).closest("ul").find("dd[name=total]");
+	numInput.val( parseInt(numInput.val()) - 1 );
+	total.text( parseInt(numInput.val()) *  $(this).closest('ul').find("input[name=price]").val());
+	changeCheckbox();
+		$.ajax({ url:'/cartUpdate', data:{qty : numInput.val(), total : total.text(), prod_id : prod_id},
+				type:'post', dataType:'text',
+				success: function(data) {
+					if ( data == "success"){
+						return true;
+					}
+				}, error: function(){
+					alert("error!")
+					return false;
+				}
+	})
+})
+
+.on('click',"button[name=del]",function(){ // 선택 아이템 삭제
 	if(!confirm("정말로 장바구니에서 삭제하시겠어요?")) return false;
-	let prod_id = $(this).closest('tr').find('td:eq(0)').find('input[name=prodid]').val();
+	let prod_id = $(this).closest('ul').find('input[name=prod_id]').val();
+	console.log(prod_id);
 	$.ajax({ url:'/deleteCartItem', data:{user_id:$('#userid').val(), prod_id: prod_id}, type:'post', dataType:'text',
 				success: function(data){
 					if (data != null || data != ""){
@@ -97,10 +113,7 @@ $(document)
 		document.location = "/";
 		return false;
 	}
-	if(count == 0) {
-		alert("선택된 상품이 없습니다.");
-		return false;
-	} else if (count == 1) {
+	if (count == 1) {
 		document.location = "/buy?prod_name=" + $('#prodname').text() + "&qty=" + $('#qty').val() + 
 		"&price=" + parseInt($('#total').text() / $('#qty').val()) + '&total=' + $('#total').text() + '&img=' + $('#img').val() + "&prod_id=" + $('#prodid').val();
 	} else {
@@ -113,20 +126,33 @@ $(document)
 })
 ;
 function changeCheckbox(){
-	$('#checked').show();
-	$('#head').show();
 	price = 0;
 	count = 0;
-	$('input[name=checkbox]:checked').each(function(){
-		price += parseInt($(this).parent().parent().find("td:eq(3)").text());
-		total = price - sale;
-		$('#checked').find('td:first').html('<strong style="font-size:30px;">'+price+'원</strong>');
-		$('#checked').find('td:eq(2)').html('<strong style="font-size:30px;">'+sale+'</strong>');
-		$('#checked').find('td:eq(4)').html('<strong style="font-size:30px;">'+total+'원</strong>');
+	qty = 0;
+	$('input[name=prodCheckBox]:checked').each(function(){
+		price += parseInt($(this).closest("ul").find("dd[name=total]").text());
+		qty += parseInt($(this).closest("ul").find("input[name=qty]").val())
 		if ($(this)) count += 1;
 	})
+	$('span[name=totalPrice]').text(price);
+	$('span[name=totalQty]').text(qty);
 	if (count == 0) {
-		$('#head').hide();
-		$('#checked').hide();
+		$('#buy').prop("disabled",true);
+	} else {
+		$('#buy').prop("disabled",false);
 	}
+}
+function allCheck() {
+    $('input[name=checkbox]').prop("checked", true);
+    $('input[name=prodCheckBox]').each(function () {
+        $(this).prop("checked", true);
+    })
+    changeCheckbox();
+}
+function allUnCheck() {
+	$('input[name=checkbox]').prop("checked", false);
+    $('input[name=prodCheckBox]').each(function () {
+        $(this).prop("checked", false);
+    })
+    changeCheckbox();
 }
