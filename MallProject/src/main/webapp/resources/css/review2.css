@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/* 상품작성 */
+._1CdUu8DCec ._5QdeFiFoVG {
+    background-color: #fff;
+    text-align: center;
+}
+._1CdUu8DCec ._5QdeFiFoVG {
+    margin-top: 9px;
+}
+.myp-form-col .control-label2 {
+    font-size: 18px;
+}
+.input-group.inline .control-label2 {
+    width: 29%;
+}
+.input-group .control-label2, .input-group .static-field {
+    line-height: 42px;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: left;
+    color: #454545;
+}
+textarea{
+	border: 1px solid #ebebeb;
+}
+
+.QlS7-dhgS_ {
+    margin: 10px 5px 0 0;
+    font-family: Helvetica,sans-serif;
+}
+.QlS7-dhgS_ {
+    position: relative;
+    margin: 13px -1px 0 0;
+    font-size: 15px;
+    line-height: 17px;
+    color: #959595;
+    text-align: right;
+}
+.QlS7-dhgS_ .NYEC8kBrU6 {
+    margin: 2px 1px 0;
+}
+.QlS7-dhgS_ .NYEC8kBrU6 {
+    background-image: url(https://static-resource-smartstore.pstatic.net/popup/m/static/20230822140853/img/sprite/svg/spPopup_icon_svg.svg);
+    background-size: 377px 365px;
+    background-position: -361px -193px;
+    width: 7px;
+    height: 12px;
+    display: inline-block;
+    margin: 2px 2px 0 1px;
+    vertical-align: top;
+}
+.blind {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+.myp-form-wrap .form-title2 {
+    padding-left: 0;
+    font-size: 16px;
+}
+.lnb-form-action button+input {
+    margin-left: 8px;
+}
+.lnb-form-action input {
+	border: 0px;
+	cursor: pointer;
+}
+/* ㅂ */
+.static-field .star-rating input {
+  display: none;
+  
+}
+.textfull{
+	width: -webkit-fill-available;
+}

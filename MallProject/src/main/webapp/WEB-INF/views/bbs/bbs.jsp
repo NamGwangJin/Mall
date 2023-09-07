@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="css/product.css" rel="stylesheet" />
 <link href="css/mall.css" rel="stylesheet" />
 <link href="resources/css/bbs.css" rel="stylesheet"/>
 <title>Weverse</title>
@@ -12,35 +13,70 @@
 <body>
 <%@ include file="..\header.jsp" %>
 
- <h1 class="con">게시글 목록</h1>
-    <section class="article-list table-common con">
-     <table border="1" id=tblBoard>
-	<thead>
-		<tr><th>번호</th><th>제목</th><th>작성자</th><th>작성시각</th><th>조회수</th></tr>
-	</thead>
-	<tbody>
+<section class = "view">
+<div id = "wrapper" style="margin-top:150px;">
+<div>
+<table cellspacing="0" cellpadding="0" width="90%" align="center">
+
+
+<caption>
+<h1 style = "text-align:left;">게시글 목록</h1>
+</caption>
+
+
+<thead style="height:50px; text-align:center">
+<tr width="90%">
+	<td width="10%">
+	<b>번호</b>
+	</td>
+	<td width="25%">
+	<b>제목</b>
+	</td>
+	<td>
+	<b>작성자</b>
+	</td>
+	<td>
+	<b>작성시각</b>
+	</td>
+	<td width="15%">
+	<b>조회수</b>
+	</td>
+</tr>
+<tr><td colspan="5"><hr></td></tr>
+</thead>
+
+	<tbody id = tblBoard style="text-align:center;">
 	<c:forEach items="${mlist}" var="list">
 	<tr><td>${list.num}</td><td>${list.title}</td><td>${list.writer}</td><td>${list.created}</td><td>${list.hit}</td></tr>
+	<tr><td colspan=5><hr></td>
 	</c:forEach>
 	</tbody>
-	</table>
-	<table>
-	<tr>
-		<td>${write}</td>
-	</tr>
+
+</table>
+</div>
+</div>
+</section>
+
+<table align="center">
+<tr>
+${write}
+</tr>
 </table>
 
-      <div class="pagination">
-    <a class="pagination__button pagination__button--prev pagination__button--disabled">&lt;</a>
-    <a class="pagination__button pagination__button--active" href="">${pagestr}</a>
-    <a class="pagination__button pagination__button--next" href="" data-remote="true">&gt;</a>
-  </div>
+
+<!-- 22  -->
+
+	<div class="pagination" align="center">
+	    <a class="pagination__button pagination__button--prev pagination__button--disabled">&lt;</a>
+	    <a class="pagination__button pagination__button--active" href="">${pagestr}</a>
+	    <a class="pagination__button pagination__button--next" href="" data-remote="true">&gt;</a>
+	</div>
     
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document)
-.on('click','#tblBoard tbody tr',function(){
+.on('click','#tblBoard tr',function(){
 	document.location = '/view?num=' + $(this).find('td:first').text();
 	return false;
 })

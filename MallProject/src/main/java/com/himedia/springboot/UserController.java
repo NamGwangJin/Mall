@@ -131,4 +131,17 @@ public class UserController {
 				
 		return("user/delivery");
 	}
+	
+	@GetMapping("/coupon")
+	public String goCoupon(HttpServletRequest req, Model model) {
+		HttpSession s = req.getSession();
+		handleUserInterface(req, model);
+		String id = (String)s.getAttribute("id");
+		UserDTO user = uDao.getcou(id);
+
+		model.addAttribute("info",id);
+		model.addAttribute("imp",user);
+		
+		return("user/coupon");
+	}
 }

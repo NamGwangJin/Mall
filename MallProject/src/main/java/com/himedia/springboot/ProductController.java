@@ -118,18 +118,18 @@ public class ProductController {
 	    }		
 		pDao.regDelete(prod_name,prod_img);
 		pDao.regDeleteProduct(prod_name,prod_img);
-	return "product/Productadmin";
+	return "admin/Productadmin";
 	}
 	
 	@GetMapping("/goreg")
 	public String goreg(HttpServletRequest req, Model model) {
 		 handleUserInterface(req, model);
-		return "product/Productadmin";
+		return "admin/Productadmin";
 	}
 	@GetMapping("/ProductReg")
 	public String goProductReg(HttpServletRequest req, Model model) {
 		handleUserInterface(req, model);
-		return "product/ProductReg";
+		return "admin/ProductReg";
 	
 	}
 	@PostMapping("/regProductList")
@@ -138,7 +138,7 @@ public class ProductController {
 		String id = (String) session.getAttribute("id");
 		ArrayList<ProductDTO> rList = pDao.getRegProduct(id);
 		session.setAttribute("rList", rList);
-		return "product/regProductList";	
+		return "admin/regProductList";	
 	}
 	
 	@GetMapping("/regProductEdit")
@@ -157,7 +157,7 @@ public class ProductController {
 	    model.addAttribute("prodMsg", prodMsg);
 	    
 	    
-	    return "product/regProductEdit";
+	    return "admin/regProductEdit";
 	}
 	
 	
@@ -186,7 +186,7 @@ public class ProductController {
             model.addAttribute("errorMessage", "업로드할 파일을 선택하세요.");
         }
 
-        return "product/uploadResult";
+        return "admin/uploadResult";
     }
     
     
@@ -220,8 +220,8 @@ public class ProductController {
             												"<a href='/gosignup'  class='MoreHeaderView_button_item__gv6pa'>회원가입</a></div>");
             } else {
             	model.addAttribute("bbs", "<a href='/bbs'><img src='img/boardimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">게시판</span></a>");
-                model.addAttribute("cartlist"," <a href='/cartList?id='"+id+"><img src='img/shoppingcartimg.jpg' width=\"50\" height=\"50\"> <span class=\"tooltip\">장바구니</span></a>");
-                model.addAttribute("orderlist"," <a href='/orderList?id='"+id+"><img src='img/moveproductimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">주문조회</span></a>");
+                model.addAttribute("cartlist"," <a href='/cartList'><img src='img/shoppingcartimg.jpg' width=\"50\" height=\"50\"> <span class=\"tooltip\">장바구니</span></a>");
+                model.addAttribute("orderlist"," <a href='/orderList'><img src='img/moveproductimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">주문조회</span></a>");
           
                 model.addAttribute("infoline", "<a href='/mypage'><img src='img/mypage.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">마이페이지</span></a>");
                 model.addAttribute("write", "<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");

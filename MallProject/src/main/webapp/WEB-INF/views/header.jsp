@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="css/mall.css" rel="stylesheet" />
 <title></title>
 </head>
 <body>

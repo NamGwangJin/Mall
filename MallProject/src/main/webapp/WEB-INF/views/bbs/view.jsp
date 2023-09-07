@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <link href="resources/css/bbs.css" rel="stylesheet"/>
-<link href="css/mall.css" rel="stylesheet" />
 <title>${bPost.title}</title>
 </head>
 <%@ include file="..\header.jsp" %>
+<div class=body style="margin-top:150px;">
 <h1 class="con">게시글 상세</h1>
     <section class="article-detail table-common con row">
         <div class="article-writer cell">
-                <div class="writer-icon">이미지</div>
+                <div class="writer-icon"><img src="img/${bPost.bbs_img}"></div>
                 <span>${bPost.writer}</span>
         </div>
         <table class="cell" border="1">
@@ -34,6 +34,7 @@
                 <tr class="article-body">
                     <td colspan="4">${bPost.content}</td>
                 </tr>
+                
 <tr><td colspan=2><a href="/bbs">목록보기</a>&nbsp;
 <c:if test="${id==bPost.writer}">
 <button id=btnUd>수정</button>
@@ -45,6 +46,7 @@
 <div class="con reply">
 
     <h1 class="">댓글 목록</h1>
+   
     <section class="reply-list table-common">
         <table border="1">
             <colgroup>
@@ -53,13 +55,17 @@
             <thead>
             <c:forEach items="${cList}" var="cList">
                 <tr>
-                <input type=hidden name=cmtnum value=${cList.num}>
+                <input type=hidden name=cmtnum value="${cList.num}">
                 <input type=hidden name=bbscmtnum value="${cList.bbscmtnum}">
+                <input type=hidden name=content value="${cList.content}">
+            	<input type=hidden name=upnum value="${cList.upnum}">
                     <td>${cList.writer}</td>
                     <td>${cList.content}</td>
                     <td>${cList.regdate}</td>
+                    <td><button name=btnreply>답글쓰기</button></td>
                     <c:if test="${id==cList.writer}" >
-                    <td><button name=btnUd1>수정</button>
+                    <td>
+                    	<button name=btnUd1>수정</button>
              		    <button name=btnDel1>삭제</button></td>
              		    </c:if>	
                 </tr>
@@ -74,13 +80,14 @@
         <form method='post' action='/replyInsert'>
          <input type=hidden name=num value="">
             <div>
-                <textarea name=content></textarea>
-                <input type=submit >
+                <textarea name=content placeholder="댓글을 작성해주세요" maxlength="200"></textarea>
+                <input type=submit class=con1 value="작성">
             </div>
         </form>
     </section>
+    
 </div>
-
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -99,7 +106,6 @@ $(document)
 	document.location = '/update?num='+$('#num').text();
 	return false;
 })
-
 .on('click','button[name=btnDel1]',function(){
 	if(!confirm('정말로 삭제하시겠습니까?')) return false;
 	let cmtnum = $(this).closest('tr').find('input[name=cmtnum]').val();
@@ -109,10 +115,21 @@ $(document)
 })
 
 .on('click','button[name=btnUd1]',function(){
-	let cmtnum = $(this).closest('tr').find('input[name=cmtnum]').val();
-	console.log(cmtnum)
-	document.location = '/update1?num='+ cmtnum;
-	return false;
+ 	$(this).closest('tr').find('td:eq(1)').wrap('<input type=text id=modify value=""></input>');
+ 	$('#modify').val( $(this).closest('tr').find('input[name=content]').val() );
+ 	$(this).attr("name","ok");
+ 	$(this).text("완료");
+
+})
+.on('click','button[name=ok]',function(){
+	$.ajax({url:'/update1', data:{ num : $(this).closest('tr').find('input[name=cmtnum]').val(), content : $('#modify').val() }, type:'post', dataType:'text',
+		success: function(data) {
+			
+			document.location = data + "?num=" + $('#num').text();
+		}, error:function() {
+			
+		}
+	})
 })
 </script>
 </html>

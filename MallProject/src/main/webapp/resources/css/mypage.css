@@ -45,7 +45,7 @@ html {
 
 .MoreHeaderView_email__Ui6wT {
     color: #a1a5ad;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 19px;
     margin-top: 2px;
 }
@@ -84,10 +84,13 @@ body, button, input, select, table, textarea {
 .MoreHeaderView_button_item__gv6pa+.MoreHeaderView_button_item__gv6pa {
     margin-left: 8px;
 }
+.MoreHeaderView_button_item__gv6pa1 {
+	display:none;
+}
 a, a:active, a:focus, a:hover {
     cursor: pointer;
     text-decoration: none;
 }
-.MoreHeaderView_button_item__gv6pa1 {
-	display:none;
+* {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif !important;
 }

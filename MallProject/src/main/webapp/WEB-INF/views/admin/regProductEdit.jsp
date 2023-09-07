@@ -10,7 +10,7 @@
   </head>   
 <body>
 <%@ include file="..\header.jsp" %>
-   
+ <div class=body style="margin-top:50px;">
 <h1 align=center>${id}님의 상품 수정하기</h1>
 
 
@@ -21,7 +21,7 @@
         <input type="submit" value="상품이미지수정">
         <img id="prod_uimg" style="width:100px" src="">
 </form>
-
+</div>
 <div id="uploadResult">
 
 </div>

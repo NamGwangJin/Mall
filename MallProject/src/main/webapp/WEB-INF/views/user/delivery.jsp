@@ -16,7 +16,7 @@
 <body>
 <%@ include file="..\header.jsp" %>
 		<!-- 헤더 아이디&이메일 -->
-<div class="body">
+<div class="body" style="margin-top:50px;">
 <div class="MoreLayoutView_container__8Ahvr">
 <div class="MoreHeaderView_container__kK6Wj">
 	<div class="MoreHeaderView_inner__BRiQZ">

@@ -9,7 +9,15 @@ public class BbsDTO {
 	int hit;
 	String created;
 	String updated;
-
+	String bbs_img;
+	
+	
+	public String getBbs_img() {
+		return bbs_img;
+	}
+	public void setBbs_img(String bbs_img) {
+		this.bbs_img = bbs_img;
+	}
 	public int getNum() {
 		return num;
 	}

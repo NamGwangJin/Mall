@@ -5,36 +5,36 @@
 
 <mapper namespace="com.himedia.springboot.BbsDAO">
 
-<select id="getList" resultType="com.himedia.springboot.BbsDTO"> 
-select num, title, content, writer, hit, created, updated from bbs order by updated desc limit #{param1},#{param2}; 
+<select id="getList" resultType="com.himedia.springboot.BbsDTO">
+select num, title, content, writer, hit, created, updated, bbs_img from bbs order by updated desc limit #{param1},#{param2};
 </select>
 
 <select id="view" resultType="com.himedia.springboot.BbsDTO">
- select num, title, content, writer, hit, created, updated from bbs where num=#{param1}; 
+ select num, title, content, writer, hit, created, updated, bbs_img from bbs where num=#{param1}; 
  </select>
 
-<update id="hitUp" parameterType="int"> 
-update bbs set hit = hit + 1 where num=#{param1}; 
-</update>
+<update id="hitUp" parameterType="int">
+ update bbs set hit = hit + 1 where num=#{param1}; 
+ </update>
 
 <delete id="delPost" parameterType="int">
  delete from bbs where num=#{param1}; 
-</delete>
+ </delete>
 
-<insert id="insPost"> 
-insert into bbs set title=#{param1}, content=#{param2}, writer=#{param3}, created=now(), updated=now(); 
-</insert>
+<insert id="insPost">
+ insert into bbs set title=#{param1}, content=#{param2}, writer=#{param3}, created=#{param4}, updated=#{param5}, bbs_img=#{param6};
+  </insert>
 
 <update id="udPost">
- update bbs set title=#{param2}, content=#{param3}, updated=now() where num=#{param1};
-  </update>
+ update bbs set title=#{param2}, content=#{param3}, updated=now(), bbs_img=#{param4} where num=#{param1}; 
+ </update>
 
-<select id="getTotal" resultType="int"> 
-select count(*) from bbs 
-</select>
+<select id="getTotal" resultType="int">
+ select count(*) from bbs 
+ </select>
 
 <insert id="insertReply">
- insert into bbs_cmt set bbscmtnum=#{param1}, content=#{param2}, writer=#{param3}, regdate=now(); 
+ insert into bbs_cmt set bbscmtnum=#{param1}, content=#{param2}, writer=#{param3}, regdate=#{param4}; 
  </insert>
 
 <select id="getReply" resultType="com.himedia.springboot.BbscmtDTO">
@@ -42,11 +42,11 @@ select count(*) from bbs
  </select>
 
 <delete id="delReply" parameterType="int"> 
-delete from bbs_cmt where num=#{param1};
- </delete>
+delete from bbs_cmt where num=#{param1}; 
+</delete>
 
 <update id="udReply">
- update bbs_cmt set content=#{param3}, regdate=now() where bbscmtnum=#{param1} and num=#{param2}; 
+ update bbs_cmt set content=#{param2}, regdate=now() where num=#{param1}; 
  </update>
 
 <select id="Reply" resultType="com.himedia.springboot.BbscmtDTO"> 

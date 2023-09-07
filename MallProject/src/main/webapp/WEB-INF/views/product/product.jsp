@@ -10,10 +10,11 @@
     <link href="css/mall.css" rel="stylesheet" />
   </head>
 <body>
+
     <div id="wrapper">
-        <header>
-<%@ include file="..\header.jsp" %>
-        </header>
+		<header>
+		<%@ include file="..\header.jsp" %>
+		</header>
         <br><br><br><br><br>
         <input type=hidden name=id id=id value="${id}">
         <input type=hidden name=img id=img value="${product.prod_img}">
@@ -47,7 +48,7 @@
                             </table>
                         </div><br><br><br><br>
                         <div>
-                        <p style="font-size:10px;"> * 최대 5 개까지 구매 가능합니다.</p>
+                        <p style="font-size:15px;"> * 최대 5 개까지 구매 가능합니다.</p>
                         <span></span>
                         </div>
                         <div class="total" style="height:100px; align:left;">

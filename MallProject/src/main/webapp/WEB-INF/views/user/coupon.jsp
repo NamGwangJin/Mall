@@ -6,16 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <link href="css/mall.css" rel="stylesheet" />
-<title>마이페이지</title>
 <link rel="stylesheet" href="/resources/css/mypage.css"/>
 <link rel="stylesheet" href="/resources/css/content.css"/>
 <style data-styled="" data-styled-version="5.3.5"></style>
 <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
 <meta name="next-head-count" content="8"/>
+<title>쿠폰</title>
 </head>
 <body>
 <%@ include file="../header.jsp" %>
-		<!-- 헤더 아이디&이메일 -->
+<!-- 헤더 아이디&이메일 -->
 <div class="body" style="margin-top:50px;">
 <div class="MoreLayoutView_container__8Ahvr">
 <div class="MoreHeaderView_container__kK6Wj">
@@ -35,10 +35,9 @@
 		</div>
 	</div>
 </div>
-
-
 <!-- 헤더끝 -->
 <!-- 본문 시작 -->
+<!-- 사이드메뉴 -->
 
 <div class="mypageWrapper css-11849r4-defaultStyle">
 <div class="myPagelnbWrapper css-jo3gxq-defaultStyle">
@@ -83,150 +82,136 @@
 <ul class="myPageLnbList">
 <li><a href="/profile">회원 정보 관리</a></li>
 <li><a href="/delivery">배송 정보 관리</a></li>
+
 </ul>
 </div>
 </div>
 </div>
-
-<!-- 회원정보 본문 시작  -->
+<!-- 헤더& 사이드메뉴 끝 // 쿠폰정보-->
 <div class="myPageContainer">
-<div class="css-man8h3-defaultStyle">
-<div class="userBaseInfo">
-<div class="userGradeBox gradeType1">
-<div class="grade">
-<a class=" css-n2sa3z-defaultStyle-underlineStyle-Linked">
-<i class="ico"></i>
-</a>
-</div>
-<div class="gradeDetail">
-<strong>${imp.user_id}님</strong>
-<p>이 달의 회원 등급<a class=" css-n2sa3z-defaultStyle-underlineStyle-Linked" href="#">
-<strong class="gradeText">JOKEBEAR+</strong>
-<i class="css-f0fihq-defaultStyle-icon_094-Icon">
-<b class="css-1ypm30w-ir"></b>
-</i>
-</a>
-</p>
-</div>
-</div>
-
-<ul class="benefitList">
-<li>
-<em>쿠폰</em>
-<div class="num"><a class=" css-y9z3ts-defaultStyle-Linked" href="/coupon">0</a> 장</div>
-</li>
-
-<li>
-<em>마이위버스포인트</em>
-<div class="itemDisplayTooltip  css-li9w5-defaultStyle"></div>
-
-<div class="num">
-<strong>0</strong> P</div></li>
-</ul>
-</div>
-
-<div class="userTimelineBox">
-<div class="mypageTitleBox subTitle  css-qma8am-mypageTitleStyle">
+<div class="css-omrrhd-defaultStyle">
+<div class="mypageTitleBox mainTitle  css-qma8am-mypageTitleStyle">
 <div class="titleArea">
-<h2 class="title">MY 주문정보</h2>
-<p>(최근 15일 기준)</p>
+<h2 class="title">쿠폰</h2>
 </div>
 <div class="rightArea">
-<a class=" css-n2sa3z-defaultStyle-underlineStyle-Linked" href="/orderList?id=${id}">전체보기
-<i class="css-f0fihq-defaultStyle-icon_094-Icon">
-<b class="css-1ypm30w-ir"></b>
-</i>
-</a>
 </div>
 </div>
-<div class="orderSummaryBox">
-<ul>
-<li>
-<em>결제완료</em>
-<a class="num css-y9z3ts-defaultStyle-Linked" href="#">0</a>
-</li>
-<li class="type1"><em>상품준비중</em>
-<a class="num css-y9z3ts-defaultStyle-Linked" href="#">0</a>
-</li>
-<li class="type2">
-<em>배송중</em>
-<a class="num css-y9z3ts-defaultStyle-Linked" href="#">0</a>
-</li>
-<li>
-<em>배송완료</em>
-<a class="num css-y9z3ts-defaultStyle-Linked" href="#">0</a>
-</li>
-<li>
-<em>취소/반품/교환</em>
-<a class="num css-y9z3ts-defaultStyle-Linked" href="#">0</a>
-</li>
-</ul>
+	<div class="couponHead">
+	<div class="couponTotal">보유 쿠폰 총 ${imp.user_id }장</div>
+	<div class="couponReg">
+	<button type="button" class=" css-nc9j3n-defaultStyle-Button">쿠폰 등록</button>
+	</div>
+	</div>
+<div class="tabList">
+	<ul>
+		<li>
+			<button type="button" class="on">
+			<span>사용가능한 쿠폰</span>
+			</button>
+		</li>
+		<li>
+			<button type="button" class="">
+			<span>지난 쿠폰 내역</span>
+			</button>
+		</li>
+	</ul>
 </div>
+<div class="couponListHead">
+	<div class="sortTypeList">
+		<button type="button" class="on">마감임박순</button>
+		<button type="button" class=" ">최근발급순</button>
+	</div>
 </div>
-<div class="mypageTitleBox subTitle borderStyle css-qma8am-mypageTitleStyle">
-<div class="titleArea">
-<h2 class="title">찜한 상품</h2>
-</div>
-<div class="rightArea">
-<a class="underlineBtn css-n2sa3z-defaultStyle-underlineStyle-Linked" href="#">전체보기
-<i class="css-f0fihq-defaultStyle-icon_094-Icon">
-<b class="css-1ypm30w-ir"></b>
-</i>
-</a>
-</div>
-</div>
-<div class="wishList">
-<ul>
-<li class="css-1eog3zh-noResultStyle-MypageMainWishItem">
-<div class="emptyBox css-szzxfb-noResultStyle-MyPageNoResult">
-<p class="mainText">찜한 상품이 없습니다.</p>
-<p class="subText">이번 주에 가장 잘 팔리는 베스트 상품을 확인해보세요.</p>
+<!--  
+<div class="emptyBox css-1xsxxpf-noResultStyle-MyPageNoResult">
+	<p class="mainText">보유한 쿠폰이 없습니다.</p>
+	<p class="subText">위버스 회원만을 위한 특별한 쿠폰을 확인해보세요.</p>
 <a class="LinkerMoveTo css-y9z3ts-defaultStyle-Linked" href="#">바로가기</a>
 </div>
-</li>
+-->
+<div>
+
+<!--  쿠폰 테이블  -->
+<div class="mytmall_tbl1">
+	<table width="100%">
+		<caption>지난 쿠폰 내역</caption>
+		<colgroup>
+			<col width="36">
+			<col width="118">
+			<col width="68">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="first" scope="col">쿠폰종류</th>
+				<th scope="col">쿠폰정보</th>
+				<th scope="col">유효기간</th>
+			</tr>
+		</thead>
+	
+	<tbody>
+			<!-- loop -->
+		<tr class="first">
+			<td class="first">
+				<div class="c-coupon c-coupon--primary ">
+					 <p class="fnt_1 alignL">${imp.user_id }</p>
+				</div>
+			</td>
+			<td>
+				<p class="fnt_1 alignL">${imp.user_id }</p>
+				<p class="fnt_12 alignL">[${imp.user_name }] 10,000원 이상 구매 <span class="bLine">|</span> 최대 5,000원 할인</p>
+			</td>
+			<td>
+				<p>${imp.user_birthday } ~ 23.12.31</p>
+			</td>
+		</tr>	
+			<!-- //loop -->
+	</tbody>
+	</table>
+</div>
+
+
+<div class="mypageNotice css-fzw2w6-noticeListStyle">
+<ul class="content">
+<li class="css-1vz83ui-bulletTypeCircle">유효기간이 지난 쿠폰은 사용할 수 없습니다.</li>
+<li class="css-1vz83ui-bulletTypeCircle">일부 행사상품에는 쿠폰 적용이 되지 않습니다.</li>
+<li class="css-1vz83ui-bulletTypeCircle">할인쿠폰별 설정된 최소 결제금액 이상 구매 시, 쿠폰 적용이 가능합니다.</li>
+<li class="css-1vz83ui-bulletTypeCircle">재판매 목적 등으로 구매한 경우 주문이 취소될 수 있습니다.</li>
+<li class="css-1vz83ui-bulletTypeCircle">당사 사정에 따라 쿠폰 회수 또는 조기종료 될 수 있습니다.</li>
+<li class="css-1vz83ui-bulletTypeCircle">환불/부분환불/취소 시 환급 또는 재발행 되지 않습니다.</li>
 </ul>
 </div>
 
 </div>
-</div> <!-- 마이페이지 컨테이너 -->
 </div>
 
 
 
-<!-- 헤더 div 끝 -->
-</div> <!-- 전체배경색상 -->
-</div> <!-- body -->
-<!-- 
-<div class="">
-	<table>
-		<tr>
-			<td>* 아이디</td><td><input type=text value="${imp.user_id}" id=userid readonly></td>
-		</tr>
-		<tr>
-			<td>* 이름</td><td><input type=text value="${imp.user_name }" readonly></td>
-		</tr>
-		<tr>
-			<td>* 연락처</td><td><input type=text value="${imp.user_mobile}" readonly></td>
-		</tr>
-		<tr>
-			<td>* 이메일</td><td><input type=text value="${imp.user_email }" readonly></td>
-		</tr>
-		<tr>
-			<td>* 주소</td><td><input type=text value="${imp.user_address }" readonly></td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-			<input type="submit" value="수정하기">
-			<button id = quit>탈퇴하기</button>
-			</td>
-		</tr>
-	</table>
-</div> 
--->
+</div>
+</div>
+</div>
+</div>
+
+
+
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document)
+.ready(function(){
+	$(".tabList li").click(function(){
+		let idx = $(this).index();
+		$(".tabList li button").removeClass("on");
+		$(".tabList li button").eq(idx).addClass("on");
+	})
+})
+.ready(function(){
+	$(".sortTypeList button").click(function(){
+		let ix = $(this).index();
+		$(".sortTypeList button").removeClass("on");
+		$(".sortTypeList button").eq(ix).addClass("on");
+	})
+})
 .on('click','#logout',function(){
     if(!confirm('정말로 로그아웃할까요?')){
         return false;

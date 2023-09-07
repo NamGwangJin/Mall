@@ -481,9 +481,6 @@ p {
     font-size: 16px;
 }
 .myp-form-col {
-    cursor: pointer;
-}
-.myp-form-col {
     background-color: #fff;
     border: 1px solid #ebebeb;
     padding: 12px;
@@ -505,9 +502,7 @@ p {
 .input-group.inline {
     height: auto;
 }
-.input-group.inline * {
-    display: inline-block;
-}
+
 .input-group .control-label, .input-group .static-field {
     line-height: 42px;
     width: 100%;
@@ -835,12 +830,22 @@ select, label {
     border-color: rgb(221, 221, 221);
     border-image: initial;
 }
+.css-omrrhd-defaultStyle .couponListHead .sortTypeList button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    width: 1px;
+    height: 12px;
+    background-color: rgb(136, 136, 136);
+}
 .css-omrrhd-defaultStyle .couponListHead {
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
     align-items: flex-end;
-    padding-top: 20px;
+    padding : 20px;
 }
 .css-omrrhd-defaultStyle .couponListHead .sortTypeList button.on {
     color: rgb(51, 51, 51);
@@ -853,16 +858,6 @@ select, label {
     margin-right: 15px;
     color: rgb(153, 153, 153);
 }
-.css-omrrhd-defaultStyle .couponListHead .sortTypeList button::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 2px;
-    right: 0px;
-    width: 1px;
-    height: 12px;
-    background-color: rgb(136, 136, 136);
-}
 .css-omrrhd-defaultStyle .couponList {
     position: relative;
     margin-left: -41px;
@@ -871,6 +866,9 @@ select, label {
     content: "";
     display: block;
     clear: both;
+}
+.css-omrrhd-defaultStyle .couponListHead .sortTypeList button:last-of-type::after {
+    display: none;
 }
 .css-fzw2w6-noticeListStyle {
     margin-top: 60px;
@@ -928,4 +926,220 @@ select, label {
     border: 1px solid rgb(221, 221, 221);
     font-size: 15px;
     line-height: 2.5;
+    display: inline-block
+}
+
+ /* 쿠폰 */
+ .css-omrrhd-defaultStyle .couponList {
+    position: relative;
+    margin-left: -41px;
+}
+.css-omrrhd-defaultStyle .couponList .couponListItem:nth-child(-n+3) {
+    margin-top: 20px;
+}
+.css-omrrhd-defaultStyle .couponList .couponListItem {
+    float: left;
+    margin-top: 40px;
+    margin-left: 41px;
+}
+.css-omrrhd-defaultStyle .couponList .couponItem {
+    width: 286px;
+    height: 162px;
+}
+.css-1wz5767-defaultStyle {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 160px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 1px solid rgb(221, 221, 221);
+    box-sizing: border-box;
+}
+.css-1wz5767-defaultStyle.myCoupon button {
+    cursor: default;
+}
+.css-1wz5767-defaultStyle .couponInfo {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    padding: 16px 85px 20px 20px;
+}
+.css-1wz5767-defaultStyle .couponInfo .benefit {
+    font-size: 14px;
+    color: rgb(51, 51, 51);
+}
+.css-1wz5767-defaultStyle .couponInfo .benefit span {
+    display: inline-block;
+    vertical-align: baseline;
+}
+.css-1onm48p {
+    overflow: hidden;
+    margin-right: 3px;
+    font-weight: 400;
+    cursor: default;
+    width: 48px;
+    height: 20px;
+    border-radius: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: #25C7A0;
+}
+.css-1wz5767-defaultStyle .couponInfo .benefit strong {
+    font-family: priceValueWebFont;
+    font-size: 28px;
+    font-weight: 600;
+    vertical-align: baseline;
+    letter-spacing: -0.42px;
+    line-height: 1.18;
+}
+.css-1wz5767-defaultStyle .couponInfo .benefit em {
+    margin-left: 2px;
+}
+.css-1wz5767-defaultStyle .couponInfo .couponName {
+    height: 40px;
+    overflow: hidden;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(51, 51, 51);
+    line-height: 1.43;
+    letter-spacing: -0.42px;
+}
+.css-1wz5767-defaultStyle .couponInfo .info {
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    font-size: 12px;
+    color: rgb(153, 153, 153);
+    letter-spacing: -0.5px;
+}
+.css-1wz5767-defaultStyle .couponInfo .date {
+    margin-top: 5px;
+    display: block;
+    font-size: 12px;
+    color: rgb(153, 153, 153);
+}
+.css-c4diam {
+    overflow: hidden;
+    margin-right: 3px;
+    font-weight: 400;
+    cursor: default;
+    width: 48px;
+    height: 20px;
+    border-radius: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: #25C7A0;
+}
+
+
+/* 22 */
+.mytmall_tbl1 {
+    position: relative;
+    z-index: 20;
+    border-top: 1px solid #b9b9b9;
+    border-bottom: 1px solid #b9b9b9;
+}
+:root .mytmall_tbl1 table {
+    width: 100%;
+    border-spacing: 0;
+}
+caption {
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.mytmall_tbl1 table thead th {
+    height: 45px;
+	font-size: 18px;
+    text-align: center;
+    color: #ebebeb;
+    letter-spacing: -1px;
+	font-weight: 400;
+    border-bottom: 1px solid #dadada;
+    border-left: 1px solid #dadada;
+    background-color: rgb(34, 34, 34);
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.mytmall_tbl1 table tbody tr.first td {
+    border-top: none;
+}
+.mytmall_tbl1 table tbody td.first {
+    border-left: none;
+}
+.mytmall_tbl1 table tbody td {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #dadada;
+    padding: 2px 0 14px 0;
+}
+.mytmall_tbl1 table tbody td p.alignL {
+    text-align: left;
+    padding-left: 11px;
+    font-size: 18px;
+}
+
+.mytmall_tbl1 .fnt_1 {
+    color: #333;
+    line-height: 15px;
+}
+.mytmall_tbl1 .fnt_12 {
+    color: #757575;
+}
+.mytmall_tbl1 .bLine {
+    color: #c1c1c1;
+}
+.mytmall_tbl1 table tbody td p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2px;
+    padding: 0 5px;
+        font-size: 18px;
+}
+.myt_noti_wrap {
+    width: 54px;
+    margin: 5px auto 2px auto;
+    padding: 1px 0 0 0;
+    overflow: hidden;
+}
+.myt_ico4 {
+    background-position: 0 -51px;
+    margin: -1px auto 4px auto;
+}
+.myt_ico {
+    display: block;
+    float: left;
+    width: 54px;
+    height: 15px;
+    margin: 0 3px 4px 0;
+    background: url(/img/mytmall_v2/ico_set.gif) no-repeat 0 0;
+    text-indent: -9999px;
 }

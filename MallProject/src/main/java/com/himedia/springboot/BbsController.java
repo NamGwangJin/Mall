@@ -1,12 +1,13 @@
 package com.himedia.springboot;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.himedia.springboot.ProductController.AbstractUserController;
 
@@ -36,13 +38,11 @@ public class BbsController {
 	
 	@PostMapping("/replyInsert")
 	public String replyInsert(HttpServletRequest req) {
-		
 		HttpSession session = req.getSession();
 		String writer = (String) session.getAttribute("id");
 		int num = Integer.parseInt(req.getParameter("num"));
 		String content = req.getParameter("content");
 		bdao.insertReply(num, content, writer, now);
-		
 		return "redirect:/view?num=" + num;
 	}
 	
@@ -54,28 +54,24 @@ public class BbsController {
 		return "redirect:/view?num=" + bbscmtnum;
 	}
 	
-	@GetMapping("/update1")
-	public String update1(HttpServletRequest req, Model model) {
+	
+	@PostMapping("/update1")
+	@ResponseBody
+	public String update10(HttpServletRequest req, Model model) {
 		handleUserInterface(req, model);
 		int num = Integer.parseInt(req.getParameter("num"));
-		BbscmtDTO cdto = bdao.Reply(num);
-		model.addAttribute("cList",cdto);
-		return "bbs/cmtupdate";
+		String content = req.getParameter("content");
+		
+		bdao.udReply(num, content);
+		
+		return "/view";
 	}
 	
-	@PostMapping("/modify2")
-	public String modfiy1(HttpServletRequest req) {
-		int bbscmtnum = Integer.parseInt(req.getParameter("bbscmtnum"));
-		int num = Integer.parseInt(req.getParameter("num"));
-		String content = req.getParameter("content");
-		bdao.udReply(bbscmtnum ,num, content, now);
-		return "redirect:/view?num=" + bbscmtnum;
-	}
 	
 	@GetMapping("/view")
 	public String view(HttpServletRequest req, Model model) {
-		handleUserInterface(req, model);
 		HttpSession session = req.getSession();
+		handleUserInterface(req, model);
 		String id= (String) session.getAttribute("id");
 		model.addAttribute("id", id);
 		int num = Integer.parseInt(req.getParameter("num"));
@@ -107,14 +103,15 @@ public class BbsController {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String id= (String) session.getAttribute("id");
-		bdao.insPost(title, content, id, now, now);
+		String bimg = req.getParameter("bbs_img");
+		bdao.insPost(title, content, id, now, now, bimg);
 		return "redirect:/bbs";
 	}
 	
 	@GetMapping("/update")
 	public String update(HttpServletRequest req, Model model) {
-		handleUserInterface(req, model);
 		int num = Integer.parseInt(req.getParameter("num"));
+		handleUserInterface(req, model);
 		BbsDTO bdto = bdao.view(num);
 		model.addAttribute("bPost",bdto);
 		return "bbs/update";
@@ -125,7 +122,8 @@ public class BbsController {
 		int num = Integer.parseInt(req.getParameter("num"));
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		bdao.udPost(num, title, content, now);
+		String bimg = req.getParameter("bbs_img");
+		bdao.udPost(num, title, content, bimg, now);
 		return "redirect:/bbs";
 	}
 
@@ -187,5 +185,30 @@ public class BbsController {
 		return "bbs/bbs";
 	}
 	
+	@Value("${upload.directory}")
+    private String uploadDirectory;
 
+    @PostMapping("/upload2")
+    public String uploadFile(@RequestParam("file2") MultipartFile file, Model model) {
+        if (!file.isEmpty()) {
+            try {
+                String fileName2 = file.getOriginalFilename();
+                String fileRealName2 = fileName2;
+
+                // 파일 저장 경로로 파일 이동
+                File targetFile2 = new File(uploadDirectory + File.separator + fileRealName2);
+                file.transferTo(targetFile2);
+
+                model.addAttribute("fileName2", fileName2);
+                model.addAttribute("fileRealName2", fileRealName2);
+            } catch (IOException e) {
+                e.printStackTrace();
+                model.addAttribute("errorMessage2", "파일 업로드 실패");
+            }
+        } else {
+            model.addAttribute("errorMessage2", "업로드할 파일을 선택하세요.");
+        }
+        
+        return "bbs/UploadResult";
+    }
 }

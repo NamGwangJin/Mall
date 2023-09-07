@@ -59,6 +59,7 @@ $(document)
 })
 ;
 function stateCheck() {
+	console.log("들어옴")
 	for(let i=0; i<$('input[name=status]').length; i++){
 		if( $('input[name=status]').eq(i).val() == "배송 대기중" ) {
 			$('td[name=state]').eq(i).find('button[name=cancel]').show();
