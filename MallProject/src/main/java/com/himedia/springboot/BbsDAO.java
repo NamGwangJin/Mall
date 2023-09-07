@@ -3,8 +3,6 @@ package com.himedia.springboot;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 @Mapper
 public interface BbsDAO {

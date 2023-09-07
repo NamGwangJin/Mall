@@ -50,7 +50,6 @@ table td { border : 1px solid black; }
 <body>
 <table>
 <form method='post' action='/insert2' id=frmInsert name=frmInsert>
-
 <div class="myp-form-wrap">
 	<div class="myp-form-col">
 		<div class="input-group inline">
@@ -74,9 +73,6 @@ table td { border : 1px solid black; }
 	<!-- 버튼끝 -->
 
 </div>
-<!--
-		<td><input class=con1 type=submit id=btnSubmit name=btnSubmit value='작성' ></td></tr>
- -->
 
 </form>
 <form id="uploadForm2" action="/upload2" method="post" enctype="multipart/form-data">

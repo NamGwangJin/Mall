@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.himedia.springboot.QuestionDAO">
+
+<select id="getList" resultType="com.himedia.springboot.QuestionDTO">
+select num, title, content, writer, hit, created, updated, question_img from question order by updated desc limit #{param1},#{param2};
+</select>
+
+<select id="view" resultType="com.himedia.springboot.QuestionDTO">
+ select num, title, content, writer, hit, created, updated, question_img from question where num=#{param1}; 
+ </select>
+
+<update id="hitUp" parameterType="int">
+ update question set hit = hit + 1 where num=#{param1}; 
+ </update>
+
+<delete id="delPost" parameterType="int">
+ delete from question where num=#{param1}; 
+ </delete>
+
+<insert id="insPost">
+ insert into question set title=#{param1}, content=#{param2}, writer=#{param3}, created=#{param4}, updated=#{param5}, question_img=#{param6};
+  </insert>
+
+<update id="udPost">
+ update question set title=#{param2}, content=#{param3}, updated=now(), question_img=#{param4} where num=#{param1}; 
+ </update>
+
+<select id="getTotal" resultType="int">
+ select count(*) from question 
+ </select>
+
+</mapper>
