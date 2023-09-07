@@ -8,8 +8,8 @@
     <link href="css/mall.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
   </head>   
-<body>
-<%@ include file="..\header.jsp" %>
+<body style="background-image: url('img/regbackground.jpg');">
+
  <div class=body style="margin-top:50px;">
 <h1 align=center>${id}님의 상품 수정하기</h1>
 

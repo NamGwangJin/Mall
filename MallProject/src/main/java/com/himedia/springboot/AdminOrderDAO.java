@@ -52,4 +52,7 @@ public interface AdminOrderDAO {
 
 
 	ArrayList<AdminOrderDTO> getuserlist();
+
+
+	void userDeleteProduct(String user_id);
 }

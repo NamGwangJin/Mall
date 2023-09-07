@@ -23,7 +23,7 @@
 		<div class="MoreHeaderView_profile_wrap__Y9XWQ">
 			<div class="MoreHeaderView_name__4ZkcS">
 				<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">
-				${imp.user_name}님 환영합니다.</h2>
+				　　　　　　　　　　　　　　${id}님 환영합니다.</h2>
 			</div>
 		
 			
@@ -58,7 +58,7 @@
 <h3 class="mypageLnbSubTitle">상품 관리</h3>
 
 <ul class="myPageLnbList">
-<li><a href="/ProductReg">새 상품 등록하기</a></li>
+
 <li><a href="/goreglist"> 
 					<form id="uploadForm" action="/regProductList" method="post" class="custom-button-wrap">
 			      등록된 상품 목록
@@ -94,6 +94,7 @@
 <div class="myPageContainer">
 <div class="css-man8h3-defaultStyle">
 <div class="userBaseInfo">
+<input type="button" id="regButton" name="regButton" value="새 상품 등록하기" class="custom-button3">
   		<section>
         	<div>
         		<div>
@@ -103,14 +104,14 @@
 					       <tr>    
 							    <input type="hidden" id="userid" name="userid" value="${regProduct.user_id}">
 							    <input type="hidden" id="img" name="img" value="${regProduct.prod_img}">
-							    <td><input type="hidden" name="prodid" id="prodid" value="${regProduct.prod_id}"><input name="checkbox" type="checkbox"></td>
+							    <td><input type="hidden" name="prodid" id="prodid" value="${regProduct.prod_id}"></td>
 							    <td><img src="/img/${regProduct.prod_img}" style="width:100px">&nbsp;<a id="prodname" name="prodname">${regProduct.prod_name}</a></td>
 							    <td style="width: 150px;"><b id="price" name="price" style="white-space: nowrap;">${regProduct.prod_price}</b></td>
 							    <td style="width: 200px;"><b id="msg" name="msg" style="white-space: nowrap;">코멘트:${regProduct.prod_msg}</b></td>
-							    <td> 
-							        <input type="button" id="editButton" name="editButton" value="상품정보수정">
+							    <td style="width: 100px;"> 
+							        <input type="button" id="editButton" name="editButton" value="상품정보수정" class="custom-button">
 							    </td>
-							    <td><input type="button" name="regdel" id="regdel" style="color:red;" value="삭제하기"></td>
+							    <td><input type="button" name="regdel" id="regdel" value="상품 삭제" class="custom-button2"></td>
 							</tr>
 					        <tr><td colspan=7></td></tr>
 					    </c:forEach>
@@ -158,6 +159,13 @@
 <script>
 $(document)
 .ready(function () {
+    $(document).on('click', 'input[name=regButton]', function() {
+      
+        var editUrl = "/ProductReg"
+        
+        window.open(editUrl, "_blank", "width=800,height=800");
+    });
+    
     $(document).on('click', 'input[name=editButton]', function() {
         var prodName = $(this).closest('tr').find('a[name=prodname]').text();
         var prodPrice = $(this).closest('tr').find('b[name=price]').text();

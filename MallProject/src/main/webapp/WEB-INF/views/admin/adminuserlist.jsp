@@ -23,7 +23,7 @@
 		<div class="MoreHeaderView_profile_wrap__Y9XWQ">
 			<div class="MoreHeaderView_name__4ZkcS">
 				<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">
-				${imp.user_name}님 환영합니다.</h2>
+				　　　　　　　　　　　　　　${id}님 환영합니다.</h2>
 			</div>
 		
 			
@@ -58,7 +58,7 @@
 <h3 class="mypageLnbSubTitle">상품 관리</h3>
 
 <ul class="myPageLnbList">
-<li><a href="/ProductReg">새 상품 등록하기</a></li>
+
 <li><a href="/goreglist"> 
 				<form id="uploadForm" action="/regProductList" method="post" class="custom-button-wrap">
 			      등록된 상품 목록
@@ -130,6 +130,7 @@
 							            <td name='user_birthday'>${user.user_birthday}</td>
 							            <td name='signup_date'>${user.signup_date}</td>
 							            <td name='user_point'>${user.user_point}</td>
+							             <td><input type="button" name="userdel" id="userdel" value="회원 탈퇴" class="custom-button3"></td>
 							        </tr>
 							        <tr><td colspan=9><hr></td></tr>
 							    </c:forEach>
@@ -182,6 +183,23 @@ $(document).ready(function () {
 
 	
 	
-});
+})
+
+.on('click','#userdel',function(){ 
+	if(!confirm("회원정보를 삭제 시킵니까?")) return false;
+	var user_id = $(this).closest('tr').find('td[name=user_id]').text();
+	$.ajax({ url:'/userDelete', data:{user_id:user_id}, type:'post', dataType:'text',
+				success: function(data){
+					alert("회원정보가 삭제되었습니다.")
+					
+				
+					document.location = data;
+				}, error: function(){
+					alert("삭제 실패!!")
+					return false;
+				}
+	})
+})
+;
 </script>
 </html>
