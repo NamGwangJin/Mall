@@ -1,5 +1,7 @@
 $(document)
 .ready(function(){
+	Kakao.init("1803ba48695fdf34c21208ffa1fa6e06");
+	console.log(Kakao.isInitialized());
 	$('#id').val($.cookie('userid'));
 	$('#passcode1').val($.cookie('passcode1'));
 	
@@ -55,4 +57,22 @@ $(document)
 })
 .on('click','#signup',function(){
 	document.location = "/gosignup"
+})
+.on('click','#kakaoLogin',function(){
+	    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  document.location = "/"
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
 })

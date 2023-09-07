@@ -70,10 +70,15 @@
 		<div class="sc-610c9ba6-1 ijHOdC">
 		<hr/><span class="sc-610c9ba6-2 frKZDb">혹은</span><hr/>
 		</div>
+		<div style="text-align:center; cursor:pointer;" id=kakaoLogin>
+			<img src="/img/kakaologin.png">
+		</div>
+	</div>
 	</div>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" 
 integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" 
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
