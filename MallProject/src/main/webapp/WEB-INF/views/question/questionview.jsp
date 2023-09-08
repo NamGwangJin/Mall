@@ -47,7 +47,13 @@
 		</div>
 	</div>
 	<div class="board-text">
-		<div style="white-space: pre-wrap; word-break: break-all; min-height: 240px;">${qPost.content}</div>
+		<div style="white-space: pre-wrap; word-break: break-all; min-height: 240px;">
+		<c:if test="${qPost.question_img !=null}">
+			<img src="/img/${qPost.question_img}">
+			<input type=hidden name='title' id='title1' value='${qPost.question_img}' />
+		</c:if>
+		${qPost.content} 
+		</div>
 		<ul class="board-text-bottom">
 			<li class="pc-board-action">
 			
@@ -148,6 +154,7 @@ var thisliked;
 
 $(document)
 .ready(function(){
+	console.log($('#title1').val())
 	$('input[name=num]').val( $('#num').text());
 	thisliked = parseInt ($('#lkresult').text());
 })

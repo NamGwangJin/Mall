@@ -38,53 +38,7 @@
 <!-- 사이드메뉴 -->
 
 <div class="mypageWrapper css-11849r4-defaultStyle">
-<div class="myPagelnbWrapper css-jo3gxq-defaultStyle">
-<div class="mypageLnb">
-<h2 class="mypageLnbTitle">
-
-<a href="/mypage" style="font-size: inherit; color:#25C7A0;">MY Weverse</a></h2>
-
-<div class="mypageLnbListWrapper">
-<h3 class="mypageLnbSubTitle">MY 주문정보</h3>
-
-<ul class="myPageLnbList">
-<li><a href="/orderList?id=${id}">주문/배송 조회</a></li>
-<li><a href="#">취소/반품/교환 조회</a></li>
-</ul>
-</div>
-
-<div class="mypageLnbListWrapper">
-<h3 class="mypageLnbSubTitle">MY 쇼핑혜택</h3>
-
-<ul class="myPageLnbList">
-<li><a href="#">쿠폰</a></li>
-<li><a href="#">마일리지</a></li>
-</ul>
-</div>
-
-<div class="mypageLnbListWrapper">
-<h3 class="mypageLnbSubTitle">MY 쇼핑활동</h3>
-
-<ul class="myPageLnbList">
-<li><a href="#">나의 찜</a></li>
-<li><a href="#">상품리뷰</a></li>
-<li><a href="#">1:1 문의 내역</a></li>
-<li><a href="#">상품문의</a></li>
-<li><a href="/bbs">게시판</a></li>
-</ul>
-</div>
-
-<div class="mypageLnbListWrapper">
-<h3 class="mypageLnbSubTitle">MY 회원정보</h3>
-
-<ul class="myPageLnbList">
-<li><a href="/profile">회원 정보 관리</a></li>
-<li><a href="/delivery">배송 정보 관리</a></li>
-
-</ul>
-</div>
-</div>
-</div>
+<%@ include file="side.jsp" %>
 
 <!-- 마이페이지 -->
 <div class="myPageContainer">

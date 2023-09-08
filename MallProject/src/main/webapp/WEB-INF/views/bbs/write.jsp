@@ -73,10 +73,10 @@ table td { border : 1px solid black; }
 	<!-- 버튼끝 -->
 
 </div>
-
+<input type=text name=bbs_img id=img size=64 maxlength=128 value="">
 </form>
 <form id="uploadForm2" action="/upload2" method="post" enctype="multipart/form-data">
-     	
+		
         <input type="file" id="file2" name="file2" value=""><br>
         <input type="submit" value="상품이미지업로드">
 </form>

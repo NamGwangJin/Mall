@@ -110,7 +110,7 @@ table td { border : 1px solid black; }
 		<input type=submit id=btnSubmit name=btnSubmit value='작성' class="btn btn-default btn-primary">
 		</div>
 	<!-- 버튼끝 -->
-
+<input type=text name=question_img id=img size=64 maxlength=128 value="">
 </div>
 
 </form>
@@ -139,7 +139,7 @@ $(document)
 		return false;
 	}
 })
-/*  $('#uploadForm3').submit(function (e) {
+ $('#uploadForm3').submit(function (e) {
         e.preventDefault(); 
         $.ajax({
             type: 'POST',
@@ -158,6 +158,6 @@ $(document)
                 $('#UploadResult').text('파일 업로드 실패');
             }
         });
-    }); */
+    });
 </script>
 </html>

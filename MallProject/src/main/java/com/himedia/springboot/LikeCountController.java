@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,24 +20,25 @@ public class LikeCountController {
     private LikeCountDAO lcDAO;
     
 
-    @RequestMapping("/rtestcount")
- 	public String test(HttpServletRequest req, Model model) {
- 		
- 		handleUserInterface(req, model);
- 		HttpSession s = req.getSession();
- 		String user_id = (String) s.getAttribute("id");
- 		int likecheck = lcDAO.likecheck(user_id, "testtitle");
- 		model.addAttribute("lk",likecheck);
- 		return "/likecount";
- 	}
+//    @RequestMapping("/rtestcount")
+// 	public String test(HttpServletRequest req, Model model) {
+// 		
+// 		handleUserInterface(req, model);
+// 		HttpSession s = req.getSession();
+// 		String user_id = (String) s.getAttribute("id");
+// 		int likecheck = lcDAO.likecheck(user_id, "testtitle");
+// 		model.addAttribute("lk",likecheck);
+// 		return "/likecount";
+// 	}
+//    
     
-    
-    @GetMapping("/initialLikeCount")
+    @RequestMapping("/initialLikeCount")
     @ResponseBody
     public String initialLikeCount(@RequestParam("title") String title) {
-        int countlike = lcDAO.getLikeCountByTitle(title);
-    
-        return String.valueOf(countlike);
+    	double countlike =  lcDAO.getLikeCountByTitle(title);
+    	int intValue = (int) Math.floor(countlike);
+
+        return String.valueOf(intValue);
     }
     
     @GetMapping("/likecheck")
@@ -56,14 +58,9 @@ public class LikeCountController {
         String title = req.getParameter("title");
    
         String user_id = (String) req.getSession().getAttribute("id");
- 
-    
-     
-        
+
         	lcDAO.increaseLikeCount(title, user_id);
-     
-       
-        
+
         int countlike = lcDAO.getLikeCountByTitle(title);
         
         return String.valueOf(countlike);
@@ -76,12 +73,18 @@ public class LikeCountController {
         
         String title = req.getParameter("title");
         String user_id = (String) req.getSession().getAttribute("id");
-
         lcDAO.decreaseLikeCount(title, user_id);
 
-        int countlike = lcDAO.getLikeCountByTitle(title);
-        
-        return String.valueOf(countlike);
+  
+        double countlike; 
+        try {
+            countlike = lcDAO.getLikeCountByTitle(title);
+        } catch (Exception e) {
+            countlike = 0.0; 
+        }
+        int intValue = (int) Math.floor(countlike);
+    	
+        return String.valueOf(intValue);
     }
  
     

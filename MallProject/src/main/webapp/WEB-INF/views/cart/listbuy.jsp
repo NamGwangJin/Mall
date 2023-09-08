@@ -10,15 +10,14 @@
 <title>구매 페이지</title>
 </head>
 <body>
-        <header>
+<div class="navbar">
 			<%@ include file="..\header.jsp" %>
-        </header>
-    <div id="wrapper">
+  </div>
+  <div class="buybody">
+    <div id="wrapper" >
         <main id="product">
             <section class="order">
-                <nav>
                     <h1>결제하기</h1>
-                </nav>
                <form action="/listorder" method="get" id="frmOrder">
                		<input type=hidden name=prod_id value="">
                	    <input type=hidden name=id value="${id}">
@@ -40,7 +39,7 @@
                                 <a href="product?name=${cart.prod_name}">
                                 	<input type=hidden name=prodId value="${cart.prod_id}">
                                 	<input type=hidden name=img value="${cart.prod_img}">
-                                    <img style="width:80px; height:100px;" src="img/${cart.prod_img}" alt="1">
+                                    <img style="width:200px; height:200px;" src="img/${cart.prod_img}" alt="1">
                                 </a>
                                 <div>
                                     <h2>${cart.prod_name}</h2>
@@ -175,6 +174,9 @@
                         </div>
                     </article>
         	</form>
+        	</section>
+        	</main>
+        	</div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>

@@ -182,7 +182,6 @@
 	margin-left: 8px;
 }
 
-
 .free-board-comment-write-wrap {
     position: fixed;
     display: flex;
@@ -358,7 +357,7 @@ textarea{
 	text-align: left;
 	padding-top:5px;
 	padding-left: 10px;
-	font-size: 16px;
+
 }
 .con1{
 	cursor:pointer;
@@ -367,4 +366,22 @@ textarea{
 	border: 0px;
     border-radius: 4px;
 	margin-left:5px;
+}
+
+
+.btn2{
+	margin-left: 8px;
+	border-radius: 4px;
+    line-height: 42px;
+    width: auto;
+    height: 42px;
+    padding: 0 32px;
+    font-size: 14px;
+}
+.btn2-de{
+	height: 42px;
+    color: #fff;
+    background-color: #25C7A0;
+    border:0px;
+    cursor: pointer;
 }

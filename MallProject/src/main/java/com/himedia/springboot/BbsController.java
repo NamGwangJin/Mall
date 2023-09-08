@@ -36,6 +36,9 @@ public class BbsController {
 	@Autowired
 	private BbsDAO bdao;
 	
+	@Autowired
+	private LikeCountDAO lcDAO;
+	
 	@PostMapping("/replyInsert")
 	public String replyInsert(HttpServletRequest req) {
 		HttpSession session = req.getSession();
@@ -81,6 +84,15 @@ public class BbsController {
 		
 		ArrayList<BbscmtDTO> cdto = bdao.getReply(num);
 		model.addAttribute("cList",cdto);
+		
+		
+		//좋아요기능
+		String title = bdto.getTitle();		
+ 		String user_id = id;
+ 		int likecheck = lcDAO.likecheck(user_id, title);
+ 		
+ 		model.addAttribute("lk",likecheck);
+ 		
 		
 		return "bbs/view";
 	}
@@ -151,7 +163,7 @@ public class BbsController {
 				if(pno==i) {
 					pagestr+=i+"&nbsp;";
 				} else {
-					pagestr+="<a href='/?pageno="+i+"'>"+i+"</a>&nbsp;";
+					pagestr+="<a href='/bbs?pageno="+i+"'>"+i+"</a>&nbsp;";
 				}
 			}
 			model.addAttribute("pagestr", pagestr);
@@ -176,7 +188,7 @@ public class BbsController {
 				if(pno==i) {
 					pagestr+=i+"&nbsp;";
 				} else {
-					pagestr+="<a href='/?pageno="+i+"'>"+i+"</a>&nbsp;";
+					pagestr+="<a href='/bbs?pageno="+i+"'>"+i+"</a>&nbsp;";
 				}
 			}
 			model.addAttribute("pagestr",pagestr);

@@ -80,9 +80,7 @@
 
 
 	<div class="pagecontroller"  id="pagestr">
-	    <a class="pagination__button pagination__button--prev pagination__button--disabled">&lt;</a>
 	    <a class="pagination__button pagination__button--active" href="">${pagestr}</a>
-	    <a class="pagination__button pagination__button--next" href="" data-remote="true">&gt;</a>
 	</div>
 </div>
 

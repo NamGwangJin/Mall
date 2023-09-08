@@ -20,6 +20,15 @@
     text-align: left;
     color: #454545;
 }
+.control-label3{
+	line-height: 42px;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: left;
+    color: #25C7A0;
+    font-size: 18px;
+    font-weight: 500;
+}
 textarea{
 	border: 1px solid #ebebeb;
 }
@@ -76,4 +85,16 @@ textarea{
 }
 .textfull{
 	width: -webkit-fill-available;
+}
+
+
+.inputcolor{
+	color:#b9b9b9;
+}
+
+.textfull{
+	border-radius: 4px;
+	text-align: left;
+	padding-top:10px;
+	padding-left: 15px;
 }

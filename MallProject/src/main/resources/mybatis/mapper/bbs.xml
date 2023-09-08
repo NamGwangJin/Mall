@@ -6,7 +6,7 @@
 <mapper namespace="com.himedia.springboot.BbsDAO">
 
 <select id="getList" resultType="com.himedia.springboot.BbsDTO">
-select num, title, content, writer, hit, created, updated, bbs_img from bbs order by updated desc limit #{param1},#{param2};
+select num, title, content, writer, hit, created, updated, bbs_img from bbs order by num desc limit #{param1},#{param2};
 </select>
 
 <select id="view" resultType="com.himedia.springboot.BbsDTO">
@@ -22,7 +22,7 @@ select num, title, content, writer, hit, created, updated, bbs_img from bbs orde
  </delete>
 
 <insert id="insPost">
- insert into bbs set title=#{param1}, content=#{param2}, writer=#{param3}, created=#{param4}, updated=#{param5}, bbs_img=#{param6};
+ insert into bbs set title=#{param1}, content=#{param2}, writer=#{param3}, created=now(), updated=now(), bbs_img=#{param6};
   </insert>
 
 <update id="udPost">

@@ -92,7 +92,7 @@
         }
 
         #product > .order > form > .final > table tr:nth-last-child(1) td:last-child {
-            color: #ff006c;
+            color: #25C7A0;
             font-size: 20px;
             font-weight: bold;
         }
@@ -105,18 +105,19 @@
 
         #product > .order > form > .final > table td:last-child { text-align: right; }
 
-        #product > .order > form > .final > input[type=submit] {
+		#product > .order > form > .final > input[type=submit] {
             width: 100%;
             height: 56px;
             font-size: 26px;
             border-width: 1px;
-            border-color: #d81818;
-            border-bottom-color: #9e1212;
-            background: #ed2f2f;
-            background-image: -webkit-linear-gradient(#ed2f2f, #dd0e0e);
+            border-color: #25ac8c;
+            border-bottom-color: #26aa8a;
+            background: #25C7A0;
+            background-image: -webkit-linear-gradient( #81ffe1,#25c7a0 );
             color: #fff;
             box-sizing: border-box;
             margin-top: 10px;
+            cursor: pointer;
         }
 
         #product > .order > form > article > h1 {
@@ -194,3 +195,9 @@
         #product > .order > form > .alert > ul { list-style: inherit; }
         #product > .order > form > .alert > ul > li { line-height: 20px; }
         #product > .order > form > .alert > ul > li > span { position: relative; left: -6px; }
+        
+        /* 정렬 */
+        .buybody{
+			width: 1200px;
+   			margin: 0px auto;
+		}

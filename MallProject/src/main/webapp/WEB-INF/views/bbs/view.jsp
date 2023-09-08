@@ -41,19 +41,24 @@
 		<div class="scale">
 			<span class="name">${bPost.writer}</span>
 			<span>${bPost.created}</span>
+			<span> 조회 ${bPost.hit}</span>
 			<span>
-				<img src="img/${bPost.bbs_img}"> 조회 ${bPost.hit}</span>
-			<span>
-				<img src="https://svgsilh.com/png-1024/2730432.png"> 추천 (혹시모를추천수들어가는곳)</span>
+				
 		</div>
 	</div>
 	<div class="board-text">
-		<div style="white-space: pre-wrap; word-break: break-all; min-height: 240px;">${bPost.content}</div>
+		<div style="white-space: pre-wrap; word-break: break-all; min-height: 240px;">
+		<c:if test="${bPost.bbs_img !=null}">
+			<img src="/img/${bPost.bbs_img}">
+		</c:if>
+		${bPost.content}
+		</div>
 		<ul class="board-text-bottom">
 			<li class="pc-board-action">
-			<span><img src="https://svgsilh.com/png-1024/2730432.png"> 추천하기</span>
 			</li>
 		</ul>
+		
+		
 	</div>
 	</div>
 
@@ -91,7 +96,7 @@
                   <div class="date">
                  ${cList.regdate}
                   </div>
-                <div class="con">
+                <div class="con" name=content>
 					${cList.content}
 				</div>
         </div>
@@ -119,10 +124,66 @@
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
+//좋아요 기능에서 변수들
+var likeImage = document.getElementById("likeImage");
+var title = document.getElementById("title").value;
+
+var isLiked = ${lk == 1};
+var thisliked;
+
+
 $(document)
 .ready(function(){
 	$('input[name=num]').val( $('#num').text());
+	thisliked = parseInt ($('#lkresult').text());
 })
+
+
+$.ajax({
+        type: 'GET',
+        url: '/initialLikeCount?title=' + title, 
+        success: function (response) {
+          $('#lkresult').text(response);
+        },
+        error: function (xhr, status, error) {
+          console.log(error);
+        }
+      })
+//좋아요 할때 쓰는 메소드
+function swapImg() {
+    if (!isNaN(thisliked) && thisliked >= 1) {
+        var imagePath = isLiked ? "img/afterlikeimg.JPG" : "img/beforelikeimg.JPG";
+        likeImage.src = imagePath;
+        updateCountAndImage(imagePath);
+    } else {
+        isLiked = !isLiked;
+        var imagePath = isLiked ? "img/afterlikeimg.JPG" : "img/beforelikeimg.JPG";
+        likeImage.src = imagePath;
+        updateCountAndImage(imagePath);
+    }
+}
+
+function updateCountAndImage(imagePath) {
+    var data = {
+        imgstate: imagePath,
+        title: title
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: isLiked ? '/increaseLikeCount' : '/decreaseLikeCount',
+        data: data,
+        success: function (response) {
+            $('#lkresult').text(response);
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
+
+$(document)
 .on('click','#btnDel',function(){
 	if(!confirm('정말로 삭제하시겠습니까?')) return false;
 	
@@ -136,21 +197,23 @@ $(document)
 })
 .on('click','button[name=btnDel1]',function(){
 	if(!confirm('정말로 삭제하시겠습니까?')) return false;
-	let cmtnum = $(this).closest('div').find('input[name=cmtnum]').val();
-	document.location = '/delete1?num='+cmtnum+"&bbscmtnum="+$('input[name=bbscmtnum]').val();
+	let cmtnum = $(this).closest('li').find('input[name=cmtnum]').val();
+	let bbscmtnum = $(this).closest('li').find('input[name=bbscmtnum]').val();
+	console.log(cmtnum, bbscmtnum)
+	document.location = '/delete1?num='+cmtnum+"&bbscmtnum="+bbscmtnum;
 	alert("삭제가 완료되었습니다.");
 	return false;
 })
 
 .on('click','button[name=btnUd1]',function(){
- 	$(this).closest('tr').find('td:eq(1)').wrap('<input type=text id=modify value=""></input>');
- 	$('#modify').val( $(this).closest('tr').find('input[name=content]').val() );
+ 	$(this).closest('li').find('div[name=content]').wrap('<input type=text id=modify value=""></input>');
+ 	$('#modify').val( $(this).closest('li').find('input[name=content]').val() );
  	$(this).attr("name","ok");
  	$(this).text("완료");
 
 })
 .on('click','button[name=ok]',function(){
-	$.ajax({url:'/update1', data:{ num : $(this).closest('tr').find('input[name=cmtnum]').val(), content : $('#modify').val() }, type:'post', dataType:'text',
+	$.ajax({url:'/update1', data:{ num : $(this).closest('li').find('input[name=cmtnum]').val(), content : $('#modify').val() }, type:'post', dataType:'text',
 		success: function(data) {
 			
 			document.location = data + "?num=" + $('#num').text();

@@ -7,11 +7,20 @@
 <link href="css/mall.css" rel="stylesheet" />
 <title>구매 페이지</title>
 </head>
+<style>
+    /* 버튼의 배경색과 글자색을 변경합니다. */
+    input[type="submit"] {
+        background-color: #25C7A0; /* 원하는 배경색으로 변경하세요. */
+        color: white; /* 원하는 글자색으로 변경하세요. */
+        /* 기타 스타일 속성을 필요에 따라 추가하세요. */
+    }
+</style>
 <body>
-        <header>
+<div class="navbar">
 <%@ include file="..\header.jsp" %>
-        </header>
-    <div id="wrapper" style="margin-top:100px;">
+</div>
+<div class="buybody">
+    <div id="wrapper" >
     <h1>결제하기</h1>
         <main id="product">
             <section class="order">
@@ -30,7 +39,7 @@
                         <tr>
                             <td><article>
                                 <a href="product?name=${prod_name}">
-                                    <img style="width:80px; height:100px;" src="img/${img}" alt="1">
+                                    <img style="width:200px; height:200px;" src="img/${img}" alt="1">
                                 </a>
                                 <div>
                                     <h2>${prod_name}</h2>
@@ -167,6 +176,7 @@
         	</form>
         </section>
        </main>
+       </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>

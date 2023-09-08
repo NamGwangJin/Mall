@@ -9,7 +9,7 @@ public class QuestionDTO {
 	int hit;
 	String created;
 	String updated;
-	/* String qusetion_img; */
+	String question_img; 
 	
 	public int getNum() {
 		return num;
@@ -53,11 +53,12 @@ public class QuestionDTO {
 	public void setUpdated(String updated) {
 		this.updated = updated;
 	}
-//	public String getQusetion_img() {
-//		return qusetion_img;
-//	}
-//	public void setQusetion_img(String qusetion_img) {
-//		this.qusetion_img = qusetion_img;
-//	}
+	public String getQuestion_img() {
+		return question_img;
+	}
+	public void setQuestion_img(String question_img) {
+		this.question_img = question_img;
+	}
+	
 	
 }

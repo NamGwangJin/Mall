@@ -10,7 +10,7 @@ select num, title, content, writer, hit, created, updated from question order by
 </select>
 
 <select id="view" resultType="com.himedia.springboot.QuestionDTO">
- select num, title, content, writer, hit, created, updated from question where num=#{param1}; 
+ select * from question where num=#{param1}; 
  </select>
 
 <update id="hitUp" parameterType="int">
@@ -22,7 +22,7 @@ select num, title, content, writer, hit, created, updated from question order by
  </delete>
 
 <insert id="insPost">
- insert into question set title=#{param1}, content=#{param2}, writer=#{param3}, created=#{param4}, updated=#{param5};
+ insert into question set title=#{param1}, content=#{param2}, writer=#{param3}, created=#{param4}, updated=#{param5}, question_img=#{param6};
   </insert>
 
 <update id="udPost">

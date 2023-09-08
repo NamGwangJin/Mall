@@ -34,6 +34,12 @@ public class QuestionController {
 	 @Autowired
 	 private QuestionDAO qdao;
 	 
+		@Autowired
+		private BbsDAO bdao;
+		
+		@Autowired
+		private LikeCountDAO lcDAO;
+	 
     @GetMapping("/question")
 	public String questionview(HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
@@ -109,6 +115,7 @@ public class QuestionController {
 		qdao.hitUp(num);
 		QuestionDTO qdto = qdao.view(num);
 		model.addAttribute("qPost",qdto);
+ 	
 		
 		ArrayList<QuestioncmtDTO> cdto = qdao.getReply(num);
 		model.addAttribute("qList",cdto);
@@ -134,8 +141,8 @@ public class QuestionController {
 		String title = req.getParameter("hp_tail3");
 		String content = req.getParameter("hp_tail2");
 		String id= (String) session.getAttribute("id");
-		/* String qimg = req.getParameter("question_img"); */
-		qdao.insPost(title, content, id, now, now);
+		String qimg = req.getParameter("question_img");
+		qdao.insPost(title, content, id, now, now, qimg);
 		return "redirect:/question";
 	}
 	
@@ -188,30 +195,30 @@ public class QuestionController {
 		return "/questionview";
 	}
 	
-//	@Value("${upload.directory}")
-//    private String uploadDirectory;
-//
-//    @PostMapping("/upload3")
-//    public String uploadFile(@RequestParam("file3") MultipartFile file, Model model) {
-//        if (!file.isEmpty()) {
-//            try {
-//                String fileName3 = file.getOriginalFilename();
-//                String fileRealName3 = fileName3;
-//
-//                // 파일 저장 경로로 파일 이동
-//                File targetFile3 = new File(uploadDirectory + File.separator + fileRealName3);
-//                file.transferTo(targetFile3);
-//
-//                model.addAttribute("fileName3", fileName3);
-//                model.addAttribute("fileRealName3", fileRealName3);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                model.addAttribute("errorMessage3", "파일 업로드 실패");
-//            }
-//        } else {
-//            model.addAttribute("errorMessage3", "업로드할 파일을 선택하세요.");
-//        }
-//        
-//        return "question/UploadResult";
-//    }
+	@Value("${upload.directory}")
+    private String uploadDirectory;
+
+    @PostMapping("/upload3")
+    public String uploadFile(@RequestParam("file3") MultipartFile file, Model model) {
+        if (!file.isEmpty()) {
+            try {
+                String fileName3 = file.getOriginalFilename();
+                String fileRealName3 = fileName3;
+
+                // 파일 저장 경로로 파일 이동
+                File targetFile3 = new File(uploadDirectory + File.separator + fileRealName3);
+                file.transferTo(targetFile3);
+
+                model.addAttribute("fileName3", fileName3);
+                model.addAttribute("fileRealName3", fileRealName3);
+            } catch (IOException e) {
+                e.printStackTrace();
+                model.addAttribute("errorMessage3", "파일 업로드 실패");
+            }
+        } else {
+            model.addAttribute("errorMessage3", "업로드할 파일을 선택하세요.");
+        }
+        
+        return "question/UploadResult";
+    }
 }

@@ -15,7 +15,7 @@ public interface QuestionDAO {
 	
 	void delPost(int num);
 	
-	void insPost(String title, String content, String writer, String created, String updated);
+	void insPost(String title, String content, String writer, String created, String updated, String qimg);
 	
 	void udPost(int num, String title, String content, String updated);
 	

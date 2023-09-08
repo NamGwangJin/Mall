@@ -301,6 +301,10 @@ tbody {
     padding: 18px 10px;
     text-align: right;
 }
+.af a{
+	color:#25C7A0;	
+}
+
 /* 하단 */
 .pagecontroller {
     position: fixed;
@@ -316,4 +320,23 @@ tbody {
 .pagecontroller a {
     text-decoration: none;
     color: #888888;
+}
+.myp-form-wrap .form-title2 {
+	margin-top: 24px;
+    padding-left: 0;
+    padding-bottom: 5px;
+    font-size: 14px;
+	color: rgba(0,0,0,.4);
+    font-weight: 500;
+}
+.myp-form-wrap .form-title3 {
+    padding-left: 0;
+    padding-bottom: 5px;
+    font-size: 14px;
+	color: rgba(0,0,0,.4);
+    font-weight: 500;
+}
+.like-container {
+    display: flex; /* Flexbox 레이아웃 사용 */
+    align-items: center; /* 수직 가운데 정렬 */
 }
