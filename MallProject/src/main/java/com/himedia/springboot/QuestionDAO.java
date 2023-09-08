@@ -16,10 +16,19 @@ public interface QuestionDAO {
 	
 	void delPost(int num);
 	
-	void insPost(String title, String content, String writer, String created, String updated, String question_img);
+	void insPost(String title, String content, String writer, String created, String updated);
 	
-	void udPost(int num, String title, String content, String updated, String question_img);
+	void udPost(int num, String title, String content, String updated);
 	
 	int getTotal();
 	
+	void insertReply(int quenum, String content, String writer, String quedate);
+	 
+	 ArrayList<QuestioncmtDTO> getReply(int quecmtnum);
+	 
+	 QuestioncmtDTO Reply(int num);
+	 
+	 void delReply(int num);
+	 
+	 void udReply(int num, String content);
 }

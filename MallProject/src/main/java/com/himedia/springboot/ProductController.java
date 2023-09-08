@@ -221,6 +221,7 @@ public class ProductController {
           
                 model.addAttribute("infoline", "<a href='/mypage'><img src='img/mypage.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">마이페이지</span></a>");
                 model.addAttribute("write", "<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");
+                model.addAttribute("questionwrite", "<td style='text-align:right;'><a href='/questionwrite'><h3>게시물 작성</h3></a></td>");
                 model.addAttribute("id", id);
             }
 

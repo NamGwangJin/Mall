@@ -71,9 +71,10 @@
 <ul class="myPageLnbList">
 <li><a href="#">나의 찜</a></li>
 <li><a href="#">상품리뷰</a></li>
-<li><a href="#">1:1 문의 내역</a></li>
+<li><a href="/question">1:1 문의 내역</a></li>
 <li><a href="#">상품문의</a></li>
 <li><a href="/bbs">게시판</a></li>
+<li><a href="/faq">FAQ</a></li>
 </ul>
 </div>
 
