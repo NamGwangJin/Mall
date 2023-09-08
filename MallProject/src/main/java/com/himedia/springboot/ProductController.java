@@ -212,8 +212,10 @@ public class ProductController {
           
             if (id == null || id.isEmpty()) {
             	model.addAttribute("infoline","<div class='MoreHeaderView_button_wrap__B-cQ2'>"+
+            												"<a href='/bbs' class='MoreHeaderView_button_item__gv6pa'>게시판</a>&nbsp;&nbsp"+
             												"<a href='/gologin' class='MoreHeaderView_button_item__gv6pa' >로그인</a>&nbsp;&nbsp;" +
             												"<a href='/gosignup'  class='MoreHeaderView_button_item__gv6pa'>회원가입</a></div>");
+            												
             } else {
             	model.addAttribute("bbs", "<a href='/bbs'><img src='img/boardimg.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">게시판</span></a>");
                 model.addAttribute("cartlist"," <a href='/cartList'><img src='img/shoppingcartimg.jpg' width=\"50\" height=\"50\"> <span class=\"tooltip\">장바구니</span></a>");
@@ -222,6 +224,7 @@ public class ProductController {
                 model.addAttribute("infoline", "<a href='/mypage'><img src='img/mypage.jpg' width=\"50\" height=\"50\"><span class=\"tooltip\">마이페이지</span></a>");
                 model.addAttribute("write", "<td style='text-align:right;'><a href='/write'><h3>게시물 작성</h3></a></td>");
                 model.addAttribute("questionwrite", "<td style='text-align:right;'><a href='/questionwrite'><h3>게시물 작성</h3></a></td>");
+                model.addAttribute("faq", "<td style='text-align:right;'><a href='/faq'><h3>FAQ 바로 가기</h3></a></td>");
                 model.addAttribute("id", id);
             }
 
