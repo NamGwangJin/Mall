@@ -9,12 +9,11 @@
 <title></title>
 </head>
 <body>
-<div class="fixed-header">
+<div class="fixed-header" style="width:90%;">
 	<div class="navbar">
-	    <a href="/" id="logo">
-	        <img src="img/weverslogo.jpg" width="160">
-	        
-	    </a>
+		    <a href="/" id="logo">
+		        <img src="img/weverslogo.jpg" width="160">
+			</a>
 	    <ul id="menu">
 	 		 <li class="menu-item">${infoline}</li>
 	 		 <li class="menu-item">${inforeg}</li>
@@ -25,9 +24,7 @@
 	       
 	    	<li class="menu-item">${cartlist}</li> 
 	   		<li class="menu-item">${orderlist}</li>
-	
 	    </ul>
-	    	
 	</div>
 </div>
 </body>

@@ -175,7 +175,7 @@ public class CartController {
 	public String listBuy(HttpServletRequest req, Model model) {
 		String user_id = req.getParameter("user_id");
 		String prod_id = req.getParameter("prod_id");
-		String[] prodList = prod_id.split("");
+		String[] prodList = prod_id.split(",");
 		
 		int point = uDao.getPoint(user_id);
 		ArrayList<CartDTO> cList = new ArrayList<CartDTO>();

@@ -208,5 +208,5 @@ function checkedPhoto(state){
 		
 	}
 	
-})
+	})
 }

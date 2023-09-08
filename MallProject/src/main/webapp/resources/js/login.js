@@ -30,7 +30,6 @@ $(document)
 		},
 		success:function(data){
 			if (data == "1"){
-				
 				if( $.cookie('userid') != $('#id').val() || $.cookie('userid') == '' ) {
 					if(confirm("로그인 정보를 저장 할까요?") == true) {
 						$.cookie('userid',$('#id').val());

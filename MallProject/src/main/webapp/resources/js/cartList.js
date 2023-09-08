@@ -109,19 +109,24 @@ $(document)
 })
 
 .on('click','#buy',function(){ // 선택 아이템 주문
-	if($(this).text() == "샵으로 이동") {
-		document.location = "/";
-		return false;
-	}
 	if (count == 1) {
-		document.location = "/buy?prod_name=" + $('#prodname').text() + "&qty=" + $('#qty').val() + 
-		"&price=" + parseInt($('#total').text() / $('#qty').val()) + '&total=' + $('#total').text() + '&img=' + $('#img').val() + "&prod_id=" + $('#prodid').val();
+		let checkProduct = $('input[name=prodCheckBox]:checked').closest("ul")
+		let prod_name = checkProduct.find('[name=prod_name]').text();
+		let qty = checkProduct.find('[name=qty]').val();
+		let price = checkProduct.find('[name=price]').val();
+		let img = checkProduct.find('[name=img]').val();
+		let prod_id = checkProduct.find('[name=prod_id]').val();
+		document.location = "/buy?prod_name=" + prod_name + "&qty=" + qty + 
+		"&price=" + price + '&total=' + $('[name=totalPrice]').text() + '&img=' + img + "&prod_id=" + prod_id;
 	} else {
-		prodid = "";
-		$('input[name=checkbox]:checked').each(function(){
-			prodid += $(this).parent().find("input[name=prodid]").val();
+		prod_id = "";
+		$('input[name=prodCheckBox]:checked').each(function(index){
+			prod_id += $(this).closest("ul").find("input[name=prod_id]").val();
+			if ( index < $('input[name=prodCheckBox]:checked').length - 1) {
+				prod_id += ",";
+			}
 		})
-		document.location = "/listbuy?user_id=" + $('#userid').val() + "&prod_id=" + prodid;
+		document.location = "/listbuy?user_id=" + $('#userid').val() + "&prod_id=" + prod_id;
 	}
 })
 ;

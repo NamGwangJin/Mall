@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +11,12 @@
         <header>
 <%@ include file="..\header.jsp" %>
         </header>
-    <div id="wrapper">
+    <div id="wrapper" style="margin-top:100px;">
+    <h1>결제하기</h1>
         <main id="product">
             <section class="order">
-                <nav>
-                    <h1>결제하기</h1>
-                </nav>
                <form action="/order" method="post" id="frmOrder">
+               		
                	    <input type=hidden name=id value="${id}">
      				<input type=hidden name=img value="${img}">
                     <table border="0">
@@ -31,7 +29,7 @@
                         </tr>
                         <tr>
                             <td><article>
-                                <a href="#">
+                                <a href="product?name=${prod_name}">
                                     <img style="width:80px; height:100px;" src="img/${img}" alt="1">
                                 </a>
                                 <div>
@@ -80,7 +78,6 @@
                         </table>
                         <input type="submit" value="결제하기">
                     </div>
-                    <!-- 배송정보 -->
                     <article class="delivery">
                         <h1>배송정보</h1>
                         <input type="checkbox" id=same><sub style="text-align:right;">회원정보와 동일</sub>
@@ -115,7 +112,7 @@
                             </tr>
                         </table>
                     </article>
-                    <!-- 할인정보 -->
+                    할인정보
                     <article class="discount">
                         <h1>할인정보</h1>
                         <div>
@@ -133,7 +130,7 @@
                             <span>포인트 5,000점 이상이면 현금처럼 사용 가능합니다.</span>
                         </div>
                     </article>
-                    <!-- 결제방법 -->
+                    결제방법
                     <article class="payment">
                         <h1>결제방법</h1>
                         <div>
@@ -168,6 +165,8 @@
                         </div>
                     </article>
         	</form>
+        </section>
+       </main>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>

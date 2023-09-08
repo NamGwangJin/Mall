@@ -37,7 +37,7 @@
                         <c:forEach items="${cList}" var="cart">
                         <tr>
                             <td><article>
-                                <a href="#">
+                                <a href="product?name=${cart.prod_name}">
                                 	<input type=hidden name=prodId value="${cart.prod_id}">
                                 	<input type=hidden name=img value="${cart.prod_img}">
                                     <img style="width:80px; height:100px;" src="img/${cart.prod_img}" alt="1">
