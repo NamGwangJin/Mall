@@ -7,6 +7,34 @@
 <link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/magazine_common.css?202202150915" />
 <link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/store_common.css?202112011113" />
 <link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/sub.css?202306211732" />
+<link href="css/mall.css" rel="stylesheet" />
+<link rel="stylesheet" href="/resources/css/mypage.css"/>
+<link rel="stylesheet" href="/resources/css/review2.css"/>
+<link rel="stylesheet" href="/resources/css/content.css"/>
+<link href="resources/css/bbs.css" rel="stylesheet"/>
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+<!-- 배너  -->
+<%@ include file="..\header.jsp" %>
+<!-- 헤더  -->
+<div class="body" style="margin-top:50px;">
+<div class="MoreLayoutView_container__8Ahvr">
+	<div class="MoreHeaderView_container__kK6Wj">
+		<div class="MoreHeaderView_inner__BRiQZ">
+			<div class="MoreHeaderView_profile_wrap__Y9XWQ">
+				<div class="MoreHeaderView_name__4ZkcS">
+					<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">
+					FAQ</h2>
+				</div>
+				<div class="MoreHeaderView_email__Ui6wT">자주 묻는 질문을 확인해주세요!</div>
+			</div>
+			<div class="MoreHeaderView_button_wrap__B-cQ2">
+			<a href="/" class="MoreHeaderView_button_item__gv6pa">목록으로</a>
+		</div>
+		</div>
+	</div>
+	<div class="mypageWrapper css-11849r4-defaultStyle">
+<div class="mypageTitleBox mainTitle borderStyle css-qma8am-mypageTitleStyle">
+<div class="titleArea">
 <title>FAQ</title>
 <div class="right_contents">
 			<h2 class="title-page">CS Center</h2>
@@ -18,7 +46,7 @@
 			<span>평일 9:00~18:00</span>
 		</li>	
 		<li class="active">
-			<a href="/question">
+			<a href="/questionwrite">
 				<span class="title">1:1 Q&A</span>
 				<span>질문 전 FAQ(자주 묻는 질문)을 먼저 확인해 주세요.</span>
 			</a>

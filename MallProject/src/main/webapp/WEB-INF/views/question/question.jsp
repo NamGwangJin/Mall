@@ -46,8 +46,8 @@
 </thead>
 
 	<tbody id = tblBoard style="text-align:center;">
-	<c:forEach items="${qlist}" var="list">
-	<tr><td>${list.num}</td><td>${list.title}</td><td>${list.writer}</td><td>${list.created}</td><td>${list.hit}</td></tr>
+	<c:forEach items="${qlist}" var="qlist">
+	<tr><td>${qlist.num}</td><td>${qlist.title}</td><td>${qlist.writer}</td><td>${qlist.created}</td><td>${qlist.hit}</td></tr>
 	<tr><td colspan=5><hr></td>
 	</c:forEach>
 	</tbody>
@@ -59,7 +59,7 @@
 
 <table align="center">
 <tr>
-${question}
+${questionwrite}
 </tr>
 </table>
 
@@ -77,7 +77,7 @@ ${question}
 <script>
 $(document)
 .on('click','#tblBoard tr',function(){
-	document.location = '/view?num=' + $(this).find('td:first').text();
+	document.location = '/questionview?num=' + $(this).find('td:first').text();
 	return false;
 })
 .on('click','#logout',function(){

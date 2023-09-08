@@ -67,7 +67,7 @@ table td { border : 1px solid black; }
 	</div>
 	<!-- 버튼 -->
 	<div class="lnb-form-action">
-		<button class="btn btn-default">취소</button>
+		<button class="btn btn-default"> 취소</button>
 		<input type=submit id=btnSubmit name=btnSubmit value='작성' class="btn btn-default btn-primary">
 	</div>
 	<!-- 버튼끝 -->
