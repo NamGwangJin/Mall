@@ -3,7 +3,7 @@ html {
 	font-family: "Noto Sans KR", sans-serif;
 }
 
-/* 노말라이즈 */
+/* 노말라이즈  */
 body, ul, li, h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	padding: 0;
@@ -240,3 +240,80 @@ html, body {
     content:" : ";
     font-weight:bold;
 }	
+
+/* 2 */
+.css-46rlgz-defaultStyle .agreeTable {
+    margin-top: 17px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 3px;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    word-break: break-all;
+}
+.css-11849r4-defaultStyle .myPageContainer {
+    float: left;
+    width: calc(100% - 260px);
+}
+/* table */
+.css-46rlgz-defaultStyle .agreeTable thead th:first-of-type {
+    border-left: 0px;
+}
+.css-46rlgz-defaultStyle .agreeTable thead th {
+    height: 50px;
+    padding: 10px 20px;
+	color: #fff;
+    text-align: center;
+    border-left: 1px solid rgb(221, 221, 221);
+}
+th {
+    padding: 16px 20px;
+    background-color: #444;
+    font-size: 15px;
+    color: rgb(102, 102, 102);
+    text-align: left;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    vertical-align: middle;
+}
+tbody {
+	background: rgb(249, 250, 251);
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.css-46rlgz-defaultStyle .agreeTable tbody td:first-of-type {
+    border-left: 0px;
+}
+.css-46rlgz-defaultStyle .agreeTable tbody td {
+    height: 50px;
+    padding: 10px 20px;
+    color: rgb(102, 102, 102);
+    line-height: 1.25;
+    text-align: center;
+    border-top: 1px solid rgb(221, 221, 221);
+    border-bottom: 0px;
+    border-left: 1px solid rgb(221, 221, 221);
+}
+
+.af{
+    padding: 18px 10px;
+    text-align: right;
+}
+/* 하단 */
+.pagecontroller {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f7fa;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+}
+.pagecontroller a {
+    text-decoration: none;
+    color: #888888;
+}

@@ -9,7 +9,7 @@
 <title></title>
 </head>
 <body>
-<div class="fixed-header" style="width:90%;">
+<div class="fixed-header">
 	<div class="navbar">
 		    <a href="/" id="logo">
 		        <img src="img/weverslogo.jpg" width="160">

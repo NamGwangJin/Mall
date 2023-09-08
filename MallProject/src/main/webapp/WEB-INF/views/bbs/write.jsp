@@ -19,7 +19,7 @@ table{ border-collapse : collapse; width:75%; margin-left:auto; margin-right:aut
 h1{ border-collapse : collapse; width:75%; margin-left:auto; margin-right:auto; }
 table td { border : 1px solid black; }
 </style>
-<!-- 배너  -->
+<!-- 배너   -->
 <%@ include file="..\header.jsp" %>
 <!-- 헤더  -->
 <div class="body" style="margin-top:50px;">
@@ -67,7 +67,7 @@ table td { border : 1px solid black; }
 	</div>
 	<!-- 버튼 -->
 	<div class="lnb-form-action">
-		<button class="btn btn-default"> 취소</button>
+		<button class="btn btn-default">취소</button>
 		<input type=submit id=btnSubmit name=btnSubmit value='작성' class="btn btn-default btn-primary">
 	</div>
 	<!-- 버튼끝 -->

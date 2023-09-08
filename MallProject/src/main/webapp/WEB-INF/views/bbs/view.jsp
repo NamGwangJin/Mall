@@ -2,80 +2,104 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
-<html>
+<html class="scrollbar-custom use-webfont">
 <head>
 <meta charset="UTF-8">
 <link href="resources/css/bbs.css" rel="stylesheet"/>
+<link href="css/mall.css" rel="stylesheet" />
+<link rel="stylesheet" href="/resources/css/mypage.css"/>
+<link rel="stylesheet" href="/resources/css/content.css"/>
+<link href="resources/css/bbs2.css" rel="stylesheet"/>
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+<meta name="next-head-count" content="8"/>
 <title>${bPost.title}</title>
 </head>
+<body>
+<div class="navbar">
 <%@ include file="..\header.jsp" %>
-<div class=body style="margin-top:150px;">
-<h1 class="con">게시글 상세</h1>
-    <section class="article-detail table-common con row">
-        <div class="article-writer cell">
-                <div class="writer-icon"><img src="img/${bPost.bbs_img}"></div>
-                <span>${bPost.writer}</span>
-        </div>
-        <table class="cell" border="1">
-            <colgroup>
-                <col width="100px">
-            </colgroup>
-            <tbody>
-                <tr class="article-title">
-                    <th><span id=num>${bPost.num}</span></th>
-                    <td colspan="3">${bPost.title}</td>
-                </tr>
-                <tr class="article-info">
-                    <th>날짜</th>
-                    <td>${bPost.created}</td>
-                    <th>조회수</th>
-                    <td>${bPost.hit}</td>
-                </tr>
-                <tr class="article-body">
-                    <td colspan="4">${bPost.content}</td>
-                </tr>
-                
-<tr><td colspan=2><a href="/bbs">목록보기</a>&nbsp;
-<c:if test="${id==bPost.writer}">
-<button id=btnUd>수정</button>
-<button id=btnDel>삭제</button></td></tr>
-</c:if>	
-</tbody>
-    </table>
- </section>
-<div class="con reply">
+</div>
+<!-- 배너   -->
+<!-- 헤더시작 -->
+<div class="MoreLayoutView_container__8Ahvr">
+<div class="MoreHeaderView_container__kK6Wj">
+	<div class="MoreHeaderView_inner__BRiQZ">
+		<div class="MoreHeaderView_profile_wrap__Y9XWQ">
+			<div class="MoreHeaderView_name__4ZkcS">
+				<h2 class="TitleView_title__SSnHb TitleView_-color_white__6PV8I TitleView_-weight_600__OzPRx">
+				Weverse 게시판</h2>
+			</div>
+			<div class="MoreHeaderView_email__Ui6wT">회원님들의 의견을 자유롭게 공유해보세요!</div>
+		</div>
+	</div>
+</div> 
+<!-- 헤더 -->
+<div class="margin"></div>
+<div class="subpage-container">
+	<div class="free-board-sub-wrap">
+		<div class="board-title">
+			<div><span id=num>${bPost.num}</span> | ${bPost.title}</div>
+		<div class="scale">
+			<span class="name">${bPost.writer}</span>
+			<span>${bPost.created}</span>
+			<span>
+				<img src="img/${bPost.bbs_img}"> 조회 ${bPost.hit}</span>
+			<span>
+				<img src="https://svgsilh.com/png-1024/2730432.png"> 추천 (혹시모를추천수들어가는곳)</span>
+		</div>
+	</div>
+	<div class="board-text">
+		<div style="white-space: pre-wrap; word-break: break-all; min-height: 240px;">${bPost.content}</div>
+		<ul class="board-text-bottom">
+			<li class="pc-board-action">
+			<span><img src="https://svgsilh.com/png-1024/2730432.png"> 추천하기</span>
+			</li>
+		</ul>
+	</div>
+	</div>
 
-    <h1 class="">댓글 목록</h1>
-   
-    <section class="reply-list table-common">
-        <table border="1">
-            <colgroup>
-                <col width="100px">
-            </colgroup> 
-            <thead>
-            <c:forEach items="${cList}" var="cList">
-                <tr>
+	<div class="pc-series-nav">
+		<div class="pc-btn pc-btn-default btn_cursor" onclick="location.href='/bbs';">목록보기</div>
+	<div class="btn_cursor2">
+		<c:if test="${id==bPost.writer}">
+		<button class="btn1 btn1-de" id=btnUd>수정</button>
+		<button class="btn1 btn1-de other" id=btnDel>삭제</button>
+		</c:if>
+	</div>
+	</div>
+
+
+<div class="icon-comment-list-wrap">
+	<ul>
+		<li class="comment-count"><div>댓글 목록</div></li>
+		<c:forEach items="${cList}" var="cList">
+		<li>
+		<div class="comment-col">
                 <input type=hidden name=cmtnum value="${cList.num}">
                 <input type=hidden name=bbscmtnum value="${cList.bbscmtnum}">
                 <input type=hidden name=content value="${cList.content}">
             	<input type=hidden name=upnum value="${cList.upnum}">
-                    <td>${cList.writer}</td>
-                    <td>${cList.content}</td>
-                    <td>${cList.regdate}</td>
-                    <td><button name=btnreply>답글쓰기</button></td>
+                  <div class="user-name">
+                    ${cList.writer}
+                  <div class="comment-util">
+					<button name=btnreply>답글쓰기</button>
                     <c:if test="${id==cList.writer}" >
-                    <td>
                     	<button name=btnUd1>수정</button>
-             		    <button name=btnDel1>삭제</button></td>
-             		    </c:if>	
-                </tr>
-            </c:forEach>
-            </thead>
-				
-        </table>
-    </section>
-    
-    <h1 class="">댓글 입력</h1>
+             		    <button name=btnDel1>삭제</button>
+					</c:if>	
+                  </div>
+                  </div>
+                  <div class="date">
+                 ${cList.regdate}
+                  </div>
+                <div class="con">
+					${cList.content}
+				</div>
+        </div>
+		</li>
+		</c:forEach>
+	</ul>
+</div>
+<div>
     <section class="reply-form">
         <form method='post' action='/replyInsert'>
          <input type=hidden name=num value="">
@@ -85,8 +109,12 @@
             </div>
         </form>
     </section>
-    
 </div>
+
+</div>
+
+
+
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
@@ -108,7 +136,7 @@ $(document)
 })
 .on('click','button[name=btnDel1]',function(){
 	if(!confirm('정말로 삭제하시겠습니까?')) return false;
-	let cmtnum = $(this).closest('tr').find('input[name=cmtnum]').val();
+	let cmtnum = $(this).closest('div').find('input[name=cmtnum]').val();
 	document.location = '/delete1?num='+cmtnum+"&bbscmtnum="+$('input[name=bbscmtnum]').val();
 	alert("삭제가 완료되었습니다.");
 	return false;

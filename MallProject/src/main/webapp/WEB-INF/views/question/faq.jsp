@@ -42,7 +42,7 @@
 <div class="cs_center_tap">
 	<ul>
 		<li class="hover_effect_none">
-			<span class="title">Tel. 1544-7199</span>
+			<span class="title">Tel. 1234-5678</span>
 			<span>평일 9:00~18:00</span>
 		</li>	
 		<li class="active">
