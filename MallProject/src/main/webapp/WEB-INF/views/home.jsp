@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <link href="css/mall.css" rel="stylesheet" />
 <title>Weverse</title>
-<%@ include file="header.jsp" %>
 </head>
 <body>
-
+<%@ include file="header.jsp" %>
+<%@ include file="main.jsp" %>
 <div class="products">
     <div class="product-list">
     <h3>상품목록</h3>

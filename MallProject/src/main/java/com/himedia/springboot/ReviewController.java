@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.himedia.springboot.ProductController.AbstractUserController;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -28,8 +30,14 @@ public class ReviewController {
 	@Autowired
 	private CartDAO cdao;
 	
+    public static void handleUserInterface(HttpServletRequest req, Model model) {
+		  AbstractUserController abstractUserController = new AbstractUserController(){};
+	        abstractUserController.handleUserInterface(req, model);
+	}
+	
 	@GetMapping("/reviewwrite")
 	public String write(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
 		String prod_name = req.getParameter("prod_name");
 		int order_num = Integer.parseInt(req.getParameter("order_num"));
 		
@@ -42,8 +50,8 @@ public class ReviewController {
 	public String insert(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String rating = req.getParameter("rating");
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
+		String title = req.getParameter("hp_tail1");
+		String content = req.getParameter("hp_tail");
 		String img = req.getParameter("img");
 		String id= (String) session.getAttribute("id");
 		String prod_name = req.getParameter("prod_name");

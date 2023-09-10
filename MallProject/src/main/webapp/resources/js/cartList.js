@@ -7,6 +7,32 @@ $(document)
 .ready(function(){
 	allCheck();
 	changeCheckbox();
+	let prodCookie = getCookieArray('prod_id');
+	if ( prodCookie.length == 0 ){
+		$('#cookieList').hide();
+	}
+	if ( prodCookie.length > 0 ) {
+		let cList = prodCookie.join(",");
+		$('#cookieList').show();
+		console.log(prodCookie);
+		$.ajax({url:'/cookieList', data: {prodCookie : cList}, type:'get', dataType:'json',
+			success: function(data){
+				for(let i=0; i<data.length; i++){
+					let obj = data[i];
+					let set = $('#cookieList').find('a[name=cookieProd]').eq(i);
+					set.attr("id",obj['prod_name']);
+					set.find('img').attr("src","img/" + obj['prod_img']);
+					set.find("div").text(obj['prod_name']);
+				}
+				for(let i=data.length; i<5; i++){
+					let set = $('#cookieList').find('a[name=cookieProd]').eq(i);
+					set.hide();
+				}
+			}, error: function(){
+				console.log("error!");
+			}
+		})
+	}
 })
 
 .on('change', 'input[name=checkbox]',function(){
@@ -129,6 +155,11 @@ $(document)
 		document.location = "/listbuy?user_id=" + $('#userid').val() + "&prod_id=" + prod_id;
 	}
 })
+
+.on('click','a[name=cookieProd]',function(){
+	let prod_name = $(this).find('div').text();
+	document.location = "/product?name=" + prod_name;
+})
 ;
 function changeCheckbox(){
 	price = 0;
@@ -160,4 +191,12 @@ function allUnCheck() {
         $(this).prop("checked", false);
     })
     changeCheckbox();
+}
+function getCookieArray(key) {
+    let cookieValue = $.cookie(key);
+    if (cookieValue) {
+        return JSON.parse(cookieValue);
+    } else {
+        return [];
+    }
 }

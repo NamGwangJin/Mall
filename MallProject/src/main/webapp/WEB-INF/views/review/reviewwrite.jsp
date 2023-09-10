@@ -22,7 +22,7 @@ table td { border : 1px solid black; }
 <!-- 배너  -->
 <%@ include file="../header.jsp" %>
 <!-- 헤더  -->
-<div class="body">
+<div class="body" style="margin-top:50px;">
 <div class="MoreLayoutView_container__8Ahvr">
 	<div class="MoreHeaderView_container__kK6Wj">
 		<div class="MoreHeaderView_inner__BRiQZ">
@@ -33,9 +33,6 @@ table td { border : 1px solid black; }
 				</div>
 				<div class="MoreHeaderView_email__Ui6wT">상품 후기를 작성해주세요!</div>
 			</div>
-			<div class="MoreHeaderView_button_wrap__B-cQ2">
-			<a href="review" class="MoreHeaderView_button_item__gv6pa">목록으로</a>
-		</div>
 		</div>
 	</div>
 <!-- 본문  -->
@@ -49,23 +46,9 @@ table td { border : 1px solid black; }
 <p class="form-title"></p>
 <body>
 <table>
-${reviewwrite}
 <form method='post' action='/insert1' id=frmInsert name=frmInsert>
 <input type=hidden name=prod_name value="${prod_name}">
-<!-- 
-	<div class="star-rating space-x-4 mx-auto">
-		<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
-		<label for="1-star" class="star pr-4">★</label>
-		<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
-		<label for="4-stars" class="star">★</label>
-		<input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
-		<label for="3-stars" class="star">★</label>
-		<input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
-		<label for="2-stars" class="star">★</label>
-		<input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
-		<label for="1-star" class="star">★</label>
-</div>
- -->
+<input type=hidden name=order_num value="${order_num}">
 	<p class="form-title2"></p>
 <div class="myp-form-wrap">
 	<div class="myp-form-col">
@@ -74,7 +57,7 @@ ${reviewwrite}
 			<div class="static-field">
 				<div class="star-rating space-x-4 mx-auto">
 				<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
-				<label for="1-star" class="star pr-4">★</label>
+				<label for="5-stars" class="star">★</label>
 				<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
 				<label for="4-stars" class="star">★</label>
 				<input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>

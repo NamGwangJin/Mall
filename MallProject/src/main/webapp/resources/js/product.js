@@ -1,5 +1,7 @@
+let productList = [];
 $(document)
 .ready(function(){
+	addToProductList($('#prodId').val());
 })
 .on('click','#decrease',function(){
 	$('#numInput').val( $('#numInput').val() - 1 );
@@ -74,3 +76,29 @@ $(document)
 				}			
 	})
 })
+;
+function addToProductList(value) {
+    // 중복된 항목을 제거합니다.
+    if (getCookieArray("prod_id")){
+		productList = getCookieArray("prod_id");
+    	productList = productList.filter(item => item !== value);
+    }
+
+    // 새로운 상품 ID를 배열에 추가합니다.
+    productList.push(value);
+    
+    if (productList.length > 5) {
+        productList = productList.slice(productList.length - 5);
+    }
+
+    // 배열을 쿠키에 저장합니다.
+    $.cookie("prod_id", JSON.stringify(productList));
+}
+function getCookieArray(key) {
+    let cookieValue = $.cookie(key);
+    if (cookieValue) {
+        return JSON.parse(cookieValue);
+    } else {
+        return [];
+    }
+}

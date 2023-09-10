@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.himedia.springboot.ProductController.AbstractUserController;
@@ -429,4 +430,31 @@ public class CartController {
 		return getState;
 	}
 	
+	@GetMapping("/cookieList")
+	@ResponseBody
+	public String cookieList(HttpServletRequest req) {
+		String prodList = req.getParameter("prodCookie");
+		String[] prodListArray = prodList.split(",");
+
+		int[] prod_id = new int[prodListArray.length];
+		for (int i = 0; i < prodListArray.length; i++) {
+		    prod_id[i] = Integer.parseInt(prodListArray[i]);
+		}
+		
+		ArrayList<ProductDTO> pList = new ArrayList<ProductDTO>();
+		for (int i = prod_id.length-1; i >= 0; i--) {
+			ProductDTO pDto = cDao.getProduct(prod_id[i]);
+			pList.add(pDto);
+		}
+		
+		JSONArray ja = new JSONArray();
+		for(int i=0; i<pList.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("prod_img", pList.get(i).getProd_img());
+			jo.put("prod_name", pList.get(i).getProd_name());
+			ja.add(jo);
+		}
+		
+		return ja.toJSONString();
+	}
 }

@@ -57,7 +57,21 @@
 			<li class="pc-board-action">
 			</li>
 		</ul>
-		
+	<div class="like-container">
+	    <a href="javascript:void(0);" onclick="swapImg();">
+	    <input type=hidden name='title' id='title' value='${bPost.title}' />
+	        <img id="likeImage" name='imgstate' src="<c:choose>
+	                <c:when test="${lk == 0}">
+ 	                    img/likeimgdumy.JPG 
+	                </c:when>
+	                <c:when test="${lk == 1}">
+ 	                    img/afterlikeimg.JPG
+ 	                </c:when>
+	            </c:choose>"
+	            alt="Image">
+	    </a>
+		    <p><span id="lkresult"></span></p>
+	</div>
 		
 	</div>
 	</div>
@@ -103,6 +117,7 @@
 		</li>
 		</c:forEach>
 	</ul>
+	
 </div>
 <div>
     <section class="reply-form">
@@ -181,8 +196,8 @@ function updateCountAndImage(imagePath) {
         }
     });
 }
-
-
+</script>
+<script>
 $(document)
 .on('click','#btnDel',function(){
 	if(!confirm('정말로 삭제하시겠습니까?')) return false;

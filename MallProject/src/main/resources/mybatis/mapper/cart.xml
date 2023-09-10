@@ -74,4 +74,8 @@ update ordertbl set order_state=#{param2} where order_num=#{param1}
 <select id="getState" resultType="String">
 select order_state from ordertbl where order_num=#{param1}
 </select>
+
+<select id="getProduct" resultType="com.himedia.springboot.ProductDTO">
+select * from product where prod_id=#{param1}
+</select>
 </mapper>

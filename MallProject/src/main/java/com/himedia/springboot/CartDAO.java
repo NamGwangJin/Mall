@@ -27,4 +27,5 @@ public interface CartDAO {
 	String getState(int orderNum);
 	void updateState(int orderNum, String state);
 	
+	ProductDTO getProduct(int prod_id);
 }

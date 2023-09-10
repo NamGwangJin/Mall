@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><link rel="dns-prefetch" href="https://api.weverseshop.io"/><link rel="dns-prefetch" href="https://cdn-contents.weverseshop.io"/><link rel="preconnect" href="https://api.weverseshop.io" crossorigin="use-credentials"/><link rel="preconnect" href="https://cdn-contents.weverseshop.io" crossorigin="anonymous"/><meta name="og:locale:alternate" content="en-US"/><link rel="alternate" hrefLang="en" href="https://weverseshop.io/en/cart"/><meta name="og:locale" content="ko-KR"/><link rel="alternate" hrefLang="ko" href="https://weverseshop.io/ko/cart"/><link rel="canonical" href="https://weverseshop.io/ko/cart"/><meta name="og:locale:alternate" content="ja-JP"/><link rel="alternate" hrefLang="ja" href="https://weverseshop.io/ja/cart"/><link rel="alternate" hrefLang="x-default" href="https://weverseshop.io/cart"/><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/><meta name="keywords" content=" weverse shop, Weverse by Fans, official shop, official store, BTS official store, official merch, official merchandise, officially licensed merchandise, official membership, official light stick, BTS, TOMORROW X TOGETHER, TXT, SEVENTEEN, SVT, fromis_9, ENHYPEN, weeekly, P1Harmony, Cherry Bullet, CL, HENRY, SUNMI, TREASURE, BLACKPINK, WINNER, iKON, woo!ah!, STAYC, JUST B, EVERGROW, UP10TION, LEE JIN HYUK, VERIVERY, ARMY, MOA, CARAT, ENGENE, TREASURE MAKER, BLINK, INNER CIRCLE, HONEY10, V-DAN, VERRER, ARMY BOMB, weverse concert, concert, music concert, online concert, fanmeeting, fanlive, live streaming, online live streaming, 위버스샵, 위버스 바이 팬즈, 공식샵, 공식스토어, BTS 공식스토어, 공식상품, 공식멤버십, 위버스 콘서트, 콘서트, 팬미팅, 팬라이브, 라이브 스트리밍, 온라인 라이브 스트리밍, Weverse Shop, Weverse by Fans, 公式商品, 公式メンバーシップ, Weverseコンサート, コンサート, ファンミーティング, ファンライブ, ライブストリーミング, オンラインライブストリーミング, 公式グッズ, ライブ, ライブ配信"/><meta name="description" content="전 세계 팬들을 위한 Official 커머스, 위버스샵! 아티스트의 공식 상품과 위버스샵에서만 구매할 수 있는 단독 상품과 앨범, 그리고 공식 MEMBERSHIP을 위버스샵에서 만나보세요!"/><meta property="og:site_name" content="Weverse Shop - All things for Fans"/><meta property="og:url" content="https://weverseshop.io/cart"/><meta property="og:type" content="website"/><meta property="og:title" content="Weverse Shop - All things for Fans"/><meta property="og:description" content="전 세계 팬들을 위한 Official 커머스, 위버스샵! 아티스트의 공식 상품과 위버스샵에서만 구매할 수 있는 단독 상품과 앨범, 그리고 공식 MEMBERSHIP을 위버스샵에서 만나보세요!"/><meta property="og:image" content="https://weverseshop.io/weverseshop-og.png"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:site" content="@weverseshop"/><meta name="twitter:creator" content="@weverseshop"/><meta property="al:ios:url" content="weverseshop://weverseshop.benx.co/?view=shop"/><meta property="al:ios:app_store_id" content="1456559072"/><meta property="al:ios:app_name" content="Weverse Shop - All things for Fans"/><meta property="al:android:url" content="weverseshop://weverseshop.benx.co/?view=shop"/><meta property="al:android:app_name" content="Weverse Shop - All things for Fans"/><meta property="al:android:package" content="co.benx.weply"/><meta property="al:web:url" content="https://weverseshop.io/cart"/><link rel="apple-touch-icon" href="https://weverseshop.io/weverseshop-touchicon.png"/><title>Cart | Weverse Shop - All things for Fans</title><meta name="next-head-count" content="34"/><meta name="format-detection" content="telephone=no"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/static/pretendard-dynamic-subset.css"/><link rel="preload" href="/_next/static/css/cebb91d4d49830f6.css" as="style"/><link rel="stylesheet" href="/_next/static/css/cebb91d4d49830f6.css" data-n-g=""/><link rel="preload" href="/_next/static/css/0e6c08fa34972eff.css" as="style"/><link rel="stylesheet" href="/_next/static/css/0e6c08fa34972eff.css" data-n-p=""/>
 <link href="resources/css/weverse.css" rel="stylesheet">
+<link href="css/mall.css" rel="stylesheet" />
 <style data-styled="" data-styled-version="5.3.3">
 </style>
 </head>
@@ -121,6 +122,47 @@
 								<span style="display:block; color:#adb1b8;">장바구니에 담긴 상품이 없습니다.</span><br><br>
 								<a href="/"><button id=goShop type="button" class="sc-ff976b3f-0 gdiOsG">샵으로 이동</button></a>
 							</div>
+						<div id="cookieList">
+							<div class="sc-a46b6271-1 gDvbzd" style="height:200px;">
+								<h5 class="sc-a46b6271-2 dIsBjW">최근 본 상품</h5>
+							</div>
+							<div class=products>
+								 	<div class="product-list">
+								 		<div class="product-list">
+								 			<a class="product" id="" name=cookieProd>
+							                    <img src="" height="225" width="225">
+							                    <div class="product-name">
+
+							                    </div>
+                							</a>
+                							<a class="product" id="" name=cookieProd>
+							                    <img src="" height="225" width="225">
+							                    <div class="product-name">
+
+							                    </div>
+                							</a>								 			
+                							<a class="product" id="" name=cookieProd>
+							                    <img src="" height="225" width="225">
+							                    <div class="product-name">
+
+							                    </div>
+                							</a>								 			
+                							<a class="product" id="" name=cookieProd>
+							                    <img src="" height="225" width="225">
+							                    <div class="product-name">
+
+							                    </div>
+                							</a>								 			
+                							<a class="product" id="" name=cookieProd>
+							                    <img src="" height="225" width="225">
+							                    <div class="product-name">
+
+							                </div>
+                						</a>
+								 	</div>
+								 </div>
+							</div>
+						</div>
 						</c:when>
 					</c:choose>
 				</li>
@@ -132,5 +174,6 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/resources/js/cartList.js"></script>
 </html>	

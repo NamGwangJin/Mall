@@ -67,5 +67,6 @@
 			<%@ include file="..\review\review.jsp" %>
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/resources/js/product.js"></script>
 </html>
