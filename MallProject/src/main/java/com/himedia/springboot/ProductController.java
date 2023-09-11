@@ -28,7 +28,10 @@ public class ProductController {
 
 	@GetMapping("/")
 	public String home(HttpServletRequest req, Model model) {
-		 
+		HttpSession s = req.getSession();
+		String id = (String) s.getAttribute("id");
+		model.addAttribute("id",id);
+		
 		// 페이징 시작
 		int start;
 		int psize;

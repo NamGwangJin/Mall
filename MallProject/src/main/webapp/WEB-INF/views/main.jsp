@@ -1,26 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Image Slideshow</title>
 <link rel="stylesheet" href="resources/css/main.css">
+<style>
+  /* 슬라이드 컨테이너 */
+  #slideShow {
+    width: 1500px;
+    height: 600px;
+    position: relative;
+    margin: 50px auto;
+    overflow: hidden;
+  }
+  /* 동영상 컨테이너 */
+  .video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  /* 동영상 */
+  #video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
 </head>
 <body>
   <div id="slideShow">
-    <ul class="slides">
-      <li><img src="/img/main/main1.webp" alt=""></li>
-      <li><img src="/img/main/main2.webp" alt=""></li>
-      <li><img src="/img/main/main3.webp" alt=""></li>
-      <li><img src="/img/main/main4.webp" alt=""></li>
-      <li><img src="/img/main/main5.webp" alt=""></li>
-      <li><img src="/img/main/main6.webp" alt=""></li>
-    </ul>
-    <p class="controller">
-      <span class="prev">&lang;</span>
-      <span class="next">&rang;</span>
-    </p>
+    <div class="video-container">
+      <video id="video" controls autoplay muted loop>
+        <source src="/video/LE SSERAFIM UNFORGIVEN .mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
   <script src="https://code.jquery.com/jquery-latest.js"></script>
   <script src="resources/js/slideShow.js"></script>

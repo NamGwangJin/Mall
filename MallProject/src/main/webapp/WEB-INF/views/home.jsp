@@ -10,7 +10,9 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<c:if test="${id == null}">
 <%@ include file="main.jsp" %>
+</c:if>
 <div class="products">
     <div class="product-list">
     <h3>상품목록</h3>
