@@ -18,16 +18,8 @@ public class ReviewDTO {
 	int hit;
 	String created;
 	String updated;
-	String prod_name;
 	int rating;
 	
-	
-	public String getProd_name() {
-		return prod_name;
-	}
-	public void setProd_name(String prod_name) {
-		this.prod_name = prod_name;
-	}
 	public String getUser_id() {
 		return user_id;
 	}

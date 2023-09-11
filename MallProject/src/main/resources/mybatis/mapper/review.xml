@@ -5,11 +5,11 @@
 <mapper namespace="com.himedia.springboot.ReviewDAO">
 
 <select resultType="com.himedia.springboot.ReviewDTO" id="getList">
-select num, rating, title, content, img, writer, hit, created, updated, prod_name from review where prod_id=#{param3} order by updated desc limit #{param1},#{param2}
+select * from review where prod_id=#{param3} order by updated desc limit #{param1},#{param2}
 </select>
 
 <select resultType="com.himedia.springboot.ReviewDTO" id="view">
-select num, rating, title, content, img, writer, hit, created, updated, prod_name from review where num=#{param1};
+select * from review where num=#{param1};
 </select>
 
 <update id="hitUp" parameterType="int">
