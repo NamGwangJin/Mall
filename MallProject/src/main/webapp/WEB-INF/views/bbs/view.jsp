@@ -122,7 +122,7 @@
 <div>
     <section class="reply-form">
         <form method='post' action='/replyInsert'>
-       
+       <input type=hidden name=num value="${bPost.num}">
             <div>
                 <textarea name=content placeholder="댓글을 작성해주세요" maxlength="200"></textarea>
                 <input type=submit class=con1 value="작성">

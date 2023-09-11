@@ -43,6 +43,9 @@ public class BbsController {
 	public String replyInsert(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String writer = (String) session.getAttribute("id");
+		if (writer == null) {
+			return "redirect:/gologin";
+		}
 		int num = Integer.parseInt(req.getParameter("num"));
 		String content = req.getParameter("content");
 		bdao.insertReply(num, content, writer, now);
