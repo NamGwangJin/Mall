@@ -11,7 +11,7 @@ public interface ReviewDAO {
 	
 	ReviewDTO login(String id, String passcode1);
 	
-	ArrayList<ReviewDTO> getList(int start, int psize, String prod_name);
+	ArrayList<ReviewDTO> getList(int start, int psize, int prod_id);
 	
 	ReviewDTO view(int num);
 	
@@ -19,26 +19,26 @@ public interface ReviewDAO {
 	
 	void delPost(int num);
 	
-	void insPost(String rating , String title, String content, String img, String writer, String prod_name);
+	void insPost(String rating , String title, String content, String img, String writer, int prod_id);
 	
 	void udPost(int num, int rating, String title, String content, String img);
 	
 	int getTotal();
 
-	int getReviewSize(String prod_name);
-	int getPhotoReview(String prod_name);
-	int getLike(String prod_name);
-	float getRatingAvg(String prod_name);
+	int getReviewSize(int prod_id);
+	int getPhotoReview(int prod_id);
+	int getLike(int prod_id);
+	float getRatingAvg(int prod_id);
 	
-	int getRating1(String prod_name);
-	int getRating2(String prod_name);
-	int getRating3(String prod_name);
-	int getRating4(String prod_name);
-	int getRating5(String prod_name);
+	int getRating1(int prod_id);
+	int getRating2(int prod_id);
+	int getRating3(int prod_id);
+	int getRating4(int prod_id);
+	int getRating5(int prod_id);
 	
-	ArrayList<ReviewDTO> orderByRating(int start, int psize, String prod_name);
-	ArrayList<ReviewDTO> orderByDate(int start, int psize, String prod_name);
-	ArrayList<ReviewDTO> orderByPhoto(int start, int psize, String prod_name, String ob);
-	ArrayList<ReviewDTO> reviewSearch(int start, int psize, String prod_name, String keyword);
+	ArrayList<ReviewDTO> orderByRating(int start, int psize, int prod_id);
+	ArrayList<ReviewDTO> orderByDate(int start, int psize, int prod_id);
+	ArrayList<ReviewDTO> orderByPhoto(int start, int psize, int prod_id, String ob);
+	ArrayList<ReviewDTO> reviewSearch(int start, int psize, int prod_id, String keyword);
 }
 

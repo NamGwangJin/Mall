@@ -18,7 +18,7 @@
             <body>
             <tr>
             <c:forEach items="${mlist}" var="product">         
-                <a class="product" id='${product.prod_name}' name='${product.prod_name}'>
+                <a class="product" id='${product.prod_name}' name='${product.prod_id}'>
                     <img src="img/${product.prod_img}" height="225" width="225">
                     <div class="product-name">
                       ${product.prod_name}

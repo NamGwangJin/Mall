@@ -51,8 +51,8 @@ select user_name from user where user_id=#{param1}
 </select>
 
 <insert id="order">
-insert into orderTbl set user_name=#{param1}, user_mobile=#{param2}, prod_img=#{param3}, prod_name=#{param4}, order_qty=#{param5}, order_price=#{param6}, user_address=#{param7}, order_payment=#{param8}, order_time=now(),
-user_id=#{param9}
+insert into orderTbl set user_name=#{param1}, user_mobile=#{param2}, prod_img=#{param3}, prod_name=#{param4}, prod_id=#{param5}, order_qty=#{param6}, order_price=#{param7}, user_address=#{param8}, order_payment=#{param9}, order_time=now(),
+user_id=#{param10}
 </insert>
 
 <select id="getOrder" resultType="com.himedia.springboot.OrderDTO">

@@ -12,8 +12,14 @@ public class OrderDTO {
 	String order_payment;
 	String order_time;
 	String order_state;
+	int prod_id;
 	
-	
+	public int getProd_id() {
+		return prod_id;
+	}
+	public void setProd_id(int prod_id) {
+		this.prod_id = prod_id;
+	}
 	public String getOrder_state() {
 		return order_state;
 	}

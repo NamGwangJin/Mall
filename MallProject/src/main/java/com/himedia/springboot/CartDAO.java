@@ -19,7 +19,7 @@ public interface CartDAO {
 	
 	String getName(String id);
 	
-	int order(String name, String mobile, String img, String prodName, int qty, int total, String address, String payment, String id);
+	int order(String name, String mobile, String img, String prod_name, int prod_id, int qty, int total, String address, String payment, String id);
 	ArrayList<OrderDTO> getOrder(String id);
 	ArrayList<OrderDTO> getOrderList(String id, String order_time);
 	ArrayList<OrderDTO> getDate(String id);

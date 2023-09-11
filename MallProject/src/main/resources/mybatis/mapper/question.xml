@@ -38,7 +38,7 @@ select num, title, content, writer, hit, created, updated from question order by
  </insert>
 
 <select id="getReply" resultType="com.himedia.springboot.QuestioncmtDTO">
- select num, quecmtnum, quedate, content, writer, upnum from que_cmt where quecmtnum=#{param1}; 
+ select num, quecmtnum, quedate, content, writer from que_cmt where quecmtnum=#{param1}; 
  </select>
 
 <delete id="delReply" parameterType="int"> 
@@ -50,7 +50,7 @@ delete from que_cmt where num=#{param1};
  </update>
 
 <select id="Reply" resultType="com.himedia.springboot.BbscmtDTO"> 
-select num, quecmtnum, quedate, content, writer, upnum from que_cmt where num=#{param1}; 
+select num, quecmtnum, quedate, content, writer from que_cmt where num=#{param1}; 
 </select>
 
 </mapper>

@@ -48,7 +48,7 @@
 	</div>
 	<div class="board-text">
 		<div style="white-space: pre-wrap; word-break: break-all; min-height: 240px;">
-		<c:if test="${bPost.bbs_img !=null}">
+		<c:if test="${bPost.bbs_img != ''}">
 			<img src="/img/${bPost.bbs_img}">
 		</c:if>
 		${bPost.content}

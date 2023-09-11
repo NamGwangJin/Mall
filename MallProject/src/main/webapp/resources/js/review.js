@@ -10,7 +10,7 @@ $(document)
 		checkedPhoto("rating");
 		return false;
 	}
-	$.ajax({url:"/orderByRating", data:{prod_name : $('#name').val()}, type:'post', dataType:'json',
+	$.ajax({url:"/orderByRating", data:{prod_id : $('#prodId').val()}, type:'post', dataType:'json',
 		success: function(data){
 			for(let i = 0; i<data.length; i++) {
 				let obj = data[i];
@@ -48,7 +48,7 @@ $(document)
 		checkedPhoto("updated");
 		return false;
 	}
-		$.ajax({url:"/orderByDate", data:{prod_name : $('#name').val()}, type:'post', dataType:'json',
+		$.ajax({url:"/orderByDate", data:{prod_id : $('#prodId').val()}, type:'post', dataType:'json',
 		success: function(data){
 			for(let i = 0; i<data.length; i++) {
 				let obj = data[i];
@@ -87,7 +87,7 @@ $(document)
 	}
 	if ($('#check').attr('fill') == 'none') {
 		$('#check').attr('fill','')
-		$.ajax({url:'/orderByPhoto', data:{prod_name : $('#name').val(), ob : ob}, type:'post', dataType:'json',
+		$.ajax({url:'/orderByPhoto', data:{prod_id : $('#prodId').val(), ob : ob}, type:'post', dataType:'json',
 			success:function(data){
 				for(let i = 0; i<data.length; i++) {
 					let obj = data[i];
@@ -129,7 +129,7 @@ $(document)
 	}
 })
 .on('click','#search',function(){
-	$.ajax({url:'/reviewSearch', data:{prod_name : $('#name').val() , keyword : $('#keyword').val()}, type:'post', dataType:'json',
+	$.ajax({url:'/reviewSearch', data:{prod_id : $('#prodId').val() , keyword : $('#keyword').val()}, type:'post', dataType:'json',
 		success: function(data) {
 				if ( data.length == 0) {
 					alert("검색 결과가 없습니다.");
@@ -179,7 +179,7 @@ function starRating() {
 	}
 }
 function checkedPhoto(state){
-	$.ajax({url:'/orderByPhoto', data:{prod_name : $('#name').val(), ob : state}, type:'post', dataType:'json',
+	$.ajax({url:'/orderByPhoto', data:{prod_id : $('#prodId').val(), ob : state}, type:'post', dataType:'json',
 	success:function(data){
 		for(let i = 0; i<data.length; i++) {
 			let obj = data[i];

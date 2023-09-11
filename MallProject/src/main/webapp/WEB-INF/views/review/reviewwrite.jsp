@@ -47,7 +47,7 @@ table td { border : 1px solid black; }
 <body>
 <table>
 <form method='post' action='/insert1' id=frmInsert name=frmInsert>
-<input type=hidden name=prod_name value="${prod_name}">
+<input type=hidden name=prod_id value="${prod_name}">
 <input type=hidden name=order_num value="${order_num}">
 	<p class="form-title2"></p>
 <div class="myp-form-wrap">

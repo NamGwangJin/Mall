@@ -38,7 +38,7 @@ select num, title, content, writer, hit, created, updated, bbs_img from bbs orde
  </insert>
 
 <select id="getReply" resultType="com.himedia.springboot.BbscmtDTO">
- select num, bbscmtnum, regdate, content, writer, upnum from bbs_cmt where bbscmtnum=#{param1}; 
+ select num, bbscmtnum, regdate, content, writer from bbs_cmt where bbscmtnum=#{param1}; 
  </select>
 
 <delete id="delReply" parameterType="int"> 

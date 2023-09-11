@@ -235,7 +235,7 @@ public class CartController {
 		int qty = 0;
 		int total = 0;
 		for(int i = 0 ; i < prodList.length ; i++) {
-			cDao.order(name, mobile, imgList[i], nameList[i], 
+			cDao.order(name, mobile, imgList[i], nameList[i], Integer.parseInt(prodList[i]), 
 							Integer.parseInt(qtyList[i]), Integer.parseInt(totalList[i]), 
 							address, payment, id);
 			cDao.deleteItem(id, Integer.parseInt(prodList[i]));
@@ -298,7 +298,7 @@ public class CartController {
 		
 		uDao.usePoint(id, usePoint);
 		cDao.deleteItem(id, prodid);
-		cDao.order(name, mobile, img, prodName, qty, total, address, payment, id);
+		cDao.order(name, mobile, img, prodName, prodid, qty, total, address, payment, id);
 		
 		return "order/orderSuccess";
 	}
@@ -336,7 +336,7 @@ public class CartController {
 	public String view(HttpServletRequest req, Model model) {
 		HttpSession s = req.getSession();
 		String id = (String) s.getAttribute("id");
-		String name = req.getParameter("name");
+		int name = Integer.parseInt(req.getParameter("name"));
 		ProductDTO mdto = pDao.product(name);
 		model.addAttribute("id",id);
 		model.addAttribute("product",mdto);

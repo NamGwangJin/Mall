@@ -5,7 +5,7 @@
 <mapper namespace="com.himedia.springboot.ReviewDAO">
 
 <select resultType="com.himedia.springboot.ReviewDTO" id="getList">
-select num, rating, title, content, img, writer, hit, created, updated, prod_name from review where prod_name=#{param3} order by updated desc limit #{param1},#{param2}
+select num, rating, title, content, img, writer, hit, created, updated, prod_name from review where prod_id=#{param3} order by updated desc limit #{param1},#{param2}
 </select>
 
 <select resultType="com.himedia.springboot.ReviewDTO" id="view">
@@ -21,7 +21,7 @@ delete from review where num=#{param1};
 </delete>
 
 <insert id="insPost">
-insert into review set rating=#{param1}, title=#{param2}, content=#{param3}, img=#{param4},writer=#{param5}, created=now(), updated=now(), prod_name=#{param6};
+insert into review set rating=#{param1}, title=#{param2}, content=#{param3}, img=#{param4},writer=#{param5}, created=now(), updated=now(), prod_id=#{param6};
 </insert>
 
 <update id="udPost">
@@ -33,51 +33,51 @@ select count(*) from review
 </select>
 
 <select id="getReviewSize" resultType="int">
-select count(*) from review where prod_name = #{param1}
+select count(*) from review where prod_id = #{param1}
 </select>
 
 <select id="getPhotoReview" resultType="int">
-select count(*) from review where prod_name = #{param1} and img != ''
+select count(*) from review where prod_id = #{param1} and img != ''
 </select>
 
 <select id="getLike" resultType="int">
-select count(*) from review where prod_name = #{param1} and rating in (4,5)
+select count(*) from review where prod_id = #{param1} and rating in (4,5)
 </select>
 
 <select id="getRating1" resultType="int">
-select count(*) from review where prod_name = #{param1} and rating = 1
+select count(*) from review where prod_id = #{param1} and rating = 1
 </select>
 
 <select id="getRating2" resultType="int">
-select count(*) from review where prod_name = #{param1} and rating = 2
+select count(*) from review where prod_id = #{param1} and rating = 2
 </select>
 
 <select id="getRating3" resultType="int">
-select count(*) from review where prod_name = #{param1} and rating = 3
+select count(*) from review where prod_id = #{param1} and rating = 3
 </select>
 
 <select id="getRating4" resultType="int">
-select count(*) from review where prod_name = #{param1} and rating = 4
+select count(*) from review where prod_id = #{param1} and rating = 4
 </select>
 
 <select id="getRating5" resultType="int">
-select count(*) from review where prod_name = #{param1} and rating = 5
+select count(*) from review where prod_id = #{param1} and rating = 5
 </select>
 
 <select id="getRatingAvg" resultType="float">
-select avg(rating) from review where prod_name = #{param1};
+select avg(rating) from review where prod_id = #{param1};
 </select>
 
 <select id="orderByRating" resultType="com.himedia.springboot.ReviewDTO">
-select * from review where prod_name = #{param3} order by rating desc limit #{param1},#{param2}
+select * from review where prod_id = #{param3} order by rating desc limit #{param1},#{param2}
 </select>
 
 <select id="orderByDate" resultType="com.himedia.springboot.ReviewDTO">
-select * from review where prod_name = #{param3} order by updated desc limit #{param1},#{param2}
+select * from review where prod_id = #{param3} order by updated desc limit #{param1},#{param2}
 </select>
 
 <select id="orderByPhoto" resultType="com.himedia.springboot.ReviewDTO">
-select * from review where prod_name = #{param3} order by img != '' desc,
+select * from review where prod_id = #{param3} order by img != '' desc,
 <if test="param4 == 'updated'">
 updated
 </if>
@@ -88,6 +88,6 @@ rating
 </select>
 
 <select id="reviewSearch" resultType="com.himedia.springboot.ReviewDTO">
-select * from review where prod_name = #{param3} and ( content like #{param4} or title like #{param4} ) order by updated desc limit #{param1},#{param2}
+select * from review where prod_id = #{param3} and ( content like #{param4} or title like #{param4} ) order by updated desc limit #{param1},#{param2}
 </select>
 </mapper>

@@ -19,7 +19,7 @@ Delete from product where prod_name = #{param1}
 </delete>
 
 <select id="getList" resultType="com.himedia.springboot.ProductDTO">
-select prod_name, prod_price, prod_msg, prod_img, prod_update from product order by prod_update asc limit #{param1},#{param2}
+select prod_id, prod_name, prod_price, prod_msg, prod_img, prod_update from product order by prod_update asc limit #{param1},#{param2}
 </select>
 
 <select id="getTotal" resultType="int">
@@ -27,7 +27,7 @@ select prod_name, prod_price, prod_msg, prod_img, prod_update from product order
  </select>
 
 <select id="product" resultType="com.himedia.springboot.ProductDTO"> 
-select prod_id, prod_name,prod_price,prod_msg, prod_img from product where prod_name=#{param1} </select>
+select prod_id, prod_name,prod_price,prod_msg, prod_img from product where prod_id=#{param1} </select>
 
 <select id="getRegProduct" resultType="com.himedia.springboot.ProductDTO"> 
 select prod_name, prod_price, prod_msg,prod_img from PRODUCT

@@ -38,7 +38,7 @@ public class ReviewController {
 	@GetMapping("/reviewwrite")
 	public String write(HttpServletRequest req, Model model) {
 		handleUserInterface(req, model);
-		String prod_name = req.getParameter("prod_name");
+		int prod_name = Integer.parseInt( req.getParameter("prod_name") );
 		int order_num = Integer.parseInt(req.getParameter("order_num"));
 		
 		model.addAttribute("prod_name",prod_name);
@@ -54,11 +54,11 @@ public class ReviewController {
 		String content = req.getParameter("hp_tail");
 		String img = req.getParameter("img");
 		String id= (String) session.getAttribute("id");
-		String prod_name = req.getParameter("prod_name");
+		int prod_id = Integer.parseInt(req.getParameter("prod_id"));
 		int order_num = Integer.parseInt(req.getParameter("order_num"));
-		rdao.insPost(rating,title, content, img, id, prod_name);
+		rdao.insPost(rating,title, content, img, id, prod_id);
 		cdao.updateState(order_num, "리뷰 작성 완료");
-		return "redirect:/product?name=" + prod_name;
+		return "redirect:/product?name=" + prod_id;
 	}
 	
 	@GetMapping("/reviewupdate")
@@ -83,7 +83,7 @@ public class ReviewController {
 	@PostMapping("/orderByRating")
 	@ResponseBody
 	public String orderByRating(HttpServletRequest req) {
-		String prod_name = req.getParameter("prod_name");
+		int prod_id = Integer.parseInt( req.getParameter("prod_id") );
 		
 		int start, psize;
 		String page = req.getParameter("pageno");
@@ -94,7 +94,7 @@ public class ReviewController {
 		start = (pno-1)*10;
 		psize = 10;
 		
-		ArrayList<ReviewDTO> rList = rdao.orderByRating(start, psize, prod_name);
+		ArrayList<ReviewDTO> rList = rdao.orderByRating(start, psize, prod_id);
 		JSONArray ja = new JSONArray();
 		for (int i=0; i<rList.size(); i++) {
 			JSONObject jo = new JSONObject();
@@ -115,7 +115,7 @@ public class ReviewController {
 	@PostMapping("/orderByDate")
 	@ResponseBody
 	public String orderByDate(HttpServletRequest req) {
-		String prod_name = req.getParameter("prod_name");
+		int prod_id = Integer.parseInt( req.getParameter("prod_id") );
 		int start,psize;
 		String page = req.getParameter("pageno");
 		if(page==null || page.equals("")) {
@@ -125,7 +125,7 @@ public class ReviewController {
 		start = (pno-1)*10;
 		psize = 10;
 		
-		ArrayList<ReviewDTO> rList = rdao.orderByDate(start, psize, prod_name);
+		ArrayList<ReviewDTO> rList = rdao.orderByDate(start, psize, prod_id);
 		JSONArray ja = new JSONArray();
 		for (int i=0; i<rList.size(); i++) {
 			JSONObject jo = new JSONObject();
@@ -146,7 +146,7 @@ public class ReviewController {
 	@PostMapping("/orderByPhoto")
 	@ResponseBody
 	public String orderByPhoto(HttpServletRequest req) {
-		String prod_name = req.getParameter("prod_name");
+		int prod_id = Integer.parseInt( req.getParameter("prod_id") );
 		String ob = req.getParameter("ob");
 		int start,psize;
 		String page = req.getParameter("pageno");
@@ -157,7 +157,7 @@ public class ReviewController {
 		start = (pno-1)*10;
 		psize = 10;
 		
-		ArrayList<ReviewDTO> rList = rdao.orderByPhoto(start, psize, prod_name, ob);
+		ArrayList<ReviewDTO> rList = rdao.orderByPhoto(start, psize, prod_id, ob);
 		JSONArray ja = new JSONArray();
 		for (int i=0; i<rList.size(); i++) {
 			JSONObject jo = new JSONObject();
@@ -187,10 +187,10 @@ public class ReviewController {
 		start = (pno-1)*10;
 		psize = 10;
 		
-		String prod_name = req.getParameter("prod_name");
+		int prod_id = Integer.parseInt( req.getParameter("prod_id") );
 		String keyword = req.getParameter("keyword");
 		
-		ArrayList<ReviewDTO> rList = rdao.reviewSearch(start, psize, prod_name, "%"+keyword+"%");
+		ArrayList<ReviewDTO> rList = rdao.reviewSearch(start, psize, prod_id, "%"+keyword+"%");
 		JSONArray ja = new JSONArray();
 		for (int i=0; i<rList.size(); i++) {
 			JSONObject jo = new JSONObject();

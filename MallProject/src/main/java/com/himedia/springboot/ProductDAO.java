@@ -13,7 +13,7 @@ public interface ProductDAO {
 	
 	int getTotal();
 	
-	ProductDTO product(String name);
+	ProductDTO product(int id);
 
 	void insertRegProduct(String user_id, String prod_name, String prod_price, String prod_msg, String prod_img);
 	void regEdit(String prod_name, String prod_price, String prod_msg, String prod_img, String beforename);

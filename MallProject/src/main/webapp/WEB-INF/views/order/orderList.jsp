@@ -63,8 +63,8 @@
 							                ${order.order_state}<br>
 							                <button name=cancel style="display:none">취소 요청</button>
 							                <button name=noCancel style="display:none;">취소 요청 철회</button><br>
-							                <a href="/reviewwrite?prod_name=${order.prod_name}&order_num=${order.order_num}"><button style="display:none" name=review>리뷰 작성</button></a>
-							                <a href="/product?name=${order.prod_name}"><button style="display:none" name="goReview">작성한 리뷰 보기</button>
+							                <a href="/reviewwrite?prod_name=${order.prod_id}&order_num=${order.order_num}"><button style="display:none" name=review>리뷰 작성</button></a>
+							                <a href="/product?name=${order.prod_id}"><button style="display:none" name="goReview">작성한 리뷰 보기</button>
 							                <button style="display:none" name="back">반품 요청</button>
 							                <button style="display:none" name="backCancel">반품 요청 철회</button></td>
 							            </tr>
