@@ -21,7 +21,8 @@ delete from review where num=#{param1};
 </delete>
 
 <insert id="insPost">
-insert into review set rating=#{param1}, title=#{param2}, content=#{param3}, img=#{param4},writer=#{param5}, created=now(), updated=now(), prod_id=#{param6};
+insert into review set rating=#{param1}, title=#{param2}, content=#{param3}, img=#{param4},writer=#{param5}, 
+created=now(), updated=now(), prod_id=#{param6}, num=#{param7};
 </insert>
 
 <update id="udPost">

@@ -19,7 +19,7 @@ public interface ReviewDAO {
 	
 	void delPost(int num);
 	
-	void insPost(String rating , String title, String content, String img, String writer, int prod_id);
+	void insPost(String rating , String title, String content, String img, String writer, int prod_id, int order_num);
 	
 	void udPost(int num, int rating, String title, String content, String img);
 	

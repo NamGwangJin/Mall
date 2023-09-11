@@ -160,8 +160,7 @@ public class QuestionController {
 		int num = Integer.parseInt(req.getParameter("num"));
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-//		String qimg = req.getParameter("que_img");
-		qdao.udPost(num, title, content, now);
+		qdao.udPost(num, title, content);
 		return "redirect:/question";
 	}
 	

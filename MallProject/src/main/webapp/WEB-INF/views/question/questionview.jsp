@@ -48,7 +48,7 @@
 	</div>
 	<div class="board-text">
 		<div style="white-space: pre-wrap; word-break: break-all; min-height: 240px;">
-		<c:if test="${qPost.question_img !=null}">
+		<c:if test="${qPost.question_img != ''}">
 			<img src="/img/${qPost.question_img}">
 			<input type=hidden name='title' id='title1' value='${qPost.question_img}' />
 		</c:if>
@@ -62,21 +62,6 @@
 		
 		<input type=hidden name='title' id='title' value='${qPost.title}' />
 	<input type=hidden name=id id=id value="${id}">
-	
-    <div class="like-container">
-    <a href="javascript:void(0);" onclick="swapImg();">
-        <img id="likeImage" name='imgstate' src="<c:choose>
-                <c:when test="${lk == 0}">
-                    img/likeimgdumy.JPG
-                </c:when>
-                <c:when test="${lk == 1}">
-                    img/afterlikeimg.JPG
-                </c:when>
-            </c:choose>"
-            alt="Image">
-    </a>
-	    <p><span id="lkresult"></span></p>
-	</div>
 		
 		
 	</div>
@@ -144,66 +129,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-//좋아요 기능에서 변수들
-var likeImage = document.getElementById("likeImage");
-var title = document.getElementById("title").value;
-
-var isLiked = ${lk == 1};
-var thisliked;
-
-
-$(document)
-.ready(function(){
-	console.log($('#title1').val())
-	$('input[name=num]').val( $('#num').text());
-	thisliked = parseInt ($('#lkresult').text());
-})
-
-
-$.ajax({
-        type: 'GET',
-        url: '/initialLikeCount?title=' + title, 
-        success: function (response) {
-          $('#lkresult').text(response);
-        },
-        error: function (xhr, status, error) {
-          console.log(error);
-        }
-      })
-//좋아요 할때 쓰는 메소드
-function swapImg() {
-    if (!isNaN(thisliked) && thisliked >= 1) {
-        var imagePath = isLiked ? "img/afterlikeimg.JPG" : "img/beforelikeimg.JPG";
-        likeImage.src = imagePath;
-        updateCountAndImage(imagePath);
-    } else {
-        isLiked = !isLiked;
-        var imagePath = isLiked ? "img/afterlikeimg.JPG" : "img/beforelikeimg.JPG";
-        likeImage.src = imagePath;
-        updateCountAndImage(imagePath);
-    }
-}
-
-function updateCountAndImage(imagePath) {
-    var data = {
-        imgstate: imagePath,
-        title: title
-    };
-
-    $.ajax({
-        type: 'POST',
-        url: isLiked ? '/increaseLikeCount' : '/decreaseLikeCount',
-        data: data,
-        success: function (response) {
-            $('#lkresult').text(response);
-        },
-        error: function (xhr, status, error) {
-            console.error(error);
-        }
-    });
-}
-
-
 $(document)
 .on('click','#btnDel',function(){
 	if(!confirm('정말로 삭제하시겠습니까?')) return false;

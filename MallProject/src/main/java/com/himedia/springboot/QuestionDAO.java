@@ -17,7 +17,7 @@ public interface QuestionDAO {
 	
 	void insPost(String title, String content, String writer, String created, String updated, String qimg);
 	
-	void udPost(int num, String title, String content, String updated);
+	void udPost(int num, String title, String content);
 	
 	int getTotal();
 	

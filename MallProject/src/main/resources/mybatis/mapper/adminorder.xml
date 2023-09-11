@@ -60,7 +60,7 @@ select * from orderTbl order by order_time desc
 </update>
 
 <select id="getOrderCancelList" resultType="com.himedia.springboot.AdminOrderDTO">
-select * from orderTbl where order_state = '반품 요청' order by order_time desc
+select * from orderTbl where order_state = '반품 요청' or order_state = '취소 요청' order by order_time desc
 </select>
 
 <select id="getorderdelay" resultType="com.himedia.springboot.AdminOrderDTO">

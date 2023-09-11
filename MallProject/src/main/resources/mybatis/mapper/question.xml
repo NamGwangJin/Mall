@@ -6,7 +6,7 @@
 <mapper namespace="com.himedia.springboot.QuestionDAO">
 
 <select id="getList" resultType="com.himedia.springboot.QuestionDTO">
-select num, title, content, writer, hit, created, updated from question order by updated desc limit #{param1},#{param2};
+select num, title, content, writer, hit, created, updated from question order by num desc limit #{param1},#{param2};
 </select>
 
 <select id="view" resultType="com.himedia.springboot.QuestionDTO">
@@ -26,7 +26,7 @@ select num, title, content, writer, hit, created, updated from question order by
   </insert>
 
 <update id="udPost">
- update question set title=#{param2}, content=#{param3}, updated=now(), question_img=#{param4} where num=#{param1}; 
+ update question set title=#{param2}, content=#{param3}, updated=now() where num=#{param1}; 
  </update>
 
 <select id="getTotal" resultType="int">

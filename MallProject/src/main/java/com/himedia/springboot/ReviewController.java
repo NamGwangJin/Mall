@@ -56,9 +56,18 @@ public class ReviewController {
 		String id= (String) session.getAttribute("id");
 		int prod_id = Integer.parseInt(req.getParameter("prod_id"));
 		int order_num = Integer.parseInt(req.getParameter("order_num"));
-		rdao.insPost(rating,title, content, img, id, prod_id);
+		rdao.insPost(rating, title, content, img, id, prod_id, order_num);
 		cdao.updateState(order_num, "리뷰 작성 완료");
 		return "redirect:/product?name=" + prod_id;
+	}
+	
+	@GetMapping("reviewView")
+	public String reviewView(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
+		int order_num = Integer.parseInt(req.getParameter("num"));
+		ReviewDTO rDto = rdao.view(order_num);
+		model.addAttribute("rPost",rDto);
+		return "review/reviewview";
 	}
 	
 	@GetMapping("/reviewupdate")

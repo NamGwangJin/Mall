@@ -50,8 +50,11 @@
 							            <td>
 							                <a name='orderend'>
 											    <c:choose>
-											        <c:when test="${order.order_state eq '반품 요청'}">
-											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "발송완료")'>반품 접수</button>
+											         <c:when test="${order.order_state eq '반품 요청'}">
+											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "요청승인")'>요청 완료</button>
+											        </c:when>
+											        <c:when test="${order.order_state eq '취소 요청'}">
+											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "요청승인")'>요청 완료</button>
 											        </c:when>
 											    </c:choose>
 											</a>
@@ -105,8 +108,7 @@
 <script>
 
 function completeOrder(orderNum) {
-		
-	   
+
 	    $.ajax({
 	        type: 'POST',
 	        url: '/adminOrderCancel',
@@ -118,7 +120,7 @@ function completeOrder(orderNum) {
               
             	var orderStateCell = $('#orderstateCell-' + orderNum);
                 var completeButton = $('#completeButton-' + orderNum);
-                orderStateCell.text('반품 완료');
+                orderStateCell.text('승인 완료');
                 
             
                 completeButton.hide();
