@@ -18,7 +18,7 @@ public interface BbsDAO {
 	
 	void insPost(String title, String content, String writer, String created, String updated, String bbs_img);
 	
-	void udPost(int num, String title, String content, String updated, String bbs_img);
+	void udPost(int num, String title, String content, String updated);
 	
 	int getTotal();
 	

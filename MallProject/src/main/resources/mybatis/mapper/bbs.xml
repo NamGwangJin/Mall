@@ -26,7 +26,7 @@ select num, title, content, writer, hit, created, updated, bbs_img from bbs orde
   </insert>
 
 <update id="udPost">
- update bbs set title=#{param2}, content=#{param3}, updated=now(), bbs_img=#{param4} where num=#{param1}; 
+ update bbs set title=#{param2}, content=#{param3}, updated=now() where num=#{param1}; 
  </update>
 
 <select id="getTotal" resultType="int">

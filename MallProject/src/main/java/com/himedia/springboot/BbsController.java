@@ -137,8 +137,8 @@ public class BbsController {
 		int num = Integer.parseInt(req.getParameter("num"));
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		String bimg = req.getParameter("bbs_img");
-		bdao.udPost(num, title, content, bimg, now);
+		
+		bdao.udPost(num, title, content, now);
 		return "redirect:/bbs";
 	}
 
@@ -184,7 +184,7 @@ public class BbsController {
 			
 			int cnt=bdao.getTotal();
 			int pagecount = (int) Math.ceil(cnt/10.0);
-			System.out.println("pagecount="+pagecount);
+		
 			
 			String pagestr="";
 			for(int i=1; i<=pagecount; i++) {

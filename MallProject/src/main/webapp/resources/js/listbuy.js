@@ -6,7 +6,11 @@ $(document)
 	}
 	var prod_id = "";
 	for(var i=0; i<$("input[name=prodId]").length; i++){
-		prod_id += $("input[name=prodId]").eq(i).val();
+		if ( i == $("input[name=prodId]").length - 1) {
+			prod_img += $('input[name=prodId]').eq(i).val();
+			break;
+		}
+		prod_id += $("input[name=prodId]").eq(i).val() + ",";
 	}
 	$('input[name=prod_id]').val(prod_id);
 	

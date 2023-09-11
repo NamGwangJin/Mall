@@ -218,7 +218,7 @@ public class CartController {
 		int usePoint = Integer.parseInt(req.getParameter("sale"));
 		
 		String prod_id = req.getParameter("prod_id");
-		String[] prodList = prod_id.split("");
+		String[] prodList = prod_id.split(",");
 		
 		String prod_img = req.getParameter("prod_img");
 		String[] imgList = prod_img.split(","); 

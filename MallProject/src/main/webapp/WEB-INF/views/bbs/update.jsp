@@ -48,6 +48,7 @@ table td { border : 1px solid black; }
 <body>
 <table>
 <form method="post" action="/modify" id=frmUpdate name=frmUpdate>
+
 <input type=hidden id=no name=num value='${bPost.num}'>
 <div class="myp-form-wrap">
 	<p class="form-title2">작성시각 | ${bPost.created}</p>
