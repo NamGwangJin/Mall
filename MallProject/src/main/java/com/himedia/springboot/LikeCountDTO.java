@@ -6,10 +6,16 @@ public class LikeCountDTO {
 	  private String userId;
 	  private String imgstate;
 	  private int countlike; 
+	  private int num;
 		
 		
-		
-	    public int getCountlike() {
+	    public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+		public int getCountlike() {
 		return countlike;
 	}
 	public void setCountlike(int countlike) {

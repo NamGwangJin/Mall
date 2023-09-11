@@ -87,9 +87,9 @@ public class BbsController {
 		
 		
 		//좋아요기능
-		String title = bdto.getTitle();		
+		int lcnum = bdto.getNum();		
  		String user_id = id;
- 		int likecheck = lcDAO.likecheck(user_id, title);
+ 		int likecheck = lcDAO.likecheck(user_id, lcnum);
  		
  		model.addAttribute("lk",likecheck);
  		

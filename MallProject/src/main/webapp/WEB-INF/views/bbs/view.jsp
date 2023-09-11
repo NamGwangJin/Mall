@@ -59,7 +59,7 @@
 		</ul>
 	<div class="like-container">
 	    <a href="javascript:void(0);" onclick="swapImg();">
-	    <input type=hidden name='title' id='title' value='${bPost.title}' />
+	    <input type=hidden name='lcnum' id='lcnum' value='${bPost.num}' />
 	        <img id="likeImage" name='imgstate' src="<c:choose>
 	                <c:when test="${lk == 0}">
  	                    img/likeimgdumy.JPG 
@@ -122,7 +122,7 @@
 <div>
     <section class="reply-form">
         <form method='post' action='/replyInsert'>
-         <input type=hidden name=num value="">
+       
             <div>
                 <textarea name=content placeholder="댓글을 작성해주세요" maxlength="200"></textarea>
                 <input type=submit class=con1 value="작성">
@@ -141,7 +141,7 @@
 <script>
 //좋아요 기능에서 변수들
 var likeImage = document.getElementById("likeImage");
-var title = document.getElementById("title").value;
+var lcnum = document.getElementById("lcnum").value;
 
 var isLiked = ${lk == 1};
 var thisliked;
@@ -156,7 +156,7 @@ $(document)
 
 $.ajax({
         type: 'GET',
-        url: '/initialLikeCount?title=' + title, 
+        url: '/initialLikeCount?lcnum=' + lcnum, 
         success: function (response) {
           $('#lkresult').text(response);
         },
@@ -181,7 +181,7 @@ function swapImg() {
 function updateCountAndImage(imagePath) {
     var data = {
         imgstate: imagePath,
-        title: title
+        lcnum: lcnum
     };
 
     $.ajax({
