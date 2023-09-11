@@ -26,7 +26,7 @@ created=now(), updated=now(), prod_id=#{param6}, num=#{param7};
 </insert>
 
 <update id="udPost">
-update review set rating=#{param2} title=#{param3}, content=#{param4}, img=#{param5}, updated=now() where num=#{param1};
+update review set title=#{param2}, content=#{param3}, img=#{param4}, updated=now() where num=#{param1};
 </update>
 
 <select resultType="int" id="getTotal">

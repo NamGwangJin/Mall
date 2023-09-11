@@ -120,12 +120,7 @@ $(document).ready(function () {
  $('#orderstates').change(function() {
      
        var selectedValue = $(this).val();
-		
-	
 
-		
-		
-		
 		$.ajax({ url: '/deliverstates',
 				data: { selectedValue: selectedValue },
 				type:'post',

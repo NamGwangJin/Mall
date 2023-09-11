@@ -21,7 +21,7 @@ public interface ReviewDAO {
 	
 	void insPost(String rating , String title, String content, String img, String writer, int prod_id, int order_num);
 	
-	void udPost(int num, int rating, String title, String content, String img);
+	void udPost(int num, String title, String content, String img);
 	
 	int getTotal();
 

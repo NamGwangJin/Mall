@@ -61,7 +61,17 @@ public class ReviewController {
 		return "redirect:/product?name=" + prod_id;
 	}
 	
-	@GetMapping("reviewView")
+	@GetMapping("/reviewdelete")
+	public String reviewDelete(HttpServletRequest req) {
+		int order_num = Integer.parseInt(req.getParameter("num"));
+		
+		rdao.delPost(order_num);
+		cdao.updateState(order_num, "배송 완료");
+		
+		return "redirect:/orderList";
+	}
+	
+	@GetMapping("/reviewView")
 	public String reviewView(HttpServletRequest req, Model model) {
 		handleUserInterface(req, model);
 		int order_num = Integer.parseInt(req.getParameter("num"));
@@ -72,6 +82,7 @@ public class ReviewController {
 	
 	@GetMapping("/reviewupdate")
 	public String update(HttpServletRequest req, Model model) {
+		handleUserInterface(req, model);
 		int num = Integer.parseInt(req.getParameter("num"));
 		ReviewDTO rdto = rdao.view(num);
 		model.addAttribute("rPost",rdto);
@@ -81,12 +92,11 @@ public class ReviewController {
 	@PostMapping("/modify1")
 	public String modfiy(HttpServletRequest req) {
 		int num = Integer.parseInt(req.getParameter("num"));
-		int rating = Integer.parseInt(req.getParameter("rating"));
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String img = req.getParameter("img");
-		rdao.udPost(num, rating, title, content, img);
-		return "redirect:/review";
+		rdao.udPost(num, title, content, img);
+		return "redirect:/reviewView?num=" + num;
 	}
 	
 	@PostMapping("/orderByRating")
