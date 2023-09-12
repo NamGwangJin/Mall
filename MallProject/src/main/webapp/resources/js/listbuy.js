@@ -7,7 +7,7 @@ $(document)
 	var prod_id = "";
 	for(var i=0; i<$("input[name=prodId]").length; i++){
 		if ( i == $("input[name=prodId]").length - 1) {
-			prod_img += $('input[name=prodId]').eq(i).val();
+			prod_id += $('input[name=prodId]').eq(i).val();
 			break;
 		}
 		prod_id += $("input[name=prodId]").eq(i).val() + ",";

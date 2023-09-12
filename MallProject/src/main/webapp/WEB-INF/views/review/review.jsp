@@ -497,8 +497,8 @@
         
         <div class="review_list_v2__edit_container">
 
-		<div class="review_list_v2__date" name=created>${list.created}</div>
-         <div class="review_list_v2__date1" name=updated>${list.updated}</div>
+		<div class="review_list_v2__date" name=created><h1>${list.created}</h1></div>
+         <div class="review_list_v2__date1" name=updated><h1>${list.updated}</h1></div>
                <div class="review_list_v2__user_name_message">  
      			<b name=writer>${list.writer}</b>님의 리뷰입니다.
   			</div>

@@ -23,6 +23,7 @@ $(document)
 					set.attr("id",obj['prod_name']);
 					set.find('img').attr("src","img/" + obj['prod_img']);
 					set.find("div").text(obj['prod_name']);
+					set.attr("href","/product?name=" + obj['prod_id']);
 				}
 				for(let i=data.length; i<5; i++){
 					let set = $('#cookieList').find('a[name=cookieProd]').eq(i);
@@ -50,8 +51,10 @@ $(document)
 	})
 	if ( count == 0 ) {
 		allUnCheck();
-	} else if ( count == $('input[name=prodCheckBox]').length ) {
+	}else if ( count == $('input[name=prodCheckBox]').length ) {
 		allCheck();
+	} else {
+		$('input[name=checkbox]').prop('checked',false);
 	}
 	changeCheckbox();
 })

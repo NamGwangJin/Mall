@@ -57,7 +57,7 @@
 															</span>
 													</label>
 												</div>
-												<a href="product?name=${cart.prod_name}" class="sc-a5f60b9e-5">
+												<a href="product?name=${cart.prod_id}" class="sc-a5f60b9e-5">
 												<div class="sc-a5f60b9e-6 fyAFwI">
 													<div class="sc-a5f60b9e-4 kyIyjj">
 														<input type="hidden" name=img value="${cart.prod_img}">

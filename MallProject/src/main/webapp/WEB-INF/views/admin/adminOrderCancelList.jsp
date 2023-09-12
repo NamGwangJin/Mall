@@ -51,10 +51,14 @@
 							                <a name='orderend'>
 											    <c:choose>
 											         <c:when test="${order.order_state eq '반품 요청'}">
-											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "요청승인")'>요청 완료</button>
+											         			<div class="MoreHeaderView_button_wrap__B-cQ2" style="width:150px;">
+											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "반품 요청 승인")' class="MoreHeaderView_button_item__gv6pa">반품 승인 완료</button>
+											        			</div>
 											        </c:when>
 											        <c:when test="${order.order_state eq '취소 요청'}">
-											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "요청승인")'>요청 완료</button>
+											        			<div class="MoreHeaderView_button_wrap__B-cQ2" style="width:150px;">
+											            <button id='completeButton-${order.order_num}' onclick='completeOrder(${order.order_num}, "취소 요청 승인")' class="MoreHeaderView_button_item__gv6pa">취소 승인 완료</button>
+											       				</div>
 											        </c:when>
 											    </c:choose>
 											</a>

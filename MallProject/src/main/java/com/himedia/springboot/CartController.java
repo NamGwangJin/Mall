@@ -452,6 +452,7 @@ public class CartController {
 			JSONObject jo = new JSONObject();
 			jo.put("prod_img", pList.get(i).getProd_img());
 			jo.put("prod_name", pList.get(i).getProd_name());
+			jo.put("prod_id", pList.get(i).getProd_id());
 			ja.add(jo);
 		}
 		
