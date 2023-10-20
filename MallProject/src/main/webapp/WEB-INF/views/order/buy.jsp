@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="css/buy.css">
 <link href="css/mall.css" rel="stylesheet" />
 <title>구매 페이지</title>
+<script src="https://js.tosspayments.com/v1/payment-widget"></script>
 </head>
 <style>
     /* 버튼의 배경색과 글자색을 변경합니다. */
@@ -86,6 +87,9 @@
                             </tr>
                         </table>
                         <input type="submit" value="결제하기">
+                        <div id="payment-method"></div>
+  						<div id="agreement"></div>
+  						<input type=button id=payment-button value="결제">
                     </div>
                     <article class="delivery">
                         <h1>배송정보</h1>
@@ -121,7 +125,6 @@
                             </tr>
                         </table>
                     </article>
-                    할인정보
                     <article class="discount">
                         <h1>할인정보</h1>
                         <div>
@@ -139,7 +142,6 @@
                             <span>포인트 5,000점 이상이면 현금처럼 사용 가능합니다.</span>
                         </div>
                     </article>
-                    결제방법
                     <article class="payment">
                         <h1>결제방법</h1>
                         <div>
@@ -181,5 +183,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://js.tosspayments.com/v1/payment-widget"></script>
 <script src="resources/js/buy.js"></script>
+<script src="resources/js/toss.js"></script>
 </html>

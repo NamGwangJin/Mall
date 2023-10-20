@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/buy.css">
 <link href="css/mall.css" rel="stylesheet" />
 <title>구매 페이지</title>
+<script src="https://js.tosspayments.com/v1/payment-widget"></script>
 </head>
 <body>
 <div class="navbar">
@@ -86,6 +87,7 @@
                             </tr>
                         </table>
                         <input type="submit" value="결제하기">
+                        <button id=payment-button>결제</button>
                     </div>
                     <!-- 배송정보 -->
                     <article class="delivery">
@@ -182,4 +184,5 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="resources/js/listbuy.js"></script>
+<script src="resources/js/toss.js"></script>
 </html>
