@@ -9,7 +9,7 @@
 <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 </head>
 <style>
-    /* 버튼의 배경색과 글자색을 변경합니다. */
+    /* 버튼의 배경색과 글자색을 변경합니다.*/
     input[type="submit"] {
         background-color: #25C7A0; /* 원하는 배경색으로 변경하세요. */
         color: white; /* 원하는 글자색으로 변경하세요. */
